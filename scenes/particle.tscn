@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c4qd2m8au6654"]
+
+[ext_resource type="Script" uid="uid://dtqmayk0orke1" path="res://scripts/particle.gd" id="1_017rx"]
+[ext_resource type="Shader" uid="uid://x8urx847j6l1" path="res://particle.gdshader" id="2_3vw28"]
+[ext_resource type="Texture2D" uid="uid://c5hsnlr60x28u" path="res://art/basicbottle_mask.PNG" id="3_3vw28"]
+[ext_resource type="Texture2D" uid="uid://sddyo6wukcox" path="res://art/particledot_mask.PNG" id="3_ioprr"]
+[ext_resource type="Texture2D" uid="uid://3n1cw0xc3pwe" path="res://art/basicgold_liquid.PNG" id="4_b0n7q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_017rx"]
+shader = ExtResource("2_3vw28")
+shader_parameter/bottle_mask = ExtResource("3_3vw28")
+shader_parameter/mask_tex = ExtResource("3_ioprr")
+
+[node name="Node2D" type="Node2D" unique_id=215950026]
+z_index = 20
+script = ExtResource("1_017rx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=586470758]
+material = SubResource("ShaderMaterial_017rx")
+position = Vector2(20, -125)
+scale = Vector2(1, 0.81684697)
+texture = ExtResource("4_b0n7q")

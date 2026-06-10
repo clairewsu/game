@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://mu3bafvicmw0"]
+
+[ext_resource type="Script" uid="uid://jge7j2sksqlc" path="res://scripts/ui_or_smth.gd" id="1_bqq8r"]
+
+[node name="ui_and_stuff" type="CanvasLayer" unique_id=1762027153]
+script = ExtResource("1_bqq8r")
+
+[node name="Timer" type="Timer" parent="." unique_id=1632939379]
+one_shot = true
+
+[node name="timerlabel" type="Label" parent="." unique_id=1509224485]
+offset_left = 1027.0
+offset_top = 172.0
+offset_right = 1096.0
+offset_bottom = 227.0
+theme_override_font_sizes/font_size = 40
+text = "123"
+horizontal_alignment = 1
+
+[node name="scorecounter" type="Label" parent="." unique_id=1063127419]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 168.0
+offset_right = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
+text = "score: 1234"
+horizontal_alignment = 1
+
+[node name="startbutton" type="Button" parent="." unique_id=1462024280]
+offset_left = 400.0
+offset_top = 500.0
+offset_right = 705.0
+offset_bottom = 596.0
+theme_override_font_sizes/font_size = 64
+text = "start"
+
+[node name="theend" type="Label" parent="." unique_id=177718164]
+offset_left = 424.0
+offset_top = 240.0
+offset_right = 661.0
+offset_bottom = 328.0
+theme_override_font_sizes/font_size = 64
+text = "the end"
+
+[node name="deckcounter" type="Label" parent="." unique_id=192299021]
+offset_left = 1036.0
+offset_top = 305.0
+offset_right = 1091.0
+offset_bottom = 372.0
+theme_override_font_sizes/font_size = 48
+text = "30"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="startbutton" to="." method="_on_startbutton_pressed"]

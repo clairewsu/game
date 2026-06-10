@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://di2o28020vp5n"]
+
+[ext_resource type="Script" uid="uid://vv5me4hr3fiw" path="res://scripts/scorefx.gd" id="1_113st"]
+
+[node name="scorefx" type="Node2D" unique_id=105752941]
+script = ExtResource("1_113st")
+
+[node name="Label" type="Label" parent="." unique_id=1619612294]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.796243, 0.796243, 0.796243, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "+100"

@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://baaq0gt5cwr4"]
+
+[ext_resource type="Script" uid="uid://b3csci7p8c2fj" path="res://scripts/guy.gd" id="1_8h3iv"]
+[ext_resource type="Texture2D" uid="uid://c4nbttg6h2ih3" path="res://art/request.PNG" id="2_0xkuq"]
+[ext_resource type="Texture2D" uid="uid://booomxbpl8k2f" path="res://art/gold.PNG" id="3_qlfh1"]
+[ext_resource type="Texture2D" uid="uid://c656gfo14gq2y" path="res://art/green.PNG" id="4_vmfrp"]
+[ext_resource type="Texture2D" uid="uid://mi0kho23pdr7" path="res://art/blue.PNG" id="5_dk3hk"]
+[ext_resource type="Texture2D" uid="uid://c1n8trlrdo6ql" path="res://art/swirl.PNG" id="6_cdhm5"]
+[ext_resource type="Texture2D" uid="uid://bfc84b8njlyj1" path="res://art/characters/ari.PNG" id="7_qlfh1"]
+
+[node name="guy" type="Area2D" unique_id=125050312]
+z_index = -1
+collision_layer = 2
+script = ExtResource("1_8h3iv")
+
+[node name="requestbubble" type="Sprite2D" parent="." unique_id=1043095961]
+texture = ExtResource("2_0xkuq")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=290731348]
+position = Vector2(-259, -204)
+rect = Rect2(-73, -77, 604, 378)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1035186891]
+polygon = PackedVector2Array(-223, -380, -364, -269, -421, -103, -387, 62, -122, 162, 104, 160, 271, 91, 375, -62, 367, -223, 231, -352, 30, -413)
+
+[node name="gold" type="Sprite2D" parent="." unique_id=1230213263]
+texture = ExtResource("3_qlfh1")
+
+[node name="green" type="Sprite2D" parent="." unique_id=441199656]
+texture = ExtResource("4_vmfrp")
+
+[node name="blue" type="Sprite2D" parent="." unique_id=1862235160]
+texture = ExtResource("5_dk3hk")
+
+[node name="swirl" type="Sprite2D" parent="." unique_id=547609306]
+texture = ExtResource("6_cdhm5")
+
+[node name="individual" type="Sprite2D" parent="." unique_id=665040702]
+z_index = -1
+position = Vector2(47, 907)
+scale = Vector2(2, 2)
+texture = ExtResource("7_qlfh1")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="." unique_id=249996253]
+position = Vector2(42, -298)
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(-85, 249, -196, 317, -231, 476, -162, 576, -248, 736.5, 244.5, 736.5, 126, 558, 212, 459, 124, 242)

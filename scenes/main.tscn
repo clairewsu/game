@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://s6no3mg8j75o"]
+
+[ext_resource type="Script" uid="uid://mtj3bkoiq2j6" path="res://scripts/main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://baaq0gt5cwr4" path="res://scenes/guy.tscn" id="2_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://kqp17i31mim4" path="res://art/badbg.PNG" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://b76apnyc2rpv6" path="res://scenes/object.tscn" id="6_tipki"]
+[ext_resource type="Texture2D" uid="uid://j5whhisqxleb" path="res://art/table.PNG" id="7_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://baa4s8f1juw8s" path="res://art/slots.PNG" id="8_choun"]
+[ext_resource type="PackedScene" uid="uid://mu3bafvicmw0" path="res://scenes/ui_or_smth.tscn" id="10_4c57u"]
+[ext_resource type="Texture2D" uid="uid://bcsbyns4ni5o6" path="res://art/slotsfront.PNG" id="10_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://di2o28020vp5n" path="res://scenes/scorefx.tscn" id="10_efxa6"]
+
+[sub_resource type="Curve2D" id="Curve2D_0xm2m"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 471.12506, 482.6328, 0, 0, 0, 0, 102.88637, 149, 0, 0, 0, 0, -35.437504, -723.9453)
+}
+point_count = 3
+
+[node name="main" type="Node" unique_id=843314606]
+script = ExtResource("1_ig7tw")
+guys_scene = ExtResource("2_tbgi4")
+object_scene = ExtResource("6_tipki")
+scorepopup_scene = ExtResource("10_efxa6")
+
+[node name="Timer" type="Timer" parent="." unique_id=1158769286]
+wait_time = 30.0
+one_shot = true
+
+[node name="startpos" type="Marker2D" parent="." unique_id=1154570597]
+position = Vector2(199, 333)
+
+[node name="guyspawn" type="Path2D" parent="." unique_id=1840586196]
+position = Vector2(234.4, 170.4)
+scale = Vector2(3.1999998, -0.00082879415)
+curve = SubResource("Curve2D_0xm2m")
+
+[node name="spawn place" type="PathFollow2D" parent="guyspawn" unique_id=37585696]
+position = Vector2(471.12506, 482.6328)
+rotation = -2.40546
+
+[node name="ui" parent="." unique_id=1762027153 instance=ExtResource("10_4c57u")]
+layer = 10
+
+[node name="bg" type="CanvasLayer" parent="." unique_id=385894690]
+layer = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="bg" unique_id=522205932]
+position = Vector2(577, 328)
+scale = Vector2(0.6020833, 0.6037037)
+texture = ExtResource("6_tefeu")
+
+[node name="front" type="CanvasLayer" parent="." unique_id=1074735592]
+layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="front" unique_id=216405396]
+position = Vector2(577, 334.00003)
+scale = Vector2(0.59739584, 0.59074074)
+texture = ExtResource("10_eb6dy")
+
+[node name="Sprite2D2" type="Sprite2D" parent="front" unique_id=963960655]
+position = Vector2(190.19992, 573)
+rotation = 4.712389
+scale = Vector2(0.6023083, 1.8097957)
+texture = ExtResource("10_eb6dy")
+
+[node name="table" type="Sprite2D" parent="." unique_id=1135055596]
+position = Vector2(582.5, 322.5)
+scale = Vector2(0.6057292, 0.59351856)
+texture = ExtResource("7_o6xl0")
+
+[node name="slots" type="Sprite2D" parent="." unique_id=1399031035]
+position = Vector2(577.25, 316.75)
+scale = Vector2(0.59869796, 0.58194447)
+texture = ExtResource("8_choun")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="start" from="ui" to="." method="_on_start"]

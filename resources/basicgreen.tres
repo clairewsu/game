@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="carddata" format=3 uid="uid://ct03yrs6lwuil"]
+
+[ext_resource type="Texture2D" uid="uid://d0njjmhfso1kq" path="res://art/basicgreen_liquid.PNG" id="1_ay0th"]
+[ext_resource type="Texture2D" uid="uid://c5hsnlr60x28u" path="res://art/basicbottle_mask.PNG" id="2_40emx"]
+[ext_resource type="Script" uid="uid://cnocqjqkrdgd0" path="res://scripts/carddata.gd" id="2_jx8ym"]
+[ext_resource type="Texture2D" uid="uid://bw2lcci3kx27w" path="res://art/basicgreen_bottle.PNG" id="3_jx8ym"]
+
+[resource]
+script = ExtResource("2_jx8ym")
+color = 1
+basevalue = 100
+texture = ExtResource("3_jx8ym")
+liquidtexture = ExtResource("1_ay0th")
+masktexture = ExtResource("2_40emx")
+collision = PackedVector2Array(-218, 275, -114, 347, 63, 352, 190, 258, 187, 109, 73, 0, 66, -389, -112, -397, -117, -1, -232, 118)

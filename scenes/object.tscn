@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b76apnyc2rpv6"]
+
+[ext_resource type="Script" uid="uid://bsdr3vnm1fjpq" path="res://scripts/object.gd" id="1_cbfvs"]
+[ext_resource type="PackedScene" uid="uid://c4qd2m8au6654" path="res://scenes/particle.tscn" id="2_46pka"]
+[ext_resource type="Texture2D" uid="uid://nleu8mcamp" path="res://art/basicgold_bottle.PNG" id="2_a0y2b"]
+[ext_resource type="Texture2D" uid="uid://3n1cw0xc3pwe" path="res://art/basicgold_liquid.PNG" id="3_a0y2b"]
+[ext_resource type="Shader" uid="uid://43uyde5kop04" path="res://object.gdshader" id="3_a03g0"]
+[ext_resource type="Texture2D" uid="uid://c5hsnlr60x28u" path="res://art/basicbottle_mask.PNG" id="4_46pka"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f66fi"]
+shader = ExtResource("3_a03g0")
+shader_parameter/mask_tex = ExtResource("4_46pka")
+shader_parameter/fill_level = 0.6
+shader_parameter/slosh = 0.0
+shader_parameter/wave_amp = 0.0
+shader_parameter/wave_freq = 10.0
+shader_parameter/edge_softness = 0.02
+
+[node name="object" type="Area2D" unique_id=2137580778]
+z_index = 1
+collision_mask = 2
+script = ExtResource("1_cbfvs")
+particle_scene = ExtResource("2_46pka")
+defaultpos = Vector2(550, 400)
+
+[node name="bottle" type="Sprite2D" parent="." unique_id=1978269397]
+position = Vector2(6.0000114, -4.5)
+texture = ExtResource("2_a0y2b")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=935366066]
+polygon = PackedVector2Array(-218, 275, -114, 347, 63, 352, 190, 258, 187, 109, 73, 0, 66, -389, -112, -397, -117, -1, -232, 118)
+
+[node name="liquid" type="Sprite2D" parent="." unique_id=1813720894]
+z_index = -1
+material = SubResource("ShaderMaterial_f66fi")
+position = Vector2(7, -3)
+texture = ExtResource("3_a0y2b")
+
+[node name="sellarea" type="Area2D" parent="." unique_id=898207889]
+collision_mask = 2
+
+[node name="sellcollision" type="CollisionPolygon2D" parent="sellarea" unique_id=599242621]
+polygon = PackedVector2Array(-119, 44, -178, 135, -158, 226, -45, 286, 95, 248, 137, 120, 27, 25)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=131602449]
+position = Vector2(-10, 134)
+
+[connection signal="hit" from="." to="." method="_on_hit"]
