@@ -73,6 +73,8 @@ func spawn_object(n:int):
 		#object.connect("score", Callable(self, "_on_score"))
 		#object.score.connect(guy._on_score)
 		end.connect(object.queue_free)
+		object.show_desc.connect($ui._show_desc)
+		object.hide_desc.connect($ui._hide_desc)
 	
 func respawn_guys():
 	respawning_guys=true

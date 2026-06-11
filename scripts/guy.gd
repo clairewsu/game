@@ -3,6 +3,7 @@ class_name guy
 @export var color_id=0
 var slots=[Vector2(0,180),Vector2(-50,180),Vector2(50,180),Vector2(-25,200),Vector2(25,200)]
 var slot_occupied=[false,false,false,false,false]
+var textures=[]
 var this_score=0
 var guys=[]
 signal penalty
@@ -15,6 +16,11 @@ func _ready():
 	$green.hide()
 	$blue.hide()
 	$swirl.hide()
+	for file in DirAccess.get_files_at("res://art/characters"):
+		if file.ends_with(".PNG"):
+			textures.append(file)
+	var tex=Array(textures).pick_random()
+	$individual.texture=load("res://art/characters/"+tex)
 	add_to_group("guy")
 	color_id=randi()%4
 	if color_id==0:

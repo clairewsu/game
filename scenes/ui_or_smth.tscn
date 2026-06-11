@@ -53,5 +53,22 @@ offset_bottom = 372.0
 theme_override_font_sizes/font_size = 48
 text = "30"
 
+[node name="objdesc" type="Panel" parent="." unique_id=509032399]
+offset_left = 72.0
+offset_top = 88.0
+offset_right = 263.0
+offset_bottom = 195.0
+
+[node name="desctext" type="RichTextLabel" parent="objdesc" unique_id=1176251232]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 3.0
+offset_right = 201.0
+offset_bottom = 126.0
+text = "efheifejfjoieifeoirfeorf"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="startbutton" to="." method="_on_startbutton_pressed"]

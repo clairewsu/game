@@ -22,6 +22,8 @@ var tilt=0.0
 var is_moving=false
 signal hit
 signal score(amount:int)
+signal show_desc(name,cost,desc,pos:Vector2)
+signal hide_desc
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,6 +40,10 @@ func _ready():
 	screen_size=get_viewport_rect().size
 	input_event.connect(_on_input_event)
 	objpos=position
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
+	speed=15
+	position+=Vector2(0,-200)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -95,7 +101,15 @@ func _unhandled_input(event):
 						score.emit(basevalue)
 	elif drag and event is InputEventMouseMotion:
 		position += event.relative
+		hide_desc.emit()
 
+func _on_mouse_entered():
+	if not sold:
+		show_desc.emit(data.name,data.basevalue,data.desc,position)
+	
+func _on_mouse_exited():
+	hide_desc.emit()
+	
 func sell(guy):
 	sold=true
 	var guyslot=guy.get_free_slot()
@@ -113,6 +127,7 @@ func sell(guy):
 func _exit_tree() -> void:
 	if exists != null and slot != -1:
 		exists.slot_occupied[slot] = false
+	hide_desc.emit()
 		
 func splash():
 	for i in range(randi_range(5,8)):
@@ -121,3 +136,4 @@ func splash():
 		particle.liquidtexture=data.liquidtexture
 		particle.z_index=0
 		add_child(particle)
+		speed=30

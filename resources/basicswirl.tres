@@ -7,6 +7,8 @@
 
 [resource]
 script = ExtResource("2_cv1hu")
+name = "basic wind potion"
+desc = "no effect"
 color = 3
 basevalue = 100
 texture = ExtResource("3_cv1hu")

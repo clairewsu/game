@@ -1,7 +1,9 @@
 extends Resource
 class_name carddata
 
-@export var color:int
+@export var name:String
+@export_multiline var desc:String
+@export var color:int #0=yellow 1=green 2=blue 3=swirl
 @export var basevalue:int
 @export var texture:Texture2D
 @export var liquidtexture:Texture2D
