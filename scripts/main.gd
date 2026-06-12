@@ -13,6 +13,8 @@ var deck:Array[PackedScene]=[]
 var slots=[Vector2(80,530),Vector2(225,530),Vector2(365,530),Vector2(505,530),Vector2(655,530),Vector2(790,530),Vector2(940,530),Vector2(1080,530)]
 var slot_occupied=[false,false,false,false,false,false,false,false]
 signal end
+signal select1(obj)
+signal sellto(guy0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -53,6 +55,8 @@ func spawn_guy():
 		guy.connect("penalty", Callable(self, "_on_loss"))
 		guy.connect("dismiss",Callable(self,"_on_dismiss"))
 		end.connect(guy._on_end)
+		select1.connect(guy._obj_selected)
+		guy.sellto.connect(_guy_clicked)
 	
 func spawn_object(n:int):
 	for i in range(n):
@@ -73,8 +77,9 @@ func spawn_object(n:int):
 		#object.connect("score", Callable(self, "_on_score"))
 		#object.score.connect(guy._on_score)
 		end.connect(object.queue_free)
-		object.show_desc.connect($ui._show_desc)
-		object.hide_desc.connect($ui._hide_desc)
+		object.select.connect(_on_select)
+		select1.connect(object._on_select)
+		sellto.connect(object._guy_clicked)
 	
 func respawn_guys():
 	respawning_guys=true
@@ -114,3 +119,9 @@ func popup(pos:Vector2,points:int,sign):
 	popup.position=pos
 	add_child(popup)
 	popup.setup(sign,points)
+	
+func _on_select(obj):
+	select1.emit(obj)
+	
+func _guy_clicked(guy0):
+	sellto.emit(guy0)

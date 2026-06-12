@@ -12,7 +12,6 @@ func _ready() -> void:
 	$timerlabel.hide()
 	$theend.hide()
 	$deckcounter.hide()
-	$objdesc.hide()
 
 func show_time(text):
 	$timerlabel.text = text
@@ -82,11 +81,3 @@ func updatetotal(totalvalue:float):
 
 func updatemult(multvalue):
 	$scorecounter.text="base score: %d\npenalty: %d\nround bonus: x%.2f"% [base,penalty,multvalue]
-
-func _show_desc(name:String,cost:int,desc:String,pos:Vector2):
-	$objdesc/desctext.text="%s\nprice: %d\n%s"% [name,cost,desc]	
-	$objdesc.position=pos+Vector2(-100,-250)
-	$objdesc.show()
-	
-func _hide_desc():
-	$objdesc.hide()

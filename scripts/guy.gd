@@ -6,8 +6,11 @@ var slot_occupied=[false,false,false,false,false]
 var textures=[]
 var this_score=0
 var guys=[]
+var selected=false
+var lastselected:String
 signal penalty
 signal dismiss
+signal sellto(guy0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,11 +45,15 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	
 func _input_event(Viewport,InputEvent,int):
 	if InputEvent.is_action_pressed("move"):
-		if true not in slot_occupied:
-			penalty.emit(80,global_position)
+		if not selected:
+			if true not in slot_occupied:
+				penalty.emit(80,global_position)
+			else:
+				dismiss.emit(this_score,global_position)
+			queue_free()
 		else:
-			dismiss.emit(this_score,global_position)
-		queue_free()
+			sellto.emit(self)
+			selected=false
 
 func get_free_slot():
 	for i in range(slot_occupied.size()):
@@ -57,6 +64,15 @@ func get_free_slot():
 	
 func _on_score(amount:int):
 	this_score+=amount
+	selected=false
+	
+func _obj_selected(obj):
+	obj=str(obj)
+	if lastselected==obj:
+		selected=false
+	else:
+		selected=true
+	lastselected=obj
 	
 func _on_end():
 	dismiss.emit(this_score,global_position)
