@@ -29,7 +29,7 @@ var selected=false
 signal hit
 signal score(amount:int)
 signal show_desc(name,color,cost,desc,pos:Vector2)
-signal select(obj)
+signal select(slot)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -108,7 +108,7 @@ func _unhandled_input(event):
 		drag = false
 		if get_global_mouse_position().distance_to(mousepos)<8 and not sold:
 			selected=!selected
-			select.emit(self)
+			select.emit(slot)
 		if not sold:
 			for area in $sellarea.get_overlapping_areas():
 				if area.is_in_group("guy"):
@@ -180,10 +180,12 @@ func _show_desc(name:String,color:int,cost:int,desc:String,pos:Vector2):
 func _hide_desc():
 	$objdesc.hide()
 
-func _on_select(obj):
-	if obj!=self:
+func _on_select(slot1,scrolling):
+	if slot1!=slot:
 		selected=false
 		_hide_desc()
+	elif scrolling:
+		selected=true
 		
 func _guy_clicked(guy0):
 	if selected:

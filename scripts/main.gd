@@ -9,15 +9,20 @@ var penalty=0
 var round=0
 var respawning_guys=true
 var respawning_object=true
+var selected=false
+var busy=false
+var selectedslot:int
 var deck:Array[PackedScene]=[]
 var slots=[Vector2(80,530),Vector2(225,530),Vector2(365,530),Vector2(505,530),Vector2(655,530),Vector2(790,530),Vector2(940,530),Vector2(1080,530)]
 var slot_occupied=[false,false,false,false,false,false,false,false]
 signal end
-signal select1(obj)
+signal select1(slot,scrolling:bool)
 signal sellto(guy0)
+signal guypressed(num)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_process_input(true)
 	end.connect($ui._on_end)
 	$ui.start.connect(_on_start)
 
@@ -42,6 +47,10 @@ func _on_timer_timeout():
 func _process(delta: float) -> void:
 	if get_tree().get_nodes_in_group("guy").is_empty() and not respawning_guys:
 		respawn_guys()
+	if Input.is_action_pressed("l") and selected and not busy:
+		scroll("l")
+	if Input.is_action_pressed("r") and selected and not busy:
+		scroll("r")
 
 func spawn_guy():
 	var spawn_offsets = [
@@ -57,6 +66,7 @@ func spawn_guy():
 		end.connect(guy._on_end)
 		select1.connect(guy._obj_selected)
 		guy.sellto.connect(_guy_clicked)
+		guypressed.connect(guy._is_pressed)
 	
 func spawn_object(n:int):
 	for i in range(n):
@@ -120,8 +130,28 @@ func popup(pos:Vector2,points:int,sign):
 	add_child(popup)
 	popup.setup(sign,points)
 	
-func _on_select(obj):
-	select1.emit(obj)
+func _on_select(slot):
+	select1.emit(slot,false)
+	selected=!selected
+	if slot!=selectedslot:
+		selected=true
+	selectedslot=slot
 	
 func _guy_clicked(guy0):
 	sellto.emit(guy0)
+
+func _input(InputEvent):
+	var numbers=["one","two","three","four"]
+	for i in range(numbers.size()):
+		if InputEvent.is_action_pressed(numbers[i]):
+			guypressed.emit(i)
+			
+func scroll(direction):
+	busy=true
+	if direction=="l":
+		selectedslot=max(selectedslot-1,0)
+	if direction=="r":
+		selectedslot=min(selectedslot+1,slot_occupied.count(true)-1)
+	select1.emit(selectedslot,true)
+	await get_tree().create_timer(.1).timeout
+	busy=false

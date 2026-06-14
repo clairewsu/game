@@ -6,6 +6,7 @@ var slot_occupied=[false,false,false,false,false]
 var textures=[]
 var this_score=0
 var guys=[]
+var idx:int
 var selected=false
 var lastselected:String
 signal penalty
@@ -25,6 +26,7 @@ func _ready():
 	var tex=Array(textures).pick_random()
 	$individual.texture=load("res://art/characters/"+tex)
 	add_to_group("guy")
+	idx=get_tree().get_node_count_in_group("guy")-1
 	color_id=randi()%4
 	if color_id==0:
 		$gold.show()
@@ -54,6 +56,7 @@ func _input_event(Viewport,InputEvent,int):
 		else:
 			sellto.emit(self)
 			selected=false
+	
 
 func get_free_slot():
 	for i in range(slot_occupied.size()):
@@ -66,13 +69,27 @@ func _on_score(amount:int):
 	this_score+=amount
 	selected=false
 	
-func _obj_selected(obj):
+func _obj_selected(obj,ignore):
 	obj=str(obj)
 	if lastselected==obj:
 		selected=false
 	else:
 		selected=true
 	lastselected=obj
+	
+func _is_pressed(num):
+	if num==idx:
+		if not selected:
+			if true not in slot_occupied:
+				penalty.emit(80,global_position)
+			else:
+				dismiss.emit(this_score,global_position)
+			queue_free()
+		else:
+			sellto.emit(self)
+			selected=false
+	else:
+		selected=false
 	
 func _on_end():
 	dismiss.emit(this_score,global_position)
