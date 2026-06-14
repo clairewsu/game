@@ -84,8 +84,7 @@ func spawn_object(n:int):
 		object.position=slots[slot]
 		object.defaultpos=object.position
 		add_child(object)
-		#object.connect("score", Callable(self, "_on_score"))
-		#object.score.connect(guy._on_score)
+		object.score.connect(_on_score)
 		end.connect(object.queue_free)
 		object.select.connect(_on_select)
 		select1.connect(object._on_select)
@@ -136,7 +135,10 @@ func _on_select(slot):
 	if slot!=selectedslot:
 		selected=true
 	selectedslot=slot
-	
+
+func _on_score(ignore):
+	selected=false
+		
 func _guy_clicked(guy0):
 	sellto.emit(guy0)
 

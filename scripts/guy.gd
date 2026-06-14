@@ -88,8 +88,6 @@ func _is_pressed(num):
 		else:
 			sellto.emit(self)
 			selected=false
-	else:
-		selected=false
 	
 func _on_end():
 	dismiss.emit(this_score,global_position)
