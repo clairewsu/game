@@ -12,6 +12,7 @@ func _ready() -> void:
 	$timerlabel.hide()
 	$theend.hide()
 	$deckcounter.hide()
+	$roundcounter.hide()
 
 func show_time(text):
 	$timerlabel.text = text
@@ -33,6 +34,8 @@ func _on_startbutton_pressed():
 	$startbutton.hide()
 	$scorecounter.hide()
 	$deckcounter.show()
+	$roundcounter.show()
+	$roundcounter.text="1"
 	countdown=30
 	start.emit()
 	show_time(str(countdown))
@@ -81,3 +84,6 @@ func updatetotal(totalvalue:float):
 
 func updatemult(multvalue):
 	$scorecounter.text="base score: %d\npenalty: %d\nround bonus: x%.2f"% [base,penalty,multvalue]
+
+func _round(round):
+	$roundcounter.text=str(round+1)

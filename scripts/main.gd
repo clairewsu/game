@@ -9,7 +9,6 @@ var penalty=0
 var round=0
 var respawning_guys=true
 var respawning_object=true
-var selected=false
 var busy=false
 var selectedslot:int
 var deck:Array[PackedScene]=[]
@@ -19,12 +18,14 @@ signal end
 signal select1(slot,scrolling:bool)
 signal sellto(guy0)
 signal guypressed(num)
+signal roundchange(round)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_process_input(true)
 	end.connect($ui._on_end)
 	$ui.start.connect(_on_start)
+	roundchange.connect($ui._round)
 
 func _on_start():
 	round=0
@@ -47,9 +48,9 @@ func _on_timer_timeout():
 func _process(delta: float) -> void:
 	if get_tree().get_nodes_in_group("guy").is_empty() and not respawning_guys:
 		respawn_guys()
-	if Input.is_action_pressed("l") and selected and not busy:
+	if Input.is_action_pressed("l") and Global.selected!=null and not busy:
 		scroll("l")
-	if Input.is_action_pressed("r") and selected and not busy:
+	if Input.is_action_pressed("r") and Global.selected!=null and not busy:
 		scroll("r")
 
 func spawn_guy():
@@ -64,7 +65,6 @@ func spawn_guy():
 		guy.connect("penalty", Callable(self, "_on_loss"))
 		guy.connect("dismiss",Callable(self,"_on_dismiss"))
 		end.connect(guy._on_end)
-		select1.connect(guy._obj_selected)
 		guy.sellto.connect(_guy_clicked)
 		guypressed.connect(guy._is_pressed)
 	
@@ -84,7 +84,6 @@ func spawn_object(n:int):
 		object.position=slots[slot]
 		object.defaultpos=object.position
 		add_child(object)
-		object.score.connect(_on_score)
 		end.connect(object.queue_free)
 		object.select.connect(_on_select)
 		select1.connect(object._on_select)
@@ -98,6 +97,7 @@ func respawn_guys():
 	respawn_object()
 	respawning_guys=false
 	round+=1
+	roundchange.emit(round)
 	
 func respawn_object():
 	respawning_object=true
@@ -131,13 +131,7 @@ func popup(pos:Vector2,points:int,sign):
 	
 func _on_select(slot):
 	select1.emit(slot,false)
-	selected=!selected
-	if slot!=selectedslot:
-		selected=true
 	selectedslot=slot
-
-func _on_score(ignore):
-	selected=false
 		
 func _guy_clicked(guy0):
 	sellto.emit(guy0)

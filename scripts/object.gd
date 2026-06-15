@@ -62,6 +62,8 @@ func _process(delta):
 	if sold:
 		drag=false
 		selected=false
+		if Global.selected==self:
+			Global.selected=null
 	
 func _physics_process(delta):
 	if not drag and not sold and not selected:
@@ -108,6 +110,10 @@ func _unhandled_input(event):
 		drag = false
 		if get_global_mouse_position().distance_to(mousepos)<8 and not sold:
 			selected=!selected
+			if selected:
+				Global.selected=self
+			elif Global.selected==self:
+				Global.selected=null
 			select.emit(slot)
 		if not sold:
 			for area in $sellarea.get_overlapping_areas():
@@ -117,6 +123,8 @@ func _unhandled_input(event):
 	elif drag and event is InputEventMouseMotion:
 		speed=30
 		selected=false
+		if Global.selected==self:
+			Global.selected=null
 		position += event.relative
 		_hide_desc()
 
@@ -130,10 +138,13 @@ func _on_mouse_exited():
 
 func sell(guy):
 	selected=false
+	if Global.selected==self:
+		Global.selected=null
 	sold=true
 	var guyslot=guy.get_free_slot()
 	if guyslot == -1:
 		selected=true
+		Global.selected=self
 		sold=false
 		return
 	z_index=3
@@ -183,9 +194,12 @@ func _hide_desc():
 func _on_select(slot1,scrolling):
 	if slot1!=slot:
 		selected=false
+		if Global.selected==self:
+			Global.selected=null
 		_hide_desc()
 	elif scrolling:
 		selected=true
+		Global.selected=self
 		
 func _guy_clicked(guy0):
 	if selected:

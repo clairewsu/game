@@ -7,7 +7,6 @@ var textures=[]
 var this_score=0
 var guys=[]
 var idx:int
-var selected=false
 var lastselected:String
 signal penalty
 signal dismiss
@@ -47,7 +46,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	
 func _input_event(Viewport,InputEvent,int):
 	if InputEvent.is_action_pressed("move"):
-		if not selected:
+		if Global.selected==null:
 			if true not in slot_occupied:
 				penalty.emit(80,global_position)
 			else:
@@ -55,7 +54,6 @@ func _input_event(Viewport,InputEvent,int):
 			queue_free()
 		else:
 			sellto.emit(self)
-			selected=false
 	
 
 func get_free_slot():
@@ -67,19 +65,10 @@ func get_free_slot():
 	
 func _on_score(amount:int):
 	this_score+=amount
-	selected=false
-	
-func _obj_selected(obj,ignore):
-	obj=str(obj)
-	if lastselected==obj:
-		selected=false
-	else:
-		selected=true
-	lastselected=obj
 	
 func _is_pressed(num):
 	if num==idx:
-		if not selected:
+		if Global.selected==null:
 			if true not in slot_occupied:
 				penalty.emit(80,global_position)
 			else:
@@ -87,7 +76,6 @@ func _is_pressed(num):
 			queue_free()
 		else:
 			sellto.emit(self)
-			selected=false
 	
 func _on_end():
 	dismiss.emit(this_score,global_position)
