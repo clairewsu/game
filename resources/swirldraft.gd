@@ -11,4 +11,5 @@ func _process(delta: float) -> void:
 	pass
 	
 func on_sold(main):
+	await main.get_tree().create_timer(.1).timeout
 	main.spawn_object(1)

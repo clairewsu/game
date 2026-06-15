@@ -158,13 +158,13 @@ func sell(guy):
 		score.emit(basevalue*1.5)
 	else:
 		score.emit(basevalue)
+	if exists != null and slot != -1:
+		exists.slot_occupied[slot] = false
 	data.on_sold(get_parent())
 	guy.tree_exited.connect(queue_free)
 	
 
 func _exit_tree() -> void:
-	if exists != null and slot != -1:
-		exists.slot_occupied[slot] = false
 	_hide_desc()
 		
 func splash():
@@ -186,6 +186,7 @@ func _show_desc(name:String,color:int,cost:int,desc:String,pos:Vector2):
 		elif color==3:
 			$objdesc/TextureRect.texture=swirl
 		$objdesc/desctext.text="%s \nprice: %d\n%s"% [name,cost,desc]	
+		$objdesc.custom_minimum_size = $objdesc/desctext.get_minimum_size()
 		$objdesc.show()
 	
 	
