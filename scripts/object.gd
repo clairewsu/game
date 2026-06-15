@@ -4,7 +4,7 @@ class_name object_class
 @export var speed=15 #theoretically how it would zoom bk to its default pos
 @export var color_id=0
 @export var basevalue=100
-@export var data=carddata
+@export var data:carddata
 @export var slosh_strength=.2
 @export var settle_speed=.6
 @onready var gold=preload("res://art/gold.PNG")
@@ -158,6 +158,7 @@ func sell(guy):
 		score.emit(basevalue*1.5)
 	else:
 		score.emit(basevalue)
+	data.on_sold(get_parent())
 	guy.tree_exited.connect(queue_free)
 	
 

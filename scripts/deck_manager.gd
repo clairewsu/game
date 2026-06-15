@@ -3,7 +3,8 @@ extends Node
 	preload("../resources/basicgold.tres"),
 	preload("../resources/basicgreen.tres"),
 	preload("../resources/basicblue.tres"),
-	preload("../resources/basicswirl.tres")
+	preload("../resources/basicswirl.tres"),
+	preload("../resources/swirldraft.tres")
 ]
 var deck:Array[Resource]=[]
 
@@ -22,7 +23,7 @@ func addtodeck():
 		deck.append(cards[0])
 		deck.append(cards[1])
 		deck.append(cards[2])
-		deck.append(cards[3])
+		deck.append(cards[4])
 		
 func draw():
 	if deck.is_empty():

@@ -9,3 +9,6 @@ class_name carddata
 @export var liquidtexture:Texture2D
 @export var masktexture:Texture2D
 @export var collision:PackedVector2Array
+
+func on_sold(main):
+	pass

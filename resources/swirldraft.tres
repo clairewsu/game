@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3 uid="uid://bmo4kahq01xtx"]
+
+[ext_resource type="Texture2D" uid="uid://cwhfs2xnnx77" path="res://art/draftswirl_liquid.PNG" id="1_ya2po"]
+[ext_resource type="Texture2D" uid="uid://c5hsnlr60x28u" path="res://art/basicbottle_mask.PNG" id="2_e5otd"]
+[ext_resource type="Script" uid="uid://chaknuiban0ob" path="res://resources/swirldraft.gd" id="3_h6eer"]
+[ext_resource type="Texture2D" uid="uid://f3yrdan5ucnd" path="res://art/basicswirl_bottle.PNG" id="4_8gkis"]
+
+[resource]
+script = ExtResource("3_h6eer")
+name = "draft potion"
+desc = "when you sell this potion, draw 1 new potion"
+color = 3
+basevalue = 100
+texture = ExtResource("4_8gkis")
+liquidtexture = ExtResource("1_ya2po")
+masktexture = ExtResource("2_e5otd")
+collision = PackedVector2Array(-218, 275, -114, 347, 63, 352, 190, 258, 187, 109, 73, 0, 66, -389, -112, -397, -117, -1, -232, 118)
