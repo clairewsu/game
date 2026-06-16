@@ -37,6 +37,14 @@ offset_bottom = 596.0
 theme_override_font_sizes/font_size = 64
 text = "start"
 
+[node name="endbutton" type="Button" parent="." unique_id=302233631]
+offset_left = 400.0
+offset_top = 500.0
+offset_right = 705.0
+offset_bottom = 596.0
+theme_override_font_sizes/font_size = 64
+text = "close"
+
 [node name="theend" type="Label" parent="." unique_id=177718164]
 offset_left = 424.0
 offset_top = 240.0
@@ -63,3 +71,4 @@ text = "3"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="startbutton" to="." method="_on_startbutton_pressed"]
+[connection signal="pressed" from="endbutton" to="." method="_on_endbutton_pressed"]

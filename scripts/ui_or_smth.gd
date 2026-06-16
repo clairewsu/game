@@ -13,6 +13,7 @@ func _ready() -> void:
 	$theend.hide()
 	$deckcounter.hide()
 	$roundcounter.hide()
+	$endbutton.hide()
 
 func show_time(text):
 	$timerlabel.text = text
@@ -53,8 +54,9 @@ func _on_end():
 	await get_tree().create_timer(.8).timeout
 	await countmult(roundmult)
 	await get_tree().create_timer(.8).timeout
-	await counttotal(total)
-	$startbutton.show()
+	counttotal(total)
+	await get_tree().create_timer(2.5).timeout
+	$endbutton.show()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -87,3 +89,6 @@ func updatemult(multvalue):
 
 func _round(round):
 	$roundcounter.text=str(round+1)
+	
+func _on_endbutton_pressed():
+	get_parent().queue_free()

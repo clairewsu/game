@@ -6,9 +6,10 @@
 script = ExtResource("1_113st")
 
 [node name="Label" type="Label" parent="." unique_id=1619612294]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 369.0
+offset_bottom = 50.0
 theme_override_colors/font_color = Color(0.796243, 0.796243, 0.796243, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
 text = "+100"
+horizontal_alignment = 1

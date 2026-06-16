@@ -55,7 +55,7 @@ func _process(delta: float) -> void:
 
 func spawn_guy():
 	var spawn_offsets = [
-		Vector2(150,120),Vector2(425,120),Vector2(725,120),Vector2(1000,120)
+		Vector2(140,120),Vector2(390,120),Vector2(640,120),Vector2(890,120)
 	]
 	
 	for pos in spawn_offsets:
@@ -114,20 +114,23 @@ func get_free_slot():
 func _on_hit():
 	pass
 	
-func _on_dismiss(amount:int,pos:Vector2):
-	score+=amount
-	popup(pos,amount,"+")
+func _on_dismiss(amount:int,bonusamt:int,pos:Vector2):
+	score+=amount+bonusamt
+	popup(pos,amount,"+",false)
+	if bonusamt>0:
+		await get_tree().create_timer(.2).timeout
+		popup(pos,amount,"+",true)
 	
 	
 func _on_loss(amount:int,pos:Vector2):
 	penalty+=amount
-	popup(pos,amount,"-")
+	popup(pos,amount,"-",false)
 	
-func popup(pos:Vector2,points:int,sign):
+func popup(pos:Vector2,points:int,sign,bonus:bool):
 	var popup=scorepopup_scene.instantiate()
-	popup.position=pos
+	popup.position=pos+Vector2(-170,0)
 	add_child(popup)
-	popup.setup(sign,points)
+	popup.setup(sign,points,bonus)
 	
 func _on_select(slot):
 	select1.emit(slot,false)

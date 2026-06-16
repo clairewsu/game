@@ -27,7 +27,7 @@ var tilt=0.0
 var is_moving=false
 var selected=false
 signal hit
-signal score(amount:int)
+signal score(amount:int,bonus:bool)
 signal show_desc(name,color,cost,desc,pos:Vector2)
 signal select(slot)
 
@@ -154,10 +154,9 @@ func sell(guy):
 	position=guy.position+guy.slots[guyslot]
 	$objdesc.hide()
 	score.connect(guy._on_score)
+	score.emit(basevalue,false)
 	if guy.color_id==color_id:
-		score.emit(basevalue*1.5)
-	else:
-		score.emit(basevalue)
+		score.emit(basevalue*.5,true)	
 	if exists != null and slot != -1:
 		exists.slot_occupied[slot] = false
 	data.on_sold(get_parent())

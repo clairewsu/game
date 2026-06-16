@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="like card or hwatever"
-run/main_scene="uid://s6no3mg8j75o"
+run/main_scene="uid://c681khles0wyn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -5,6 +5,7 @@ var slots=[Vector2(0,180),Vector2(-50,180),Vector2(50,180),Vector2(-25,200),Vect
 var slot_occupied=[false,false,false,false,false]
 var textures=[]
 var this_score=0
+var bonus_score=0
 var guys=[]
 var idx:int
 var lastselected:String
@@ -50,7 +51,7 @@ func _input_event(Viewport,InputEvent,int):
 			if true not in slot_occupied:
 				penalty.emit(80,global_position)
 			else:
-				dismiss.emit(this_score,global_position)
+				dismiss.emit(this_score,bonus_score,global_position)
 			queue_free()
 		else:
 			sellto.emit(self)
@@ -63,8 +64,12 @@ func get_free_slot():
 			return i
 	return -1
 	
-func _on_score(amount:int):
-	this_score+=amount
+func _on_score(amount:int,bonus):
+	if not bonus:
+		this_score+=amount
+	else:
+		bonus_score+=amount
+	
 	
 func _is_pressed(num):
 	if num==idx:
@@ -72,11 +77,11 @@ func _is_pressed(num):
 			if true not in slot_occupied:
 				penalty.emit(80,global_position)
 			else:
-				dismiss.emit(this_score,global_position)
+				dismiss.emit(this_score,bonus_score,global_position)
 			queue_free()
 		else:
 			sellto.emit(self)
 	
 func _on_end():
-	dismiss.emit(this_score,global_position)
+	dismiss.emit(this_score,bonus_score,global_position)
 	queue_free()

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c681khles0wyn"]
+
+[ext_resource type="Script" uid="uid://dxun8y1qu6ie4" path="res://scripts/bigmain.gd" id="1_odprv"]
+[ext_resource type="Script" uid="uid://c320fbsytd8dg" path="res://scripts/mainui.gd" id="2_5605s"]
+
+[node name="main" type="Node" unique_id=1121462328]
+script = ExtResource("1_odprv")
+
+[node name="ui" type="CanvasLayer" parent="." unique_id=1531537415]
+script = ExtResource("2_5605s")
+
+[node name="open" type="Button" parent="ui" unique_id=1779101585]
+offset_left = 803.0
+offset_top = 430.0
+offset_right = 933.0
+offset_bottom = 507.0
+theme_override_font_sizes/font_size = 50
+text = "open"
