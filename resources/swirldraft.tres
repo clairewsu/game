@@ -2,13 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://cwhfs2xnnx77" path="res://art/draftswirl_liquid.PNG" id="1_ya2po"]
 [ext_resource type="Texture2D" uid="uid://c5hsnlr60x28u" path="res://art/basicbottle_mask.PNG" id="2_e5otd"]
-[ext_resource type="Script" uid="uid://chaknuiban0ob" path="res://resources/swirldraft.gd" id="3_h6eer"]
+[ext_resource type="Script" uid="uid://chaknuiban0ob" path="res://scripts/object_scripts/swirldraft.gd" id="3_ya2po"]
 [ext_resource type="Texture2D" uid="uid://f3yrdan5ucnd" path="res://art/basicswirl_bottle.PNG" id="4_8gkis"]
 
 [resource]
-script = ExtResource("3_h6eer")
+script = ExtResource("3_ya2po")
 name = "draft potion"
-desc = "when you sell this potion, draw 1 new potion"
+desc = "when you sell this potion, draw one new potion"
 color = 3
 basevalue = 100
 texture = ExtResource("4_8gkis")

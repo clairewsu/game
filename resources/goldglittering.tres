@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3 uid="uid://ckbxrcn4mp0pc"]
+
+[ext_resource type="Texture2D" uid="uid://dd108b5fq4mjk" path="res://art/goldglittering_liquid.PNG" id="1_dyupn"]
+[ext_resource type="Texture2D" uid="uid://c5hsnlr60x28u" path="res://art/basicbottle_mask.PNG" id="2_2ao5v"]
+[ext_resource type="Script" uid="uid://dklwhvampga0l" path="res://scripts/object_scripts/goldglittering.gd" id="3_hgbvf"]
+[ext_resource type="Texture2D" uid="uid://nleu8mcamp" path="res://art/basicgold_bottle.PNG" id="4_rq7c3"]
+
+[resource]
+script = ExtResource("3_hgbvf")
+name = "glittering potion"
+desc = "this potion will pay 30% more for all potions"
+basevalue = 150
+texture = ExtResource("4_rq7c3")
+liquidtexture = ExtResource("1_dyupn")
+masktexture = ExtResource("2_2ao5v")
+collision = PackedVector2Array(-218, 275, -114, 347, 63, 352, 190, 258, 187, 109, 73, 0, 66, -389, -112, -397, -117, -1, -232, 118)

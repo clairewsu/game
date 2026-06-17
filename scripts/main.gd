@@ -119,7 +119,7 @@ func _on_dismiss(amount:int,bonusamt:int,pos:Vector2):
 	popup(pos,amount,"+",false)
 	if bonusamt>0:
 		await get_tree().create_timer(.2).timeout
-		popup(pos,amount,"+",true)
+		popup(pos,bonusamt,"+",true)
 	
 	
 func _on_loss(amount:int,pos:Vector2):

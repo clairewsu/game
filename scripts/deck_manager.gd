@@ -1,16 +1,17 @@
 extends Node
-@export var cards=[
-	preload("../resources/basicgold.tres"),
-	preload("../resources/basicgreen.tres"),
-	preload("../resources/basicblue.tres"),
-	preload("../resources/basicswirl.tres"),
-	preload("../resources/swirldraft.tres")
-]
+@export var cards={}
 var deck:Array[Resource]=[]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	var dir = DirAccess.open("res://resources")
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		var card = load("res://resources/" + file_name)
+		cards[card.name] = card
+		file_name = dir.get_next()
+	dir.list_dir_end()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,10 +21,10 @@ func _process(delta: float) -> void:
 func addtodeck():
 	deck.clear() #for testing purposes
 	for i in range(10):
-		deck.append(cards[0])
-		deck.append(cards[1])
-		deck.append(cards[2])
-		deck.append(cards[4])
+		deck.append(cards["basic magic potion"])
+		deck.append(cards["basic growth potion"])
+		deck.append(cards["glittering potion"])
+		deck.append(cards["draft potion"])
 		
 func draw():
 	if deck.is_empty():

@@ -156,10 +156,12 @@ func sell(guy):
 	score.connect(guy._on_score)
 	score.emit(basevalue,false)
 	if guy.color_id==color_id:
-		score.emit(basevalue*.5,true)	
+		score.emit(50,true)	
 	if exists != null and slot != -1:
 		exists.slot_occupied[slot] = false
 	data.on_sold(get_parent())
+	if data.on_dismiss() !=null:
+		guy.multiplier*=data.on_dismiss()
 	guy.tree_exited.connect(queue_free)
 	
 

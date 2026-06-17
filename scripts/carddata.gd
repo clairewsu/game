@@ -12,3 +12,6 @@ class_name carddata
 
 func on_sold(main):
 	pass
+	
+func on_dismiss():
+	pass
