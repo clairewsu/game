@@ -18,6 +18,7 @@ var drag=false
 var sold=false
 var exists=null
 var slot=-1
+var menu_ver=false
 @export var defaultpos=Vector2(500,400)
 var objpos:Vector2
 var mousepos:Vector2
@@ -50,7 +51,6 @@ func _ready():
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 	position+=Vector2(0,-200)
-	show_desc.connect(_show_desc)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -71,7 +71,7 @@ func _physics_process(delta):
 	if selected:
 		speed=15
 		position=position.move_toward(defaultpos+Vector2(0,-100),speed)
-		show_desc.emit(data.name,data.color,data.basevalue,data.desc,position)
+		_show_desc(data.name,data.color,data.basevalue,data.desc,position)
 	var moved=position-objpos
 	if position != defaultpos:
 		is_moving=true
@@ -130,7 +130,7 @@ func _unhandled_input(event):
 
 func _on_mouse_entered():
 	if not sold and not is_moving:
-		show_desc.emit(data.name,data.color,data.basevalue,data.desc,position)
+		_show_desc(data.name,data.color,data.basevalue,data.desc,position)
 	
 func _on_mouse_exited():
 	if not selected:
@@ -177,7 +177,7 @@ func splash():
 		add_child(particle)
 		
 func _show_desc(name:String,color:int,cost:int,desc:String,pos:Vector2):
-	if not sold:
+	if not sold or menu_ver:
 		if color==0:
 			$objdesc/TextureRect.texture=gold
 		elif color==1:
@@ -192,6 +192,8 @@ func _show_desc(name:String,color:int,cost:int,desc:String,pos:Vector2):
 	
 	
 func _hide_desc():
+	if menu_ver:
+		return
 	$objdesc.hide()
 
 func _on_select(slot1,scrolling):

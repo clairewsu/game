@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://c2c57qbq2djeu"]
+
+[ext_resource type="Script" uid="uid://cn1g88b0pwrd8" path="res://scripts/make_menu.gd" id="1_1xrvg"]
+
+[node name="Panel" type="Panel" unique_id=1847262564]
+z_index = -10
+offset_right = 226.0
+offset_bottom = 283.0
+script = ExtResource("1_1xrvg")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1432136383]
+z_index = -10
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 286.0
+
+[node name="upbutton" type="Button" parent="." unique_id=1726639578]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 187.0
+offset_right = 208.0
+offset_bottom = 218.0
+focus_mode = 0
+text = "up"
+
+[node name="downbutton" type="Button" parent="." unique_id=2056925282]
+layout_mode = 0
+offset_left = 157.0
+offset_top = 228.0
+offset_right = 208.0
+offset_bottom = 259.0
+focus_mode = 0
+text = "down"
+
+[node name="Label" type="Label" parent="." unique_id=1835045774]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 238.0
+offset_right = 158.0
+offset_bottom = 292.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[connection signal="pressed" from="upbutton" to="." method="_on_upbutton_pressed"]
+[connection signal="pressed" from="downbutton" to="." method="_on_downbutton_pressed"]

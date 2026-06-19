@@ -31,9 +31,9 @@ func _on_start():
 	round=0
 	score=0
 	penalty=0
-	DeckManager.addtodeck()
 	spawn_guy()
-	spawn_object(4)
+	for i in range(4):
+		spawn_object()
 	respawning_guys=false
 	respawning_object=false
 	$Timer.start()
@@ -68,28 +68,30 @@ func spawn_guy():
 		guy.sellto.connect(_guy_clicked)
 		guypressed.connect(guy._is_pressed)
 	
-func spawn_object(n:int):
-	for i in range(n):
-		var slot=get_free_slot()
-		if slot == -1:
-			return
-		var card=DeckManager.draw()
-		if card==null:
-			return
-		var object=object_scene.instantiate()
-		object.data=card
-		object.slot=slot
-		object.exists=self
-		object.scale*=.75
-		object.position=slots[slot]
-		object.defaultpos=object.position
-		add_child(object)
-		end.connect(object.queue_free)
-		object.select.connect(_on_select)
-		select1.connect(object._on_select)
-		sellto.connect(object._guy_clicked)
+func spawn_object():
+	var slot=get_free_slot()
+	if slot == -1:
+		return
+	var card=DeckManager.draw()
+	if card==null:
+		return
+	var object=object_scene.instantiate()
+	object.data=card
+	object.slot=slot
+	object.exists=self
+	object.scale*=.75
+	object.position=slots[slot]
+	object.defaultpos=object.position
+	add_child(object)
+	end.connect(object.queue_free)
+	object.select.connect(_on_select)
+	select1.connect(object._on_select)
+	sellto.connect(object._guy_clicked)
 	
 func respawn_guys():
+	if DeckManager.deck.size()==0:
+		end.emit()
+		return
 	respawning_guys=true
 	for i in range(10):
 		await get_tree().process_frame
@@ -101,7 +103,8 @@ func respawn_guys():
 	
 func respawn_object():
 	respawning_object=true
-	spawn_object(4)
+	for i in range(4):
+		spawn_object()
 	respawning_object=false
 
 func get_free_slot():

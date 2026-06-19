@@ -18,13 +18,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func addtodeck():
-	deck.clear() #for testing purposes
-	for i in range(10):
-		deck.append(cards["basic magic potion"])
-		deck.append(cards["basic growth potion"])
-		deck.append(cards["glittering potion"])
-		deck.append(cards["draft potion"])
+func addtodeck(name):
+	deck.append(cards[name])
 		
 func draw():
 	if deck.is_empty():

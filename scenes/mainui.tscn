@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://btiubotorunc6"]
+
+[ext_resource type="Script" uid="uid://c320fbsytd8dg" path="res://scripts/mainui.gd" id="1_hdcb6"]
+
+[node name="mainui" type="CanvasLayer" unique_id=2083767084]
+script = ExtResource("1_hdcb6")
+
+[node name="open" type="Button" parent="." unique_id=1275572053]
+offset_left = 774.0
+offset_top = 431.0
+offset_right = 870.0
+offset_bottom = 489.0
+theme_override_font_sizes/font_size = 36
+text = "open"

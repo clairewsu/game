@@ -1,18 +1,13 @@
 [gd_scene format=3 uid="uid://c681khles0wyn"]
 
 [ext_resource type="Script" uid="uid://dxun8y1qu6ie4" path="res://scripts/bigmain.gd" id="1_odprv"]
-[ext_resource type="Script" uid="uid://c320fbsytd8dg" path="res://scripts/mainui.gd" id="2_5605s"]
+[ext_resource type="PackedScene" uid="uid://btiubotorunc6" path="res://scenes/mainui.tscn" id="2_5605s"]
+[ext_resource type="PackedScene" uid="uid://b76apnyc2rpv6" path="res://scenes/object.tscn" id="2_ddrcu"]
+[ext_resource type="PackedScene" uid="uid://c2c57qbq2djeu" path="res://scenes/make_menu.tscn" id="3_ooc2v"]
 
 [node name="main" type="Node" unique_id=1121462328]
 script = ExtResource("1_odprv")
+object_scene = ExtResource("2_ddrcu")
+menu_scene = ExtResource("3_ooc2v")
 
-[node name="ui" type="CanvasLayer" parent="." unique_id=1531537415]
-script = ExtResource("2_5605s")
-
-[node name="open" type="Button" parent="ui" unique_id=1779101585]
-offset_left = 803.0
-offset_top = 430.0
-offset_right = 933.0
-offset_bottom = 507.0
-theme_override_font_sizes/font_size = 50
-text = "open"
+[node name="ui" parent="." unique_id=2083767084 instance=ExtResource("2_5605s")]

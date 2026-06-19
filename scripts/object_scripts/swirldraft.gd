@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 	
 func on_sold(main):
 	await main.get_tree().create_timer(.1).timeout
-	main.spawn_object(1)
+	main.spawn_object()
