@@ -43,6 +43,8 @@ func _on_startbutton_pressed():
 
 func _on_end():
 	$deckcounter.hide()
+	$timerlabel.hide()
+	countdown=0
 	total=max(0,snapped(roundmult*(base-penalty),1))
 	$theend.show()
 	await get_tree().create_timer(1).timeout
@@ -53,9 +55,7 @@ func _on_end():
 	$scorecounter.text += "\npenalty: "+str(penalty)
 	await get_tree().create_timer(.8).timeout
 	await countmult(roundmult)
-	await get_tree().create_timer(.8).timeout
-	counttotal(total)
-	await get_tree().create_timer(2.5).timeout
+	await counttotal(total)
 	$endbutton.show()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -75,11 +75,17 @@ func countmult(tovalue):
 			time*=.8
 	if start<tovalue:
 		var time1=max(start/tovalue,2)
-		create_tween().tween_method(updatemult,start,tovalue,time1)
-	
+		var tween=create_tween()
+		tween.tween_method(updatemult,start,tovalue,time1)
+		await tween.finished
 	
 func counttotal(tovalue):
-	create_tween().tween_method(updatetotal,0,tovalue,2.5)
+	var tween=create_tween()
+	if tovalue>0:
+		tween.tween_method(updatetotal,0,tovalue,2.5)
+		await tween.finished
+	else:
+		updatetotal(0)
 
 func updatetotal(totalvalue:float):
 	$scorecounter.text="base score: %d\npenalty: %d\nround bonus: x%.2f\ntotal:%d"% [base,penalty,roundmult,int(round(totalvalue))]

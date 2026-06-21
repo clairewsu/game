@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://btiubotorunc6" path="res://scenes/mainui.tscn" id="2_5605s"]
 [ext_resource type="PackedScene" uid="uid://b76apnyc2rpv6" path="res://scenes/object.tscn" id="2_ddrcu"]
 [ext_resource type="PackedScene" uid="uid://c2c57qbq2djeu" path="res://scenes/make_menu.tscn" id="3_ooc2v"]
+[ext_resource type="Texture2D" uid="uid://dmm3mad5lfdla" path="res://art/recipebook.PNG" id="5_ooc2v"]
 
 [node name="main" type="Node" unique_id=1121462328]
 script = ExtResource("1_odprv")
@@ -11,3 +12,18 @@ object_scene = ExtResource("2_ddrcu")
 menu_scene = ExtResource("3_ooc2v")
 
 [node name="ui" parent="." unique_id=2083767084 instance=ExtResource("2_5605s")]
+
+[node name="recipebook" type="Button" parent="." unique_id=199179795]
+offset_left = 180.0
+offset_top = 113.0
+offset_right = 975.0
+offset_bottom = 535.0
+
+[node name="TextureRect" type="TextureRect" parent="recipebook" unique_id=1893000195]
+layout_mode = 0
+offset_left = -179.0
+offset_top = -100.0
+offset_right = 971.0
+offset_bottom = 551.0
+texture = ExtResource("5_ooc2v")
+expand_mode = 1

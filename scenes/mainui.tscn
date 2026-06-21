@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://btiubotorunc6"]
 
 [ext_resource type="Script" uid="uid://c320fbsytd8dg" path="res://scripts/mainui.gd" id="1_hdcb6"]
+[ext_resource type="Texture2D" uid="uid://dcstsr0glp3nq" path="res://art/recipebook_closed.PNG" id="2_payeh"]
 
 [node name="mainui" type="CanvasLayer" unique_id=2083767084]
 script = ExtResource("1_hdcb6")
@@ -12,3 +13,30 @@ offset_right = 870.0
 offset_bottom = 489.0
 theme_override_font_sizes/font_size = 36
 text = "open"
+
+[node name="supplycount" type="Label" parent="." unique_id=677177352]
+offset_left = 494.0
+offset_top = 573.0
+offset_right = 623.0
+offset_bottom = 615.0
+theme_override_font_sizes/font_size = 30
+text = "supply: 0"
+
+[node name="recipebookbutton" type="Button" parent="." unique_id=1706220111]
+offset_left = 713.0
+offset_top = 489.0
+offset_right = 780.0
+offset_bottom = 563.0
+flat = true
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="recipebookbutton" unique_id=2060994330]
+layout_mode = 0
+offset_left = -103.0
+offset_top = -6.0
+offset_right = 96.0
+offset_bottom = 100.0
+texture = ExtResource("2_payeh")
+expand_mode = 1
+
+[connection signal="pressed" from="recipebookbutton" to="." method="_on_recipebook_pressed"]

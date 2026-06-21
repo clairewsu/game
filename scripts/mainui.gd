@@ -3,10 +3,13 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-	
+	$supplycount.text="supply: "+str(DeckManager.deck.size())
+
+func _on_recipebook_pressed() -> void:
+	$recipebookbutton.hide()
+	get_parent().show_menu()

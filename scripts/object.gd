@@ -188,6 +188,10 @@ func _show_desc(name:String,color:int,cost:int,desc:String,pos:Vector2):
 			$objdesc/TextureRect.texture=swirl
 		$objdesc/desctext.text="%s \nprice: %d\n%s"% [name,cost,desc]	
 		$objdesc.custom_minimum_size = $objdesc/desctext.get_minimum_size()
+		if menu_ver:
+			$objdesc.position=Vector2(150,-350)
+		else:
+			$objdesc.position=Vector2(-300,-700)
 		$objdesc.show()
 	
 	

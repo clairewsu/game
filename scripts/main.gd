@@ -31,6 +31,9 @@ func _on_start():
 	round=0
 	score=0
 	penalty=0
+	if DeckManager.deck.size()==0:
+		end.emit()
+		return
 	spawn_guy()
 	for i in range(4):
 		spawn_object()

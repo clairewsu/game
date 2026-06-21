@@ -24,3 +24,8 @@ func _unhandled_input(event):
 	if event.is_action_pressed("enter"):
 		add.emit(objname,amount)
 		amount=0
+
+
+func _on_makebutton_pressed() -> void:
+	add.emit(objname,amount)
+	amount=0
