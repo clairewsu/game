@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("3_hgbvf")
 name = "glittering potion"
-desc = "this potion will pay 30% more for all potions"
+desc = "this customer will pay 30% more for all potions"
 basevalue = 150
 texture = ExtResource("4_rq7c3")
 liquidtexture = ExtResource("1_dyupn")

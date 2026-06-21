@@ -6,7 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://c2c57qbq2djeu" path="res://scenes/make_menu.tscn" id="3_ooc2v"]
 [ext_resource type="Texture2D" uid="uid://dmm3mad5lfdla" path="res://art/recipebook.PNG" id="5_ooc2v"]
 
-[node name="main" type="Node" unique_id=1121462328]
+[node name="main" type="Control" unique_id=1906546917]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_odprv")
 object_scene = ExtResource("2_ddrcu")
 menu_scene = ExtResource("3_ooc2v")
@@ -14,6 +18,7 @@ menu_scene = ExtResource("3_ooc2v")
 [node name="ui" parent="." unique_id=2083767084 instance=ExtResource("2_5605s")]
 
 [node name="recipebook" type="Button" parent="." unique_id=199179795]
+layout_mode = 0
 offset_left = 180.0
 offset_top = 113.0
 offset_right = 975.0

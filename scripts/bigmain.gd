@@ -2,7 +2,7 @@ extends Node
 var open_scene = preload("res://scenes/main.tscn")
 @export var object_scene:PackedScene
 @export var menu_scene:PackedScene
-var recipeslots=[Vector2(300,170),Vector2(450,170),Vector2(300,370),Vector2(450,370),Vector2(650,170),Vector2(800,170),Vector2(650,370),Vector2(800,370)]
+var recipeslots=[Vector2(300,190),Vector2(460,190),Vector2(300,390),Vector2(460,390),Vector2(640,190),Vector2(790,190),Vector2(640,390),Vector2(790,390)]
 var slot_occupied=[false,false,false,false,false,false,false,false]
 var cards={}
 signal hiderecipes
@@ -37,6 +37,7 @@ func show_menu():
 		add_child(object)
 		add_child(menu)
 		object.position=recipeslots[slot]
+		object.objpos=object.position
 		object.scale*=.5
 		menu.scale*=.7
 		object.z_index=100

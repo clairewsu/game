@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 DeckManager="*uid://03sdnfsfxs3k"
 Global="*uid://b576q17mcpwbh"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 move={
