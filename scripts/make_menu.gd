@@ -10,15 +10,19 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Label.text=str(amount)
-
+	amount=int($Label.text)
+	if $upbutton.is_pressed() and $Timer.is_stopped():
+		_on_upbutton_pressed()
+		$Timer.start()
+	if $downbutton.is_pressed() and $Timer.is_stopped():
+		_on_downbutton_pressed()
+		$Timer.start()
 
 func _on_upbutton_pressed() -> void:
-	amount+=1
-
+	$Label.text=str(int($Label.text)+1)
 
 func _on_downbutton_pressed() -> void:
-	amount=max(amount-1,0)
+	$Label.text=str(max(int($Label.text)-1,0))
 	
 func _unhandled_input(event):
 	if event.is_action_pressed("enter"):
@@ -28,4 +32,16 @@ func _unhandled_input(event):
 
 func _on_makebutton_pressed() -> void:
 	add.emit(objname,amount)
-	amount=0
+	$Label.text="0"
+
+
+func _on_label_text_changed(new_text: String) -> void:
+	var caret=$Label.caret_column
+	var text=""
+	for c in new_text:
+		if c in "1234567890":
+			text+=c
+	text=str(int(text))
+	if text != new_text:
+		$Label.text=text
+		$Label.caret_column=clamp(caret-1,0,text.length())
