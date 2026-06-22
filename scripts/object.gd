@@ -177,16 +177,17 @@ func splash():
 		add_child(particle)
 		
 func _show_desc(name:String,color:int,cost:int,desc:String,pos:Vector2):
+	var type_path:String=""
 	if not sold or menu_ver:
 		if color==0:
-			$objdesc/TextureRect.texture=gold
+			type_path="res://art/gold.PNG"
 		elif color==1:
-			$objdesc/TextureRect.texture=green
+			type_path="res://art/green.PNG"
 		elif color==2:
-			$objdesc/TextureRect.texture=blue
+			type_path="res://art/blue.PNG"
 		elif color==3:
-			$objdesc/TextureRect.texture=swirl
-		$objdesc/desctext.text="%s \nprice: %d\n%s"% [name,cost,desc]	
+			type_path="res://art/swirl.PNG"
+		$objdesc/desctext.text="%s [img=64]%s[/img]\nprice: %d\n%s"% [name,type_path,cost,desc]	
 		$objdesc.custom_minimum_size = $objdesc/desctext.get_minimum_size()
 		if menu_ver:
 			$objdesc.position=Vector2(150,-350)

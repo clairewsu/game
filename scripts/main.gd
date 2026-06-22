@@ -15,6 +15,7 @@ var deck:Array[PackedScene]=[]
 var slots=[Vector2(80,530),Vector2(225,530),Vector2(365,530),Vector2(505,530),Vector2(655,530),Vector2(790,530),Vector2(940,530),Vector2(1080,530)]
 var slot_occupied=[false,false,false,false,false,false,false,false]
 signal end
+signal dismiss_end
 signal select1(slot,scrolling:bool)
 signal sellto(guy0)
 signal guypressed(num)
@@ -44,7 +45,6 @@ func _on_start():
 func _on_timer_timeout():
 	respawning_guys=true
 	respawning_object=true
-	$ui.get_score(score,penalty,round)
 	end.emit()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -92,10 +92,10 @@ func spawn_object():
 	sellto.connect(object._guy_clicked)
 	
 func respawn_guys():
+	respawning_guys=true
 	if DeckManager.deck.size()==0:
 		end.emit()
 		return
-	respawning_guys=true
 	for i in range(10):
 		await get_tree().process_frame
 	spawn_guy()
@@ -126,7 +126,7 @@ func _on_dismiss(amount:int,bonusamt:int,pos:Vector2):
 	if bonusamt>0:
 		await get_tree().create_timer(.2).timeout
 		popup(pos,bonusamt,"+",true)
-	
+	dismiss_end.emit()
 	
 func _on_loss(amount:int,pos:Vector2):
 	penalty+=amount
@@ -160,3 +160,8 @@ func scroll(direction):
 	select1.emit(selectedslot,true)
 	await get_tree().create_timer(.1).timeout
 	busy=false
+
+
+func _on_end() -> void:
+	await dismiss_end
+	$ui.get_score(score,penalty,round)

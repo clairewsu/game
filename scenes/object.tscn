@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://3n1cw0xc3pwe" path="res://art/basicgold_liquid.PNG" id="3_a0y2b"]
 [ext_resource type="Shader" uid="uid://43uyde5kop04" path="res://object.gdshader" id="3_a03g0"]
 [ext_resource type="Texture2D" uid="uid://c5hsnlr60x28u" path="res://art/basicbottle_mask.PNG" id="4_46pka"]
-[ext_resource type="Texture2D" uid="uid://booomxbpl8k2f" path="res://art/gold.PNG" id="7_f66fi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f66fi"]
 shader = ExtResource("3_a03g0")
@@ -47,16 +46,16 @@ polygon = PackedVector2Array(-119, 44, -178, 135, -158, 226, -45, 286, 95, 248, 
 position = Vector2(-10, 134)
 
 [node name="objdesc" type="Panel" parent="." unique_id=661542681]
-offset_left = -301.0
+offset_left = -339.0
 offset_top = -748.0
-offset_right = 221.0
+offset_right = 264.0
 offset_bottom = -439.0
 
 [node name="desctext" type="RichTextLabel" parent="objdesc" unique_id=1737016107]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 7.0
-offset_right = 524.0
+offset_right = 602.0
 offset_bottom = 306.0
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
@@ -64,14 +63,5 @@ text = "efheifejfjoieifeoirfeorf"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="objdesc" unique_id=1853793326]
-layout_mode = 0
-offset_left = 368.0
-offset_top = -84.0
-offset_right = 616.0
-offset_bottom = 214.0
-texture = ExtResource("7_f66fi")
-expand_mode = 1
 
 [connection signal="hit" from="." to="." method="_on_hit"]

@@ -24,15 +24,19 @@ rect = Rect2(-73, -77, 604, 378)
 polygon = PackedVector2Array(-223, -380, -364, -269, -421, -103, -387, 62, -122, 162, 104, 160, 271, 91, 375, -62, 367, -223, 231, -352, 30, -413)
 
 [node name="gold" type="Sprite2D" parent="." unique_id=1230213263]
+position = Vector2(-30, -108)
 texture = ExtResource("3_qlfh1")
 
 [node name="green" type="Sprite2D" parent="." unique_id=441199656]
+position = Vector2(-30, -108)
 texture = ExtResource("4_vmfrp")
 
 [node name="blue" type="Sprite2D" parent="." unique_id=1862235160]
+position = Vector2(-36, -112)
 texture = ExtResource("5_dk3hk")
 
 [node name="swirl" type="Sprite2D" parent="." unique_id=547609306]
+position = Vector2(-32, -112)
 texture = ExtResource("6_cdhm5")
 
 [node name="individual" type="Sprite2D" parent="." unique_id=665040702]

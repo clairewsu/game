@@ -73,5 +73,6 @@ position = Vector2(577.25, 316.75)
 scale = Vector2(0.59869796, 0.58194447)
 texture = ExtResource("8_choun")
 
+[connection signal="end" from="." to="." method="_on_end"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="start" from="ui" to="." method="_on_start"]
