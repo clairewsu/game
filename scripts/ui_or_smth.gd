@@ -5,12 +5,19 @@ var base=0
 var penalty=0
 var roundmult=0
 var total=0
+var x=1
+var opensign=preload("res://art/open.PNG")
+var closedsign=preload("res://art/closed.PNG.png")
+var pause=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$scorecounter.hide()
 	$timerlabel.hide()
 	$theend.hide()
+	$note1.hide()
+	$note2.hide()
+	$note3.hide()
 	$deckcounter.hide()
 	$roundcounter.hide()
 	$endbutton.hide()
@@ -36,6 +43,7 @@ func _on_startbutton_pressed():
 	$scorecounter.hide()
 	$deckcounter.show()
 	$roundcounter.show()
+	$note1.show()
 	$roundcounter.text="1"
 	countdown=30
 	start.emit()
@@ -96,6 +104,28 @@ func updatemult(multvalue):
 
 func _round(round):
 	$roundcounter.text=str(round+1)
+	x=x+1
+	if x==1:
+		$note1.z_index+=3
+	elif x==2:
+		$note2.show()
+		$note2.z_index+=3
+	elif x==3:
+		$note3.show()
+		$note3.z_index+=3
+	elif x>3:
+		x=1
+		$note1.z_index+=3
 	
 func _on_endbutton_pressed():
 	get_parent().queue_free()
+
+
+func _on_pausebutton_pressed() -> void:
+	pause=!pause
+	if pause:
+		$pausebutton.texture_normal=closedsign
+		get_tree().paused=true
+	if not pause:
+		$pausebutton.texture_normal=opensign
+		get_tree().paused=false

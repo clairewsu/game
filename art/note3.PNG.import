@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0njjmhfso1kq"
-path="res://.godot/imported/basicgreen_liquid.PNG-a497f43c5162984be19d4ea60bd6d238.ctex"
+uid="uid://bgqsgfbnv8g77"
+path="res://.godot/imported/note3.PNG-bea335f4c4e2edf7de6fc927ed4fc879.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/basicgreen_liquid.PNG"
-dest_files=["res://.godot/imported/basicgreen_liquid.PNG-a497f43c5162984be19d4ea60bd6d238.ctex"]
+source_file="res://art/note3.PNG"
+dest_files=["res://.godot/imported/note3.PNG-bea335f4c4e2edf7de6fc927ed4fc879.ctex"]
 
 [params]
 

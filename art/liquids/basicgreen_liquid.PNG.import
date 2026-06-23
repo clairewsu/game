@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3n1cw0xc3pwe"
-path="res://.godot/imported/basicgold_liquid.PNG-5efcdba8db5cd0ede7dc9fc7d0831a00.ctex"
+uid="uid://d0njjmhfso1kq"
+path="res://.godot/imported/basicgreen_liquid.PNG-3d35dc34b63d6f616d9262b3d71bc45e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/basicgold_liquid.PNG"
-dest_files=["res://.godot/imported/basicgold_liquid.PNG-5efcdba8db5cd0ede7dc9fc7d0831a00.ctex"]
+source_file="res://art/liquids/basicgreen_liquid.PNG"
+dest_files=["res://.godot/imported/basicgreen_liquid.PNG-3d35dc34b63d6f616d9262b3d71bc45e.ctex"]
 
 [params]
 

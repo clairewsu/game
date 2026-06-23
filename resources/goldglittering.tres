@@ -1,6 +1,6 @@
 [gd_resource type="Resource" format=3 uid="uid://ckbxrcn4mp0pc"]
 
-[ext_resource type="Texture2D" uid="uid://dd108b5fq4mjk" path="res://art/goldglittering_liquid.PNG" id="1_dyupn"]
+[ext_resource type="Texture2D" uid="uid://dd108b5fq4mjk" path="res://art/liquids/goldglittering_liquid.PNG" id="1_dyupn"]
 [ext_resource type="Texture2D" uid="uid://c5hsnlr60x28u" path="res://art/basicbottle_mask.PNG" id="2_2ao5v"]
 [ext_resource type="Script" uid="uid://dklwhvampga0l" path="res://scripts/object_scripts/goldglittering.gd" id="3_hgbvf"]
 [ext_resource type="Texture2D" uid="uid://nleu8mcamp" path="res://art/basicgold_bottle.PNG" id="4_rq7c3"]

@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://mu3bafvicmw0"]
 
 [ext_resource type="Script" uid="uid://jge7j2sksqlc" path="res://scripts/ui_or_smth.gd" id="1_bqq8r"]
+[ext_resource type="Texture2D" uid="uid://b2j7pjo4hu84m" path="res://art/note1.PNG" id="2_qin4n"]
+[ext_resource type="Texture2D" uid="uid://b21cifd0ndrxe" path="res://art/note2.PNG" id="3_adh6k"]
+[ext_resource type="Texture2D" uid="uid://bgqsgfbnv8g77" path="res://art/note3.PNG" id="4_22ytw"]
+[ext_resource type="Texture2D" uid="uid://c6hfdcnnr10h7" path="res://art/open.PNG" id="5_adh6k"]
 
 [node name="ui_and_stuff" type="CanvasLayer" unique_id=1762027153]
 script = ExtResource("1_bqq8r")
@@ -10,9 +14,9 @@ one_shot = true
 
 [node name="timerlabel" type="Label" parent="." unique_id=1509224485]
 offset_left = 1027.0
-offset_top = 172.0
-offset_right = 1096.0
-offset_bottom = 227.0
+offset_top = 142.0
+offset_right = 1104.0
+offset_bottom = 197.0
 theme_override_font_sizes/font_size = 40
 text = "123"
 horizontal_alignment = 1
@@ -54,21 +58,63 @@ theme_override_font_sizes/font_size = 64
 text = "the end"
 
 [node name="deckcounter" type="Label" parent="." unique_id=192299021]
-offset_left = 1036.0
-offset_top = 434.0
-offset_right = 1091.0
-offset_bottom = 501.0
+offset_left = 1057.0
+offset_top = 548.0
+offset_right = 1112.0
+offset_bottom = 615.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 48
 text = "30"
 
 [node name="roundcounter" type="Label" parent="." unique_id=1741044983]
-offset_left = 1047.0
-offset_top = 305.0
-offset_right = 1087.0
-offset_bottom = 372.0
+z_index = 100
+offset_left = 1017.0
+offset_top = 333.0
+offset_right = 1110.0
+offset_bottom = 400.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 48
 text = "3"
+horizontal_alignment = 1
+
+[node name="note1" type="TextureRect" parent="." unique_id=575947821]
+z_index = -10
+offset_left = 973.0
+offset_top = 292.0
+offset_right = 1141.0
+offset_bottom = 445.0
+texture = ExtResource("2_qin4n")
+expand_mode = 1
+
+[node name="note2" type="TextureRect" parent="." unique_id=441985455]
+z_index = -12
+offset_left = 963.0
+offset_top = 291.0
+offset_right = 1140.0
+offset_bottom = 451.0
+texture = ExtResource("3_adh6k")
+expand_mode = 1
+
+[node name="note3" type="TextureRect" parent="." unique_id=329268148]
+z_index = -11
+offset_left = 985.0
+offset_top = 299.0
+offset_right = 1139.0
+offset_bottom = 446.0
+texture = ExtResource("4_22ytw")
+expand_mode = 1
+
+[node name="pausebutton" type="TextureButton" parent="." unique_id=1312238895]
+process_mode = 3
+offset_left = 958.0
+offset_top = 1.0
+offset_right = 1150.0
+offset_bottom = 102.0
+texture_normal = ExtResource("5_adh6k")
+ignore_texture_size = true
+stretch_mode = 0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="startbutton" to="." method="_on_startbutton_pressed"]
 [connection signal="pressed" from="endbutton" to="." method="_on_endbutton_pressed"]
+[connection signal="pressed" from="pausebutton" to="." method="_on_pausebutton_pressed"]

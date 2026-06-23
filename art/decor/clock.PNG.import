@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3a6jwfshlma3"
-path="res://.godot/imported/basicblue_liquid.PNG-f651f59f7a531b37a44f0d03ac1da38f.ctex"
+uid="uid://pmtfxcd5h32h"
+path="res://.godot/imported/clock.PNG-c36716d4ec6bbe90cdf680e0fd5e7384.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/basicblue_liquid.PNG"
-dest_files=["res://.godot/imported/basicblue_liquid.PNG-f651f59f7a531b37a44f0d03ac1da38f.ctex"]
+source_file="res://art/decor/clock.PNG"
+dest_files=["res://.godot/imported/clock.PNG-c36716d4ec6bbe90cdf680e0fd5e7384.ctex"]
 
 [params]
 

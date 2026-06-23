@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="carddata" format=3 uid="uid://wvp4knyb3bwl"]
 
-[ext_resource type="Texture2D" uid="uid://3n1cw0xc3pwe" path="res://art/basicgold_liquid.PNG" id="1_073e1"]
+[ext_resource type="Texture2D" uid="uid://3n1cw0xc3pwe" path="res://art/liquids/basicgold_liquid.PNG" id="1_073e1"]
 [ext_resource type="Script" uid="uid://cnocqjqkrdgd0" path="res://scripts/carddata.gd" id="1_iifv5"]
 [ext_resource type="Texture2D" uid="uid://c5hsnlr60x28u" path="res://art/basicbottle_mask.PNG" id="2_iyuo2"]
 [ext_resource type="Texture2D" uid="uid://nleu8mcamp" path="res://art/basicgold_bottle.PNG" id="3_iyuo2"]

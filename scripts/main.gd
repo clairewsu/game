@@ -12,7 +12,7 @@ var respawning_object=true
 var busy=false
 var selectedslot:int
 var deck:Array[PackedScene]=[]
-var slots=[Vector2(80,530),Vector2(225,530),Vector2(365,530),Vector2(505,530),Vector2(655,530),Vector2(790,530),Vector2(940,530),Vector2(1080,530)]
+var slots=[Vector2(60,550),Vector2(185,550),Vector2(310,550),Vector2(435,550),Vector2(558,550),Vector2(681,550),Vector2(804,550),Vector2(929,550)]
 var slot_occupied=[false,false,false,false,false,false,false,false]
 signal end
 signal dismiss_end
@@ -58,7 +58,7 @@ func _process(delta: float) -> void:
 
 func spawn_guy():
 	var spawn_offsets = [
-		Vector2(140,120),Vector2(390,120),Vector2(640,120),Vector2(890,120)
+		Vector2(140,175),Vector2(390,175),Vector2(640,175),Vector2(890,175)
 	]
 	
 	for pos in spawn_offsets:
@@ -82,7 +82,7 @@ func spawn_object():
 	object.data=card
 	object.slot=slot
 	object.exists=self
-	object.scale*=.75
+	object.scale*=.67
 	object.position=slots[slot]
 	object.defaultpos=object.position
 	add_child(object)

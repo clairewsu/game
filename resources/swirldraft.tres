@@ -1,6 +1,6 @@
 [gd_resource type="Resource" format=3 uid="uid://bmo4kahq01xtx"]
 
-[ext_resource type="Texture2D" uid="uid://cwhfs2xnnx77" path="res://art/draftswirl_liquid.PNG" id="1_ya2po"]
+[ext_resource type="Texture2D" uid="uid://cwhfs2xnnx77" path="res://art/liquids/draftswirl_liquid.PNG" id="1_ya2po"]
 [ext_resource type="Texture2D" uid="uid://c5hsnlr60x28u" path="res://art/basicbottle_mask.PNG" id="2_e5otd"]
 [ext_resource type="Script" uid="uid://chaknuiban0ob" path="res://scripts/object_scripts/swirldraft.gd" id="3_ya2po"]
 [ext_resource type="Texture2D" uid="uid://f3yrdan5ucnd" path="res://art/basicswirl_bottle.PNG" id="4_8gkis"]

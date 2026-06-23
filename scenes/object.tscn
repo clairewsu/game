@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bsdr3vnm1fjpq" path="res://scripts/object.gd" id="1_cbfvs"]
 [ext_resource type="PackedScene" uid="uid://c4qd2m8au6654" path="res://scenes/particle.tscn" id="2_46pka"]
 [ext_resource type="Texture2D" uid="uid://nleu8mcamp" path="res://art/basicgold_bottle.PNG" id="2_a0y2b"]
-[ext_resource type="Texture2D" uid="uid://3n1cw0xc3pwe" path="res://art/basicgold_liquid.PNG" id="3_a0y2b"]
+[ext_resource type="Texture2D" uid="uid://3n1cw0xc3pwe" path="res://art/liquids/basicgold_liquid.PNG" id="3_a0y2b"]
 [ext_resource type="Shader" uid="uid://43uyde5kop04" path="res://object.gdshader" id="3_a03g0"]
 [ext_resource type="Texture2D" uid="uid://c5hsnlr60x28u" path="res://art/basicbottle_mask.PNG" id="4_46pka"]
 

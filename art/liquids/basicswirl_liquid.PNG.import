@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3x5pebfxn8qy"
-path="res://.godot/imported/deckbox.PNG-34120194282341e046b225a2b5894d1f.ctex"
+uid="uid://crs0bh8sqyoew"
+path="res://.godot/imported/basicswirl_liquid.PNG-f2a4dd4f2a8fcf91afdf7dbb315d3e1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/deckbox.PNG"
-dest_files=["res://.godot/imported/deckbox.PNG-34120194282341e046b225a2b5894d1f.ctex"]
+source_file="res://art/liquids/basicswirl_liquid.PNG"
+dest_files=["res://.godot/imported/basicswirl_liquid.PNG-f2a4dd4f2a8fcf91afdf7dbb315d3e1b.ctex"]
 
 [params]
 

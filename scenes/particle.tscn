@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://x8urx847j6l1" path="res://particle.gdshader" id="2_3vw28"]
 [ext_resource type="Texture2D" uid="uid://c5hsnlr60x28u" path="res://art/basicbottle_mask.PNG" id="3_3vw28"]
 [ext_resource type="Texture2D" uid="uid://sddyo6wukcox" path="res://art/particledot_mask.PNG" id="3_ioprr"]
-[ext_resource type="Texture2D" uid="uid://3n1cw0xc3pwe" path="res://art/basicgold_liquid.PNG" id="4_b0n7q"]
+[ext_resource type="Texture2D" uid="uid://3n1cw0xc3pwe" path="res://art/liquids/basicgold_liquid.PNG" id="4_b0n7q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_017rx"]
 shader = ExtResource("2_3vw28")

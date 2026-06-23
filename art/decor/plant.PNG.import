@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwhfs2xnnx77"
-path="res://.godot/imported/draftswirl_liquid.PNG-55c8c7c4b3cfe45c5bf08e0c0987372d.ctex"
+uid="uid://d2ngwf716yj2d"
+path="res://.godot/imported/plant.PNG-e0ef8462e8ee8d458ac8e7a05be96995.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/draftswirl_liquid.PNG"
-dest_files=["res://.godot/imported/draftswirl_liquid.PNG-55c8c7c4b3cfe45c5bf08e0c0987372d.ctex"]
+source_file="res://art/decor/plant.PNG"
+dest_files=["res://.godot/imported/plant.PNG-e0ef8462e8ee8d458ac8e7a05be96995.ctex"]
 
 [params]
 

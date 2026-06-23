@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd108b5fq4mjk"
-path="res://.godot/imported/goldglittering_liquid.PNG-ff078fa36e72711bfa1d27ae9e4541ae.ctex"
+uid="uid://co2te6w52xif5"
+path="res://.godot/imported/supplycount.PNG-3a7bb598ca4f70de60f3c1dce5add59f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/goldglittering_liquid.PNG"
-dest_files=["res://.godot/imported/goldglittering_liquid.PNG-ff078fa36e72711bfa1d27ae9e4541ae.ctex"]
+source_file="res://art/supplycount.PNG"
+dest_files=["res://.godot/imported/supplycount.PNG-3a7bb598ca4f70de60f3c1dce5add59f.ctex"]
 
 [params]
 
