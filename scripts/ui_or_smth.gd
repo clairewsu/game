@@ -51,8 +51,8 @@ func _on_startbutton_pressed():
 
 func _on_end():
 	await get_parent().dismiss_end
-	$deckcounter.hide()
-	$timerlabel.hide()
+	$Timer.paused=true
+	$timerlabel.text="0"
 	countdown=0
 	total=max(0,snapped(roundmult*(base-penalty),1))
 	$theend.show()

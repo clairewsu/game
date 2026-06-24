@@ -155,7 +155,7 @@ func sell(guy):
 	$objdesc.hide()
 	score.connect(guy._on_score)
 	score.emit(basevalue,false)
-	if guy.color_id==color_id:
+	if color_id in guy.colorlist:
 		score.emit(50,true)	
 	if exists != null and slot != -1:
 		exists.slot_occupied[slot] = false

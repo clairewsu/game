@@ -34,6 +34,7 @@ func _on_start():
 	penalty=0
 	if DeckManager.deck.size()==0:
 		end.emit()
+		dismiss_end.emit()
 		return
 	spawn_guy()
 	for i in range(4):
@@ -95,6 +96,7 @@ func respawn_guys():
 	respawning_guys=true
 	if DeckManager.deck.size()==0:
 		end.emit()
+		dismiss_end.emit()
 		return
 	for i in range(10):
 		await get_tree().process_frame

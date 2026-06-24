@@ -1,6 +1,7 @@
 extends Area2D
 class_name guy
 @export var color_id=0
+var colorlist=[]
 var slots=[Vector2(0,180),Vector2(-50,180),Vector2(50,180),Vector2(-25,200),Vector2(25,200)]
 var slot_occupied=[false,false,false,false,false]
 var textures=[]
@@ -28,16 +29,39 @@ func _ready():
 	$individual.texture=load("res://art/characters/"+tex)
 	add_to_group("guy")
 	idx=get_tree().get_node_count_in_group("guy")-1
-	color_id=randi()%4
-	if color_id==0:
-		$gold.show()
-	if color_id==1:
-		$green.show()
-	if color_id==2:
-		$blue.show()
-	if color_id==3:
-		$swirl.show()
-		
+	var x=randf()
+	var reqnum=1
+	if x<=.05:
+		reqnum=3
+	elif x<=.15:
+		reqnum=2
+	var color:Sprite2D
+	var prev_listlength=0
+	for i in range(reqnum):
+		color_id=randi()%4
+		if color_id==0:
+			color=$gold
+		if color_id==1:
+			color=$green
+		if color_id==2:
+			color=$blue
+		if color_id==3:
+			color=$swirl
+		color.show()
+		if color_id not in colorlist:
+			colorlist.append(color_id)
+		if reqnum>1:
+			if colorlist.size()==1:
+				color.position=Vector2(-130,-108)
+				prev_listlength=1
+			if colorlist.size()==2 and not colorlist.size()==prev_listlength:
+				color.position=Vector2(70,-108)
+				prev_listlength=2
+			if colorlist.size()==3:
+				color.position=Vector2(-30,-258)
+				prev_listlength=3
+	if colorlist.size()==1:
+		color.position=Vector2(-30,-108)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
