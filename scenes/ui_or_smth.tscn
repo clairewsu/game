@@ -8,6 +8,7 @@
 
 [node name="ui_and_stuff" type="CanvasLayer" unique_id=1762027153]
 script = ExtResource("1_bqq8r")
+countdown = null
 
 [node name="Timer" type="Timer" parent="." unique_id=1632939379]
 one_shot = true

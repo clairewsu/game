@@ -8,10 +8,14 @@ var total=0
 var x=1
 var opensign=preload("res://art/open.PNG")
 var closedsign=preload("res://art/closed.PNG.png")
+var maskimg = load("res://art/opensign_mask.PNG").get_image()
+var signmask = BitMap.new()
 var pause=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	signmask.create_from_image_alpha(maskimg)
+	$pausebutton.texture_click_mask = signmask
 	$scorecounter.hide()
 	$timerlabel.hide()
 	$theend.hide()
