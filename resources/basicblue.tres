@@ -11,6 +11,17 @@ name = "basic magic potion"
 desc = "no effect"
 color = 2
 basevalue = 100
+ingredient = {
+"bone": 2,
+"clay": 0,
+"crystal": 0,
+"feather": 0,
+"fish": 0,
+"flower": 0,
+"leaf": 0,
+"mushroom": 0,
+"rock": 0
+}
 texture = ExtResource("3_01gwb")
 liquidtexture = ExtResource("1_75pef")
 masktexture = ExtResource("2_5d3a8")

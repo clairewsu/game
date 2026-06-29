@@ -4,6 +4,7 @@ var open_scene = preload("res://scenes/main.tscn")
 @export var menu_scene:PackedScene
 var recipeslots=[Vector2(300,190),Vector2(460,190),Vector2(300,390),Vector2(460,390),Vector2(640,190),Vector2(790,190),Vector2(640,390),Vector2(790,390)]
 var slot_occupied=[false,false,false,false,false,false,false,false]
+var tempingredients={}
 var cards={}
 signal hiderecipes
 
@@ -34,6 +35,7 @@ func show_menu():
 		if slot == -1:
 			return
 		object.data=cards[name]
+		menu.object=object
 		add_child(object)
 		add_child(menu)
 		object.position=recipeslots[slot]
@@ -52,9 +54,11 @@ func show_menu():
 		hiderecipes.connect(menu.queue_free)
 	x=1
 		
-func addtodeck(name,amount):
+func addtodeck(object,name,amount):
 	for i in range(amount):
 		DeckManager.addtodeck(name)
+		for key in Global.ingredient.keys():
+			Global.ingredients[key]-=object.data.ingredient[key]
 		
 func get_free_slot():
 	for i in range(slot_occupied.size()):
@@ -70,3 +74,13 @@ func _input(event):
 		$ui/recipebookbutton.show()
 		$ui/open.show()
 		slot_occupied=[false,false,false,false,false,false,false,false]
+
+func tempadd(tempobj):
+	tempingredients.clear()
+	for recipe in get_tree().get_nodes_in_group("recipes"):
+		for ingredient in recipe.object.data.ingredient.keys():
+			var amt=recipe.amount*recipe.object.data.ingredient[ingredient]
+			tempingredients[ingredient]=amt
+	for i in tempobj.object.data.ingredient.keys():
+		if tempobj.object.data.ingredient[i]>0:
+			tempobj.maxamt=int(floor((Global.ingredients[i]-tempingredients[i])/tempobj.object.data.ingredient[i]))

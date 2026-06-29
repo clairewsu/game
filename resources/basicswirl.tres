@@ -11,6 +11,17 @@ name = "basic wind potion"
 desc = "no effect"
 color = 3
 basevalue = 100
+ingredient = {
+"bone": 0,
+"clay": 0,
+"crystal": 0,
+"feather": 2,
+"fish": 0,
+"flower": 0,
+"leaf": 0,
+"mushroom": 0,
+"rock": 0
+}
 texture = ExtResource("3_cv1hu")
 liquidtexture = ExtResource("1_v2koc")
 masktexture = ExtResource("2_1ku74")

@@ -16,6 +16,7 @@ var pause=false
 func _ready() -> void:
 	signmask.create_from_image_alpha(maskimg)
 	$pausebutton.texture_click_mask = signmask
+	$pausebutton.disabled=true
 	$scorecounter.hide()
 	$timerlabel.hide()
 	$theend.hide()
@@ -47,6 +48,7 @@ func _on_startbutton_pressed():
 	$scorecounter.hide()
 	$deckcounter.show()
 	$roundcounter.show()
+	$pausebutton.disabled=false
 	$note1.show()
 	$roundcounter.text="1"
 	countdown=30
@@ -55,6 +57,7 @@ func _on_startbutton_pressed():
 
 func _on_end():
 	await get_parent().dismiss_end
+	$pausebutton.disabled=true
 	$Timer.paused=true
 	$timerlabel.text="0"
 	countdown=0

@@ -39,4 +39,8 @@ offset_bottom = 100.0
 texture = ExtResource("2_payeh")
 expand_mode = 1
 
+[node name="ingredientinv" type="RichTextLabel" parent="." unique_id=956683782]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="pressed" from="recipebookbutton" to="." method="_on_recipebook_pressed"]

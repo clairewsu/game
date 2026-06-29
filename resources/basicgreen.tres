@@ -11,6 +11,17 @@ name = "basic growth potion"
 desc = "no effect"
 color = 1
 basevalue = 100
+ingredient = {
+"bone": 0,
+"clay": 0,
+"crystal": 0,
+"feather": 0,
+"fish": 0,
+"flower": 0,
+"leaf": 2,
+"mushroom": 0,
+"rock": 0
+}
 texture = ExtResource("3_jx8ym")
 liquidtexture = ExtResource("1_ay0th")
 masktexture = ExtResource("2_40emx")

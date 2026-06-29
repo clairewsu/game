@@ -10,6 +10,17 @@ script = ExtResource("3_hgbvf")
 name = "glittering potion"
 desc = "this customer will pay 30% more for all potions"
 basevalue = 150
+ingredient = {
+"bone": 0,
+"clay": 0,
+"crystal": 1,
+"feather": 0,
+"fish": 0,
+"flower": 0,
+"leaf": 0,
+"mushroom": 0,
+"rock": 2
+}
 texture = ExtResource("4_rq7c3")
 liquidtexture = ExtResource("1_dyupn")
 masktexture = ExtResource("2_2ao5v")

@@ -11,6 +11,17 @@ name = "draft potion"
 desc = "when you sell this potion, draw one new potion"
 color = 3
 basevalue = 100
+ingredient = {
+"bone": 0,
+"clay": 0,
+"crystal": 0,
+"feather": 1,
+"fish": 0,
+"flower": 1,
+"leaf": 0,
+"mushroom": 1,
+"rock": 0
+}
 texture = ExtResource("4_8gkis")
 liquidtexture = ExtResource("1_ya2po")
 masktexture = ExtResource("2_e5otd")

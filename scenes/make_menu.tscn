@@ -53,5 +53,14 @@ text = "make"
 wait_time = 0.1
 one_shot = true
 
+[node name="ingredientcost" type="RichTextLabel" parent="." unique_id=7818490]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 2.0
+offset_right = 167.0
+offset_bottom = 43.0
+scroll_active = false
+horizontal_alignment = 1
+
 [connection signal="text_changed" from="Label" to="." method="_on_label_text_changed"]
 [connection signal="pressed" from="makebutton" to="." method="_on_makebutton_pressed"]
