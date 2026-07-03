@@ -57,8 +57,9 @@ func show_menu():
 func addtodeck(object,name,amount):
 	for i in range(amount):
 		DeckManager.addtodeck(name)
-		for key in Global.ingredient.keys():
+		for key in Global.ingredients.keys():
 			Global.ingredients[key]-=object.data.ingredient[key]
+	$ui.show_inv()
 		
 func get_free_slot():
 	for i in range(slot_occupied.size()):
@@ -77,10 +78,13 @@ func _input(event):
 
 func tempadd(tempobj):
 	tempingredients.clear()
+	var maxamt=[]
 	for recipe in get_tree().get_nodes_in_group("recipes"):
-		for ingredient in recipe.object.data.ingredient.keys():
-			var amt=recipe.amount*recipe.object.data.ingredient[ingredient]
-			tempingredients[ingredient]=amt
+		if recipe!=tempobj:
+			for ingredient in recipe.object.data.ingredient.keys():
+				var amt=recipe.amount*recipe.object.data.ingredient[ingredient]
+				tempingredients[ingredient]=tempingredients.get(ingredient,0)+amt
 	for i in tempobj.object.data.ingredient.keys():
 		if tempobj.object.data.ingredient[i]>0:
-			tempobj.maxamt=int(floor((Global.ingredients[i]-tempingredients[i])/tempobj.object.data.ingredient[i]))
+			maxamt.append(int(floor((Global.ingredients[i]-tempingredients[i])/tempobj.object.data.ingredient[i])))
+			tempobj.maxamt=maxamt.min()

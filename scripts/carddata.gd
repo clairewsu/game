@@ -10,6 +10,7 @@ class_name carddata
 @export var texture:Texture2D
 @export var liquidtexture:Texture2D
 @export var masktexture:Texture2D
+@export var fill=0.6
 @export var collision:PackedVector2Array
 
 func on_sold(main):

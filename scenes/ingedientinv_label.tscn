@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://btyjdevs28bfm"]
+
+[ext_resource type="Texture2D" uid="uid://cevdi280x7o6d" path="res://icon.svg" id="1_64nhy"]
+
+[node name="Control" type="Control" unique_id=1773714910]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 582.0
+offset_right = -1040.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2105850159]
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 54.0
+texture = ExtResource("1_64nhy")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=774720871]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 7.0
+offset_right = 103.0
+offset_bottom = 49.0
+theme_override_font_sizes/font_size = 30
+text = "1"

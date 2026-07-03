@@ -12,11 +12,11 @@ desc = "no effect"
 color = 2
 basevalue = 100
 ingredient = {
-"bone": 2,
+"bone": 0,
 "clay": 0,
 "crystal": 0,
 "feather": 0,
-"fish": 0,
+"fish": 2,
 "flower": 0,
 "leaf": 0,
 "mushroom": 0,

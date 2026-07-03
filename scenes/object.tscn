@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bsdr3vnm1fjpq" path="res://scripts/object.gd" id="1_cbfvs"]
 [ext_resource type="PackedScene" uid="uid://c4qd2m8au6654" path="res://scenes/particle.tscn" id="2_46pka"]
-[ext_resource type="Texture2D" uid="uid://nleu8mcamp" path="res://art/basicgold_bottle.PNG" id="2_a0y2b"]
+[ext_resource type="Texture2D" uid="uid://bmm0x5hmfprjw" path="res://art/wineglass_bottle.PNG" id="3_46pka"]
 [ext_resource type="Texture2D" uid="uid://3n1cw0xc3pwe" path="res://art/liquids/basicgold_liquid.PNG" id="3_a0y2b"]
 [ext_resource type="Shader" uid="uid://43uyde5kop04" path="res://object.gdshader" id="3_a03g0"]
 [ext_resource type="Texture2D" uid="uid://c5hsnlr60x28u" path="res://art/basicbottle_mask.PNG" id="4_46pka"]
@@ -25,10 +25,10 @@ defaultpos = Vector2(550, 400)
 
 [node name="bottle" type="Sprite2D" parent="." unique_id=1978269397]
 position = Vector2(6.0000114, -4.5)
-texture = ExtResource("2_a0y2b")
+texture = ExtResource("3_46pka")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=935366066]
-polygon = PackedVector2Array(-218, 275, -114, 347, 63, 352, 190, 258, 187, 109, 73, 0, 66, -389, -112, -397, -117, -1, -232, 118)
+polygon = PackedVector2Array(-86, 287, -140, 343, 66, 347, 0, 297, 23, 19, 131, -60, 183, -369, -245, -371, -195, -74, -71, 33)
 
 [node name="liquid" type="Sprite2D" parent="." unique_id=1813720894]
 z_index = -1

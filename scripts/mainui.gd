@@ -1,9 +1,9 @@
 extends CanvasLayer
-
+@export var label_scene:PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	show_inv()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,3 +14,15 @@ func _process(delta: float) -> void:
 func _on_recipebook_pressed() -> void:
 	$recipebookbutton.hide()
 	get_parent().show_menu()
+	
+func show_inv():
+	for thing in get_tree().get_nodes_in_group("labels"):
+		thing.queue_free()
+	var x=0
+	for i in Global.ingredients.keys():
+		var label=label_scene.instantiate()
+		label.add_to_group("labels")
+		label.get_node("Label").text=str(Global.ingredients[i])
+		add_child(label)
+		label.position=Vector2(10+120*x,550)
+		x=x+1

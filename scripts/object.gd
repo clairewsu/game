@@ -39,6 +39,7 @@ func _ready():
 	$bottle.texture=data.texture
 	$liquid.texture=data.liquidtexture
 	$liquid.material.set_shader_parameter("mask_tex",data.masktexture)
+	$liquid.material.set_shader_parameter("fill_level",data.fill)
 	$CollisionPolygon2D.polygon = data.collision
 	$objdesc.hide()
 	color_id=data.color
