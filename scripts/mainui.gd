@@ -22,6 +22,7 @@ func show_inv():
 	for i in Global.ingredients.keys():
 		var label=label_scene.instantiate()
 		label.add_to_group("labels")
+		label.get_node("TextureRect").texture=load("res://art/ingredients/"+i+".PNG")
 		label.get_node("Label").text=str(Global.ingredients[i])
 		add_child(label)
 		label.position=Vector2(10+120*x,550)
