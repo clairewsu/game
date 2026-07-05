@@ -11,7 +11,7 @@ func _ready() -> void:
 	add_to_group("recipes")
 	for i in object.data.ingredient.keys():
 		if object.data.ingredient[i]>0:
-			$ingredientcost.text+=i
+			$ingredientcost.text+="[img=64]res://art/ingredients/"+i+".PNG[/img]"
 			$ingredientcost.text+=str(object.data.ingredient[i])
 
 

@@ -166,4 +166,5 @@ func scroll(direction):
 
 func _on_end() -> void:
 	await dismiss_end
+	$Timer.paused=true
 	$ui.get_score(score,penalty,round)

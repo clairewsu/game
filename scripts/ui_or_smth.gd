@@ -72,6 +72,7 @@ func _on_end():
 	await get_tree().create_timer(.8).timeout
 	await countmult(roundmult)
 	await counttotal(total)
+	Global.moneys+=total
 	$endbutton.show()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

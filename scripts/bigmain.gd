@@ -6,23 +6,28 @@ var recipeslots=[Vector2(300,190),Vector2(460,190),Vector2(300,390),Vector2(460,
 var slot_occupied=[false,false,false,false,false,false,false,false]
 var tempingredients={}
 var cards={}
+var popping_up=false
 signal hiderecipes
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$ui/open.pressed.connect(_on_open)
+	$moneycount.text=str(0)
 	$recipebook.hide()
 	cards=DeckManager.cards
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if int($moneycount.text)!=Global.moneys and not popping_up:
+		update_moneys_popup(Global.moneys)
 	
 func _on_open():
 	var open=open_scene.instantiate()
 	add_child(open)
 	$ui.hide()
+	$moneycount.hide()
+	open.tree_exited.connect(_on_close)
 	
 func show_menu():
 	var x=1
@@ -88,3 +93,24 @@ func tempadd(tempobj):
 		if tempobj.object.data.ingredient[i]>0:
 			maxamt.append(int(floor((Global.ingredients[i]-tempingredients[i])/tempobj.object.data.ingredient[i])))
 			tempobj.maxamt=maxamt.min()
+
+func update_moneys_popup(amt):
+	popping_up=true
+	var tween=create_tween()
+	$moneycount.show()
+	$moneycount.position+=Vector2(0,-100)
+	tween.tween_property($moneycount,"position",$moneycount.position+Vector2(0,100),1)
+	tween.tween_method(update_moneys,int($moneycount.text),amt,1.0)
+	tween.tween_interval(.3)
+	tween.tween_property($moneycount,"position",$moneycount.position+Vector2(0,-100),1)
+	await tween.finished
+	$moneycount.hide()
+	$moneycount.position=Vector2(0,0)
+	popping_up=false
+	
+func update_moneys(amt):
+	$moneycount.text=str(amt)
+	
+func _on_close():
+	$ui.show()
+	$moneycount.show()
