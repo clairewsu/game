@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b76apnyc2rpv6" path="res://scenes/object.tscn" id="2_ddrcu"]
 [ext_resource type="PackedScene" uid="uid://c2c57qbq2djeu" path="res://scenes/make_menu.tscn" id="3_ooc2v"]
 [ext_resource type="Texture2D" uid="uid://dmm3mad5lfdla" path="res://art/recipebook.PNG" id="5_ooc2v"]
+[ext_resource type="Texture2D" uid="uid://u2vyoq5ngsyd" path="res://art/salt_icon.PNG" id="6_51huq"]
 
 [node name="main" type="Control" unique_id=1906546917]
 layout_mode = 3
@@ -33,9 +34,25 @@ offset_bottom = 551.0
 texture = ExtResource("5_ooc2v")
 expand_mode = 1
 
-[node name="moneycount" type="RichTextLabel" parent="." unique_id=762213268]
+[node name="moneycount" type="Control" parent="." unique_id=1208563013]
+anchors_preset = 0
+offset_top = 4.0
+offset_right = 248.0
+offset_bottom = 54.0
+
+[node name="TextureRect" type="TextureRect" parent="moneycount" unique_id=2011703888]
 layout_mode = 0
-offset_right = 208.0
-offset_bottom = 50.0
-theme_override_font_sizes/normal_font_size = 36
+offset_top = 4.0
+offset_right = 40.0
+offset_bottom = 44.0
+texture = ExtResource("6_51huq")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="moneycount" unique_id=325653102]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 6.0
+offset_right = 109.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 24
 text = "10000"

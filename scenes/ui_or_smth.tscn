@@ -5,9 +5,20 @@
 [ext_resource type="Texture2D" uid="uid://b21cifd0ndrxe" path="res://art/note2.PNG" id="3_adh6k"]
 [ext_resource type="Texture2D" uid="uid://bgqsgfbnv8g77" path="res://art/note3.PNG" id="4_22ytw"]
 [ext_resource type="Texture2D" uid="uid://c6hfdcnnr10h7" path="res://art/open.PNG" id="5_adh6k"]
+[ext_resource type="Texture2D" uid="uid://cpdo6bpit1os0" path="res://art/scorecounter_paper.PNG" id="6_22ytw"]
 
 [node name="ui_and_stuff" type="CanvasLayer" unique_id=1762027153]
 script = ExtResource("1_bqq8r")
+
+[node name="scorecount_bg" type="TextureRect" parent="." unique_id=1904195969]
+z_index = -1
+offset_left = 495.0
+offset_top = 27.0
+offset_right = 931.0
+offset_bottom = 589.0
+rotation = -0.0024090346
+texture = ExtResource("6_22ytw")
+expand_mode = 1
 
 [node name="Timer" type="Timer" parent="." unique_id=1632939379]
 one_shot = true
@@ -25,10 +36,13 @@ horizontal_alignment = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 168.0
-offset_right = -64.0
+offset_left = 605.0
+offset_top = 128.0
+offset_right = -230.0
+offset_bottom = -218.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
 text = "score: 1234"
 horizontal_alignment = 1
@@ -42,18 +56,19 @@ theme_override_font_sizes/font_size = 64
 text = "start"
 
 [node name="endbutton" type="Button" parent="." unique_id=302233631]
-offset_left = 400.0
-offset_top = 500.0
-offset_right = 705.0
-offset_bottom = 596.0
+z_index = 1000
+offset_left = 610.0
+offset_top = 440.0
+offset_right = 872.0
+offset_bottom = 536.0
 theme_override_font_sizes/font_size = 64
 text = "close"
 
 [node name="theend" type="Label" parent="." unique_id=177718164]
-offset_left = 424.0
-offset_top = 240.0
-offset_right = 661.0
-offset_bottom = 328.0
+offset_left = 127.0
+offset_top = 10.0
+offset_right = 364.0
+offset_bottom = 98.0
 theme_override_font_sizes/font_size = 64
 text = "the end"
 

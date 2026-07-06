@@ -6,6 +6,8 @@ var penalty=0
 var roundmult=0
 var total=0
 var x=1
+var character="ari"
+var endround_scene=load("res://scenes/endround/"+character+"_endround.tscn")
 var opensign=preload("res://art/open.PNG")
 var closedsign=preload("res://art/closed.PNG.png")
 var maskimg = load("res://art/opensign_mask.PNG").get_image()
@@ -26,6 +28,7 @@ func _ready() -> void:
 	$deckcounter.hide()
 	$roundcounter.hide()
 	$endbutton.hide()
+	$scorecount_bg.hide()
 
 func show_time(text):
 	$timerlabel.text = text
@@ -57,14 +60,16 @@ func _on_startbutton_pressed():
 
 func _on_end():
 	await get_parent().dismiss_end
+	var endround=endround_scene.instantiate()
+	endround.position=Vector2(250,350)
+	endround.scale*=.8
+	add_child(endround)
 	$pausebutton.disabled=true
 	$Timer.paused=true
 	$timerlabel.text="0"
 	countdown=0
 	total=max(0,snapped(roundmult*(base-penalty),1))
-	$theend.show()
-	await get_tree().create_timer(1).timeout
-	$theend.hide()
+	$scorecount_bg.show()
 	$scorecounter.show()
 	$scorecounter.text = "base score: "+str(base)
 	await get_tree().create_timer(.8).timeout
@@ -73,6 +78,8 @@ func _on_end():
 	await countmult(roundmult)
 	await counttotal(total)
 	Global.moneys+=total
+	if total>0:
+		Global.spawn_money(total,Vector2(730,350),self)
 	$endbutton.show()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

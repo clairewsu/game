@@ -12,14 +12,14 @@ signal hiderecipes
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$ui/open.pressed.connect(_on_open)
-	$moneycount.text=str(0)
+	$moneycount/Label.text=str(0)
 	$recipebook.hide()
 	cards=DeckManager.cards
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if int($moneycount.text)!=Global.moneys and not popping_up:
+	if int($moneycount/Label.text)!=Global.moneys and not popping_up:
 		update_moneys_popup(Global.moneys)
 	
 func _on_open():
@@ -100,7 +100,7 @@ func update_moneys_popup(amt):
 	$moneycount.show()
 	$moneycount.position+=Vector2(0,-100)
 	tween.tween_property($moneycount,"position",$moneycount.position+Vector2(0,100),1)
-	tween.tween_method(update_moneys,int($moneycount.text),amt,1.0)
+	tween.tween_method(update_moneys,int($moneycount/Label.text),amt,1)
 	tween.tween_interval(.3)
 	tween.tween_property($moneycount,"position",$moneycount.position+Vector2(0,-100),1)
 	await tween.finished
@@ -109,7 +109,7 @@ func update_moneys_popup(amt):
 	popping_up=false
 	
 func update_moneys(amt):
-	$moneycount.text=str(amt)
+	$moneycount/Label.text=str(amt)
 	
 func _on_close():
 	$ui.show()

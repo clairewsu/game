@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://d0d0kg11fmx3n"]
+
+[ext_resource type="Script" uid="uid://diioiyb44fay0" path="res://scripts/salt_popup.gd" id="1_wmmc1"]
+[ext_resource type="Texture2D" uid="uid://68hy7wfqct2c" path="res://art/salt.PNG" id="2_1ruc8"]
+
+[node name="Node2D" type="Node2D" unique_id=1907886065]
+script = ExtResource("1_wmmc1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=550551309]
+texture = ExtResource("2_1ruc8")
