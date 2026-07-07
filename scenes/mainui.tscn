@@ -41,4 +41,11 @@ offset_bottom = 100.0
 texture = ExtResource("2_payeh")
 expand_mode = 1
 
+[node name="gather" type="Button" parent="." unique_id=489431649]
+offset_left = 170.0
+offset_top = 259.0
+offset_right = 288.0
+offset_bottom = 314.0
+text = "gather"
+
 [connection signal="pressed" from="recipebookbutton" to="." method="_on_recipebook_pressed"]

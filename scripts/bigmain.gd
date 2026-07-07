@@ -1,5 +1,6 @@
 extends Node
 var open_scene = preload("res://scenes/main.tscn")
+var gather_scene=preload("res://scenes/gather.tscn")
 @export var object_scene:PackedScene
 @export var menu_scene:PackedScene
 var recipeslots=[Vector2(300,190),Vector2(460,190),Vector2(300,390),Vector2(460,390),Vector2(640,190),Vector2(790,190),Vector2(640,390),Vector2(790,390)]
@@ -12,6 +13,7 @@ signal hiderecipes
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$ui/open.pressed.connect(_on_open)
+	$ui/gather.pressed.connect(_on_gather)
 	$moneycount/Label.text=str(0)
 	$recipebook.hide()
 	cards=DeckManager.cards
@@ -28,6 +30,13 @@ func _on_open():
 	$ui.hide()
 	$moneycount.hide()
 	open.tree_exited.connect(_on_close)
+	
+func _on_gather():
+	var gather=gather_scene.instantiate()
+	add_child(gather)
+	$ui.hide()
+	$moneycount.hide()
+	gather.tree_exited.connect(_on_close)
 	
 func show_menu():
 	var x=1
@@ -114,3 +123,4 @@ func update_moneys(amt):
 func _on_close():
 	$ui.show()
 	$moneycount.show()
+	$ui.show_inv()
