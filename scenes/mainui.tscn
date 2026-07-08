@@ -8,6 +8,20 @@
 script = ExtResource("1_hdcb6")
 label_scene = ExtResource("2_k2m04")
 
+[node name="gather" type="Button" parent="." unique_id=489431649]
+offset_left = 170.0
+offset_top = 259.0
+offset_right = 288.0
+offset_bottom = 314.0
+text = "gather"
+
+[node name="ingredientshop" type="Button" parent="." unique_id=200134465]
+offset_left = 347.0
+offset_top = 263.0
+offset_right = 494.0
+offset_bottom = 316.0
+text = "ingredient shop"
+
 [node name="open" type="Button" parent="." unique_id=1275572053]
 offset_left = 774.0
 offset_top = 431.0
@@ -40,12 +54,5 @@ offset_right = 96.0
 offset_bottom = 100.0
 texture = ExtResource("2_payeh")
 expand_mode = 1
-
-[node name="gather" type="Button" parent="." unique_id=489431649]
-offset_left = 170.0
-offset_top = 259.0
-offset_right = 288.0
-offset_bottom = 314.0
-text = "gather"
 
 [connection signal="pressed" from="recipebookbutton" to="." method="_on_recipebook_pressed"]

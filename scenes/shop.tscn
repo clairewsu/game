@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bc4pbx3sqr8fn"]
+
+[ext_resource type="Script" uid="uid://babethfaq4ro7" path="res://scripts/shop.gd" id="1_lx5au"]
+
+[node name="Node" type="Node" unique_id=1708362580]
+script = ExtResource("1_lx5au")
+
+[node name="exit" type="Button" parent="." unique_id=890349148]
+offset_left = 1010.0
+offset_top = 76.0
+offset_right = 1047.0
+offset_bottom = 107.0
+text = "exit"
+
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

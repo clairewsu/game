@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://c681khles0wyn"]
 
-[ext_resource type="Script" uid="uid://dxun8y1qu6ie4" path="res://scripts/bigmain.gd" id="1_odprv"]
-[ext_resource type="PackedScene" uid="uid://btiubotorunc6" path="res://scenes/mainui.tscn" id="2_5605s"]
-[ext_resource type="PackedScene" uid="uid://b76apnyc2rpv6" path="res://scenes/object.tscn" id="2_ddrcu"]
-[ext_resource type="PackedScene" uid="uid://c2c57qbq2djeu" path="res://scenes/make_menu.tscn" id="3_ooc2v"]
-[ext_resource type="Texture2D" uid="uid://dmm3mad5lfdla" path="res://art/recipebook.PNG" id="5_ooc2v"]
-[ext_resource type="Texture2D" uid="uid://u2vyoq5ngsyd" path="res://art/salt_icon.PNG" id="6_51huq"]
+[ext_resource type="Script" uid="uid://dxun8y1qu6ie4" path="res://scripts/bigmain.gd" id="1_xjo5i"]
+[ext_resource type="PackedScene" uid="uid://b76apnyc2rpv6" path="res://scenes/object.tscn" id="2_0qdpo"]
+[ext_resource type="PackedScene" uid="uid://c2c57qbq2djeu" path="res://scenes/make_menu.tscn" id="3_q8qvv"]
+[ext_resource type="PackedScene" uid="uid://btiubotorunc6" path="res://scenes/mainui.tscn" id="4_0k34j"]
+[ext_resource type="Texture2D" uid="uid://dmm3mad5lfdla" path="res://art/recipebook.PNG" id="5_m1rgd"]
+[ext_resource type="Texture2D" uid="uid://u2vyoq5ngsyd" path="res://art/salt_icon.PNG" id="6_qqglw"]
 
 [node name="main" type="Control" unique_id=1906546917]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_odprv")
-object_scene = ExtResource("2_ddrcu")
-menu_scene = ExtResource("3_ooc2v")
+script = ExtResource("1_xjo5i")
+object_scene = ExtResource("2_0qdpo")
+menu_scene = ExtResource("3_q8qvv")
 
-[node name="ui" parent="." unique_id=2083767084 instance=ExtResource("2_5605s")]
+[node name="ui" parent="." unique_id=2083767084 instance=ExtResource("4_0k34j")]
 
 [node name="recipebook" type="Button" parent="." unique_id=199179795]
 layout_mode = 0
@@ -31,7 +31,7 @@ offset_left = -179.0
 offset_top = -100.0
 offset_right = 971.0
 offset_bottom = 551.0
-texture = ExtResource("5_ooc2v")
+texture = ExtResource("5_m1rgd")
 expand_mode = 1
 
 [node name="moneycount" type="Control" parent="." unique_id=1208563013]
@@ -45,7 +45,7 @@ layout_mode = 0
 offset_top = 4.0
 offset_right = 40.0
 offset_bottom = 44.0
-texture = ExtResource("6_51huq")
+texture = ExtResource("6_qqglw")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="moneycount" unique_id=325653102]
@@ -56,3 +56,9 @@ offset_right = 109.0
 offset_bottom = 40.0
 theme_override_font_sizes/font_size = 24
 text = "10000"
+
+[node name="Timer" type="Timer" parent="moneycount" unique_id=1263355197]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="moneycount/Timer" to="." method="_on_timer_timeout"]

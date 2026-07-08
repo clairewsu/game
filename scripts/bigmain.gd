@@ -1,6 +1,7 @@
 extends Node
 var open_scene = preload("res://scenes/main.tscn")
 var gather_scene=preload("res://scenes/gather.tscn")
+var shop_ingredient_scene=preload("res://scenes/shop_ingredient.tscn")
 @export var object_scene:PackedScene
 @export var menu_scene:PackedScene
 var recipeslots=[Vector2(300,190),Vector2(460,190),Vector2(300,390),Vector2(460,390),Vector2(640,190),Vector2(790,190),Vector2(640,390),Vector2(790,390)]
@@ -8,21 +9,24 @@ var slot_occupied=[false,false,false,false,false,false,false,false]
 var tempingredients={}
 var cards={}
 var popping_up=false
+var tempmoneys=Global.moneys
 signal hiderecipes
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$ui/open.pressed.connect(_on_open)
 	$ui/gather.pressed.connect(_on_gather)
-	$moneycount/Label.text=str(0)
+	$ui/ingredientshop.pressed.connect(_on_ingredientshop)
+	$moneycount/Label.text=str(Global.default_moneys)
 	$recipebook.hide()
 	cards=DeckManager.cards
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if int($moneycount/Label.text)!=Global.moneys and not popping_up:
-		update_moneys_popup(Global.moneys)
+	if Global.moneys!=tempmoneys and not popping_up:
+		tempmoneys=Global.moneys
+		money_changed()
 	
 func _on_open():
 	var open=open_scene.instantiate()
@@ -37,6 +41,13 @@ func _on_gather():
 	$ui.hide()
 	$moneycount.hide()
 	gather.tree_exited.connect(_on_close)
+	
+func _on_ingredientshop():
+	var ingredientshop=shop_ingredient_scene.instantiate()
+	add_child(ingredientshop)
+	$ui.hide()
+	$moneycount.hide()
+	ingredientshop.tree_exited.connect(_on_close)
 	
 func show_menu():
 	var x=1
@@ -103,13 +114,16 @@ func tempadd(tempobj):
 			maxamt.append(int(floor((Global.ingredients[i]-tempingredients[i])/tempobj.object.data.ingredient[i])))
 			tempobj.maxamt=maxamt.min()
 
-func update_moneys_popup(amt):
+func money_changed():
+	$moneycount/Timer.start()
+	
+func update_moneys_popup():
 	popping_up=true
 	var tween=create_tween()
 	$moneycount.show()
 	$moneycount.position+=Vector2(0,-100)
 	tween.tween_property($moneycount,"position",$moneycount.position+Vector2(0,100),1)
-	tween.tween_method(update_moneys,int($moneycount/Label.text),amt,1)
+	tween.tween_method(update_moneys,int($moneycount/Label.text),Global.moneys,1)
 	tween.tween_interval(.3)
 	tween.tween_property($moneycount,"position",$moneycount.position+Vector2(0,-100),1)
 	await tween.finished
@@ -124,3 +138,7 @@ func _on_close():
 	$ui.show()
 	$moneycount.show()
 	$ui.show_inv()
+
+
+func _on_timer_timeout() -> void:
+	update_moneys_popup()
