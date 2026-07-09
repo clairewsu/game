@@ -2,6 +2,7 @@ extends Node
 var open_scene = preload("res://scenes/main.tscn")
 var gather_scene=preload("res://scenes/gather.tscn")
 var shop_ingredient_scene=preload("res://scenes/shop_ingredient.tscn")
+var shop_potion_scene=preload("res://scenes/shop_potion.tscn")
 @export var object_scene:PackedScene
 @export var menu_scene:PackedScene
 var recipeslots=[Vector2(300,190),Vector2(460,190),Vector2(300,390),Vector2(460,390),Vector2(640,190),Vector2(790,190),Vector2(640,390),Vector2(790,390)]
@@ -17,6 +18,7 @@ func _ready() -> void:
 	$ui/open.pressed.connect(_on_open)
 	$ui/gather.pressed.connect(_on_gather)
 	$ui/ingredientshop.pressed.connect(_on_ingredientshop)
+	$ui/potionshop.pressed.connect(_on_potionshop)
 	$moneycount/Label.text=str(Global.default_moneys)
 	$recipebook.hide()
 	cards=DeckManager.cards
@@ -48,6 +50,13 @@ func _on_ingredientshop():
 	$ui.hide()
 	$moneycount.hide()
 	ingredientshop.tree_exited.connect(_on_close)
+
+func _on_potionshop():
+	var potionshop=shop_potion_scene.instantiate()
+	add_child(potionshop)
+	$ui.hide()
+	$moneycount.hide()
+	potionshop.tree_exited.connect(_on_close)
 	
 func show_menu():
 	var x=1

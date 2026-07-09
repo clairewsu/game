@@ -1,6 +1,6 @@
 extends Control
 var amt=20
-var type:String
+var type=null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,11 +9,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if amt==0 or Global.moneys<int($price.text):
+		$buy.disabled=true
 
 
 func _on_buy_pressed() -> void:
-	if amt>0 and Global.moneys>int($price.text):
+	if amt>0 and Global.moneys>=int($price.text):
 		if type!=null:
 			Global.ingredients[type]+=1
 		amt-=1

@@ -5,3 +5,4 @@
 
 [node name="Node" unique_id=1708362580 instance=ExtResource("1_qm1hp")]
 script = ExtResource("1_daosj")
+type = "ingredient"

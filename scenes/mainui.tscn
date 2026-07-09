@@ -22,6 +22,13 @@ offset_right = 494.0
 offset_bottom = 316.0
 text = "ingredient shop"
 
+[node name="potionshop" type="Button" parent="." unique_id=1997214966]
+offset_left = 555.0
+offset_top = 257.0
+offset_right = 693.0
+offset_bottom = 309.0
+text = "potion shop"
+
 [node name="open" type="Button" parent="." unique_id=1275572053]
 offset_left = 774.0
 offset_top = 431.0
