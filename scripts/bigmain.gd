@@ -3,6 +3,7 @@ var open_scene = preload("res://scenes/main.tscn")
 var gather_scene=preload("res://scenes/gather.tscn")
 var shop_ingredient_scene=preload("res://scenes/shop_ingredient.tscn")
 var shop_potion_scene=preload("res://scenes/shop_potion.tscn")
+var shop_recipe_scene=preload("res://scenes/shop_recipe.tscn")
 @export var object_scene:PackedScene
 @export var menu_scene:PackedScene
 var recipeslots=[Vector2(300,190),Vector2(460,190),Vector2(300,390),Vector2(460,390),Vector2(640,190),Vector2(790,190),Vector2(640,390),Vector2(790,390)]
@@ -19,6 +20,7 @@ func _ready() -> void:
 	$ui/gather.pressed.connect(_on_gather)
 	$ui/ingredientshop.pressed.connect(_on_ingredientshop)
 	$ui/potionshop.pressed.connect(_on_potionshop)
+	$ui/recipeshop.pressed.connect(_on_recipeshop)
 	$moneycount/Label.text=str(Global.default_moneys)
 	$recipebook.hide()
 	cards=DeckManager.cards
@@ -58,17 +60,24 @@ func _on_potionshop():
 	$moneycount.hide()
 	potionshop.tree_exited.connect(_on_close)
 	
+func _on_recipeshop():
+	var recipeshop=shop_recipe_scene.instantiate()
+	add_child(recipeshop)
+	$ui.hide()
+	$moneycount.hide()
+	recipeshop.tree_exited.connect(_on_close)
+		
 func show_menu():
 	var x=1
 	$recipebook.show()
 	$ui/open.hide()
-	for name in cards.keys():
+	for name in DeckManager.book:
 		var object=object_scene.instantiate()
 		var menu=menu_scene.instantiate()
 		var slot=get_free_slot()
 		if slot == -1:
 			return
-		object.data=cards[name]
+		object.data=name
 		menu.object=object
 		add_child(object)
 		add_child(menu)
@@ -79,9 +88,10 @@ func show_menu():
 		object.z_index=100
 		object.sold=true
 		object.menu_ver=true
-		object._show_desc(name,object.data.color,object.data.basevalue,object.data.desc,object.position)
+		object._show_desc(object.data.name,object.data.color,object.data.basevalue,object.data.desc,object.position)
 		menu.position=object.position+Vector2(-50,-100)
-		menu.objname=name
+		menu.objname=object.data.name
+		menu.get_node("TextureRect").z_index=object.get_node("liquid").z_index-1
 		menu.add.connect(addtodeck)
 		x+=1
 		hiderecipes.connect(object.queue_free)

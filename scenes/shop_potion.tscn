@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://2nr10u6x2sr"]
 
 [ext_resource type="PackedScene" uid="uid://bc4pbx3sqr8fn" path="res://scenes/shop.tscn" id="1_51aip"]
-[ext_resource type="Script" uid="uid://cl42adrcxw2ki" path="res://shop_potion.gd" id="2_qrvv1"]
+[ext_resource type="Script" uid="uid://cl42adrcxw2ki" path="res://scripts/shop_potion.gd" id="2_qrvv1"]
 [ext_resource type="PackedScene" uid="uid://b76apnyc2rpv6" path="res://scenes/object.tscn" id="3_qrvv1"]
 
 [node name="Node" unique_id=1708362580 instance=ExtResource("1_51aip")]

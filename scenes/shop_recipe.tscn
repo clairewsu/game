@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b8e1rqent4lrf"]
+
+[ext_resource type="PackedScene" uid="uid://bc4pbx3sqr8fn" path="res://scenes/shop.tscn" id="1_3nbdb"]
+[ext_resource type="Script" uid="uid://lwgd5fmks1hu" path="res://scripts/shop_recipe.gd" id="2_05vkn"]
+
+[node name="Node" unique_id=1708362580 instance=ExtResource("1_3nbdb")]
+script = ExtResource("2_05vkn")
+type = "recipe"
+multiplier = 10

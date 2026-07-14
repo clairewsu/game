@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://clywk7mfq3x2d"]
 
 [ext_resource type="Texture2D" uid="uid://cdh2jhmenvnva" path="res://art/ingredients/flower.PNG" id="1_83ijk"]
-[ext_resource type="Script" uid="uid://bn3kg2k8dha1f" path="res://scenes/shop_price.gd" id="1_bt5t4"]
+[ext_resource type="Script" uid="uid://bn3kg2k8dha1f" path="res://scripts/shop_price.gd" id="1_bt5t4"]
 [ext_resource type="Texture2D" uid="uid://u2vyoq5ngsyd" path="res://art/salt_icon.PNG" id="2_g711g"]
 
 [node name="Control" type="Control" unique_id=1904190016]
@@ -17,19 +17,18 @@ script = ExtResource("1_bt5t4")
 
 [node name="price" type="Label" parent="." unique_id=79637047]
 layout_mode = 0
-offset_left = 41.0
-offset_top = 130.0
-offset_right = 117.0
-offset_bottom = 172.0
+offset_left = 60.0
+offset_top = 128.0
+offset_right = 136.0
+offset_bottom = 170.0
 theme_override_font_sizes/font_size = 30
 text = "50"
-horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="price" unique_id=1235041856]
 layout_mode = 0
-offset_left = -15.0
+offset_left = -33.0
 offset_top = 3.0
-offset_right = 25.0
+offset_right = 7.0
 offset_bottom = 43.0
 texture = ExtResource("2_g711g")
 expand_mode = 1

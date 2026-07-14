@@ -1,8 +1,9 @@
-extends Panel
+extends Control
 var objname:String
 var object:Area2D
 var amount=0
 var maxamt=100
+var shop_ver=false
 signal tempadd
 signal add
 
@@ -13,10 +14,17 @@ func _ready() -> void:
 		if object.data.ingredient[i]>0:
 			$ingredientcost.text+="[img=64]res://art/ingredients/"+i+".PNG[/img]"
 			$ingredientcost.text+=str(object.data.ingredient[i])
+	objname=object.data.name
 
 
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if shop_ver:
+		$upbutton.hide()
+		$downbutton.hide()
+		$Label.hide()
+		$makebutton.hide()
 	amount=int($Label.text)
 	if $upbutton.is_pressed() and $Timer.is_stopped():
 		_on_upbutton_pressed()

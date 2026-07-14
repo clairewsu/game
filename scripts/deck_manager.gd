@@ -1,6 +1,8 @@
 extends Node
 @export var cards={}
 var deck:Array[Resource]=[]
+var book:Array[Resource]=[]
+var booklim=8
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,7 +14,10 @@ func _ready() -> void:
 		cards[card.name] = card
 		file_name = dir.get_next()
 	dir.list_dir_end()
-
+	addtobook("basic magic potion")
+	addtobook("basic growth potion")
+	addtobook("basic gold potion")
+	addtobook("basic wind potion")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -20,6 +25,10 @@ func _process(delta: float) -> void:
 
 func addtodeck(name):
 	deck.append(cards[name])
+	
+func addtobook(name):
+	if book.size()<booklim:
+		book.append(cards[name])
 		
 func draw():
 	if deck.is_empty():
