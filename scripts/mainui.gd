@@ -27,3 +27,8 @@ func show_inv():
 		add_child(label)
 		label.position=Vector2(10+120*x,550)
 		x=x+1
+	for i in range(Global.decors.size()):
+		var decor=get_parent().decor_scene.instantiate()
+		decor.data=load("res://resources/decors/"+Global.decors[i]+"_decor.tres")
+		decor.position=decor.data.menupos
+		add_child(decor)

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bw7pdc7xqlvvx"]
+
+[ext_resource type="Script" uid="uid://cje2hfvfrq6kx" path="res://scripts/decor.gd" id="1_ovbhi"]
+[ext_resource type="Texture2D" uid="uid://b27ujd024d6is" path="res://art/decor/plant_big.PNG" id="2_gxjgo"]
+
+[node name="Node2D" type="Area2D" unique_id=1603555688]
+script = ExtResource("1_ovbhi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1472625663]
+texture = ExtResource("2_gxjgo")
+
+[node name="objdesc" type="Panel" parent="." unique_id=212923993]
+offset_left = -339.0
+offset_top = -748.0
+offset_right = 264.0
+offset_bottom = -439.0
+
+[node name="desctext" type="RichTextLabel" parent="objdesc" unique_id=74626331]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 7.0
+offset_right = 602.0
+offset_bottom = 306.0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "efheifejfjoieifeoirfeorf"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=19715719]
+polygon = PackedVector2Array(-134, -148, -231, 173, -17, 421, 220, 192, 100, -197)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

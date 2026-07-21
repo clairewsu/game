@@ -10,8 +10,9 @@ func _ready() -> void:
 	dir.list_dir_begin()
 	var file_name = dir.get_next()
 	while file_name != "":
-		var card = load("res://resources/" + file_name)
-		cards[card.name] = card
+		if file_name.ends_with(".tres"):
+			var card = load("res://resources/" + file_name)
+			cards[card.name] = card
 		file_name = dir.get_next()
 	dir.list_dir_end()
 	addtobook("basic magic potion")

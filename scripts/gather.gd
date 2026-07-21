@@ -19,6 +19,8 @@ signal roll
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$errormsg.hide()
+	if "plant" in Global.decors:
+		dice_num+=2
 	for i in range(dice_num):
 		var die=dice_scene.instantiate()
 		die.position=positions[i]

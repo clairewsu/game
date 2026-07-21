@@ -4,6 +4,7 @@ var gather_scene=preload("res://scenes/gather.tscn")
 var shop_ingredient_scene=preload("res://scenes/shop_ingredient.tscn")
 var shop_potion_scene=preload("res://scenes/shop_potion.tscn")
 var shop_recipe_scene=preload("res://scenes/shop_recipe.tscn")
+var decor_scene=preload("res://scenes/decor.tscn")
 @export var object_scene:PackedScene
 @export var menu_scene:PackedScene
 var recipeslots=[Vector2(300,190),Vector2(460,190),Vector2(300,390),Vector2(460,390),Vector2(640,190),Vector2(790,190),Vector2(640,390),Vector2(790,390)]
@@ -12,6 +13,7 @@ var tempingredients={}
 var cards={}
 var popping_up=false
 var tempmoneys=Global.moneys
+var visible=true
 signal hiderecipes
 
 # Called when the node enters the scene tree for the first time.
@@ -25,7 +27,6 @@ func _ready() -> void:
 	$recipebook.hide()
 	cards=DeckManager.cards
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Global.moneys!=tempmoneys and not popping_up:
@@ -37,6 +38,7 @@ func _on_open():
 	add_child(open)
 	$ui.hide()
 	$moneycount.hide()
+	visible=false
 	open.tree_exited.connect(_on_close)
 	
 func _on_gather():
@@ -44,6 +46,7 @@ func _on_gather():
 	add_child(gather)
 	$ui.hide()
 	$moneycount.hide()
+	visible=false
 	gather.tree_exited.connect(_on_close)
 	
 func _on_ingredientshop():
@@ -51,6 +54,7 @@ func _on_ingredientshop():
 	add_child(ingredientshop)
 	$ui.hide()
 	$moneycount.hide()
+	visible=false
 	ingredientshop.tree_exited.connect(_on_close)
 
 func _on_potionshop():
@@ -58,6 +62,7 @@ func _on_potionshop():
 	add_child(potionshop)
 	$ui.hide()
 	$moneycount.hide()
+	visible=false
 	potionshop.tree_exited.connect(_on_close)
 	
 func _on_recipeshop():
@@ -65,6 +70,7 @@ func _on_recipeshop():
 	add_child(recipeshop)
 	$ui.hide()
 	$moneycount.hide()
+	visible=false
 	recipeshop.tree_exited.connect(_on_close)
 		
 func show_menu():
@@ -143,10 +149,13 @@ func update_moneys_popup():
 	$moneycount.position+=Vector2(0,-100)
 	tween.tween_property($moneycount,"position",$moneycount.position+Vector2(0,100),1)
 	tween.tween_method(update_moneys,int($moneycount/Label.text),Global.moneys,1)
-	tween.tween_interval(.3)
-	tween.tween_property($moneycount,"position",$moneycount.position+Vector2(0,-100),1)
 	await tween.finished
-	$moneycount.hide()
+	if not visible:
+		tween=create_tween()
+		tween.tween_interval(.3)
+		tween.tween_property($moneycount,"position",$moneycount.position+Vector2(0,-100),1)
+		await tween.finished
+		$moneycount.hide()
 	$moneycount.position=Vector2(0,0)
 	popping_up=false
 	
@@ -154,10 +163,11 @@ func update_moneys(amt):
 	$moneycount/Label.text=str(amt)
 	
 func _on_close():
+	visible=true
 	$ui.show()
-	$moneycount.show()
 	$ui.show_inv()
-
+	$moneycount.show()
+	
 
 func _on_timer_timeout() -> void:
 	update_moneys_popup()

@@ -36,9 +36,8 @@ expand_mode = 1
 
 [node name="moneycount" type="Control" parent="." unique_id=1208563013]
 anchors_preset = 0
-offset_top = 4.0
 offset_right = 248.0
-offset_bottom = 54.0
+offset_bottom = 50.0
 
 [node name="TextureRect" type="TextureRect" parent="moneycount" unique_id=2011703888]
 layout_mode = 0

@@ -27,6 +27,10 @@ func _ready():
 	end.connect($ui._on_end)
 	$ui.start.connect(_on_start)
 	roundchange.connect($ui._round)
+	for i in $bg/decors.get_children():
+		i.hide()
+	for i in range(Global.decors.size()):
+		$bg/decors.get_node(Global.decors[i]).show()
 
 func _on_start():
 	round=0

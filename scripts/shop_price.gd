@@ -2,10 +2,12 @@ extends Control
 var maxamt=20
 var amt=maxamt
 var type=null
+signal bought
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	if "star" in Global.decors:
+		$price.text=str(int(int($price.text)*.9))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,3 +24,4 @@ func _on_buy_pressed() -> void:
 			Global.ingredients[type]+=1
 		amt-=1
 		Global.moneys-=int($price.text)
+		bought.emit()

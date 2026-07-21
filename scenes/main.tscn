@@ -5,16 +5,28 @@
 [ext_resource type="Texture2D" uid="uid://b6gdl3dm52ho3" path="res://art/bg.PNG" id="6_choun"]
 [ext_resource type="PackedScene" uid="uid://b76apnyc2rpv6" path="res://scenes/object.tscn" id="6_tipki"]
 [ext_resource type="Texture2D" uid="uid://j5whhisqxleb" path="res://art/table.PNG" id="7_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://jfu3ae5e0aoh" path="res://art/decor/cat.PNG" id="7_vxglm"]
 [ext_resource type="Texture2D" uid="uid://c7lwmohi01ysm" path="res://art/front.PNG" id="7_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://dqqn8umk02vxa" path="res://art/decor/goldfish.PNG" id="8_2f3dj"]
 [ext_resource type="Texture2D" uid="uid://djm7fhwdy35n6" path="res://art/sidebar.PNG" id="8_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://c3npnb02437lb" path="res://art/timer.PNG" id="9_trceg"]
+[ext_resource type="Texture2D" uid="uid://d3c2n0k25or3a" path="res://art/decor/pillow.PNG" id="9_yq6so"]
 [ext_resource type="PackedScene" uid="uid://mu3bafvicmw0" path="res://scenes/ui_or_smth.tscn" id="10_4c57u"]
 [ext_resource type="Texture2D" uid="uid://co2te6w52xif5" path="res://art/supplycount.PNG" id="10_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://di2o28020vp5n" path="res://scenes/scorefx.tscn" id="10_efxa6"]
+[ext_resource type="Texture2D" uid="uid://dlxl6f8qb5yc1" path="res://art/decor/basket.PNG" id="10_fv21b"]
 [ext_resource type="Texture2D" uid="uid://cpa7l6i2aq5st" path="res://art/boxes.PNG" id="10_trceg"]
 [ext_resource type="Texture2D" uid="uid://wwt2oo67oeuo" path="res://art/wavesclear.PNG" id="11_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://yr6ymahknxg1" path="res://art/decor/plate.PNG" id="11_tel4y"]
 [ext_resource type="Texture2D" uid="uid://b3yvi7xj18ct2" path="res://art/timerdot.PNG" id="12_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://kunvnoirmw1m" path="res://art/decor/penguin.PNG" id="12_qkpxi"]
+[ext_resource type="Texture2D" uid="uid://pmtfxcd5h32h" path="res://art/decor/clock.PNG" id="13_5q0nq"]
 [ext_resource type="Script" uid="uid://cjiqi05ui7wm" path="res://scripts/timercircle.gd" id="13_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://gt3i61f30l1f" path="res://art/decor/picture.PNG" id="14_dgi5k"]
+[ext_resource type="Texture2D" uid="uid://th1kx2nsfy7r" path="res://art/decor/jar.PNG" id="15_j8jky"]
+[ext_resource type="Texture2D" uid="uid://chrq1f4785p5v" path="res://art/decor/lantern.PNG" id="16_kmb1v"]
+[ext_resource type="Texture2D" uid="uid://jl3kywgt1btv" path="res://art/decor/star.PNG" id="17_fuf3a"]
+[ext_resource type="Texture2D" uid="uid://d2ngwf716yj2d" path="res://art/decor/plant.PNG" id="18_pibwh"]
 
 [sub_resource type="Curve2D" id="Curve2D_0xm2m"]
 _data = {
@@ -57,6 +69,99 @@ offset_right = 1919.0
 offset_bottom = 1082.0
 scale = Vector2(0.6020833, 0.6037037)
 texture = ExtResource("6_choun")
+
+[node name="decors" type="Control" parent="bg" unique_id=456499877]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="cat" type="TextureRect" parent="bg/decors" unique_id=570906700]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 3.0
+offset_right = 1124.0
+offset_bottom = 667.0
+texture = ExtResource("7_vxglm")
+expand_mode = 1
+
+[node name="goldfish" type="TextureRect" parent="bg/decors" unique_id=603282756]
+layout_mode = 0
+offset_right = 1157.0
+offset_bottom = 653.0
+texture = ExtResource("8_2f3dj")
+expand_mode = 1
+
+[node name="pillow" type="TextureRect" parent="bg/decors" unique_id=122739488]
+layout_mode = 0
+offset_right = 1163.0
+offset_bottom = 655.0
+texture = ExtResource("9_yq6so")
+expand_mode = 1
+
+[node name="basket" type="TextureRect" parent="bg/decors" unique_id=1348876305]
+layout_mode = 0
+offset_right = 1163.0
+offset_bottom = 655.0
+texture = ExtResource("10_fv21b")
+expand_mode = 1
+
+[node name="plate" type="TextureRect" parent="bg/decors" unique_id=769945510]
+layout_mode = 0
+offset_right = 1163.0
+offset_bottom = 655.0
+texture = ExtResource("11_tel4y")
+expand_mode = 1
+
+[node name="penguin" type="TextureRect" parent="bg/decors" unique_id=980451557]
+layout_mode = 0
+offset_right = 1163.0
+offset_bottom = 655.0
+texture = ExtResource("12_qkpxi")
+expand_mode = 1
+
+[node name="clock" type="TextureRect" parent="bg/decors" unique_id=416479315]
+layout_mode = 0
+offset_right = 1163.0
+offset_bottom = 655.0
+texture = ExtResource("13_5q0nq")
+expand_mode = 1
+
+[node name="picture" type="TextureRect" parent="bg/decors" unique_id=1905893765]
+layout_mode = 0
+offset_right = 1163.0
+offset_bottom = 655.0
+texture = ExtResource("14_dgi5k")
+expand_mode = 1
+
+[node name="jar" type="TextureRect" parent="bg/decors" unique_id=1405445564]
+layout_mode = 0
+offset_right = 1163.0
+offset_bottom = 655.0
+texture = ExtResource("15_j8jky")
+expand_mode = 1
+
+[node name="lantern" type="TextureRect" parent="bg/decors" unique_id=2128390230]
+layout_mode = 0
+offset_right = 1163.0
+offset_bottom = 655.0
+texture = ExtResource("16_kmb1v")
+expand_mode = 1
+
+[node name="star" type="TextureRect" parent="bg/decors" unique_id=133376005]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 1163.0
+offset_bottom = 688.0
+texture = ExtResource("17_fuf3a")
+expand_mode = 1
+
+[node name="plant" type="TextureRect" parent="bg/decors" unique_id=212049212]
+layout_mode = 0
+offset_right = 1163.0
+offset_bottom = 655.0
+texture = ExtResource("18_pibwh")
+expand_mode = 1
 
 [node name="front" type="CanvasLayer" parent="." unique_id=1074735592]
 layer = 2

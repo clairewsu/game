@@ -1,0 +1,12 @@
+[gd_resource type="Resource" format=3 uid="uid://dndjew6i5oudj"]
+
+[ext_resource type="Script" uid="uid://dasqwhs3tir4d" path="res://scripts/star_decor.gd" id="1_jfhc0"]
+[ext_resource type="Texture2D" uid="uid://cw7q1h6nag55o" path="res://art/decor/star_big.PNG" id="2_bhr41"]
+
+[resource]
+script = ExtResource("1_jfhc0")
+name = "Sandy Star"
+desc = "Shop prices -10%"
+tex = ExtResource("2_bhr41")
+collision = PackedVector2Array(-261, -393, -171, -111, -232, -37, -447, 32, -184, 49, -116, 122, -111, 398, -31, 144, 70, 73, 327, 153, 170, 32, 92, -68, 252, -329, 29, -158, -81, -185)
+menupos = Vector2(400, 500)
