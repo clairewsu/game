@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dpsa1qsoerp68"]
+
+[ext_resource type="Script" uid="uid://bmp3ddmlbl7t5" path="res://scripts/encounter.gd" id="1_ensgf"]
+[ext_resource type="PackedScene" uid="uid://x57hihw7iq13" path="res://scenes/textengine.tscn" id="2_kb58x"]
+[ext_resource type="Texture2D" uid="uid://dd108b5fq4mjk" path="res://art/liquids/goldglittering_liquid.PNG" id="3_75kek"]
+
+[node name="Node" type="Node" unique_id=1341247739]
+script = ExtResource("1_ensgf")
+
+[node name="text" parent="." unique_id=1241614795 instance=ExtResource("2_kb58x")]
+
+[node name="bgtexture" type="TextureRect" parent="." unique_id=332939963]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_75kek")

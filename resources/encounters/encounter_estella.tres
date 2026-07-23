@@ -1,0 +1,40 @@
+[gd_resource type="Resource" format=3 uid="uid://l2qcie63hxlj"]
+
+[ext_resource type="Texture2D" uid="uid://dd108b5fq4mjk" path="res://art/liquids/goldglittering_liquid.PNG" id="1_pbsgu"]
+[ext_resource type="Script" uid="uid://b73keh67kbykn" path="res://scripts/encounter_scripts/encounter_estella.gd" id="2_8y5v0"]
+[ext_resource type="Script" uid="uid://dtxqdmfssbsvf" path="res://scripts/encounterhelper.gd" id="3_i53jf"]
+[ext_resource type="Texture2D" uid="uid://bfc84b8njlyj1" path="res://art/characters/ari.PNG" id="4_ptva4"]
+[ext_resource type="Texture2D" uid="uid://wp1v8ishhfun" path="res://art/characters/estella.PNG" id="5_5rpxb"]
+
+[sub_resource type="Resource" id="Resource_wq072"]
+script = ExtResource("3_i53jf")
+speaker = "ari"
+texture = ExtResource("4_ptva4")
+text = "wow i love walking around in the middle of nowhere"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_wmx04"]
+script = ExtResource("3_i53jf")
+speaker = "estella"
+position = 1
+texture = ExtResource("5_5rpxb")
+text = "hello i am low res estella"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_s1jug"]
+script = ExtResource("3_i53jf")
+speaker = "estella"
+position = 1
+texture = ExtResource("5_5rpxb")
+text = "heres a random recipe bye"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_tvisu"]
+script = ExtResource("3_i53jf")
+text = "congrats you obtained the recipe for a glittering potion"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[resource]
+script = ExtResource("2_8y5v0")
+bg = ExtResource("1_pbsgu")
+steps = Array[ExtResource("3_i53jf")]([SubResource("Resource_wq072"), SubResource("Resource_wmx04"), SubResource("Resource_s1jug"), SubResource("Resource_tvisu")])

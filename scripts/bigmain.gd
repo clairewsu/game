@@ -4,6 +4,7 @@ var gather_scene=preload("res://scenes/gather.tscn")
 var shop_ingredient_scene=preload("res://scenes/shop_ingredient.tscn")
 var shop_potion_scene=preload("res://scenes/shop_potion.tscn")
 var shop_recipe_scene=preload("res://scenes/shop_recipe.tscn")
+var encounter_scene=preload("res://scenes/encounter.tscn")
 var decor_scene=preload("res://scenes/decor.tscn")
 @export var object_scene:PackedScene
 @export var menu_scene:PackedScene
@@ -23,6 +24,7 @@ func _ready() -> void:
 	$ui/ingredientshop.pressed.connect(_on_ingredientshop)
 	$ui/potionshop.pressed.connect(_on_potionshop)
 	$ui/recipeshop.pressed.connect(_on_recipeshop)
+	$ui/encounter.pressed.connect(_on_encounter)
 	$moneycount/Label.text=str(Global.default_moneys)
 	$recipebook.hide()
 	cards=DeckManager.cards
@@ -72,6 +74,19 @@ func _on_recipeshop():
 	$moneycount.hide()
 	visible=false
 	recipeshop.tree_exited.connect(_on_close)
+	
+func _on_encounter():
+	var encounter=encounter_scene.instantiate()
+	var encounters=[]
+	for file in DirAccess.get_files_at("res://resources/encounters/"):
+		if file.ends_with(".tres"):
+			encounters.append(file)
+	encounter.data=load("res://resources/encounters/"+encounters.pick_random())
+	add_child(encounter)
+	$ui.hide()
+	$moneycount.hide()
+	visible=false
+	encounter.tree_exited.connect(_on_close)
 		
 func show_menu():
 	var x=1
