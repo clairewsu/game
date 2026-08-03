@@ -1,0 +1,69 @@
+[gd_resource type="Resource" format=3 uid="uid://jw1aw52nn82v"]
+
+[ext_resource type="Texture2D" uid="uid://kqp17i31mim4" path="res://art/badbg.PNG" id="1_a2bdk"]
+[ext_resource type="Script" uid="uid://crhq42e85s3bn" path="res://scripts/encounter_scripts/encounter_pickingredient.gd" id="2_gj3bo"]
+[ext_resource type="Script" uid="uid://dtxqdmfssbsvf" path="res://scripts/dialoguehelper.gd" id="3_70l8n"]
+[ext_resource type="Texture2D" uid="uid://bfc84b8njlyj1" path="res://art/characters/ari.PNG" id="4_56qex"]
+[ext_resource type="Texture2D" uid="uid://cdh2jhmenvnva" path="res://art/ingredients/flower.PNG" id="5_56qex"]
+[ext_resource type="Texture2D" uid="uid://ckwdcuwx82x34" path="res://art/ingredients/mushroom.PNG" id="6_1dwyc"]
+[ext_resource type="Texture2D" uid="uid://dx4x5bklb6bpa" path="res://art/ingredients/feather.PNG" id="7_rtrjh"]
+
+[sub_resource type="Resource" id="Resource_1dwyc"]
+script = ExtResource("3_70l8n")
+texture = ExtResource("4_56qex")
+text = "so imagine ur like walking around and then suddenly the great and amazing idk descends upon u"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_rtrjh"]
+script = ExtResource("3_70l8n")
+texture = ExtResource("4_56qex")
+text = "now u can get some free ingredients congrats so u gotta choose which one"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_l8jx7"]
+script = ExtResource("3_70l8n")
+buttons = ["flowers", "mushrooms", "feathers"]
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_hf4vl"]
+script = ExtResource("3_70l8n")
+id = 1
+texture = ExtResource("5_56qex")
+text = "u got some flowers"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_6417j"]
+script = ExtResource("3_70l8n")
+id = 1
+text = "also i gotta include some more text here for testing purposes"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_66tnx"]
+script = ExtResource("3_70l8n")
+id = 2
+texture = ExtResource("6_1dwyc")
+text = "u got some mushrooms"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_2o8pc"]
+script = ExtResource("3_70l8n")
+id = 3
+texture = ExtResource("7_rtrjh")
+text = "u got some super ugly feathers"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_x0n0f"]
+script = ExtResource("3_70l8n")
+id = 3
+text = "hows ur day going"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_cfjw7"]
+script = ExtResource("3_70l8n")
+text = "ok bye"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[resource]
+script = ExtResource("2_gj3bo")
+bg = ExtResource("1_a2bdk")
+steps = Array[ExtResource("3_70l8n")]([SubResource("Resource_1dwyc"), SubResource("Resource_rtrjh"), SubResource("Resource_l8jx7"), SubResource("Resource_hf4vl"), SubResource("Resource_6417j"), SubResource("Resource_66tnx"), SubResource("Resource_2o8pc"), SubResource("Resource_x0n0f"), SubResource("Resource_cfjw7")])

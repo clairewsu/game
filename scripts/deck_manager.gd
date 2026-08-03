@@ -28,7 +28,7 @@ func addtodeck(name):
 	deck.append(cards[name])
 	
 func addtobook(name):
-	if book.size()<booklim:
+	if book.size()<booklim and cards[name] not in book:
 		book.append(cards[name])
 		
 func draw():

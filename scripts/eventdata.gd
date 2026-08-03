@@ -14,3 +14,15 @@ func _process(delta: float) -> void:
 
 func on_done():
 	pass
+	
+func button1():
+	pass
+	
+func button2():
+	pass
+	
+func button3():
+	pass
+	
+func button4():
+	pass

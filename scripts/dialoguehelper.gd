@@ -1,5 +1,7 @@
 extends Resource
 class_name encounterhelper
+@export var id:int
+@export var buttons:Array[String]
 @export var speaker:String
 @export var position:int
 @export var texture:Texture

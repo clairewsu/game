@@ -66,3 +66,44 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "ur mom"
 horizontal_alignment = 1
+
+[node name="Button1" type="Button" parent="." unique_id=548340153]
+visible = false
+offset_left = 44.0
+offset_top = 495.0
+offset_right = 560.0
+offset_bottom = 537.0
+theme_override_font_sizes/font_size = 24
+text = "2iuwhwed"
+
+[node name="Button2" type="Button" parent="." unique_id=1492258741]
+visible = false
+offset_left = 589.0
+offset_top = 496.0
+offset_right = 1103.0
+offset_bottom = 538.0
+theme_override_font_sizes/font_size = 24
+text = "2iuwhwed"
+
+[node name="Button3" type="Button" parent="." unique_id=1107020251]
+visible = false
+offset_left = 44.0
+offset_top = 556.0
+offset_right = 560.0
+offset_bottom = 598.0
+theme_override_font_sizes/font_size = 24
+text = "2iuwhwed"
+
+[node name="Button4" type="Button" parent="." unique_id=1721204850]
+visible = false
+offset_left = 587.0
+offset_top = 556.0
+offset_right = 1103.0
+offset_bottom = 598.0
+theme_override_font_sizes/font_size = 24
+text = "2iuwhwed"
+
+[connection signal="pressed" from="Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]
