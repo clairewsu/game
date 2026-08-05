@@ -16,6 +16,7 @@ var cards={}
 var popping_up=false
 var tempmoneys=Global.moneys
 var visible=true
+var node=1
 signal hiderecipes
 signal eventchosen
 
@@ -32,6 +33,12 @@ func _process(delta: float) -> void:
 	if Global.moneys!=tempmoneys and not popping_up:
 		tempmoneys=Global.moneys
 		money_changed()
+	if node==6:
+		$ui/event.visible=false
+		$ui/open.visible=true
+	else:
+		$ui/event.visible=true
+		$ui/open.visible=false
 	
 func _on_open():
 	var open=open_scene.instantiate()
@@ -177,6 +184,10 @@ func update_moneys(amt):
 	
 func _on_close():
 	visible=true
+	if node==6:
+		node=1
+	else:
+		node+=1
 	$ui.show()
 	$ui.show_inv()
 	$moneycount.show()
