@@ -6,6 +6,7 @@ var shop_potion_scene=preload("res://scenes/shop_potion.tscn")
 var shop_recipe_scene=preload("res://scenes/shop_recipe.tscn")
 var encounter_scene=preload("res://scenes/encounter.tscn")
 var decor_scene=preload("res://scenes/decor.tscn")
+var event_scene=preload("res://scenes/event.tscn")
 @export var object_scene:PackedScene
 @export var menu_scene:PackedScene
 var recipeslots=[Vector2(300,190),Vector2(460,190),Vector2(300,390),Vector2(460,390),Vector2(640,190),Vector2(790,190),Vector2(640,390),Vector2(790,390)]
@@ -16,15 +17,12 @@ var popping_up=false
 var tempmoneys=Global.moneys
 var visible=true
 signal hiderecipes
+signal eventchosen
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$ui/open.pressed.connect(_on_open)
-	$ui/gather.pressed.connect(_on_gather)
-	$ui/ingredientshop.pressed.connect(_on_ingredientshop)
-	$ui/potionshop.pressed.connect(_on_potionshop)
-	$ui/recipeshop.pressed.connect(_on_recipeshop)
-	$ui/encounter.pressed.connect(_on_encounter)
+	$ui/event.pressed.connect(_on_event)
 	$moneycount/Label.text=str(Global.default_moneys)
 	$recipebook.hide()
 	cards=DeckManager.cards
@@ -186,3 +184,25 @@ func _on_close():
 
 func _on_timer_timeout() -> void:
 	update_moneys_popup()
+	
+func _on_event():
+	var options=["gather","encounter","potionshop","ingredientshop","recipeshop"]
+	for i in range(3):
+		var event=event_scene.instantiate()
+		event.position=Vector2(300*i,45)
+		var option=options.pick_random()
+		event.get_node("Button").text=option
+		event.get_node("Button").pressed.connect(eventchosen.emit)
+		eventchosen.connect(event.queue_free)
+		match option:
+			"gather":
+				event.get_node("Button").pressed.connect(_on_gather)
+			"encounter":
+				event.get_node("Button").pressed.connect(_on_encounter)
+			"potionshop":
+				event.get_node("Button").pressed.connect(_on_potionshop)	
+			"ingredientshop":
+				event.get_node("Button").pressed.connect(_on_ingredientshop)
+			"recipeshop":
+				event.get_node("Button").pressed.connect(_on_recipeshop)
+		add_child(event)
