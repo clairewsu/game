@@ -230,7 +230,6 @@ func _on_event():
 		add_child(event)
 		
 func endscreen():
-	print("work")
-	$ui/endscreen.show()
-	$ui/endscreen/text.text="the end\nyou reached level "+str(Global.level)
-	$ui/endscreen/exit.pressed.connect(self.queue_free)
+	$endscreen.show()
+	$endscreen/text.text="the end\nyou reached level "+str(Global.level)
+	$endscreen/exit.pressed.connect(self.queue_free)
