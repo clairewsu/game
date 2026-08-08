@@ -77,14 +77,19 @@ func _on_end():
 	await get_tree().create_timer(.8).timeout
 	await countmult(roundmult)
 	await counttotal(total)
-	Global.moneys+=total
+	Global.moneys+=total-Global.quota
 	if total>0:
 		Global.spawn_money(total,Vector2(730,350),self)
-	$endbutton.show()
+	if Global.moneys<0:
+		$losebutton.show()
+	else:
+		$endbutton.show()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$deckcounter.text=str(DeckManager.deck.size())
+	$quota.text="quota: "+str(Global.quota)
+	$currentscore.text="earnings: "+str(get_parent().score)
 	
 func countmult(tovalue):
 	var start=1
@@ -110,6 +115,7 @@ func counttotal(tovalue):
 		await tween.finished
 	else:
 		updatetotal(0)
+	$scorecounter.text="base score: %d\npenalty: %d\nround bonus: x%.2f\ntotal:%d\nquota:%d"% [base,penalty,roundmult,int(round(tovalue)),Global.quota]
 
 func updatetotal(totalvalue:float):
 	$scorecounter.text="base score: %d\npenalty: %d\nround bonus: x%.2f\ntotal:%d"% [base,penalty,roundmult,int(round(totalvalue))]
@@ -144,3 +150,7 @@ func _on_pausebutton_pressed() -> void:
 	if not pause:
 		$pausebutton.texture_normal=opensign
 		get_tree().paused=false
+
+
+func _on_losebutton_pressed() -> void:
+	get_parent().get_parent().queue_free()

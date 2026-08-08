@@ -16,6 +16,8 @@ func _on_recipebook_pressed() -> void:
 	get_parent().show_menu()
 	
 func show_inv():
+	if not is_inside_tree():
+		return
 	for thing in get_tree().get_nodes_in_group("labels"):
 		thing.queue_free()
 	var x=0

@@ -129,7 +129,30 @@ texture_normal = ExtResource("5_adh6k")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="quota" type="Label" parent="." unique_id=1963619229]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 24
+text = "quota: 10000"
+
+[node name="currentscore" type="Label" parent="." unique_id=494947870]
+offset_left = 177.0
+offset_right = 321.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 24
+text = "score: 10000"
+
+[node name="losebutton" type="Button" parent="." unique_id=1729776475]
+visible = false
+offset_left = 682.0
+offset_top = 516.0
+offset_right = 816.0
+offset_bottom = 558.0
+theme_override_font_sizes/font_size = 24
+text = "you lost lol"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="startbutton" to="." method="_on_startbutton_pressed"]
 [connection signal="pressed" from="endbutton" to="." method="_on_endbutton_pressed"]
 [connection signal="pressed" from="pausebutton" to="." method="_on_pausebutton_pressed"]
+[connection signal="pressed" from="losebutton" to="." method="_on_losebutton_pressed"]

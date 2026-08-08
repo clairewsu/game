@@ -1,4 +1,5 @@
 extends Area2D
+class_name dice
 var drag=false
 var defaultpos=Vector2(100,100)
 var amt:int

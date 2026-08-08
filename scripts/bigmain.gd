@@ -163,17 +163,19 @@ func money_changed():
 	$moneycount/Timer.start()
 	
 func update_moneys_popup():
+	if Global.moneys<0:
+		return
 	popping_up=true
 	var tween=create_tween()
 	$moneycount.show()
 	$moneycount.position+=Vector2(0,-100)
-	tween.tween_property($moneycount,"position",$moneycount.position+Vector2(0,100),1)
+	tween.tween_property($moneycount,"position",$moneycount.position+Vector2(0,100),.5)
 	tween.tween_method(update_moneys,int($moneycount/Label.text),Global.moneys,1)
 	await tween.finished
 	if not visible:
 		tween=create_tween()
 		tween.tween_interval(.3)
-		tween.tween_property($moneycount,"position",$moneycount.position+Vector2(0,-100),1)
+		tween.tween_property($moneycount,"position",$moneycount.position+Vector2(0,-100),.5)
 		await tween.finished
 		$moneycount.hide()
 	$moneycount.position=Vector2(0,0)

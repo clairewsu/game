@@ -47,16 +47,20 @@ func _unhandled_input(event: InputEvent) -> void:
 	var x=0
 	if event.is_action_released("move"):
 		for area in $area1.get_overlapping_areas():
-			area.assigned=1
-			x+=1
+			if area is dice:
+				area.assigned=1
+				x+=1
 		for area in $area2.get_overlapping_areas():
-			area.assigned=2
-			x+=1
+			if area is dice:
+				area.assigned=2
+				x+=1
 		for area in $area3.get_overlapping_areas():
-			area.assigned=3
-			x+=1
+			if area is dice:
+				area.assigned=3
+				x+=1
 		for area in $dice_home.get_overlapping_areas():
-			area.assigned=0
+			if area is dice:
+				area.assigned=0
 		occupied=maxoccupied-x
 	if event.is_action_released("enter"):
 		if can_roll:

@@ -5,6 +5,8 @@ var ingredients={"leaf":5,"flower":5,"fish":5,"feather":5,
 var decors=[]
 var default_moneys=10000
 var moneys=default_moneys
+var level=1
+var quota:int
 var money_scene=preload("res://scenes/money_popup.tscn")
 
 # Called when the node enters the scene tree for the first time.
@@ -14,7 +16,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	quota=level*500
 
 func spawn_money(amt,position,parent):
 	var x=clampi(amt/100,3,20)

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://coeroqjb8wdpc"]
+
+[ext_resource type="Script" uid="uid://ba7hat777uqwd" path="res://home.gd" id="1_t4cf2"]
+
+[node name="Node" type="Node" unique_id=573697883]
+script = ExtResource("1_t4cf2")
+
+[node name="start" type="Button" parent="." unique_id=1880446522]
+offset_left = 525.0
+offset_top = 395.0
+offset_right = 615.0
+offset_bottom = 453.0
+theme_override_font_sizes/font_size = 36
+text = "start"
+
+[node name="Label" type="Label" parent="." unique_id=1184315712]
+offset_left = 359.0
+offset_top = 198.0
+offset_right = 783.0
+offset_bottom = 253.0
+theme_override_font_sizes/font_size = 40
+text = "potion shop game yay"
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
