@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dcstsr0glp3nq" path="res://art/recipebook_closed.PNG" id="2_payeh"]
 
 [node name="mainui" type="CanvasLayer" unique_id=2083767084]
-layer = 0
+layer = 2
 script = ExtResource("1_hdcb6")
 label_scene = ExtResource("2_k2m04")
 
@@ -56,5 +56,39 @@ offset_top = 17.0
 offset_right = 482.0
 offset_bottom = 40.0
 text = "node 1 of 6"
+
+[node name="endscreen" type="Panel" parent="." unique_id=1956586767]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -187.0
+offset_right = 331.0
+offset_bottom = 201.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="text" type="Label" parent="endscreen" unique_id=1506125624]
+layout_mode = 0
+offset_top = 54.0
+offset_right = 652.0
+offset_bottom = 141.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
+text = "the end
+you reached level 1"
+horizontal_alignment = 1
+
+[node name="exit" type="Button" parent="endscreen" unique_id=1552276772]
+layout_mode = 0
+offset_left = 253.0
+offset_top = 258.0
+offset_right = 402.0
+offset_bottom = 337.0
+text = "exit"
 
 [connection signal="pressed" from="recipebookbutton" to="." method="_on_recipebook_pressed"]

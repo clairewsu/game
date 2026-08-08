@@ -153,4 +153,4 @@ func _on_pausebutton_pressed() -> void:
 
 
 func _on_losebutton_pressed() -> void:
-	get_parent().get_parent().queue_free()
+	get_parent().get_parent().endscreen()

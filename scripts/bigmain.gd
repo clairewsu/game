@@ -33,14 +33,9 @@ func _process(delta: float) -> void:
 	if Global.moneys!=tempmoneys and not popping_up:
 		tempmoneys=Global.moneys
 		money_changed()
-	if node==6:
-		$ui/event.visible=false
-		$ui/open.visible=true
-	else:
-		$ui/event.visible=true
-		$ui/open.visible=false
 	
 func _on_open():
+	hide_menu()
 	var open=open_scene.instantiate()
 	add_child(open)
 	$ui.hide()
@@ -49,6 +44,7 @@ func _on_open():
 	open.tree_exited.connect(_on_close)
 	
 func _on_gather():
+	hide_menu()
 	var gather=gather_scene.instantiate()
 	add_child(gather)
 	$ui.hide()
@@ -57,6 +53,7 @@ func _on_gather():
 	gather.tree_exited.connect(_on_close)
 	
 func _on_ingredientshop():
+	hide_menu()
 	var ingredientshop=shop_ingredient_scene.instantiate()
 	add_child(ingredientshop)
 	$ui.hide()
@@ -65,6 +62,7 @@ func _on_ingredientshop():
 	ingredientshop.tree_exited.connect(_on_close)
 
 func _on_potionshop():
+	hide_menu()
 	var potionshop=shop_potion_scene.instantiate()
 	add_child(potionshop)
 	$ui.hide()
@@ -73,6 +71,7 @@ func _on_potionshop():
 	potionshop.tree_exited.connect(_on_close)
 	
 func _on_recipeshop():
+	hide_menu()
 	var recipeshop=shop_recipe_scene.instantiate()
 	add_child(recipeshop)
 	$ui.hide()
@@ -81,6 +80,7 @@ func _on_recipeshop():
 	recipeshop.tree_exited.connect(_on_close)
 	
 func _on_encounter():
+	hide_menu()
 	var encounter=encounter_scene.instantiate()
 	var encounters=[]
 	for file in DirAccess.get_files_at("res://resources/encounters/"):
@@ -96,7 +96,6 @@ func _on_encounter():
 func show_menu():
 	var x=1
 	$recipebook.show()
-	$ui/open.hide()
 	for name in DeckManager.book:
 		var object=object_scene.instantiate()
 		var menu=menu_scene.instantiate()
@@ -123,7 +122,13 @@ func show_menu():
 		hiderecipes.connect(object.queue_free)
 		hiderecipes.connect(menu.queue_free)
 	x=1
-		
+	
+func hide_menu():
+	$recipebook.hide()
+	hiderecipes.emit()
+	$ui/recipebookbutton.show()
+	slot_occupied=[false,false,false,false,false,false,false,false]
+			
 func addtodeck(object,name,amount):
 	for i in range(amount):
 		DeckManager.addtodeck(name)
@@ -139,12 +144,8 @@ func get_free_slot():
 	return -1
 	
 func _input(event):
-	if event.is_action("move") and not $recipebook.get_global_rect().has_point(event.position):
-		$recipebook.hide()
-		hiderecipes.emit()
-		$ui/recipebookbutton.show()
-		$ui/open.show()
-		slot_occupied=[false,false,false,false,false,false,false,false]
+	if event.is_action("move") and $recipebook.visible==true and not $recipebook.get_global_rect().has_point(event.position):
+		hide_menu()
 
 func tempadd(tempobj):
 	tempingredients.clear()
@@ -188,8 +189,15 @@ func _on_close():
 	visible=true
 	if node==6:
 		node=1
+		Global.level+=1
 	else:
 		node+=1
+	if node==6:
+		$ui/event.hide()
+		$ui/open.show()
+	else:
+		$ui/event.show()
+		$ui/open.hide()
 	$ui.show()
 	$ui.show_inv()
 	$moneycount.show()
@@ -199,7 +207,8 @@ func _on_timer_timeout() -> void:
 	update_moneys_popup()
 	
 func _on_event():
-	var options=["gather","encounter","potionshop","ingredientshop","recipeshop"]
+	$ui/event.hide()
+	var options=["gather","gather","gather","encounter","encounter","encounter","potionshop","ingredientshop","recipeshop"]
 	for i in range(3):
 		var event=event_scene.instantiate()
 		event.position=Vector2(300*i,45)
@@ -219,3 +228,9 @@ func _on_event():
 			"recipeshop":
 				event.get_node("Button").pressed.connect(_on_recipeshop)
 		add_child(event)
+		
+func endscreen():
+	print("work")
+	$ui/endscreen.show()
+	$ui/endscreen/text.text="the end\nyou reached level "+str(Global.level)
+	$ui/endscreen/exit.pressed.connect(self.queue_free)

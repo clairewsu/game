@@ -67,10 +67,11 @@ one_shot = true
 [node name="ingredientcost" type="RichTextLabel" parent="." unique_id=7818490]
 z_index = 1000
 layout_mode = 0
-offset_left = 16.0
+offset_left = -26.0
 offset_top = 9.0
-offset_right = 243.0
+offset_right = 267.0
 offset_bottom = 70.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 scroll_active = false

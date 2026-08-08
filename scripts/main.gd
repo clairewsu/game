@@ -91,6 +91,7 @@ func spawn_object():
 	object.position=slots[slot]
 	object.defaultpos=object.position
 	add_child(object)
+	end.connect(func(): if not object.sold: DeckManager.addtodeck(object.data.name))
 	end.connect(object.queue_free)
 	object.select.connect(_on_select)
 	select1.connect(object._on_select)
@@ -98,7 +99,7 @@ func spawn_object():
 	
 func respawn_guys():
 	respawning_guys=true
-	if DeckManager.deck.size()==0:
+	if DeckManager.deck.size()==0 and not slot_occupied.has(true):
 		end.emit()
 		dismiss_end.emit()
 		return
