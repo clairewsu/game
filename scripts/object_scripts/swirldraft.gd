@@ -5,11 +5,9 @@ extends carddata
 func _ready() -> void:
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 	
 func on_sold(main):
 	await main.get_tree().create_timer(.1).timeout
 	main.spawn_object()
+	if hq:
+		main.spawn_object()

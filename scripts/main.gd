@@ -91,8 +91,7 @@ func spawn_object():
 	object.position=slots[slot]
 	object.defaultpos=object.position
 	add_child(object)
-	end.connect(func(): if not object.sold: DeckManager.addtodeck(object.data.name))
-	end.connect(object.queue_free)
+	end.connect(object.on_end)
 	object.select.connect(_on_select)
 	select1.connect(object._on_select)
 	sellto.connect(object._guy_clicked)

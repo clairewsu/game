@@ -26,6 +26,7 @@ func _process(delta: float) -> void:
 
 func addtodeck(name):
 	deck.append(cards[name])
+	deck[deck.size()-1].hq=false
 	
 func addtobook(name):
 	if book.size()<booklim and cards[name] not in book:

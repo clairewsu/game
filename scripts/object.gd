@@ -35,15 +35,20 @@ signal select(slot)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	scale*=.4
-	$liquid.material = $liquid.material.duplicate()
-	$bottle.texture=data.texture
-	$liquid.texture=data.liquidtexture
-	$liquid.material.set_shader_parameter("mask_tex",data.masktexture)
-	$liquid.material.set_shader_parameter("fill_level",data.fill)
+	$CanvasGroup/liquid.material = $CanvasGroup/liquid.material.duplicate()
+	$CanvasGroup/bottle.texture=data.texture
+	$CanvasGroup/liquid.texture=data.liquidtexture
+	$CanvasGroup/liquid.material.set_shader_parameter("mask_tex",data.masktexture)
+	$CanvasGroup/liquid.material.set_shader_parameter("fill_level",data.fill)
+	$CanvasGroup.material=$CanvasGroup.material.duplicate()
+	if not data.hq:
+		$CanvasGroup.material.set_shader_parameter("strength",0)
 	$CollisionPolygon2D.polygon = data.collision
 	$objdesc.hide()
 	color_id=data.color
 	basevalue=data.basevalue
+	if data.hq:
+		basevalue*=3
 	input_pickable=true
 	position=defaultpos
 	screen_size=get_viewport_rect().size
@@ -65,6 +70,8 @@ func _process(delta):
 		selected=false
 		if Global.selected==self:
 			Global.selected=null
+	if data.hq:
+		$CanvasGroup.material.set_shader_parameter("strength",.14)
 	
 func _physics_process(delta):
 	if not drag and not sold and not selected:
@@ -94,11 +101,11 @@ func _physics_process(delta):
 		amp=0.0
 	
 	wave_amp = lerp(wave_amp, amp, 6.0 * delta)
-	$liquid.material.set_shader_parameter("liquid_offset", liquidoffset * .5)
+	$CanvasGroup/liquid.material.set_shader_parameter("liquid_offset", liquidoffset * .5)
 	var target_slosh = bottle_velocity.x * 0.003
 	slosh = lerp(slosh, target_slosh, 5.0 * delta)
-	$liquid.material.set_shader_parameter("slosh", slosh)
-	$liquid.material.set_shader_parameter("wave_amp",wave_amp)
+	$CanvasGroup/liquid.material.set_shader_parameter("slosh", slosh)
+	$CanvasGroup/liquid.material.set_shader_parameter("wave_amp",wave_amp)
 	
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -172,7 +179,7 @@ func _exit_tree() -> void:
 func splash():
 	for i in range(randi_range(5,8)):
 		var particle=particle_scene.instantiate()
-		particle.position=$bottle.position+Vector2(0,100)
+		particle.position=$CanvasGroup/bottle.position+Vector2(0,100)
 		particle.liquidtexture=data.liquidtexture
 		particle.z_index=0
 		add_child(particle)
@@ -215,3 +222,7 @@ func _on_select(slot1,scrolling):
 func _guy_clicked(guy0):
 	if selected:
 		sell(guy0)
+		
+func on_end():
+	if not sold: 
+		DeckManager.addtodeck(data.name)

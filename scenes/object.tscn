@@ -5,7 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://bmm0x5hmfprjw" path="res://art/wineglass_bottle.PNG" id="3_46pka"]
 [ext_resource type="Texture2D" uid="uid://3n1cw0xc3pwe" path="res://art/liquids/basicgold_liquid.PNG" id="3_a0y2b"]
 [ext_resource type="Shader" uid="uid://43uyde5kop04" path="res://object.gdshader" id="3_a03g0"]
+[ext_resource type="Shader" uid="uid://bpclhl87l7vfs" path="res://rainboweffect.gdshader" id="3_f66fi"]
 [ext_resource type="Texture2D" uid="uid://c5hsnlr60x28u" path="res://art/basicbottle_mask.PNG" id="4_46pka"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jhjyk"]
+shader = ExtResource("3_f66fi")
+shader_parameter/strength = 0.14000000665
+shader_parameter/speed = 0.1
+shader_parameter/angle = 30.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f66fi"]
 shader = ExtResource("3_a03g0")
@@ -23,18 +30,8 @@ script = ExtResource("1_cbfvs")
 particle_scene = ExtResource("2_46pka")
 defaultpos = Vector2(550, 400)
 
-[node name="bottle" type="Sprite2D" parent="." unique_id=1978269397]
-position = Vector2(6.0000114, -4.5)
-texture = ExtResource("3_46pka")
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=935366066]
 polygon = PackedVector2Array(-86, 287, -140, 343, 66, 347, 0, 297, 23, 19, 131, -60, 183, -369, -245, -371, -195, -74, -71, 33)
-
-[node name="liquid" type="Sprite2D" parent="." unique_id=1813720894]
-z_index = -1
-material = SubResource("ShaderMaterial_f66fi")
-position = Vector2(7, -3)
-texture = ExtResource("3_a0y2b")
 
 [node name="sellarea" type="Area2D" parent="." unique_id=898207889]
 collision_mask = 2
@@ -63,5 +60,18 @@ text = "efheifejfjoieifeoirfeorf"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
+
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=917328236]
+material = SubResource("ShaderMaterial_jhjyk")
+
+[node name="bottle" type="Sprite2D" parent="CanvasGroup" unique_id=1978269397]
+position = Vector2(6.0000114, -4.5)
+texture = ExtResource("3_46pka")
+
+[node name="liquid" type="Sprite2D" parent="CanvasGroup" unique_id=1813720894]
+z_index = -1
+material = SubResource("ShaderMaterial_f66fi")
+position = Vector2(7, -3)
+texture = ExtResource("3_a0y2b")
 
 [connection signal="hit" from="." to="." method="_on_hit"]

@@ -11,8 +11,17 @@ class_name carddata
 @export var liquidtexture:Texture2D
 @export var masktexture:Texture2D
 @export var fill=0.6
+@export var amt:int:
+	set(value):
+		amt=value
+		if amt>=10:
+			hq_chance+=.1
+			hq=true
 @export var collision:PackedVector2Array
+var hq_chance=0
+var hq:bool
 
+		
 func on_sold(main):
 	pass
 	

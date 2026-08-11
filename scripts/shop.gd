@@ -23,6 +23,7 @@ func _ready() -> void:
 			object.menu_ver=true
 			object.sold=true
 			object.data=load("res://resources/"+stuff[x])
+			object.data.hq=false
 			add_child(object)
 			price.get_node("price").text=str(object.data.basevalue*multiplier)
 			price.get_node("TextureRect").texture=null

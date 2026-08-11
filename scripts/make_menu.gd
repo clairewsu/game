@@ -48,6 +48,9 @@ func _unhandled_input(event):
 
 func _on_makebutton_pressed() -> void:
 	add.emit(object,objname,amount)
+	for i in DeckManager.book:
+		if i.name==objname:
+			i.amt+=amount
 	$Label.text="0"
 
 func setamt(amt:int):

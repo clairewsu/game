@@ -116,7 +116,7 @@ func show_menu():
 		object._show_desc(object.data.name,object.data.color,object.data.basevalue,object.data.desc,object.position)
 		menu.position=object.position+Vector2(-50,-100)
 		menu.objname=object.data.name
-		menu.get_node("TextureRect").z_index=object.get_node("liquid").z_index-1
+		menu.get_node("TextureRect").z_index=object.get_node("CanvasGroup/liquid").z_index-1
 		menu.add.connect(addtodeck)
 		x+=1
 		hiderecipes.connect(object.queue_free)
@@ -132,6 +132,12 @@ func hide_menu():
 func addtodeck(object,name,amount):
 	for i in range(amount):
 		DeckManager.addtodeck(name)
+		if randf()<=object.data.hq_chance:
+			for x in DeckManager.deck:
+				if x.name==name and x.hq==false:
+					print("u did it")
+					x.hq=true
+					break
 		for key in Global.ingredients.keys():
 			Global.ingredients[key]-=object.data.ingredient[key]
 	$ui.show_inv()

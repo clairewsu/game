@@ -1,6 +1,6 @@
 extends Node
 var selected=null
-var ingredients={"leaf":5,"flower":5,"fish":5,"feather":5,
+var ingredients={"leaf":100,"flower":5,"fish":5,"feather":5,
 "mushroom":5,"bone":5,"crystal":5,"rock":5,"clay":5}
 var decors=[]
 var default_moneys=10000
