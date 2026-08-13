@@ -135,7 +135,6 @@ func addtodeck(object,name,amount):
 		if randf()<=object.data.hq_chance:
 			for x in DeckManager.deck:
 				if x.name==name and x.hq==false:
-					print("u did it")
 					x.hq=true
 					break
 		for key in Global.ingredients.keys():

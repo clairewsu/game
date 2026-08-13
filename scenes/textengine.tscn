@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b7besswe0l7b1" path="res://scripts/textengine.gd" id="1_bujcm"]
 [ext_resource type="Texture2D" uid="uid://u2vyoq5ngsyd" path="res://art/salt_icon.PNG" id="2_c5tn5"]
-[ext_resource type="Texture2D" uid="uid://bfc84b8njlyj1" path="res://art/characters/ari.PNG" id="2_nl23s"]
+[ext_resource type="Texture2D" uid="uid://hkoqc3nu4ai4" path="res://art/character_models/ari_default.PNG" id="2_nl23s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nl23s"]
 bg_color = Color(0.93333334, 0.9411765, 0.90588236, 1)
@@ -11,8 +11,8 @@ bg_color = Color(0.93333334, 0.9411765, 0.90588236, 1)
 script = ExtResource("1_bujcm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1580214560]
-position = Vector2(260, 392)
-scale = Vector2(0.42031524, 0.4644513)
+position = Vector2(270, 278)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_nl23s")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1730123402]

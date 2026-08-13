@@ -73,10 +73,10 @@ func show_text():
 		speaker.text=current_speaker
 	if current_position==0:
 		$namecontainer.position=Vector2(50,430)
-		$Sprite2D.position=Vector2(260,390)
+		$Sprite2D.position=Vector2(260,280)
 	elif current_position==1:
 		$namecontainer.position=Vector2(850,430)
-		$Sprite2D.position=Vector2(800,390)
+		$Sprite2D.position=Vector2(800,280)
 	for i in buttons:
 		i.hide()
 	for choice in button.size():

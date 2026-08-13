@@ -22,7 +22,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	for i in deck:
+		i.amt=0
 
 func addtodeck(name):
 	deck.append(cards[name])

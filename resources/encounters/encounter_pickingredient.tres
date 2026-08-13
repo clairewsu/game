@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://kqp17i31mim4" path="res://art/badbg.PNG" id="1_a2bdk"]
 [ext_resource type="Script" uid="uid://crhq42e85s3bn" path="res://scripts/encounter_scripts/encounter_pickingredient.gd" id="2_gj3bo"]
 [ext_resource type="Script" uid="uid://dtxqdmfssbsvf" path="res://scripts/dialoguehelper.gd" id="3_70l8n"]
-[ext_resource type="Texture2D" uid="uid://bfc84b8njlyj1" path="res://art/characters/ari.PNG" id="4_56qex"]
+[ext_resource type="Texture2D" uid="uid://hkoqc3nu4ai4" path="res://art/character_models/ari_default.PNG" id="4_56qex"]
 [ext_resource type="Texture2D" uid="uid://cdh2jhmenvnva" path="res://art/ingredients/flower.PNG" id="5_56qex"]
 [ext_resource type="Texture2D" uid="uid://ckwdcuwx82x34" path="res://art/ingredients/mushroom.PNG" id="6_1dwyc"]
 [ext_resource type="Texture2D" uid="uid://dx4x5bklb6bpa" path="res://art/ingredients/feather.PNG" id="7_rtrjh"]
@@ -22,7 +22,7 @@ metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
 
 [sub_resource type="Resource" id="Resource_l8jx7"]
 script = ExtResource("3_70l8n")
-buttons = ["flowers", "mushrooms", "feathers"]
+buttons = Array[String](["flowers", "mushrooms", "feathers"])
 metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
 
 [sub_resource type="Resource" id="Resource_hf4vl"]

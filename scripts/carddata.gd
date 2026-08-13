@@ -13,10 +13,11 @@ class_name carddata
 @export var fill=0.6
 @export var amt:int:
 	set(value):
+		var oldamt=amt
 		amt=value
-		if amt>=10:
+		hq=amt>=10
+		if amt>=10 and oldamt<10:
 			hq_chance+=.1
-			hq=true
 @export var collision:PackedVector2Array
 var hq_chance=0
 var hq:bool
