@@ -74,4 +74,14 @@ material = SubResource("ShaderMaterial_f66fi")
 position = Vector2(7, -3)
 texture = ExtResource("3_a0y2b")
 
+[node name="invamt" type="Label" parent="." unique_id=1750272089]
+visible = false
+offset_left = -76.0
+offset_top = 433.0
+offset_right = 35.0
+offset_bottom = 570.0
+theme_override_font_sizes/font_size = 128
+text = "3"
+horizontal_alignment = 1
+
 [connection signal="hit" from="." to="." method="_on_hit"]

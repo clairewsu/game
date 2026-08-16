@@ -18,11 +18,11 @@ offset_bottom = 489.0
 theme_override_font_sizes/font_size = 36
 text = "open"
 
-[node name="supplycount" type="Label" parent="." unique_id=677177352]
+[node name="supplycount" type="Button" parent="." unique_id=303930772]
 offset_left = 494.0
 offset_top = 573.0
-offset_right = 623.0
-offset_bottom = 615.0
+offset_right = 631.0
+offset_bottom = 623.0
 theme_override_font_sizes/font_size = 30
 text = "supply: 0"
 
@@ -57,4 +57,25 @@ offset_right = 482.0
 offset_bottom = 40.0
 text = "node 1 of 6"
 
+[node name="supplyinv" type="Panel" parent="." unique_id=208476941]
+visible = false
+offset_left = 150.0
+offset_top = 83.0
+offset_right = 994.0
+offset_bottom = 568.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="supplyinv" unique_id=787481997]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -1.0
+offset_right = 843.0
+offset_bottom = 484.0
+horizontal_scroll_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="supplyinv/ScrollContainer" unique_id=2009097641]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+
+[connection signal="pressed" from="supplycount" to="." method="_on_supplycount_pressed"]
 [connection signal="pressed" from="recipebookbutton" to="." method="_on_recipebook_pressed"]
