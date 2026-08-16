@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://bw7pdc7xqlvvx"]
 
 [ext_resource type="Script" uid="uid://cje2hfvfrq6kx" path="res://scripts/decor.gd" id="1_ovbhi"]
-[ext_resource type="Texture2D" uid="uid://b27ujd024d6is" path="res://art/decor/plant_big.PNG" id="2_gxjgo"]
+[ext_resource type="Texture2D" uid="uid://r6o87fyofjwb" path="res://art/decor/cat_big.PNG" id="2_ovbhi"]
 
 [node name="Node2D" type="Area2D" unique_id=1603555688]
 script = ExtResource("1_ovbhi")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1472625663]
-texture = ExtResource("2_gxjgo")
+texture = ExtResource("2_ovbhi")
 
 [node name="objdesc" type="Panel" parent="." unique_id=212923993]
 offset_left = -339.0
@@ -29,7 +29,8 @@ scroll_active = false
 horizontal_alignment = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=19715719]
-polygon = PackedVector2Array(-134, -148, -231, 173, -17, 421, 220, 192, 100, -197)
+position = Vector2(-5, 5)
+polygon = PackedVector2Array(-207, -424, -283, 506, -17, 421, 279, 474, 241, -404)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

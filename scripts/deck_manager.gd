@@ -32,6 +32,8 @@ func addtodeck(name):
 func addtobook(name):
 	if book.size()<booklim and cards[name] not in book:
 		book.append(cards[name])
+		if "cat" in Global.decors:
+			book[book.size()-1].hq_chance+=.2
 		
 func draw():
 	if deck.is_empty():

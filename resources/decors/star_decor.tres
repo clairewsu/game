@@ -1,6 +1,6 @@
 [gd_resource type="Resource" format=3 uid="uid://dndjew6i5oudj"]
 
-[ext_resource type="Script" uid="uid://dasqwhs3tir4d" path="res://scripts/star_decor.gd" id="1_jfhc0"]
+[ext_resource type="Script" uid="uid://dasqwhs3tir4d" path="res://scripts/decors/star_decor.gd" id="1_jfhc0"]
 [ext_resource type="Texture2D" uid="uid://cw7q1h6nag55o" path="res://art/decor/star_big.PNG" id="2_bhr41"]
 
 [resource]

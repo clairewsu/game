@@ -1,6 +1,6 @@
 [gd_resource type="Resource" format=3 uid="uid://cc55x0egkdi12"]
 
-[ext_resource type="Script" uid="uid://b7w05jdnbmc4m" path="res://scripts/plant_decor.gd" id="1_0aa64"]
+[ext_resource type="Script" uid="uid://b7w05jdnbmc4m" path="res://scripts/decors/plant_decor.gd" id="1_0aa64"]
 [ext_resource type="Texture2D" uid="uid://b27ujd024d6is" path="res://art/decor/plant_big.PNG" id="2_jl3hk"]
 
 [resource]
