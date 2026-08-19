@@ -14,6 +14,7 @@ var selectedslot:int
 var deck:Array[PackedScene]=[]
 var slots=[Vector2(60,550),Vector2(185,550),Vector2(310,550),Vector2(435,550),Vector2(558,550),Vector2(681,550),Vector2(804,550),Vector2(929,550)]
 var slot_occupied=[false,false,false,false,false,false,false,false]
+var cleansing=false
 signal end
 signal dismiss_end
 signal select1(slot,scrolling:bool)
@@ -102,6 +103,7 @@ func respawn_guys():
 		end.emit()
 		dismiss_end.emit()
 		return
+	cleansing=false
 	for i in range(10):
 		await get_tree().process_frame
 	spawn_guy()
@@ -135,7 +137,8 @@ func _on_dismiss(amount:int,bonusamt:int,pos:Vector2):
 	dismiss_end.emit()
 	
 func _on_loss(amount:int,pos:Vector2):
-	penalty+=amount
+	if not cleansing:
+		penalty+=amount
 	popup(pos,amount,"-",false)
 	
 func popup(pos:Vector2,points:int,sign,bonus:bool):

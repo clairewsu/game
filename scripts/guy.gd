@@ -3,7 +3,7 @@ class_name guy
 @export var color_id=0
 var colorlist=[]
 var slots=[Vector2(0,180),Vector2(-50,180),Vector2(50,180),Vector2(-25,200),Vector2(25,200)]
-var slot_occupied=[false,false,false,false,false]
+var slot_occupied=[-1,-1,-1,-1,-1]
 var textures=[]
 var this_score=0
 var bonus_score=0
@@ -12,6 +12,7 @@ var guys=[]
 var idx:int
 var lastselected:String
 signal penalty
+signal leave
 signal dismiss
 signal sellto(guy0)
 
@@ -73,19 +74,20 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 func _input_event(Viewport,InputEvent,int):
 	if InputEvent.is_action_pressed("move"):
 		if Global.selected==null:
-			if true not in slot_occupied:
+			if slot_occupied.all(func(i):i==-1):
 				penalty.emit(80,global_position)
 			else:
+				leave.emit()
 				dismiss.emit(this_score*multiplier,bonus_score,global_position)
 			queue_free()
 		else:
 			sellto.emit(self)
 	
 
-func get_free_slot():
+func get_free_slot(color):
 	for i in range(slot_occupied.size()):
-		if not slot_occupied[i]:
-			slot_occupied[i] = true
+		if slot_occupied[i]==-1:
+			slot_occupied[i] = color
 			return i
 	return -1
 	
@@ -99,7 +101,7 @@ func _on_score(amount:int,bonus):
 func _is_pressed(num):
 	if num==idx:
 		if Global.selected==null:
-			if true not in slot_occupied:
+			if slot_occupied.all(func(i):i==-1):
 				penalty.emit(80,global_position)
 			else:
 				dismiss.emit(this_score*multiplier,bonus_score,global_position)

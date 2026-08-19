@@ -1,0 +1,29 @@
+[gd_resource type="Resource" format=3 uid="uid://f3ma5lq1ly7"]
+
+[ext_resource type="Texture2D" uid="uid://vtdkekfrrkpt" path="res://art/liquids/bluecleansing_liquid.PNG" id="1_m3wq5"]
+[ext_resource type="Script" uid="uid://mxyy2go3j5nu" path="res://scripts/object_scripts/bluecleansing.gd" id="1_ynxmq"]
+[ext_resource type="Texture2D" uid="uid://dsv7gj3lev15y" path="res://art/shortbottle_mask.PNG" id="2_3a11k"]
+[ext_resource type="Texture2D" uid="uid://qv7jd5wu7dod" path="res://art/shortbottle_blue.PNG" id="4_hmdv7"]
+
+[resource]
+script = ExtResource("1_ynxmq")
+name = "Cleansing Potion"
+desc = "There will be no penalty for turning away customers this round."
+color = 2
+basevalue = 300
+ingredient = {
+"bone": 0,
+"clay": 0,
+"crystal": 0,
+"feather": 0,
+"fish": 3,
+"flower": 0,
+"leaf": 1,
+"mushroom": 0,
+"rock": 0
+}
+texture = ExtResource("4_hmdv7")
+liquidtexture = ExtResource("1_m3wq5")
+masktexture = ExtResource("2_3a11k")
+fill = 0.55
+collision = PackedVector2Array(-146, 255, -60, 262, 24, 262, 114, 261, 235, 97, 88, 1, 54, -85, -90, -90, -137, 1, -274, 89)

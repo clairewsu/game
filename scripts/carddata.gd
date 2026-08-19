@@ -26,5 +26,5 @@ var hq:bool
 func on_sold(main):
 	pass
 	
-func on_dismiss():
+func on_dismiss(guy1):
 	pass

@@ -149,7 +149,7 @@ func sell(guy):
 	if Global.selected==self:
 		Global.selected=null
 	sold=true
-	var guyslot=guy.get_free_slot()
+	var guyslot=guy.get_free_slot(data.color)
 	if guyslot == -1:
 		selected=true
 		Global.selected=self
@@ -168,9 +168,8 @@ func sell(guy):
 	if exists != null and slot != -1:
 		exists.slot_occupied[slot] = false
 	data.on_sold(get_parent())
-	if data.on_dismiss() !=null:
-		guy.multiplier*=data.on_dismiss()
-	guy.tree_exited.connect(queue_free)
+	guy.leave.connect(data.on_dismiss.bind(guy))
+	guy.tree_exited.connect(self.queue_free)
 	
 
 func _exit_tree() -> void:

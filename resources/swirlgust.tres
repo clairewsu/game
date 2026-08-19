@@ -1,0 +1,28 @@
+[gd_resource type="Resource" format=3 uid="uid://dhhs3j5xw14y0"]
+
+[ext_resource type="Texture2D" uid="uid://c03pk5rknlq8y" path="res://art/liquids/swirlgust_liquid.PNG" id="1_i0hl8"]
+[ext_resource type="Texture2D" uid="uid://c5hsnlr60x28u" path="res://art/basicbottle_mask.PNG" id="2_m8v2u"]
+[ext_resource type="Script" uid="uid://dmacx1y2dtu5c" path="res://scripts/object_scripts/swirlgust.gd" id="3_04k7h"]
+[ext_resource type="Texture2D" uid="uid://f3yrdan5ucnd" path="res://art/basicswirl_bottle.PNG" id="4_h02hl"]
+
+[resource]
+script = ExtResource("3_04k7h")
+name = "Gust Potion"
+desc = "If you only served this customer [img]\"res://art/swirl.png\"[/img] potions, they will pay 50% more"
+color = 3
+basevalue = 200
+ingredient = {
+"bone": 0,
+"clay": 0,
+"crystal": 0,
+"feather": 0,
+"fish": 0,
+"flower": 3,
+"leaf": 0,
+"mushroom": 0,
+"rock": 0
+}
+texture = ExtResource("4_h02hl")
+liquidtexture = ExtResource("1_i0hl8")
+masktexture = ExtResource("2_m8v2u")
+collision = PackedVector2Array(-218, 275, -114, 347, 63, 352, 190, 258, 187, 109, 73, 0, 66, -389, -112, -397, -117, -1, -232, 118)
