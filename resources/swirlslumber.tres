@@ -1,0 +1,29 @@
+[gd_resource type="Resource" format=3 uid="uid://bvku6phdd8bng"]
+
+[ext_resource type="Texture2D" uid="uid://dm5v8bhefa5o3" path="res://art/liquids/swirlslumber_liquid.PNG" id="1_q1g5h"]
+[ext_resource type="Texture2D" uid="uid://dkborifn3w71h" path="res://art/pitcher_mask.PNG" id="2_g0rub"]
+[ext_resource type="Script" uid="uid://c1ustvgjx361t" path="res://scripts/object_scripts/swirlslumber.gd" id="3_pyk7m"]
+[ext_resource type="Texture2D" uid="uid://b2rnguoj45y6e" path="res://art/pitcher_swirl.PNG" id="4_52wdw"]
+
+[resource]
+script = ExtResource("3_pyk7m")
+name = "Draught of Slumber"
+desc = "For every potion you sell while this is in your hand, increase the price by 100"
+color = 3
+basevalue = 200
+ingredient = {
+"bone": 0,
+"clay": 0,
+"crystal": 2,
+"feather": 0,
+"fish": 0,
+"flower": 0,
+"leaf": 3,
+"mushroom": 0,
+"rock": 0
+}
+texture = ExtResource("4_52wdw")
+liquidtexture = ExtResource("1_q1g5h")
+masktexture = ExtResource("2_g0rub")
+fill = 0.4
+collision = PackedVector2Array(-401, -40, -263, 176, -173, 305, 64, 315, 166, 89, 114, -95, 149, -196, -177, -223, -215, -122, -290, -164)

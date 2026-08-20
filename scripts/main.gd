@@ -18,6 +18,7 @@ var cleansing=false
 signal end
 signal dismiss_end
 signal select1(slot,scrolling:bool)
+signal sold_signal
 signal sellto(guy0)
 signal guypressed(num)
 signal roundchange(round)
@@ -83,6 +84,7 @@ func spawn_object():
 		return
 	var card=DeckManager.draw()
 	if card==null:
+		slot_occupied[slot]=false
 		return
 	var object=object_scene.instantiate()
 	object.data=card
@@ -96,6 +98,7 @@ func spawn_object():
 	object.select.connect(_on_select)
 	select1.connect(object._on_select)
 	sellto.connect(object._guy_clicked)
+	sold_signal.connect(object.data.on_other_sold)
 	
 func respawn_guys():
 	respawning_guys=true

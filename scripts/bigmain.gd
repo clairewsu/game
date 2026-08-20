@@ -136,6 +136,7 @@ func addtodeck(object,name,amount):
 			for x in DeckManager.deck:
 				if x.name==name and x.hq==false:
 					x.hq=true
+					x.basevalue*=3
 					break
 		for key in Global.ingredients.keys():
 			Global.ingredients[key]-=object.data.ingredient[key]

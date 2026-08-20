@@ -3,7 +3,6 @@ class_name object_class
 @export var particle_scene: PackedScene
 @export var speed=15 #theoretically how it would zoom bk to its default pos
 @export var color_id=0
-@export var basevalue=100
 @export var data:carddata
 @export var slosh_strength=.2
 @export var settle_speed=.6
@@ -46,9 +45,6 @@ func _ready():
 	$CollisionPolygon2D.polygon = data.collision
 	$objdesc.hide()
 	color_id=data.color
-	basevalue=data.basevalue
-	if data.hq:
-		basevalue*=3
 	input_pickable=true
 	position=defaultpos
 	screen_size=get_viewport_rect().size
@@ -79,7 +75,7 @@ func _physics_process(delta):
 	if selected:
 		speed=15
 		position=position.move_toward(defaultpos+Vector2(0,-100),speed)
-		_show_desc(data.name,data.color,data.basevalue,data.desc,position)
+		_show_desc(data.name,color_id,data.basevalue,data.desc,position)
 	var moved=position-objpos
 	if position != defaultpos:
 		is_moving=true
@@ -138,23 +134,20 @@ func _unhandled_input(event):
 
 func _on_mouse_entered():
 	if not sold and not is_moving:
-		_show_desc(data.name,data.color,data.basevalue,data.desc,position)
+		_show_desc(data.name,color_id,data.basevalue,data.desc,position)
 	
 func _on_mouse_exited():
 	if not selected:
 		_hide_desc()
 
 func sell(guy):
+	var guyslot=guy.get_free_slot(data.color)
+	if guyslot == -1:
+		return
 	selected=false
 	if Global.selected==self:
 		Global.selected=null
 	sold=true
-	var guyslot=guy.get_free_slot(data.color)
-	if guyslot == -1:
-		selected=true
-		Global.selected=self
-		sold=false
-		return
 	z_index=3
 	scale*=.3
 	if guyslot>2:
@@ -162,7 +155,8 @@ func sell(guy):
 	position=guy.position+guy.slots[guyslot]
 	$objdesc.hide()
 	score.connect(guy._on_score)
-	score.emit(basevalue,false)
+	score.connect(func(a,b):get_parent().sold_signal.emit())
+	score.emit(data.basevalue,false)
 	if color_id in guy.colorlist:
 		score.emit(50,true)	
 	if exists != null and slot != -1:

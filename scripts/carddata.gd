@@ -21,10 +21,12 @@ class_name carddata
 @export var collision:PackedVector2Array
 var hq_chance=0
 var hq:bool
-
-		
+	
 func on_sold(main):
 	pass
 	
 func on_dismiss(guy1):
+	pass
+	
+func on_other_sold():
 	pass

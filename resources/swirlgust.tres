@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("3_04k7h")
 name = "Gust Potion"
-desc = "If you only served this customer [img]\"res://art/swirl.png\"[/img] potions, they will pay 50% more"
+desc = "If you only served this customer [img=64]\"res://art/swirl.PNG\"[/img] potions, they will pay 50% more"
 color = 3
 basevalue = 200
 ingredient = {
