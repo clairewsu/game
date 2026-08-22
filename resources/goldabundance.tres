@@ -1,0 +1,27 @@
+[gd_resource type="Resource" format=3 uid="uid://bbkydbyerwe7a"]
+
+[ext_resource type="Texture2D" uid="uid://ctoojao4v0qgu" path="res://art/liquids/goldabundance_liquid.PNG" id="1_jvcjc"]
+[ext_resource type="Texture2D" uid="uid://c5hsnlr60x28u" path="res://art/basicbottle_mask.PNG" id="2_o2axo"]
+[ext_resource type="Script" uid="uid://cx4ra22agxuso" path="res://scripts/object_scripts/goldabundance.gd" id="3_uup3l"]
+[ext_resource type="Texture2D" uid="uid://nleu8mcamp" path="res://art/basicgold_bottle.PNG" id="4_1p27i"]
+
+[resource]
+script = ExtResource("3_uup3l")
+name = "Potion of Abundance"
+desc = "When you sell this potion, add 2 abundant gold potions to your deck"
+basevalue = 400
+ingredient = {
+"bone": 0,
+"clay": 0,
+"crystal": 0,
+"feather": 0,
+"fish": 0,
+"flower": 2,
+"leaf": 3,
+"mushroom": 0,
+"rock": 0
+}
+texture = ExtResource("4_1p27i")
+liquidtexture = ExtResource("1_jvcjc")
+masktexture = ExtResource("2_o2axo")
+collision = PackedVector2Array(-218, 275, -114, 347, 63, 352, 190, 258, 187, 109, 73, 0, 66, -389, -112, -397, -117, -1, -232, 118)

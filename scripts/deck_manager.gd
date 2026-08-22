@@ -3,6 +3,7 @@ extends Node
 var deck:Array[Resource]=[]
 var book:Array[Resource]=[]
 var booklim=8
+var excluded=["goldabundance.tres"] #dont appear in recipe pool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,8 +20,7 @@ func _ready() -> void:
 	addtobook("basic growth potion")
 	addtobook("basic gold potion")
 	addtobook("basic wind potion")
-	addtobook("Gust Potion")
-	addtobook("Draught of Slumber")
+	addtobook("Potion of Abundance")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

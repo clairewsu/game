@@ -35,7 +35,9 @@ func _process(delta: float) -> void:
 		money_changed()
 	
 func _on_open():
-	hide_menu()
+	$ui/open.hide()
+	show_menu()
+	await hiderecipes
 	var open=open_scene.instantiate()
 	add_child(open)
 	$ui.hide()

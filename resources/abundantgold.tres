@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="carddata" format=3 uid="uid://bkagmnn6lxrwn"]
+
+[ext_resource type="Texture2D" uid="uid://3n1cw0xc3pwe" path="res://art/liquids/basicgold_liquid.PNG" id="1_mcwl0"]
+[ext_resource type="Texture2D" uid="uid://c5hsnlr60x28u" path="res://art/basicbottle_mask.PNG" id="2_ntonh"]
+[ext_resource type="Script" uid="uid://cnocqjqkrdgd0" path="res://scripts/carddata.gd" id="3_ked81"]
+[ext_resource type="Texture2D" uid="uid://nleu8mcamp" path="res://art/basicgold_bottle.PNG" id="4_i3swq"]
+
+[resource]
+script = ExtResource("3_ked81")
+name = "abundant gold potion"
+desc = "no effect"
+basevalue = 400
+ingredient = {
+"bone": 0,
+"clay": 0,
+"crystal": 2,
+"feather": 0,
+"fish": 0,
+"flower": 0,
+"leaf": 0,
+"mushroom": 0,
+"rock": 0
+}
+texture = ExtResource("4_i3swq")
+liquidtexture = ExtResource("1_mcwl0")
+masktexture = ExtResource("2_ntonh")
+collision = PackedVector2Array(-218, 275, -114, 347, 63, 352, 190, 258, 187, 109, 73, 0, 66, -389, -112, -397, -117, -1, -232, 118)
