@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://b4j1lc5yny4a3"]
 
+[ext_resource type="Texture2D" uid="uid://cdh2jhmenvnva" path="res://art/ingredients/flower.PNG" id="1_y83ao"]
+
 [node name="Control" type="Control" unique_id=931945516]
 layout_mode = 3
 anchors_preset = 15
@@ -15,3 +17,33 @@ offset_top = 146.0
 offset_right = 259.0
 offset_bottom = 412.0
 text = "whatever event it is"
+
+[node name="ing1" type="TextureRect" parent="." unique_id=982023969]
+visible = false
+layout_mode = 0
+offset_left = 121.0
+offset_top = 293.0
+offset_right = 161.0
+offset_bottom = 333.0
+texture = ExtResource("1_y83ao")
+expand_mode = 1
+
+[node name="ing2" type="TextureRect" parent="." unique_id=1472194156]
+visible = false
+layout_mode = 0
+offset_left = 151.0
+offset_top = 293.0
+offset_right = 191.0
+offset_bottom = 333.0
+texture = ExtResource("1_y83ao")
+expand_mode = 1
+
+[node name="ing3" type="TextureRect" parent="." unique_id=819912436]
+visible = false
+layout_mode = 0
+offset_left = 181.0
+offset_top = 293.0
+offset_right = 221.0
+offset_bottom = 333.0
+texture = ExtResource("1_y83ao")
+expand_mode = 1

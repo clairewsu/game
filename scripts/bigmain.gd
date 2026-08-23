@@ -45,9 +45,10 @@ func _on_open():
 	visible=false
 	open.tree_exited.connect(_on_close)
 	
-func _on_gather():
+func _on_gather(ingredients):
 	hide_menu()
 	var gather=gather_scene.instantiate()
+	gather.ingredients=ingredients
 	add_child(gather)
 	$ui.hide()
 	$moneycount.hide()
@@ -226,7 +227,15 @@ func _on_event():
 		eventchosen.connect(event.queue_free)
 		match option:
 			"gather":
-				event.get_node("Button").pressed.connect(_on_gather)
+				var gathers=[["fish","leaf","feather"],["rock","flower","fish"],["rock","crystal","bone"],["clay","bone","feather"],["leaf","flower","mushroom"],["clay","crystal","mushroom"]]
+				var gather=gathers.pick_random()
+				event.get_node("Button").pressed.connect(_on_gather.bind(gather))
+				event.get_node("ing1").texture=load("res://art/ingredients/"+gather[0]+".PNG")
+				event.get_node("ing2").texture=load("res://art/ingredients/"+gather[1]+".PNG")
+				event.get_node("ing3").texture=load("res://art/ingredients/"+gather[2]+".PNG")
+				event.get_node("ing1").show()
+				event.get_node("ing2").show()
+				event.get_node("ing3").show()
 			"encounter":
 				event.get_node("Button").pressed.connect(_on_encounter)
 			"potionshop":

@@ -1,10 +1,5 @@
 extends Node
 @export var dice_scene:PackedScene
-var textures=[preload("res://art/ingredients/leaf.PNG"),preload("res://art/ingredients/flower.PNG"),
-preload("res://art/ingredients/fish.PNG"),preload("res://art/ingredients/feather.PNG"),preload("res://art/ingredients/mushroom.PNG"),
-preload("res://art/ingredients/bone.PNG"),
-preload("res://art/ingredients/crystal.PNG"),preload("res://art/ingredients/rock.PNG"),
-preload("res://art/ingredients/clay.PNG")]
 var dice_num=6
 var positions=[Vector2(850,200),Vector2(950,250),Vector2(850,300),Vector2(950,350),Vector2(850,400),Vector2(950,450),Vector2(850,500),Vector2(950,550)]
 var occupied=0
@@ -31,10 +26,8 @@ func _ready() -> void:
 		die.result.connect(_on_rolled)
 		add_child(die)
 	maxoccupied=occupied
-	for i in range(3):
-		var x=randi_range(0,Global.ingredients.size()-1)
-		ingredients.append(Global.ingredients.keys()[x])
-		areas[i].texture=textures[x]
+	for i in range(ingredients.size()):
+		areas[i].texture=load("res://art/ingredients/"+ingredients[i]+".PNG")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

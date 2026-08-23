@@ -15,6 +15,7 @@ var deck:Array[PackedScene]=[]
 var slots=[Vector2(60,550),Vector2(185,550),Vector2(310,550),Vector2(435,550),Vector2(558,550),Vector2(681,550),Vector2(804,550),Vector2(929,550)]
 var slot_occupied=[false,false,false,false,false,false,false,false]
 var cleansing=false
+var roundmult=null
 signal end
 signal dismiss_end
 signal select1(slot,scrolling:bool)
@@ -77,6 +78,9 @@ func spawn_guy():
 		end.connect(guy._on_end)
 		guy.sellto.connect(_guy_clicked)
 		guypressed.connect(guy._is_pressed)
+		if not roundmult==null:
+			guy.multiplier*=roundmult
+	roundmult=null
 	
 func spawn_object():
 	var slot=get_free_slot()
