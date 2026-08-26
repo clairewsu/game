@@ -146,7 +146,7 @@ func _on_dismiss(amount:int,bonusamt:int,pos:Vector2):
 func _on_loss(amount:int,pos:Vector2):
 	if not cleansing:
 		penalty+=amount
-	popup(pos,amount,"-",false)
+		popup(pos,amount,"-",false)
 	
 func popup(pos:Vector2,points:int,sign,bonus:bool):
 	var popup=scorepopup_scene.instantiate()

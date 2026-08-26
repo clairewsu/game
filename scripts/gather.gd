@@ -1,7 +1,7 @@
 extends Node
 @export var dice_scene:PackedScene
 var dice_num=6
-var positions=[Vector2(850,200),Vector2(950,250),Vector2(850,300),Vector2(950,350),Vector2(850,400),Vector2(950,450),Vector2(850,500),Vector2(950,550)]
+var positions=[Vector2(950,200),Vector2(1050,250),Vector2(950,300),Vector2(1050,350),Vector2(950,400),Vector2(1050,450),Vector2(950,500),Vector2(1050,550)]
 var occupied=0
 var maxoccupied=0
 var can_roll=false

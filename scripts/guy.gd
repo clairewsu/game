@@ -74,7 +74,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 func _input_event(Viewport,InputEvent,int):
 	if InputEvent.is_action_pressed("move"):
 		if Global.selected==null:
-			if slot_occupied.all(func(i):i==-1):
+			if slot_occupied.all(func(i):return i==-1):
 				penalty.emit(80,global_position)
 			else:
 				leave.emit()
@@ -101,7 +101,7 @@ func _on_score(amount:int,bonus):
 func _is_pressed(num):
 	if num==idx:
 		if Global.selected==null:
-			if slot_occupied.all(func(i):i==-1):
+			if slot_occupied.all(func(i):return i==-1):
 				penalty.emit(80,global_position)
 			else:
 				dismiss.emit(this_score*multiplier,bonus_score,global_position)
