@@ -2,6 +2,8 @@ extends Node
 @export var dice_scene:PackedScene
 var dice_num=6
 var positions=[Vector2(950,200),Vector2(1050,250),Vector2(950,300),Vector2(1050,350),Vector2(950,400),Vector2(1050,450),Vector2(950,500),Vector2(1050,550)]
+var basket_positions_x=[300,400,500,600]
+var occupied_positions=[]
 var occupied=0
 var maxoccupied=0
 var can_roll=false
@@ -41,15 +43,15 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("move"):
 		for area in $area1.get_overlapping_areas():
 			if area is dice:
-				area.assigned=1
+				assign_dice(1,area,120,170)
 				x+=1
 		for area in $area2.get_overlapping_areas():
 			if area is dice:
-				area.assigned=2
+				assign_dice(2,area,300,350)
 				x+=1
 		for area in $area3.get_overlapping_areas():
 			if area is dice:
-				area.assigned=3
+				assign_dice(3,area,480,530)
 				x+=1
 		for area in $dice_home.get_overlapping_areas():
 			if area is dice:
@@ -94,3 +96,21 @@ func _on_rollbutton_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	self.queue_free()
+	
+func assign_dice(id,area,y1,y2): #cycle thru the nearest positions until it find an open
+	var success=false
+	if area.assigned!=id:
+		var bp_x=basket_positions_x
+		while not success:
+			var pos_x=bp_x.reduce(func(a,b):return a if abs(area.position.x-a)<abs(area.position.x-b) else b)
+			var pos_y=y1 if abs(area.position.y-y1)<abs(area.position.y-y2) else y2
+			area.position=Vector2(pos_x,pos_y)
+			if area.position not in occupied_positions:
+				success=true
+			elif Vector2(pos_x, y1 if pos_y==y2 else y2) not in occupied_positions:
+				area.position=Vector2(pos_x,y1 if pos_y==y2 else y2)
+				success=true
+			else:
+				bp_x.erase(pos_x)
+		occupied_positions.append(area.position)
+		area.assigned=id

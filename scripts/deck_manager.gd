@@ -3,7 +3,7 @@ extends Node
 var deck:Array[Resource]=[]
 var book:Array[Resource]=[]
 var booklim=8
-var excluded=["goldabundance.tres"] #dont appear in recipe pool
+var excluded=["abundantgold.tres"] #dont appear in recipe pool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
