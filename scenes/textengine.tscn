@@ -3,12 +3,19 @@
 [ext_resource type="Script" uid="uid://b7besswe0l7b1" path="res://scripts/textengine.gd" id="1_bujcm"]
 [ext_resource type="Texture2D" uid="uid://u2vyoq5ngsyd" path="res://art/salt_icon.PNG" id="2_c5tn5"]
 [ext_resource type="Texture2D" uid="uid://hkoqc3nu4ai4" path="res://art/character_models/ari_default.PNG" id="2_nl23s"]
+[ext_resource type="Texture2D" uid="uid://kqp17i31mim4" path="res://art/badbg.PNG" id="2_t30qx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nl23s"]
 bg_color = Color(0.93333334, 0.9411765, 0.90588236, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1241614795]
 script = ExtResource("1_bujcm")
+
+[node name="bgtexture" type="TextureRect" parent="." unique_id=991593760]
+offset_right = 1140.0
+offset_bottom = 642.0
+texture = ExtResource("2_t30qx")
+expand_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1580214560]
 position = Vector2(270, 278)

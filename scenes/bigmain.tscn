@@ -7,11 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dmm3mad5lfdla" path="res://art/recipebook.PNG" id="5_m1rgd"]
 [ext_resource type="Texture2D" uid="uid://u2vyoq5ngsyd" path="res://art/salt_icon.PNG" id="6_qqglw"]
 
-[node name="main" type="Control" unique_id=1906546917]
-layout_mode = 3
-anchors_preset = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="main" type="CanvasLayer" unique_id=248680721]
+layer = 100
 script = ExtResource("1_xjo5i")
 object_scene = ExtResource("2_0qdpo")
 menu_scene = ExtResource("3_q8qvv")
@@ -19,7 +16,6 @@ menu_scene = ExtResource("3_q8qvv")
 [node name="ui" parent="." unique_id=2083767084 instance=ExtResource("4_0k34j")]
 
 [node name="recipebook" type="Button" parent="." unique_id=199179795]
-layout_mode = 0
 offset_left = 180.0
 offset_top = 113.0
 offset_right = 975.0
@@ -34,13 +30,10 @@ offset_bottom = 551.0
 texture = ExtResource("5_m1rgd")
 expand_mode = 1
 
-[node name="moneycount" type="Control" parent="." unique_id=1208563013]
-anchors_preset = 0
-offset_right = 248.0
-offset_bottom = 50.0
+[node name="moneycount" type="CanvasLayer" parent="." unique_id=1180882958]
+layer = 100
 
 [node name="TextureRect" type="TextureRect" parent="moneycount" unique_id=2011703888]
-layout_mode = 0
 offset_top = 4.0
 offset_right = 40.0
 offset_bottom = 44.0
@@ -48,7 +41,6 @@ texture = ExtResource("6_qqglw")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="moneycount" unique_id=325653102]
-layout_mode = 0
 offset_left = 40.0
 offset_top = 6.0
 offset_right = 109.0
@@ -96,4 +88,17 @@ offset_right = 653.0
 offset_bottom = 474.0
 text = "exit"
 
+[node name="invbutton" type="CanvasLayer" parent="." unique_id=752345639]
+layer = 100
+visible = false
+
+[node name="invbutton" type="Button" parent="invbutton" unique_id=2055890614]
+z_index = 1000
+offset_left = 974.0
+offset_top = 35.0
+offset_right = 1057.0
+offset_bottom = 66.0
+text = "inventory"
+
 [connection signal="timeout" from="moneycount/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="invbutton/invbutton" to="." method="_on_invbutton_pressed"]

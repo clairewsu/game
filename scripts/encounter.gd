@@ -8,7 +8,7 @@ func _ready() -> void:
 	$text.button2.connect(data.button2)
 	$text.button3.connect(data.button3)
 	$text.button4.connect(data.button4)
-	$bgtexture.texture=data.bg
+	$text.get_node("bgtexture").texture=data.bg
 	for i in data.steps:
 		$text.queue_text(i.id,i.speaker,i.text,i.position,i.texture,i.buttons)
 

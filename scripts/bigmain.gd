@@ -1,4 +1,4 @@
-extends Node
+extends CanvasLayer
 var open_scene = preload("res://scenes/main.tscn")
 var gather_scene=preload("res://scenes/gather.tscn")
 var shop_ingredient_scene=preload("res://scenes/shop_ingredient.tscn")
@@ -15,7 +15,7 @@ var tempingredients={}
 var cards={}
 var popping_up=false
 var tempmoneys=Global.moneys
-var visible=true
+var visible1=true
 var node=1
 signal hiderecipes
 signal eventchosen
@@ -42,7 +42,7 @@ func _on_open():
 	add_child(open)
 	$ui.hide()
 	$moneycount.hide()
-	visible=false
+	visible1=false
 	open.tree_exited.connect(_on_close)
 	
 func _on_gather(ingredients):
@@ -52,7 +52,8 @@ func _on_gather(ingredients):
 	add_child(gather)
 	$ui.hide()
 	$moneycount.hide()
-	visible=false
+	$invbutton.show()
+	visible1=false
 	gather.tree_exited.connect(_on_close)
 	
 func _on_ingredientshop():
@@ -60,8 +61,7 @@ func _on_ingredientshop():
 	var ingredientshop=shop_ingredient_scene.instantiate()
 	add_child(ingredientshop)
 	$ui.hide()
-	$moneycount.hide()
-	visible=false
+	$invbutton.show()
 	ingredientshop.tree_exited.connect(_on_close)
 
 func _on_potionshop():
@@ -69,8 +69,7 @@ func _on_potionshop():
 	var potionshop=shop_potion_scene.instantiate()
 	add_child(potionshop)
 	$ui.hide()
-	$moneycount.hide()
-	visible=false
+	$invbutton.show()
 	potionshop.tree_exited.connect(_on_close)
 	
 func _on_recipeshop():
@@ -78,8 +77,7 @@ func _on_recipeshop():
 	var recipeshop=shop_recipe_scene.instantiate()
 	add_child(recipeshop)
 	$ui.hide()
-	$moneycount.hide()
-	visible=false
+	$invbutton.show()
 	recipeshop.tree_exited.connect(_on_close)
 	
 func _on_encounter():
@@ -93,7 +91,8 @@ func _on_encounter():
 	add_child(encounter)
 	$ui.hide()
 	$moneycount.hide()
-	visible=false
+	visible1=false
+	$invbutton.show()
 	encounter.tree_exited.connect(_on_close)
 		
 func show_menu():
@@ -178,11 +177,12 @@ func update_moneys_popup():
 	popping_up=true
 	var tween=create_tween()
 	$moneycount.show()
-	$moneycount.position+=Vector2(0,-100)
-	tween.tween_property($moneycount,"position",$moneycount.position+Vector2(0,100),.5)
+	if not visible1:
+		$moneycount.position+=Vector2(0,-100)
+		tween.tween_property($moneycount,"position",$moneycount.position+Vector2(0,100),.5)
 	tween.tween_method(update_moneys,int($moneycount/Label.text),Global.moneys,1)
 	await tween.finished
-	if not visible:
+	if not visible1:
 		tween=create_tween()
 		tween.tween_interval(.3)
 		tween.tween_property($moneycount,"position",$moneycount.position+Vector2(0,-100),.5)
@@ -195,7 +195,8 @@ func update_moneys(amt):
 	$moneycount/Label.text=str(amt)
 	
 func _on_close():
-	visible=true
+	visible1=true
+	$invbutton.hide()
 	if node==6:
 		node=1
 		Global.level+=1
@@ -250,3 +251,18 @@ func endscreen():
 	$endscreen.show()
 	$endscreen/text.text="the end\nyou reached level "+str(Global.level)
 	$endscreen/exit.pressed.connect(self.queue_free)
+
+
+
+func _on_invbutton_pressed() -> void:
+	if $ui.visible==false:
+		$ui.show()
+		$ui/open.hide()
+		$ui/event.hide()
+		$ui.show_inv()
+		$moneycount.show()
+	else:
+		hide_menu()
+		$ui.hide()
+		if not visible1:
+			$moneycount.hide()

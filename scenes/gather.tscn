@@ -119,10 +119,10 @@ offset_bottom = 587.0
 text = "roll"
 
 [node name="exit" type="Button" parent="." unique_id=1675705771]
-offset_left = 1019.0
-offset_top = 32.0
-offset_right = 1090.0
-offset_bottom = 63.0
+offset_left = 1006.0
+offset_top = 73.0
+offset_right = 1077.0
+offset_bottom = 104.0
 text = "exit"
 
 [connection signal="pressed" from="rollbutton" to="." method="_on_rollbutton_pressed"]

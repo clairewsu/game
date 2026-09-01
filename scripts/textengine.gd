@@ -41,18 +41,23 @@ func _process(delta: float) -> void:
 				show_text()
 			else:
 				done.emit()
+		state.finished:
+			if buttons.all(func(i): return not i.visible):
+				$nextarrow.show()
+	
+func _unhandled_input(event):
+	match current_state:
 		state.reading:
-			if Input.is_action_just_pressed("enter") or Input.is_action_just_pressed("move") or Input.is_action_just_pressed("space"):
+			if event.is_action_pressed("enter") or event.is_action_pressed("move") or event.is_action_pressed("space"):
 				text.visible_ratio=1
 				tween.stop()
 				change_state(state.finished)
 		state.finished:
 			if buttons.all(func(i): return not i.visible):
-				$nextarrow.show()
-				if Input.is_action_just_pressed("enter") or Input.is_action_just_pressed("move") or Input.is_action_just_pressed("space"):
-					change_state(state.ready)
-					hide_text()
-	
+				if event.is_action_pressed("enter") or event.is_action_pressed("move") or event.is_action_pressed("space"):
+						change_state(state.ready)
+						hide_text()
+		
 func hide_text():
 	text.text=""
 	$nextarrow.hide()
