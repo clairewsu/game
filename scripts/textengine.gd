@@ -6,7 +6,9 @@ var queue=[]
 var id_queue=[]
 var speaker_queue=[]
 var position_queue=[]
-var texture_queue=[]
+var texture1_queue=[]
+var texture2_queue=[]
+var texture3_queue=[]
 var buttons_queue=[]
 @onready var buttons=[$Button1,$Button2,$Button3,$Button4]
 var current_id=0
@@ -70,7 +72,9 @@ func show_text():
 	var current_position=position_queue.pop_front()
 	var button=buttons_queue.pop_front()
 	disable_buttons(false)
-	$Sprite2D.texture=texture_queue.pop_front()
+	$Sprite2D.texture=texture1_queue.pop_front()
+	$Sprite2D2.texture=texture2_queue.pop_front()
+	$Sprite2D3.texture=texture3_queue.pop_front()
 	if current_speaker=="":
 		$namecontainer.hide()
 	else:
@@ -78,10 +82,8 @@ func show_text():
 		speaker.text=current_speaker
 	if current_position==0:
 		$namecontainer.position=Vector2(50,430)
-		$Sprite2D.position=Vector2(260,280)
 	elif current_position==1:
 		$namecontainer.position=Vector2(850,430)
-		$Sprite2D.position=Vector2(800,280)
 	for i in buttons:
 		i.hide()
 	for choice in button.size():
@@ -98,12 +100,14 @@ func show_text():
 func change_state(next_state):
 	current_state=next_state
 
-func queue_text(id,speaker,next_text,position,texture,buttons):
+func queue_text(id,speaker,next_text,position,texture1,texture2,texture3,buttons):
 	id_queue.push_back(id)
 	speaker_queue.push_back(speaker)
 	queue.push_back(next_text)
 	position_queue.push_back(position)
-	texture_queue.push_back(texture)
+	texture1_queue.push_back(texture1)
+	texture2_queue.push_back(texture2)
+	texture3_queue.push_back(texture3)
 	buttons_queue.push_back(buttons)
 
 func disable_buttons(state:bool):
@@ -168,5 +172,7 @@ func slice_queue(idx:int):
 	speaker_queue=speaker_queue.slice(idx)
 	queue=queue.slice(idx)
 	position_queue=position_queue.slice(idx)
-	texture_queue=texture_queue.slice(idx)
+	texture1_queue=texture1_queue.slice(idx)
+	texture2_queue=texture2_queue.slice(idx)
+	texture3_queue=texture3_queue.slice(idx)
 	buttons_queue=buttons_queue.slice(idx)

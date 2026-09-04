@@ -1,0 +1,114 @@
+[gd_resource type="Resource" format=3 uid="uid://drctwp32mmb32"]
+
+[ext_resource type="Texture2D" uid="uid://c5k3ckn4hyqj1" path="res://art/gatherbg_grass.PNG" id="1_unlai"]
+[ext_resource type="Script" uid="uid://n6h3yftmb7sk" path="res://scripts/encounter_scripts/encounter_francine.gd" id="2_4xer8"]
+[ext_resource type="Script" uid="uid://dtxqdmfssbsvf" path="res://scripts/dialoguehelper.gd" id="3_4kmr6"]
+[ext_resource type="Texture2D" uid="uid://hkoqc3nu4ai4" path="res://art/character_models/ari_default.PNG" id="4_fhmdw"]
+[ext_resource type="Texture2D" uid="uid://bigk3ofpf011d" path="res://art/character_models/francine_default.PNG" id="5_uo5ku"]
+
+[sub_resource type="Resource" id="Resource_l1ob8"]
+script = ExtResource("3_4kmr6")
+texture1 = ExtResource("4_fhmdw")
+text = "you're walking around in the forest when you find francine kneeling over a patch of dirt."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_6rgd5"]
+script = ExtResource("3_4kmr6")
+speaker = "francine"
+position = 2
+texture3 = ExtResource("5_uo5ku")
+text = "..."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_w445e"]
+script = ExtResource("3_4kmr6")
+speaker = "ari"
+position = 1
+texture1 = ExtResource("4_fhmdw")
+text = "..."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_lx6sh"]
+script = ExtResource("3_4kmr6")
+speaker = "francine"
+position = 2
+texture1 = ExtResource("4_fhmdw")
+texture3 = ExtResource("5_uo5ku")
+text = "..."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_1grr4"]
+script = ExtResource("3_4kmr6")
+speaker = "francine"
+position = 2
+texture1 = ExtResource("4_fhmdw")
+texture3 = ExtResource("5_uo5ku")
+text = "...are you gonna say anything or what?"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_uqekm"]
+script = ExtResource("3_4kmr6")
+buttons = Array[String](["what are you doing?", "(say nothing)"])
+texture1 = ExtResource("4_fhmdw")
+texture3 = ExtResource("5_uo5ku")
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_x3sik"]
+script = ExtResource("3_4kmr6")
+id = 1
+speaker = "francine"
+position = 2
+texture1 = ExtResource("4_fhmdw")
+texture3 = ExtResource("5_uo5ku")
+text = "I'm testing out my new fertilizer, see? I made it myself."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_c83ek"]
+script = ExtResource("3_4kmr6")
+id = 2
+speaker = "francine"
+position = 2
+texture1 = ExtResource("4_fhmdw")
+texture3 = ExtResource("5_uo5ku")
+text = "...dude, you're kinda freaking me out."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_1fs24"]
+script = ExtResource("3_4kmr6")
+speaker = "francine"
+position = 2
+texture1 = ExtResource("4_fhmdw")
+texture3 = ExtResource("5_uo5ku")
+text = "anyways, I made different batches of fertilizer to specialize in different kinds of ingredients."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_cc10d"]
+script = ExtResource("3_4kmr6")
+speaker = "francine"
+position = 2
+texture1 = ExtResource("4_fhmdw")
+texture3 = ExtResource("5_uo5ku")
+text = "they say the best way to test something out is to have other people try it, so why don't you take one for yourself?"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_urslc"]
+script = ExtResource("3_4kmr6")
+texture2 = ExtResource("5_uo5ku")
+text = "she lays out four bags of fertilizer before you."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_mplec"]
+script = ExtResource("3_4kmr6")
+buttons = Array[String](["a", "", "", ""])
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_wjsth"]
+script = ExtResource("3_4kmr6")
+text = "it seems very effective! your chosen ingredient just got doubled"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[resource]
+script = ExtResource("2_4xer8")
+bg = ExtResource("1_unlai")
+steps = Array[ExtResource("3_4kmr6")]([SubResource("Resource_l1ob8"), SubResource("Resource_6rgd5"), SubResource("Resource_w445e"), SubResource("Resource_lx6sh"), SubResource("Resource_1grr4"), SubResource("Resource_uqekm"), SubResource("Resource_x3sik"), SubResource("Resource_c83ek"), SubResource("Resource_1fs24"), SubResource("Resource_cc10d"), SubResource("Resource_urslc"), SubResource("Resource_mplec"), SubResource("Resource_wjsth")])
+type = "francine"

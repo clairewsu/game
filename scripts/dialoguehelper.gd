@@ -4,7 +4,9 @@ class_name encounterhelper
 @export var buttons:Array[String]
 @export var speaker:String
 @export var position:int
-@export var texture:Texture
+@export var texture1:Texture
+@export var texture2:Texture
+@export var texture3:Texture
 @export_multiline var text:String
 
 # Called when the node enters the scene tree for the first time.

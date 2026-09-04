@@ -10,13 +10,13 @@
 
 [sub_resource type="Resource" id="Resource_1dwyc"]
 script = ExtResource("3_70l8n")
-texture = ExtResource("4_56qex")
+texture1 = ExtResource("4_56qex")
 text = "so imagine ur like walking around and then suddenly the great and amazing idk descends upon u"
 metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
 
 [sub_resource type="Resource" id="Resource_rtrjh"]
 script = ExtResource("3_70l8n")
-texture = ExtResource("4_56qex")
+texture1 = ExtResource("4_56qex")
 text = "now u can get some free ingredients congrats so u gotta choose which one"
 metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
 
@@ -28,33 +28,35 @@ metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
 [sub_resource type="Resource" id="Resource_hf4vl"]
 script = ExtResource("3_70l8n")
 id = 1
-texture = ExtResource("5_56qex")
+texture2 = ExtResource("5_56qex")
 text = "u got some flowers"
 metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
 
 [sub_resource type="Resource" id="Resource_6417j"]
 script = ExtResource("3_70l8n")
 id = 1
+texture2 = ExtResource("5_56qex")
 text = "also i gotta include some more text here for testing purposes"
 metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
 
 [sub_resource type="Resource" id="Resource_66tnx"]
 script = ExtResource("3_70l8n")
 id = 2
-texture = ExtResource("6_1dwyc")
+texture2 = ExtResource("6_1dwyc")
 text = "u got some mushrooms"
 metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
 
 [sub_resource type="Resource" id="Resource_2o8pc"]
 script = ExtResource("3_70l8n")
 id = 3
-texture = ExtResource("7_rtrjh")
+texture2 = ExtResource("7_rtrjh")
 text = "u got some super ugly feathers"
 metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
 
 [sub_resource type="Resource" id="Resource_x0n0f"]
 script = ExtResource("3_70l8n")
 id = 3
+texture2 = ExtResource("7_rtrjh")
 text = "hows ur day going"
 metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
 

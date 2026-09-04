@@ -22,6 +22,16 @@ position = Vector2(270, 278)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_nl23s")
 
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=401643756]
+position = Vector2(566, 278)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_nl23s")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1082454378]
+position = Vector2(865, 278)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_nl23s")
+
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1730123402]
 offset_left = 20.0
 offset_top = 475.0

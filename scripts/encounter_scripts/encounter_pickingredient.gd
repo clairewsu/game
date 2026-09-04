@@ -10,11 +10,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func button1():
+func button1(main):
 	Global.ingredients["flower"]+=5
 	
-func button2():
+func button2(main):
 	Global.ingredients["mushroom"]+=5
 	
-func button3():
+func button3(main):
 	Global.ingredients["feather"]+=5

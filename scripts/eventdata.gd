@@ -2,6 +2,7 @@ extends Resource
 class_name eventdata
 @export var bg:Texture
 @export var steps:Array[encounterhelper]
+@export var type:String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,14 +16,14 @@ func _process(delta: float) -> void:
 func on_done():
 	pass
 	
-func button1():
+func button1(main):
 	pass
 	
-func button2():
+func button2(main):
 	pass
 	
-func button3():
+func button3(main):
 	pass
 	
-func button4():
+func button4(main):
 	pass
