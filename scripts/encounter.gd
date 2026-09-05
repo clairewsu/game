@@ -21,7 +21,6 @@ func _process(delta: float) -> void:
 			var x=(Global.ingredients.keys().pick_random())
 			if x not in options:
 				options.append(str(x))
-		print(options)
 		$text/Button1.text=options[0]
 		$text/Button2.text=options[1]
 		$text/Button3.text=options[2]

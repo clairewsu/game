@@ -7,8 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dmm3mad5lfdla" path="res://art/recipebook.PNG" id="5_m1rgd"]
 [ext_resource type="Texture2D" uid="uid://u2vyoq5ngsyd" path="res://art/salt_icon.PNG" id="6_qqglw"]
 
-[node name="main" type="CanvasLayer" unique_id=248680721]
-layer = 100
+[node name="main" type="Node" unique_id=1437805168]
 script = ExtResource("1_xjo5i")
 object_scene = ExtResource("2_0qdpo")
 menu_scene = ExtResource("3_q8qvv")
@@ -33,24 +32,32 @@ expand_mode = 1
 [node name="moneycount" type="CanvasLayer" parent="." unique_id=1180882958]
 layer = 100
 
-[node name="TextureRect" type="TextureRect" parent="moneycount" unique_id=2011703888]
+[node name="Timer" type="Timer" parent="moneycount" unique_id=1263355197]
+wait_time = 0.5
+one_shot = true
+
+[node name="Control" type="Control" parent="moneycount" unique_id=1343043377]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="moneycount/Control" unique_id=2011703888]
+layout_mode = 0
 offset_top = 4.0
 offset_right = 40.0
 offset_bottom = 44.0
 texture = ExtResource("6_qqglw")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="moneycount" unique_id=325653102]
+[node name="Label" type="Label" parent="moneycount/Control" unique_id=325653102]
+layout_mode = 0
 offset_left = 40.0
 offset_top = 6.0
 offset_right = 109.0
 offset_bottom = 40.0
 theme_override_font_sizes/font_size = 24
 text = "10000"
-
-[node name="Timer" type="Timer" parent="moneycount" unique_id=1263355197]
-wait_time = 0.5
-one_shot = true
 
 [node name="endscreen" type="CanvasLayer" parent="." unique_id=705601215]
 layer = 20

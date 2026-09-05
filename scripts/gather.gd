@@ -27,6 +27,8 @@ func _ready() -> void:
 		roll.connect(die.roll)
 		die.result.connect(_on_rolled)
 		add_child(die)
+		if "plant" in Global.decors and i>5:
+			die.get_node("Sprite2D").texture=load("res://art/dice_plant.PNG")
 	maxoccupied=occupied
 	for i in range(ingredients.size()):
 		areas[i].texture=load("res://art/ingredients/"+ingredients[i]+".PNG")

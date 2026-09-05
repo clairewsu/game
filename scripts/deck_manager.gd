@@ -20,7 +20,7 @@ func _ready() -> void:
 	addtobook("basic growth potion")
 	addtobook("basic gold potion")
 	addtobook("basic wind potion")
-	addtobook("Cooling Potion")
+	addtobook("Gust Potion")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

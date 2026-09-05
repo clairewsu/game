@@ -1,6 +1,6 @@
 [gd_resource type="Resource" format=3 uid="uid://drctwp32mmb32"]
 
-[ext_resource type="Texture2D" uid="uid://c5k3ckn4hyqj1" path="res://art/gatherbg_grass.PNG" id="1_unlai"]
+[ext_resource type="Texture2D" uid="uid://0xtmv3gdg6hk" path="res://art/forest_bg.PNG" id="1_unlai"]
 [ext_resource type="Script" uid="uid://n6h3yftmb7sk" path="res://scripts/encounter_scripts/encounter_francine.gd" id="2_4xer8"]
 [ext_resource type="Script" uid="uid://dtxqdmfssbsvf" path="res://scripts/dialoguehelper.gd" id="3_4kmr6"]
 [ext_resource type="Texture2D" uid="uid://hkoqc3nu4ai4" path="res://art/character_models/ari_default.PNG" id="4_fhmdw"]

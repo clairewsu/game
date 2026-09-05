@@ -1,6 +1,6 @@
 [gd_resource type="Resource" format=3 uid="uid://jw1aw52nn82v"]
 
-[ext_resource type="Texture2D" uid="uid://kqp17i31mim4" path="res://art/badbg.PNG" id="1_a2bdk"]
+[ext_resource type="Texture2D" uid="uid://b6gdl3dm52ho3" path="res://art/bg.PNG" id="1_56qex"]
 [ext_resource type="Script" uid="uid://crhq42e85s3bn" path="res://scripts/encounter_scripts/encounter_pickingredient.gd" id="2_gj3bo"]
 [ext_resource type="Script" uid="uid://dtxqdmfssbsvf" path="res://scripts/dialoguehelper.gd" id="3_70l8n"]
 [ext_resource type="Texture2D" uid="uid://hkoqc3nu4ai4" path="res://art/character_models/ari_default.PNG" id="4_56qex"]
@@ -67,5 +67,5 @@ metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
 
 [resource]
 script = ExtResource("2_gj3bo")
-bg = ExtResource("1_a2bdk")
+bg = ExtResource("1_56qex")
 steps = Array[ExtResource("3_70l8n")]([SubResource("Resource_1dwyc"), SubResource("Resource_rtrjh"), SubResource("Resource_l8jx7"), SubResource("Resource_hf4vl"), SubResource("Resource_6417j"), SubResource("Resource_66tnx"), SubResource("Resource_2o8pc"), SubResource("Resource_x0n0f"), SubResource("Resource_cfjw7")])

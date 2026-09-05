@@ -1,10 +1,10 @@
 [gd_resource type="Resource" format=3 uid="uid://l2qcie63hxlj"]
 
-[ext_resource type="Texture2D" uid="uid://dd108b5fq4mjk" path="res://art/liquids/goldglittering_liquid.PNG" id="1_pbsgu"]
+[ext_resource type="Texture2D" uid="uid://bdvob0s0olegf" path="res://art/town_bg.PNG" id="1_pbsgu"]
 [ext_resource type="Script" uid="uid://b73keh67kbykn" path="res://scripts/encounter_scripts/encounter_estella.gd" id="2_8y5v0"]
 [ext_resource type="Script" uid="uid://dtxqdmfssbsvf" path="res://scripts/dialoguehelper.gd" id="3_i53jf"]
 [ext_resource type="Texture2D" uid="uid://hkoqc3nu4ai4" path="res://art/character_models/ari_default.PNG" id="4_pbsgu"]
-[ext_resource type="Texture2D" uid="uid://wp1v8ishhfun" path="res://art/characters/estella.PNG" id="5_5rpxb"]
+[ext_resource type="Texture2D" uid="uid://dudgc53x7ca4w" path="res://art/character_models/estella_default.PNG" id="5_8y5v0"]
 
 [sub_resource type="Resource" id="Resource_wq072"]
 script = ExtResource("3_i53jf")
@@ -18,21 +18,21 @@ script = ExtResource("3_i53jf")
 speaker = "estella"
 position = 1
 texture1 = ExtResource("4_pbsgu")
-texture3 = ExtResource("5_5rpxb")
-text = "hello i am low res estella"
+texture3 = ExtResource("5_8y5v0")
+text = "hello i am updated art estella"
 metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
 
 [sub_resource type="Resource" id="Resource_s1jug"]
 script = ExtResource("3_i53jf")
 speaker = "estella"
 position = 1
-texture3 = ExtResource("5_5rpxb")
+texture3 = ExtResource("5_8y5v0")
 text = "heres a random recipe bye"
 metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
 
 [sub_resource type="Resource" id="Resource_tvisu"]
 script = ExtResource("3_i53jf")
-texture3 = ExtResource("5_5rpxb")
+texture3 = ExtResource("5_8y5v0")
 text = "congrats you obtained the recipe for a glittering potion"
 metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
 

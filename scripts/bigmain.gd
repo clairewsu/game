@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node
 var open_scene = preload("res://scenes/main.tscn")
 var gather_scene=preload("res://scenes/gather.tscn")
 var shop_ingredient_scene=preload("res://scenes/shop_ingredient.tscn")
@@ -24,7 +24,7 @@ signal eventchosen
 func _ready() -> void:
 	$ui/open.pressed.connect(_on_open)
 	$ui/event.pressed.connect(_on_event)
-	$moneycount/Label.text=str(Global.default_moneys)
+	$moneycount/Control/Label.text=str(Global.default_moneys)
 	$recipebook.hide()
 	cards=DeckManager.cards
 
@@ -178,21 +178,21 @@ func update_moneys_popup():
 	var tween=create_tween()
 	$moneycount.show()
 	if not visible1:
-		$moneycount.position+=Vector2(0,-100)
-		tween.tween_property($moneycount,"position",$moneycount.position+Vector2(0,100),.5)
-	tween.tween_method(update_moneys,int($moneycount/Label.text),Global.moneys,1)
+		$moneycount/Control.position+=Vector2(0,-100)
+		tween.tween_property($moneycount/Control,"position",$moneycount/Control.position+Vector2(0,100),.5)
+	tween.tween_method(update_moneys,int($moneycount/Control/Label.text),Global.moneys,1)
 	await tween.finished
 	if not visible1:
 		tween=create_tween()
 		tween.tween_interval(.3)
-		tween.tween_property($moneycount,"position",$moneycount.position+Vector2(0,-100),.5)
+		tween.tween_property($moneycount/Control,"position",$moneycount/Control.position+Vector2(0,-100),.5)
 		await tween.finished
 		$moneycount.hide()
-	$moneycount.position=Vector2(0,0)
+	$moneycount/Control.position=Vector2(0,0)
 	popping_up=false
 	
 func update_moneys(amt):
-	$moneycount/Label.text=str(amt)
+	$moneycount/Control/Label.text=str(amt)
 	
 func _on_close():
 	visible1=true
