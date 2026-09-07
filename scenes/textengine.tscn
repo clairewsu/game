@@ -12,8 +12,9 @@ bg_color = Color(0.93333334, 0.9411765, 0.90588236, 1)
 script = ExtResource("1_bujcm")
 
 [node name="bgtexture" type="TextureRect" parent="." unique_id=991593760]
-offset_right = 1140.0
-offset_bottom = 642.0
+z_index = -50
+offset_right = 1155.0
+offset_bottom = 660.0
 texture = ExtResource("2_t30qx")
 expand_mode = 1
 
@@ -40,6 +41,7 @@ offset_bottom = 623.0
 
 [node name="Panel" type="Panel" parent="MarginContainer" unique_id=570029122]
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_nl23s")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel" unique_id=1018522077]

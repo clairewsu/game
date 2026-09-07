@@ -60,7 +60,7 @@ rotation = -2.40546
 layer = 10
 
 [node name="bg" type="CanvasLayer" parent="." unique_id=385894690]
-layer = -1
+layer = 0
 
 [node name="Sprite2D" type="TextureRect" parent="bg" unique_id=1267655990]
 offset_left = -1.0
@@ -206,7 +206,9 @@ scale = Vector2(0.591, 0.6)
 texture = ExtResource("12_jkv2x")
 script = ExtResource("13_jbj1t")
 
-[node name="table" type="TextureRect" parent="." unique_id=1762436502]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1957934019]
+
+[node name="table" type="TextureRect" parent="CanvasLayer" unique_id=1762436502]
 offset_left = -3.999939
 offset_top = 9.0000305
 offset_right = 1916.0
@@ -214,7 +216,7 @@ offset_bottom = 1089.0
 scale = Vector2(0.6057292, 0.59351856)
 texture = ExtResource("7_o6xl0")
 
-[node name="slots" type="TextureRect" parent="." unique_id=1188892419]
+[node name="slots" type="TextureRect" parent="CanvasLayer" unique_id=1188892419]
 offset_left = 1.000061
 offset_top = -0.9999695
 offset_right = 1921.0

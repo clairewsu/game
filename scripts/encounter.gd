@@ -3,6 +3,7 @@ var data:eventdata
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$text.hide()
 	$text.done.connect(_on_done)
 	$text.button1.connect(data.button1.bind(self))
 	$text.button2.connect(data.button2.bind(self))
@@ -11,7 +12,8 @@ func _ready() -> void:
 	$text.get_node("bgtexture").texture=data.bg
 	for i in data.steps:
 		$text.queue_text(i.id,i.speaker,i.text,i.position,i.texture1,i.texture2,i.texture3,i.buttons)
-
+	await get_tree().process_frame
+	$text.show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

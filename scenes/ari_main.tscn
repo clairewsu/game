@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://qv3oj44hed5y"]
+
+[ext_resource type="Texture2D" uid="uid://byyskq3unsv00" path="res://art/characters_main/ari/ari_main_default1.PNG" id="1_5rolv"]
+[ext_resource type="Texture2D" uid="uid://dlqyl84qmdxup" path="res://art/characters_main/ari/ari_main_default2.PNG" id="2_x0325"]
+[ext_resource type="Texture2D" uid="uid://bugc4fngdtbga" path="res://art/characters_main/ari/ari_main_walk1.PNG" id="3_nmbqa"]
+[ext_resource type="Texture2D" uid="uid://csdnep7e48h81" path="res://art/characters_main/ari/ari_main_walk2.PNG" id="4_uec8m"]
+[ext_resource type="Texture2D" uid="uid://ljqem2pwryvo" path="res://art/characters_main/ari/ari_main_walk3.PNG" id="5_ladku"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bm6vq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5rolv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_x0325")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nmbqa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uec8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ladku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uec8m")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=481364875]
+z_index = -100
+sprite_frames = SubResource("SpriteFrames_bm6vq")
+animation = &"walk"
+frame = 1
+frame_progress = 0.57921976

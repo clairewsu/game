@@ -7,6 +7,9 @@ var shop_recipe_scene=preload("res://scenes/shop_recipe.tscn")
 var encounter_scene=preload("res://scenes/encounter.tscn")
 var decor_scene=preload("res://scenes/decor.tscn")
 var event_scene=preload("res://scenes/event.tscn")
+var avatar_scene=preload("res://scenes/ari_main.tscn")
+var popup_scene=preload("res://scenes/main_popup.tscn")
+@onready var avatar=avatar_scene.instantiate()
 @export var object_scene:PackedScene
 @export var menu_scene:PackedScene
 var recipeslots=[Vector2(300,190),Vector2(460,190),Vector2(300,390),Vector2(460,390),Vector2(640,190),Vector2(790,190),Vector2(640,390),Vector2(790,390)]
@@ -19,6 +22,7 @@ var visible1=true
 var node=1
 signal hiderecipes
 signal eventchosen
+signal move
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,6 +31,15 @@ func _ready() -> void:
 	$moneycount/Control/Label.text=str(Global.default_moneys)
 	$recipebook.hide()
 	cards=DeckManager.cards
+	var popup=popup_scene.instantiate()
+	popup.position=Vector2(550,350)
+	move.connect(popup.move)
+	add_child(popup)
+	popup.get_node("Sprite2D").texture=load("res://art/main_home.PNG")
+	add_child(avatar)
+	avatar.scale=Vector2(.3,.3)
+	avatar.position=Vector2(550,300)
+	avatar.play("default")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -35,6 +48,7 @@ func _process(delta: float) -> void:
 		money_changed()
 	
 func _on_open():
+	await transition("open")
 	$ui/open.hide()
 	show_menu()
 	await hiderecipes
@@ -46,6 +60,7 @@ func _on_open():
 	open.tree_exited.connect(_on_close)
 	
 func _on_gather(ingredients):
+	await transition("gather")
 	hide_menu()
 	var gather=gather_scene.instantiate()
 	gather.ingredients=ingredients
@@ -57,6 +72,7 @@ func _on_gather(ingredients):
 	gather.tree_exited.connect(_on_close)
 	
 func _on_ingredientshop():
+	await transition("shop")
 	hide_menu()
 	var ingredientshop=shop_ingredient_scene.instantiate()
 	add_child(ingredientshop)
@@ -65,6 +81,7 @@ func _on_ingredientshop():
 	ingredientshop.tree_exited.connect(_on_close)
 
 func _on_potionshop():
+	await transition("shop")
 	hide_menu()
 	var potionshop=shop_potion_scene.instantiate()
 	add_child(potionshop)
@@ -73,6 +90,7 @@ func _on_potionshop():
 	potionshop.tree_exited.connect(_on_close)
 	
 func _on_recipeshop():
+	await transition("shop")
 	hide_menu()
 	var recipeshop=shop_recipe_scene.instantiate()
 	add_child(recipeshop)
@@ -81,6 +99,7 @@ func _on_recipeshop():
 	recipeshop.tree_exited.connect(_on_close)
 	
 func _on_encounter():
+	await transition("encounter")
 	hide_menu()
 	var encounter=encounter_scene.instantiate()
 	var encounters=[]
@@ -94,7 +113,33 @@ func _on_encounter():
 	visible1=false
 	$invbutton.show()
 	encounter.tree_exited.connect(_on_close)
-		
+	
+func transition(type):
+	var dots=[load("res://art/main_dot1.PNG"),load("res://art/main_dot2.PNG"),load("res://art/main_dot3.PNG")]
+	for i in range(4):
+		var popup=popup_scene.instantiate()
+		popup.position=Vector2(650+100*i,350)
+		move.connect(popup.move)
+		add_child(popup)
+		if i<3:
+			popup.get_node("Sprite2D").texture=dots.pick_random()
+		else:
+			match type:
+				"home":
+					popup.get_node("Sprite2D").texture=load("res://art/main_home.PNG")
+				"shop":
+					popup.get_node("Sprite2D").texture=load("res://art/main_shop.PNG")
+				"gather":
+					popup.get_node("Sprite2D").texture=load("res://art/main_gather.PNG")
+				"encounter":
+					popup.get_node("Sprite2D").texture=load("res://art/main_encounter.PNG")
+		await get_tree().create_timer(.2).timeout
+	move.emit()
+	avatar.play("walk")
+	await get_tree().create_timer(1.5).timeout
+	avatar.play("default")
+	await get_tree().create_timer(1).timeout
+	
 func show_menu():
 	var x=1
 	$recipebook.show()
@@ -106,8 +151,8 @@ func show_menu():
 			return
 		object.data=name
 		menu.object=object
-		add_child(object)
-		add_child(menu)
+		$recipebook.add_child(object)
+		$recipebook.add_child(menu)
 		object.position=recipeslots[slot]
 		object.objpos=object.position
 		object.scale*=.5
@@ -118,7 +163,7 @@ func show_menu():
 		object._show_desc(object.data.name,object.data.color,object.data.basevalue,object.data.desc,object.position)
 		menu.position=object.position+Vector2(-50,-100)
 		menu.objname=object.data.name
-		menu.get_node("TextureRect").z_index=object.get_node("CanvasGroup/liquid").z_index-1
+		menu.get_node("TextureRect").z_index=10
 		menu.add.connect(addtodeck)
 		x+=1
 		hiderecipes.connect(object.queue_free)
@@ -152,7 +197,7 @@ func get_free_slot():
 	return -1
 	
 func _input(event):
-	if event.is_action("move") and $recipebook.visible==true and not $recipebook.get_global_rect().has_point(event.position):
+	if event.is_action("move") and $recipebook.visible==true and not $recipebook/recipebook.get_global_rect().has_point(event.position):
 		hide_menu()
 
 func tempadd(tempobj):

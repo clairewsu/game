@@ -3,11 +3,19 @@
 [ext_resource type="Script" uid="uid://babethfaq4ro7" path="res://scripts/shop.gd" id="1_lx5au"]
 [ext_resource type="PackedScene" uid="uid://b76apnyc2rpv6" path="res://scenes/object.tscn" id="2_xfvoa"]
 [ext_resource type="PackedScene" uid="uid://c2c57qbq2djeu" path="res://scenes/make_menu.tscn" id="3_1l46r"]
+[ext_resource type="Texture2D" uid="uid://cjek6f1bbnl3t" path="res://art/potionshop_bg.PNG" id="4_032fp"]
 
 [node name="Node" type="Node" unique_id=1708362580]
 script = ExtResource("1_lx5au")
 object_scene = ExtResource("2_xfvoa")
 menu_scene = ExtResource("3_1l46r")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1487057138]
+z_index = -50
+offset_right = 1156.0
+offset_bottom = 648.0
+texture = ExtResource("4_032fp")
+expand_mode = 1
 
 [node name="exit" type="Button" parent="." unique_id=890349148]
 offset_left = 1010.0

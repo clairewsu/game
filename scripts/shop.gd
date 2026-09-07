@@ -17,7 +17,7 @@ func _ready() -> void:
 	for i in range(5):
 		var x=randi_range(0,stuff.size()-1)
 		var price=price_scene.instantiate()
-		price.position=Vector2(150*i,200)
+		price.position=Vector2(180*i,350)
 		if type!="ingredient":
 			var object=object_scene.instantiate()
 			object.menu_ver=true
@@ -66,7 +66,7 @@ func _ready() -> void:
 		price.get_node("price").text=str(8000)
 		price.get_node("TextureRect").texture=null
 		price.maxamt=1
-		price.position=Vector2(800,200)
+		price.position=Vector2(950,350)
 		decor.position=price.position+Vector2(70,0)
 		price.bought.connect(decor.data.obtained)
 		add_child(decor)
