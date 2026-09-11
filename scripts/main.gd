@@ -14,7 +14,7 @@ var selectedslot:int
 var deck:Array[PackedScene]=[]
 var slots=[Vector2(60,550),Vector2(185,550),Vector2(310,550),Vector2(435,550),Vector2(558,550),Vector2(681,550),Vector2(804,550),Vector2(929,550)]
 var slot_occupied=[false,false,false,false,false,false,false,false]
-var cleansing=false
+var effects=[]
 var roundmult=null
 signal end
 signal dismiss_end
@@ -72,7 +72,8 @@ func spawn_guy():
 	for pos in spawn_offsets:
 		guy = guys_scene.instantiate()
 		guy.global_position = pos
-		add_child(guy)
+		$CanvasLayer.add_child(guy)
+		guy.z_index=-100
 		guy.connect("penalty", Callable(self, "_on_loss"))
 		guy.connect("dismiss",Callable(self,"_on_dismiss"))
 		end.connect(guy._on_end)
@@ -97,7 +98,7 @@ func spawn_object():
 	object.scale*=.67
 	object.position=slots[slot]
 	object.defaultpos=object.position
-	add_child(object)
+	$CanvasLayer.add_child(object)
 	end.connect(object.on_end)
 	object.select.connect(_on_select)
 	select1.connect(object._on_select)
@@ -110,7 +111,7 @@ func respawn_guys():
 		end.emit()
 		dismiss_end.emit()
 		return
-	cleansing=false
+	effects.clear()
 	for i in range(10):
 		await get_tree().process_frame
 	spawn_guy()
@@ -136,6 +137,12 @@ func _on_hit():
 	pass
 	
 func _on_dismiss(amount:int,bonusamt:int,pos:Vector2):
+	if bonusamt>0:
+		for i in effects:
+			if i=="hunt":
+				bonusamt+=300
+			if i=="hunthq":
+				bonusamt+=500
 	score+=amount+bonusamt
 	popup(pos,amount,"+",false)
 	if bonusamt>0:
@@ -144,14 +151,14 @@ func _on_dismiss(amount:int,bonusamt:int,pos:Vector2):
 	dismiss_end.emit()
 	
 func _on_loss(amount:int,pos:Vector2):
-	if not cleansing:
+	if "cleansing" not in effects:
 		penalty+=amount
 		popup(pos,amount,"-",false)
 	
 func popup(pos:Vector2,points:int,sign,bonus:bool):
 	var popup=scorepopup_scene.instantiate()
 	popup.position=pos+Vector2(-170,0)
-	add_child(popup)
+	$ui.add_child(popup)
 	popup.setup(sign,points,bonus)
 	
 func _on_select(slot):

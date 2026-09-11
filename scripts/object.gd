@@ -18,6 +18,7 @@ var sold=false
 var exists=null
 var slot=-1
 var menu_ver=false
+var bonusamt=50
 @export var defaultpos=Vector2(500,400)
 var objpos:Vector2
 var mousepos:Vector2
@@ -155,13 +156,13 @@ func sell(guy):
 	position=guy.position+guy.slots[guyslot]
 	$objdesc.hide()
 	score.connect(guy._on_score)
-	score.connect(func(a,b):get_parent().sold_signal.emit())
+	score.connect(func(a,b):get_parent().get_parent().sold_signal.emit())
 	score.emit(data.basevalue,false)
 	if color_id in guy.colorlist:
-		score.emit(50,true)	
+		score.emit(bonusamt,true)	
 	if exists != null and slot != -1:
 		exists.slot_occupied[slot] = false
-	data.on_sold(get_parent())
+	data.on_sold(get_parent().get_parent())
 	guy.leave.connect(data.on_dismiss.bind(guy))
 	guy.tree_exited.connect(self.queue_free)
 	

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" format=3 uid="uid://bxa4uac60kf8i"]
+
+[ext_resource type="Texture2D" uid="uid://u7sap11w1vqe" path="res://art/liquids/goldhunt_liquid.PNG" id="1_4nsb5"]
+[ext_resource type="Texture2D" uid="uid://c5nr0jw8pogx6" path="res://art/vialbottle_mask.PNG" id="2_4owvx"]
+[ext_resource type="Script" uid="uid://dsclgjdyw50wp" path="res://scripts/object_scripts/goldhunt.gd" id="3_j1p71"]
+[ext_resource type="Texture2D" uid="uid://qphjonb5ux5s" path="res://art/vialbottle_gold.PNG" id="4_u6gis"]
+
+[resource]
+script = ExtResource("3_j1p71")
+name = "Hunter's Brew"
+desc = "Increase request bonuses this round by 300"
+basevalue = 300
+ingredient = {
+"bone": 1,
+"clay": 0,
+"crystal": 0,
+"feather": 0,
+"fish": 0,
+"flower": 0,
+"leaf": 0,
+"mushroom": 2,
+"rock": 0
+}
+texture = ExtResource("4_u6gis")
+liquidtexture = ExtResource("1_4nsb5")
+masktexture = ExtResource("2_4owvx")
+fill = 0.3
+collision = PackedVector2Array(-122, 230, -81, 331, 47, 357, 83, 185, 112, 43, 60, -47, 42, -110, -79, -114, -102, -55, -143, 43)

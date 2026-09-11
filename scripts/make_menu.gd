@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 		$Timer.start()
 
 func _on_upbutton_pressed() -> void:
-	get_parent().tempadd(self)
+	get_parent().get_parent().tempadd(self)
 	$Label.text=str(min(maxamt,int($Label.text)+1))
 
 func _on_downbutton_pressed() -> void:

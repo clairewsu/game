@@ -36,6 +36,10 @@ func _unhandled_input(event):
 		position += event.relative
 
 func roll():
+	$Label.modulate.a=0
+	var tween=create_tween()
+	tween.tween_property(self,"rotation",2*PI,.2)
+	tween.tween_property($Label,"modulate:a",1,.1)
 	if assigned!=0:
 		amt=randi_range(1,6)
 		$Label.text=str(amt)

@@ -6,4 +6,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func on_sold(main):
-	main.effects.append("cleansing")
+	if hq:
+		main.effects.append("hunthq")
+	else:
+		main.effects.append("hunt")
