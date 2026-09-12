@@ -1,0 +1,28 @@
+[gd_resource type="Resource" format=3 uid="uid://vmhlh418oofw"]
+
+[ext_resource type="Texture2D" uid="uid://d2v05johffk3l" path="res://art/liquids/goldwealth_liquid.PNG" id="1_7cnev"]
+[ext_resource type="Texture2D" uid="uid://dkborifn3w71h" path="res://art/pitcher_mask.PNG" id="2_uc5uf"]
+[ext_resource type="Script" uid="uid://r5dopicb5lpj" path="res://scripts/object_scripts/goldwealth.gd" id="3_bmr7c"]
+[ext_resource type="Texture2D" uid="uid://ccer3gko5jcvy" path="res://art/pitcherbottle_gold.PNG" id="4_7cnev"]
+
+[resource]
+script = ExtResource("3_bmr7c")
+name = "Wealth Potion"
+desc = "If you only served this customer [img=64]res://art/gold.PNG[/img] potions, they will pay 50% more"
+basevalue = 200
+ingredient = {
+"bone": 0,
+"clay": 0,
+"crystal": 3,
+"feather": 0,
+"fish": 0,
+"flower": 0,
+"leaf": 0,
+"mushroom": 0,
+"rock": 0
+}
+texture = ExtResource("4_7cnev")
+liquidtexture = ExtResource("1_7cnev")
+masktexture = ExtResource("2_uc5uf")
+fill = 0.5
+collision = PackedVector2Array(-401, -40, -263, 176, -173, 305, 64, 315, 166, 89, 114, -95, 149, -196, -177, -223, -215, -122, -290, -164)

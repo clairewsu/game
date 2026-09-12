@@ -4,6 +4,7 @@ var object:Area2D
 var amount=0
 var maxamt=100
 var shop_ver=false
+var confirm=false
 signal tempadd
 signal add
 
@@ -32,6 +33,13 @@ func _process(delta: float) -> void:
 	if $downbutton.is_pressed() and $Timer.is_stopped():
 		_on_downbutton_pressed()
 		$Timer.start()
+	if $remove.is_pressed() and $Timer.is_stopped():
+		_on_remove_pressed()
+		$Timer.start()
+	if confirm:
+		$remove.text="remove?"
+	else:
+		$remove.text="x"
 
 func _on_upbutton_pressed() -> void:
 	get_parent().get_parent().tempadd(self)
@@ -44,6 +52,8 @@ func _unhandled_input(event):
 	if event.is_action_pressed("enter"):
 		add.emit(object,objname,amount)
 		$Label.text="0"
+	if event.is_action_pressed("move") and confirm:
+		confirm=false
 
 
 func _on_makebutton_pressed() -> void:
@@ -62,7 +72,7 @@ func _on_label_text_changed(new_text: String) -> void:
 	for c in new_text:
 		if c in "1234567890":
 			text+=c
-	get_parent().tempadd(self)
+	get_parent().get_parent().tempadd(self)
 	text=str(min(maxamt,int(text)))
 	if text != new_text:
 		$Label.text=text
@@ -70,3 +80,12 @@ func _on_label_text_changed(new_text: String) -> void:
 	
 		
 	
+func _on_remove_pressed() -> void:
+	if confirm:
+		object.queue_free()
+		self.queue_free()
+		for i in DeckManager.book:
+			if i.name==objname:
+				DeckManager.book.erase(i)
+	else:
+		confirm=true

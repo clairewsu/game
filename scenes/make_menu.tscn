@@ -77,5 +77,15 @@ bbcode_enabled = true
 scroll_active = false
 horizontal_alignment = 1
 
+[node name="remove" type="Button" parent="." unique_id=1268635953]
+z_index = 1000
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 39.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 24
+text = "x"
+
 [connection signal="text_changed" from="Label" to="." method="_on_label_text_changed"]
 [connection signal="pressed" from="makebutton" to="." method="_on_makebutton_pressed"]

@@ -196,8 +196,8 @@ func get_free_slot():
 			return i
 	return -1
 	
-func _input(event):
-	if event.is_action("move") and $recipebook.visible==true and not $recipebook/recipebook.get_global_rect().has_point(event.position):
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("move") and $recipebook.visible==true and not $recipebook/recipebook.get_global_rect().has_point(event.position):
 		hide_menu()
 
 func tempadd(tempobj):
