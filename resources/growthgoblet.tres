@@ -1,0 +1,29 @@
+[gd_resource type="Resource" format=3 uid="uid://chle2mhsh0im2"]
+
+[ext_resource type="Texture2D" uid="uid://mgnbbnwoc0tk" path="res://art/liquids/growthgoblet_liquid.PNG" id="1_nr0mx"]
+[ext_resource type="Texture2D" uid="uid://clmms1urnwq83" path="res://art/hulubottle_mask.PNG" id="2_2l7j1"]
+[ext_resource type="Script" uid="uid://d0pvymat47w2b" path="res://scripts/object_scripts/growthgoblet.gd" id="3_vx5k2"]
+[ext_resource type="Texture2D" uid="uid://chb1g4ojbsw5q" path="res://art/hulubottle_growth.PNG" id="4_yut3u"]
+
+[resource]
+script = ExtResource("3_vx5k2")
+name = "Glass Gobletfruit"
+desc = "When you sell this potion, gain 2 [img=64]res://art/ingredients/fish.PNG[/img] and [img=64]res://art/ingredients/flower.PNG[/img]"
+color = 1
+basevalue = 300
+ingredient = {
+"bone": 0,
+"clay": 0,
+"crystal": 0,
+"feather": 0,
+"fish": 3,
+"flower": 3,
+"leaf": 0,
+"mushroom": 0,
+"rock": 0
+}
+texture = ExtResource("4_yut3u")
+liquidtexture = ExtResource("1_nr0mx")
+masktexture = ExtResource("2_2l7j1")
+fill = 0.45
+collision = PackedVector2Array(-294, 254, -81, 331, 101, 326, 246, 202, 180, -107, 101, -209, 35, -318, -87, -326, -136, -214, -227, -117)

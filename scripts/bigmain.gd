@@ -48,8 +48,8 @@ func _process(delta: float) -> void:
 		money_changed()
 	
 func _on_open():
-	await transition("open")
 	$ui/open.hide()
+	await transition("open")
 	show_menu()
 	await hiderecipes
 	var open=open_scene.instantiate()

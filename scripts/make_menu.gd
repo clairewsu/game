@@ -26,6 +26,7 @@ func _process(delta: float) -> void:
 		$downbutton.hide()
 		$Label.hide()
 		$makebutton.hide()
+		$remove.hide()
 	amount=int($Label.text)
 	if $upbutton.is_pressed() and $Timer.is_stopped():
 		_on_upbutton_pressed()

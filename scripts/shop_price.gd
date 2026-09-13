@@ -16,6 +16,8 @@ func _process(delta: float) -> void:
 	$amt.text=str(str(amt)+"/"+str(maxamt))
 	if amt==0 or Global.moneys<int($price.text):
 		$buy.disabled=true
+	if maxamt==1 and DeckManager.book.size()==DeckManager.booklim:
+		$buy.disabled=true
 
 
 func _on_buy_pressed() -> void:

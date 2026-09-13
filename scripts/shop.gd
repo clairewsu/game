@@ -33,6 +33,7 @@ func _ready() -> void:
 			object._show_desc(object.data.name,object.data.color,object.data.basevalue,object.data.desc,object.position)
 			if type=="potion":
 				price.get_node("buy").pressed.connect(DeckManager.addtodeck.bind(object.data.name))
+				price.maxamt=5
 			if type=="recipe":
 				if x in xlist:
 					object.queue_free()

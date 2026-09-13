@@ -144,22 +144,22 @@ func _on_dismiss(amount:int,bonusamt:int,pos:Vector2):
 			if i=="hunthq":
 				bonusamt+=500
 	score+=amount+bonusamt
-	popup(pos,amount,"+",false)
+	popup(pos,amount,"+","normal")
 	if bonusamt>0:
 		await get_tree().create_timer(.2).timeout
-		popup(pos,bonusamt,"+",true)
+		popup(pos,bonusamt,"+","bonus")
 	dismiss_end.emit()
 	
 func _on_loss(amount:int,pos:Vector2):
 	if "cleansing" not in effects:
 		penalty+=amount
-		popup(pos,amount,"-",false)
+		popup(pos,amount,"-","normal")
 	
-func popup(pos:Vector2,points:int,sign,bonus:bool):
+func popup(pos:Vector2,points:int,sign,type:String):
 	var popup=scorepopup_scene.instantiate()
 	popup.position=pos+Vector2(-170,0)
 	$ui.add_child(popup)
-	popup.setup(sign,points,bonus)
+	popup.setup(sign,points,type)
 	
 func _on_select(slot):
 	select1.emit(slot,false)

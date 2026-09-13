@@ -5,11 +5,12 @@
 [node name="scorefx" type="Node2D" unique_id=105752941]
 script = ExtResource("1_113st")
 
-[node name="Label" type="Label" parent="." unique_id=1619612294]
+[node name="Label" type="RichTextLabel" parent="." unique_id=683211038]
 offset_right = 369.0
 offset_bottom = 50.0
-theme_override_colors/font_color = Color(0.796243, 0.796243, 0.796243, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
 text = "+100"
+scroll_active = false
 horizontal_alignment = 1
