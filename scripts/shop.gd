@@ -14,7 +14,8 @@ signal loaded
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_stuff()
-	for i in range(5):
+	var i=0
+	while i<5:
 		var x=randi_range(0,stuff.size()-1)
 		var price=price_scene.instantiate()
 		price.position=Vector2(180*i,350)
@@ -37,7 +38,6 @@ func _ready() -> void:
 			if type=="recipe":
 				if x in xlist:
 					object.queue_free()
-					i-=1
 					continue
 				var menu=menu_scene.instantiate()
 				menu.object=object
@@ -56,6 +56,7 @@ func _ready() -> void:
 			price.get_node("TextureRect").texture=load(path)
 			price.type=stuff[x]
 		add_child(price)
+		i+=1
 	for file in DirAccess.get_files_at("res://resources/decors/"):
 		if file.ends_with(".tres") and file.get_basename().trim_suffix("_decor") not in Global.decors:
 			decors.append(file)
