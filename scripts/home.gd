@@ -1,24 +1,86 @@
 extends Node
 var game_scene=preload("res://scenes/bigmain.tscn")
+var object_scene=preload("res://scenes/object.tscn")
+var objectbg_scene=preload("res://scenes/make_menu.tscn")
+var starting=[]
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$continue.hide()
+	$Label2.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if starting.size()==2:
+		$continue.disabled=false
+	else:
+		$continue.disabled=true
 
 
 func _on_start_pressed() -> void:
-	var game=game_scene.instantiate()
-	add_child(game)
 	$start.hide()
 	$Label.hide()
-	game.tree_exited.connect(_on_end)
+	$Label2.show()
+	$continue.show()
+	var stuff=[]
+	var xlist=[]
+	for file in DirAccess.get_files_at("res://resources/"):
+		if file.ends_with(".tres") and not DeckManager.book.any(func(r): return r.resource_path == str("res://resources/"+file)):
+			stuff.append(file)
+	for i in stuff.size()-1:
+			if stuff[i] in DeckManager.excluded:
+				stuff.remove_at(i)
+	var i=0
+	while i<6:
+		var x=randi_range(0,stuff.size()-1)
+		var object=object_scene.instantiate()
+		object.menu_ver=true
+		object.sold=true
+		object.data=load("res://resources/"+stuff[x])
+		object.data.hq=false
+		add_child(object)
+		object.scale*=.6
+		object.position=Vector2(200+250*ceil(i/2),150)
+		if i%2==0:
+			object.position+=Vector2(0,250)
+		object.objpos=object.position
+		object._show_desc(object.data.name,object.data.color,object.data.basevalue,object.data.desc,object.position)
+		if x in xlist:
+			object.queue_free()
+			continue
+		xlist.append(x)
+		var menu=objectbg_scene.instantiate()
+		menu.object=object
+		menu.select=true
+		menu.selected.connect(addtolist)
+		add_child(menu)
+		menu.scale*=.8
+		menu.position=object.position+Vector2(-50,-100)
+		menu.get_node("TextureRect").z_index=-10
+		menu.objname=object.data.name
+		menu.shop_ver=true
+		i+=1
+		$continue.pressed.connect(object.queue_free)
+		$continue.pressed.connect(menu.queue_free)
+
+func addtolist(a):
+	if a in starting:
+		starting.erase(a)
+	else:
+		starting.append(a)
 	
 func _on_end():
 	$start.show()
 	$Label.show()
+
+
+func _on_continue_pressed() -> void:
+	var game=game_scene.instantiate()
+	add_child(game)
+	$continue.hide()
+	$Label2.hide()
+	for i in starting:
+		DeckManager.addtobook(i)
+	game.tree_exited.connect(_on_end)

@@ -37,6 +37,7 @@ func _ready() -> void:
 			if type=="recipe":
 				if x in xlist:
 					object.queue_free()
+					i-=1
 					continue
 				var menu=menu_scene.instantiate()
 				menu.object=object

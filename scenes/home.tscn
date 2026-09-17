@@ -21,4 +21,19 @@ offset_bottom = 253.0
 theme_override_font_sizes/font_size = 40
 text = "potion shop game yay"
 
+[node name="continue" type="Button" parent="." unique_id=1972326716]
+offset_left = 533.0
+offset_top = 523.0
+offset_right = 610.0
+offset_bottom = 554.0
+text = "continue"
+
+[node name="Label2" type="Label" parent="." unique_id=1550068621]
+offset_left = 467.0
+offset_top = 20.0
+offset_right = 659.0
+offset_bottom = 43.0
+text = "choose 2 starting recipes"
+
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="continue" to="." method="_on_continue_pressed"]

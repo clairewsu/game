@@ -1,16 +1,19 @@
-extends Control
+extends Area2D
 var objname:String
 var object:Area2D
 var amount=0
 var maxamt=100
 var shop_ver=false
 var confirm=false
+var select=false
 signal tempadd
 signal add
+signal selected(String)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("recipes")
+	$TextureRect.material=$TextureRect.material.duplicate()
 	for i in object.data.ingredient.keys():
 		if object.data.ingredient[i]>0:
 			$ingredientcost.text+="[img=64]res://art/ingredients/"+i+".PNG[/img]"
@@ -56,6 +59,10 @@ func _unhandled_input(event):
 	if event.is_action_pressed("move") and confirm:
 		confirm=false
 
+func _input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and select:
+		$TextureRect.material.set_shader_parameter("strength", abs($TextureRect.material.get_shader_parameter("strength")-1))
+		selected.emit(objname)
 
 func _on_makebutton_pressed() -> void:
 	add.emit(object,objname,amount)
@@ -78,8 +85,6 @@ func _on_label_text_changed(new_text: String) -> void:
 	if text != new_text:
 		$Label.text=text
 		$Label.caret_column=clamp(caret-1,0,text.length())
-	
-		
 	
 func _on_remove_pressed() -> void:
 	if confirm:
