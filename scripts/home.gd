@@ -3,12 +3,20 @@ var game_scene=preload("res://scenes/bigmain.tscn")
 var object_scene=preload("res://scenes/object.tscn")
 var objectbg_scene=preload("res://scenes/make_menu.tscn")
 var starting=[]
+var x:int
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$continue.hide()
 	$Label2.hide()
+	$start.mouse_entered.connect(_on_button_mouse_entered.bind($start))
+	$tutorial.mouse_entered.connect(_on_button_mouse_entered.bind($tutorial))
+	$start.mouse_exited.connect(_on_button_mouse_exited.bind($start))
+	$tutorial.mouse_exited.connect(_on_button_mouse_exited.bind($tutorial))
+	$start.pivot_offset=$start.size/2
+	$tutorial.pivot_offset=$tutorial.size/2
+	x=$start.scale.x
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,8 +30,10 @@ func _process(delta: float) -> void:
 func _on_start_pressed() -> void:
 	$start.hide()
 	$Label.hide()
+	$tutorial.hide()
 	$Label2.show()
 	$continue.show()
+	$TextureRect.texture=load("res://art/main_bg.png")
 	var stuff=[]
 	var xlist=[]
 	for file in DirAccess.get_files_at("res://resources/"):
@@ -72,6 +82,7 @@ func addtolist(a):
 func _on_end():
 	$start.show()
 	$Label.show()
+	$TextureRect.texture=load("res://art/openingbg.PNG")
 
 
 func _on_continue_pressed() -> void:
@@ -82,3 +93,10 @@ func _on_continue_pressed() -> void:
 	for i in starting:
 		DeckManager.addtobook(i)
 	game.tree_exited.connect(_on_end)
+
+
+func _on_button_mouse_entered(button) -> void:
+	create_tween().tween_property(button,"scale",Vector2(1.5,1.5),.1)
+	
+func _on_button_mouse_exited(button) -> void:
+	create_tween().tween_property(button,"scale",Vector2(x,x),.1)

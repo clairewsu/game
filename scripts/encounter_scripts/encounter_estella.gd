@@ -11,4 +11,4 @@ func _process(delta: float) -> void:
 	pass
 
 func on_done():
-	DeckManager.addtobook("glittering potion")
+	Global.moneys+=6000
