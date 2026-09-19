@@ -106,7 +106,7 @@ func _on_encounter():
 	for file in DirAccess.get_files_at("res://resources/encounters/"):
 		if file.ends_with(".tres"):
 			encounters.append(file)
-	encounter.data=load("res://resources/encounters/"+encounters.pick_random())
+	encounter.data=load("res://resources/encounters/encounter_fortunecookie.tres")#+encounters.pick_random())
 	add_child(encounter)
 	$ui.hide()
 	$moneycount.hide()

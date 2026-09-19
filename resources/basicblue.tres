@@ -10,6 +10,7 @@ script = ExtResource("2_01gwb")
 name = "basic magic potion"
 desc = "no effect"
 color = 2
+rarity = "common"
 basevalue = 100
 ingredient = {
 "bone": 0,

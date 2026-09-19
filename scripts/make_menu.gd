@@ -18,6 +18,10 @@ func _ready() -> void:
 		if object.data.ingredient[i]>0:
 			$ingredientcost.text+="[img=64]res://art/ingredients/"+i+".PNG[/img]"
 			$ingredientcost.text+=str(object.data.ingredient[i])
+	match object.data.rarity:
+		"common": $TextureRect.texture=load("res://art/scorecounter_paper.PNG")
+		"uncommon": $TextureRect.texture=load("res://art/uncommonrecipe.PNG")
+		"rare": $TextureRect.texture=load("res://art/rarerecipe.PNG")
 	objname=object.data.name
 
 

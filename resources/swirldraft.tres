@@ -10,6 +10,7 @@ script = ExtResource("3_ya2po")
 name = "draft potion"
 desc = "when you sell this potion, draw one new potion"
 color = 3
+rarity = "common"
 basevalue = 100
 ingredient = {
 "bone": 0,

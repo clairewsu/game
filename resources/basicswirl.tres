@@ -10,6 +10,7 @@ script = ExtResource("2_cv1hu")
 name = "basic wind potion"
 desc = "no effect"
 color = 3
+rarity = "common"
 basevalue = 100
 ingredient = {
 "bone": 0,

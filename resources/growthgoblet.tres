@@ -10,6 +10,7 @@ script = ExtResource("3_vx5k2")
 name = "Glass Gobletfruit"
 desc = "When you sell this potion, gain 2 [img=64]res://art/ingredients/fish.PNG[/img] and [img=64]res://art/ingredients/flower.PNG[/img]"
 color = 1
+rarity = "common"
 basevalue = 300
 ingredient = {
 "bone": 0,

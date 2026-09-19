@@ -27,11 +27,9 @@ func _on_start_pressed() -> void:
 	var stuff=[]
 	var xlist=[]
 	for file in DirAccess.get_files_at("res://resources/"):
-		if file.ends_with(".tres") and not DeckManager.book.any(func(r): return r.resource_path == str("res://resources/"+file)):
+		if file.ends_with(".tres") and not DeckManager.book.any(func(r): return r.resource_path == str("res://resources/"+file)) and not load("res://resources/"+file).rarity=="rare":
 			stuff.append(file)
-	for i in stuff.size()-1:
-			if stuff[i] in DeckManager.excluded:
-				stuff.remove_at(i)
+	stuff=stuff.filter(func(file):return file not in DeckManager.excluded)
 	var i=0
 	while i<6:
 		var x=randi_range(0,stuff.size()-1)

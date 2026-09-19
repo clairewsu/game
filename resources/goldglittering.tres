@@ -9,6 +9,7 @@
 script = ExtResource("3_hgbvf")
 name = "glittering potion"
 desc = "this customer will pay 30% more for all potions"
+rarity = "uncommon"
 basevalue = 150
 ingredient = {
 "bone": 0,

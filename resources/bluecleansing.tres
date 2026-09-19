@@ -10,6 +10,7 @@ script = ExtResource("1_ynxmq")
 name = "Cleansing Potion"
 desc = "There will be no penalty for turning away customers this round."
 color = 2
+rarity = "common"
 basevalue = 300
 ingredient = {
 "bone": 0,

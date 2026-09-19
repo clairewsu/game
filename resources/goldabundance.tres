@@ -9,6 +9,7 @@
 script = ExtResource("3_uup3l")
 name = "Potion of Abundance"
 desc = "When you sell this potion, add 2 abundant gold potions to your deck"
+rarity = "rare"
 basevalue = 400
 ingredient = {
 "bone": 0,

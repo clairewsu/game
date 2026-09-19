@@ -9,6 +9,7 @@
 script = ExtResource("3_bmr7c")
 name = "Wealth Potion"
 desc = "If you only sold this customer [img=64]res://art/gold.PNG[/img] potions, they will pay 50% more"
+rarity = "common"
 basevalue = 200
 ingredient = {
 "bone": 0,

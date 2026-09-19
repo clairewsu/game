@@ -9,6 +9,7 @@
 script = ExtResource("3_j1p71")
 name = "Hunter's Brew"
 desc = "Increase request bonuses this round by 300"
+rarity = "uncommon"
 basevalue = 300
 ingredient = {
 "bone": 1,

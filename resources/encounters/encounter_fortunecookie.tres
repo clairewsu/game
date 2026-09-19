@@ -1,0 +1,72 @@
+[gd_resource type="Resource" format=3 uid="uid://bwss8ueeod0ek"]
+
+[ext_resource type="Texture2D" uid="uid://d2y3b42phbtu6" path="res://art/fortunecookie_bg.PNG" id="1_nd071"]
+[ext_resource type="Script" uid="uid://b06d4bkk32pon" path="res://scripts/encounter_scripts/encounter_fortunecookie.gd" id="2_hef72"]
+[ext_resource type="Script" uid="uid://dtxqdmfssbsvf" path="res://scripts/dialoguehelper.gd" id="3_nbkxt"]
+
+[sub_resource type="Resource" id="Resource_3iqro"]
+script = ExtResource("3_nbkxt")
+text = "you received a fortune cookie from a restaurant, and now you would like to have a snack."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_3hdki"]
+script = ExtResource("3_nbkxt")
+text = "as you unwrap the plastic, a slip of paper falls out from a crack in the cookie."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_v1ctn"]
+script = ExtResource("3_nbkxt")
+buttons = Array[String](["lets take a look!!", "i don't believe in fortunes"])
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_e0dyt"]
+script = ExtResource("3_nbkxt")
+id = 1
+text = "You unwrap the wrapper..."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_bs5t6"]
+script = ExtResource("3_nbkxt")
+id = 1
+text = "\"congrats the good fortune will be coming your way\""
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_t0sg4"]
+script = ExtResource("3_nbkxt")
+id = 1
+text = "the next day you find a bunch of money lying on the ground, i guess fortunes are real after all"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_s51xk"]
+script = ExtResource("3_nbkxt")
+id = 2
+text = "you ate the cookie. it was yummy."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_sakjm"]
+script = ExtResource("3_nbkxt")
+id = 3
+text = "you unwrap the wrapper..."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_h5mlu"]
+script = ExtResource("3_nbkxt")
+id = 3
+text = "\"suck it buddy you have poopoo luck\""
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_pt7fy"]
+script = ExtResource("3_nbkxt")
+id = 3
+text = "the next day you drop a jar of ingredients on the floor, i guess fortunes are real after all"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_nd071"]
+script = ExtResource("3_nbkxt")
+text = "actually who knows if fortunes are real or not, maybe try again next time for the gambling"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[resource]
+script = ExtResource("2_hef72")
+bg = ExtResource("1_nd071")
+steps = Array[ExtResource("3_nbkxt")]([SubResource("Resource_3iqro"), SubResource("Resource_3hdki"), SubResource("Resource_v1ctn"), SubResource("Resource_e0dyt"), SubResource("Resource_bs5t6"), SubResource("Resource_t0sg4"), SubResource("Resource_s51xk"), SubResource("Resource_sakjm"), SubResource("Resource_h5mlu"), SubResource("Resource_pt7fy"), SubResource("Resource_nd071")])

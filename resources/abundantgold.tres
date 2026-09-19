@@ -9,6 +9,7 @@
 script = ExtResource("3_ked81")
 name = "abundant gold potion"
 desc = "no effect"
+rarity = "uncommon"
 basevalue = 400
 ingredient = {
 "bone": 0,

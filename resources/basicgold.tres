@@ -9,6 +9,7 @@
 script = ExtResource("1_iifv5")
 name = "basic gold potion"
 desc = "no effect"
+rarity = "common"
 basevalue = 100
 ingredient = {
 "bone": 0,

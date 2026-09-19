@@ -10,6 +10,7 @@ script = ExtResource("3_hc346")
 name = "Cooling Potion"
 desc = "20% chance to increase profits by 50% next round"
 color = 2
+rarity = "uncommon"
 basevalue = 200
 ingredient = {
 "bone": 0,
