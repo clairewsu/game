@@ -36,7 +36,8 @@ func _ready() -> void:
 				price.get_node("buy").pressed.connect(DeckManager.addtodeck.bind(object.data.name))
 				price.maxamt=5
 			if type=="recipe":
-				if x in xlist:
+				$TextureRect.texture=load("res://art/recipeshop_bg.PNG")
+				if object.data.name in xlist:
 					object.queue_free()
 					continue
 				var menu=menu_scene.instantiate()
@@ -49,8 +50,9 @@ func _ready() -> void:
 				menu.shop_ver=true
 				price.get_node("buy").pressed.connect(DeckManager.addtobook.bind(object.data.name))
 				price.maxamt=1
-				xlist.append(x)
+				xlist.append(object.data.name)
 		else:
+			$TextureRect.texture=load("res://art/ingredientshop_bg.PNG")
 			price.get_node("price").text=str(50)
 			var path=str("res://art/ingredients/"+stuff[x]+".PNG")
 			price.get_node("TextureRect").texture=load(path)

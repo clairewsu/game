@@ -7,6 +7,7 @@ var default_moneys=10000
 var moneys=default_moneys
 var level=1
 var quota:int
+var time:int
 var money_scene=preload("res://scenes/money_popup.tscn")
 
 # Called when the node enters the scene tree for the first time.
@@ -16,7 +17,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	quota=level*500*1.25**(level-1)
+	quota=level*500*time/30*1.25**(level-1)
 
 func spawn_money(amt,position,parent):
 	var x=clampi(amt/100,3,20)

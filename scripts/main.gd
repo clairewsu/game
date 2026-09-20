@@ -48,6 +48,7 @@ func _on_start():
 		spawn_object()
 	respawning_guys=false
 	respawning_object=false
+	$Timer.wait_time=Global.time
 	$Timer.start()
 
 func _on_timer_timeout():

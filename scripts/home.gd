@@ -14,8 +14,11 @@ func _ready() -> void:
 	$tutorial.mouse_entered.connect(_on_button_mouse_entered.bind($tutorial))
 	$start.mouse_exited.connect(_on_button_mouse_exited.bind($start))
 	$tutorial.mouse_exited.connect(_on_button_mouse_exited.bind($tutorial))
+	$settings.mouse_entered.connect(_on_button_mouse_entered.bind($settings))
+	$settings.mouse_exited.connect(_on_button_mouse_exited.bind($settings))
 	$start.pivot_offset=$start.size/2
 	$tutorial.pivot_offset=$tutorial.size/2
+	$settings.pivot_offset=$settings.size/2
 	x=$start.scale.x
 
 
@@ -32,6 +35,7 @@ func _on_start_pressed() -> void:
 	$Label.hide()
 	$tutorial.hide()
 	$Label2.show()
+	$settings.hide()
 	$continue.show()
 	$TextureRect.texture=load("res://art/main_bg.png")
 	var stuff=[]
@@ -82,6 +86,8 @@ func addtolist(a):
 func _on_end():
 	$start.show()
 	$Label.show()
+	$tutorial.show()
+	$settings.show()
 	$TextureRect.texture=load("res://art/openingbg.PNG")
 
 
@@ -100,3 +106,7 @@ func _on_button_mouse_entered(button) -> void:
 	
 func _on_button_mouse_exited(button) -> void:
 	create_tween().tween_property(button,"scale",Vector2(x,x),.1)
+
+
+func _on_settings_pressed() -> void:
+	$settingsui.show()

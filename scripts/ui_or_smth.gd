@@ -54,7 +54,7 @@ func _on_startbutton_pressed():
 	$pausebutton.disabled=false
 	$note1.show()
 	$roundcounter.text="1"
-	countdown=30
+	countdown=Global.time
 	start.emit()
 	show_time(str(countdown))
 
@@ -148,9 +148,15 @@ func _on_pausebutton_pressed() -> void:
 	if pause:
 		$pausebutton.texture_normal=closedsign
 		get_tree().paused=true
+		get_parent().get_parent().get_parent().get_node("settingsui").show()
+		get_parent().get_parent().get_parent().get_node("settingsui/Button").hide()
+		get_parent().get_parent().get_parent().get_node("settingsui/HSlider").editable=false
+		get_parent().get_parent().get_parent().get_node("settingsui/warning").show()
 	if not pause:
 		$pausebutton.texture_normal=opensign
 		get_tree().paused=false
+		get_parent().get_parent().get_parent().get_node("settingsui").hide()
+		get_parent().get_parent().get_parent().get_node("settingsui/HSlider").editable=true
 
 
 func _on_losebutton_pressed() -> void:

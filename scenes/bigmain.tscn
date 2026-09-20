@@ -122,9 +122,9 @@ text = "exit"
 
 [node name="invbutton" type="CanvasLayer" parent="." unique_id=752345639]
 layer = 100
-visible = false
 
 [node name="invbutton" type="Button" parent="invbutton" unique_id=2055890614]
+visible = false
 z_index = 1000
 offset_left = 974.0
 offset_top = 35.0
@@ -132,5 +132,13 @@ offset_right = 1057.0
 offset_bottom = 66.0
 text = "inventory"
 
+[node name="settings" type="Button" parent="invbutton" unique_id=786605703]
+offset_left = 883.0
+offset_top = 35.0
+offset_right = 952.0
+offset_bottom = 66.0
+text = "settings"
+
 [connection signal="timeout" from="moneycount/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="invbutton/invbutton" to="." method="_on_invbutton_pressed"]
+[connection signal="pressed" from="invbutton/settings" to="." method="_on_settings_pressed"]

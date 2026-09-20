@@ -117,3 +117,8 @@ func assign_dice(id,area,y1,y2): #cycle thru the nearest positions until it find
 				bp_x.erase(pos_x)
 		occupied_positions.append(area.position)
 		area.assigned=id
+
+
+func _on_area_exited(area: Area2D) -> void:
+	if area.drag:
+		area.assigned=0

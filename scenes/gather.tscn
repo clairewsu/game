@@ -125,5 +125,8 @@ offset_right = 1077.0
 offset_bottom = 104.0
 text = "exit"
 
+[connection signal="area_exited" from="area1" to="." method="_on_area_exited"]
+[connection signal="area_exited" from="area2" to="." method="_on_area_exited"]
+[connection signal="area_entered" from="area3" to="." method="_on_area_exited"]
 [connection signal="pressed" from="rollbutton" to="." method="_on_rollbutton_pressed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

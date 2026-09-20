@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ba7hat777uqwd" path="res://scripts/home.gd" id="1_t4cf2"]
 [ext_resource type="Texture2D" uid="uid://c66xajrrkawbk" path="res://art/openingbg.PNG" id="2_u4wd2"]
+[ext_resource type="Script" uid="uid://blf0dow78ef7a" path="res://scenes/settingsui.gd" id="3_w18ys"]
 
 [node name="Node" type="Node" unique_id=573697883]
 script = ExtResource("1_t4cf2")
@@ -59,5 +60,61 @@ theme_override_font_sizes/font_size = 36
 text = "tutorial"
 icon_alignment = 1
 
+[node name="settingsui" type="CanvasLayer" parent="." unique_id=1937922263]
+layer = 100
+visible = false
+script = ExtResource("3_w18ys")
+
+[node name="Panel" type="Panel" parent="settingsui" unique_id=2146881310]
+offset_left = 225.0
+offset_top = 95.0
+offset_right = 968.0
+offset_bottom = 536.0
+
+[node name="HSlider" type="HSlider" parent="settingsui" unique_id=1815378324]
+offset_left = 307.0
+offset_top = 181.0
+offset_right = 878.0
+offset_bottom = 197.0
+min_value = 10.0
+max_value = 120.0
+step = 10.0
+value = 30.0
+tick_count = 12
+ticks_on_borders = true
+
+[node name="Label" type="Label" parent="settingsui" unique_id=1255939352]
+offset_left = 501.0
+offset_top = 141.0
+offset_right = 660.0
+offset_bottom = 164.0
+text = "opening time: 30 sec"
+
+[node name="Button" type="Button" parent="settingsui" unique_id=225857808]
+offset_left = 221.0
+offset_top = 95.0
+offset_right = 259.0
+offset_bottom = 137.0
+theme_override_font_sizes/font_size = 24
+text = "x"
+
+[node name="warning" type="Label" parent="settingsui" unique_id=105560443]
+visible = false
+offset_left = 447.0
+offset_top = 119.0
+offset_right = 731.0
+offset_bottom = 142.0
+text = "you can't edit this while you're open!"
+
+[node name="settings" type="Button" parent="." unique_id=1793803361]
+offset_left = 154.0
+offset_top = 506.0
+offset_right = 299.0
+offset_bottom = 564.0
+theme_override_font_sizes/font_size = 36
+text = "settings"
+
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="settingsui/Button" to="settingsui" method="_on_button_pressed"]
+[connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]

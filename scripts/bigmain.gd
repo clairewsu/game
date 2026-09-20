@@ -51,6 +51,7 @@ func _process(delta: float) -> void:
 func _on_open():
 	$ui/open.hide()
 	$ui/recipebookbutton.hide()
+	$invbutton.hide()
 	await transition("open")
 	show_menu()
 	await hiderecipes
@@ -71,7 +72,7 @@ func _on_gather(ingredients):
 	add_child(gather)
 	$ui.hide()
 	$moneycount.hide()
-	$invbutton.show()
+	$invbutton/invbutton.show()
 	visible1=false
 	gather.tree_exited.connect(_on_close)
 	
@@ -82,7 +83,7 @@ func _on_ingredientshop():
 	ingredientshop.add_to_group("event")
 	add_child(ingredientshop)
 	$ui.hide()
-	$invbutton.show()
+	$invbutton/invbutton.show()
 	ingredientshop.tree_exited.connect(_on_close)
 
 func _on_potionshop():
@@ -92,7 +93,7 @@ func _on_potionshop():
 	potionshop.add_to_group("event")
 	add_child(potionshop)
 	$ui.hide()
-	$invbutton.show()
+	$invbutton/invbutton.show()
 	potionshop.tree_exited.connect(_on_close)
 	
 func _on_recipeshop():
@@ -102,7 +103,7 @@ func _on_recipeshop():
 	recipeshop.add_to_group("event")
 	add_child(recipeshop)
 	$ui.hide()
-	$invbutton.show()
+	$invbutton/invbutton.show()
 	recipeshop.tree_exited.connect(_on_close)
 	
 func _on_encounter():
@@ -119,7 +120,7 @@ func _on_encounter():
 	$ui.hide()
 	$moneycount.hide()
 	visible1=false
-	$invbutton.show()
+	$invbutton/invbutton.show()
 	encounter.tree_exited.connect(_on_close)
 	
 func transition(type): #ari walks between encounters
@@ -253,7 +254,7 @@ func update_moneys(amt):
 	
 func _on_close():
 	visible1=true
-	$invbutton.hide()
+	$invbutton/invbutton.hide()
 	if node==6:
 		node=1
 		Global.level+=1
@@ -331,3 +332,11 @@ func _on_invbutton_pressed() -> void:
 		inv=false
 		for i in get_tree().get_nodes_in_group("event"):
 			i.process_mode=Node.PROCESS_MODE_INHERIT
+
+
+func _on_settings_pressed() -> void:
+	var settings=get_parent().get_node("settingsui")
+	if settings.visible:
+		settings.hide()
+	else:
+		settings.show()
