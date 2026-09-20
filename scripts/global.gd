@@ -16,7 +16,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	quota=level*500
+	quota=level*500*1.25**(level-1)
 
 func spawn_money(amt,position,parent):
 	var x=clampi(amt/100,3,20)

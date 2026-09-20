@@ -1,8 +1,8 @@
 extends Node
 @export var dice_scene:PackedScene
 var dice_num=6
-var positions=[Vector2(950,200),Vector2(1050,250),Vector2(950,300),Vector2(1050,350),Vector2(950,400),Vector2(1050,450),Vector2(950,500),Vector2(1050,550)]
-var basket_positions_x=[300,400,500,600]
+var positions=[Vector2(950,200),Vector2(1050,250),Vector2(950,300),Vector2(1050,350),Vector2(950,400),Vector2(1050,450),Vector2(950,500),Vector2(1050,150),Vector2(950,100),Vector2(1050,550),Vector2(950,0),Vector2(1050,50)]
+var basket_positions_x=[300,360,420,480,540,600]
 var occupied_positions=[]
 var occupied=0
 var maxoccupied=0
@@ -35,6 +35,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	dice_num=min(dice_num,12)
 	if occupied==0 and not rolled:
 		can_roll=true
 	else:

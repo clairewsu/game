@@ -19,10 +19,10 @@ theme_override_font_sizes/font_size = 36
 text = "open"
 
 [node name="supplycount" type="Button" parent="." unique_id=303930772]
-offset_left = 494.0
-offset_top = 573.0
-offset_right = 631.0
-offset_bottom = 623.0
+offset_left = 986.0
+offset_top = 504.0
+offset_right = 1123.0
+offset_bottom = 554.0
 theme_override_font_sizes/font_size = 30
 text = "supply: 0"
 
@@ -36,10 +36,10 @@ expand_icon = true
 
 [node name="TextureRect" type="TextureRect" parent="recipebookbutton" unique_id=2060994330]
 layout_mode = 0
-offset_left = -103.0
-offset_top = -6.0
-offset_right = 96.0
-offset_bottom = 100.0
+offset_left = 240.0
+offset_top = 51.0
+offset_right = 439.0
+offset_bottom = 157.0
 texture = ExtResource("2_payeh")
 expand_mode = 1
 

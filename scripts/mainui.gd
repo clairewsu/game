@@ -11,7 +11,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$supplycount.text="supply: "+str(DeckManager.deck.size())
-	$nodecount.text="level "+str(Global.level)+" node "+str(get_parent().node)+" of 6"
+	$nodecount.text="level "+str(Global.level)+" node "+str(get_parent().node)+" of 6 quota: "+str(Global.quota)
 
 func _on_recipebook_pressed() -> void:
 	$recipebookbutton.hide()
@@ -29,7 +29,7 @@ func show_inv():
 		label.get_node("TextureRect").texture=load("res://art/ingredients/"+i+".PNG")
 		label.get_node("Label").text=str(Global.ingredients[i])
 		add_child(label)
-		label.position=Vector2(10+120*x,550)
+		label.position=Vector2(10+120*x,600)
 		x=x+1
 	for i in range(Global.decors.size()):
 		var decor=get_parent().decor_scene.instantiate()
@@ -40,6 +40,7 @@ func show_inv():
 
 func _on_supplycount_pressed() -> void:
 	$supplyinv.show()
+	$supplycount.hide()
 	var inv=[]
 	for i in DeckManager.deck:
 		var skip=false
@@ -72,4 +73,5 @@ func _input(event):
 		
 func hide_menu():
 	$supplyinv.hide()
+	$supplycount.show()
 	hideinv.emit()

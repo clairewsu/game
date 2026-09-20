@@ -20,6 +20,7 @@ var popping_up=false
 var tempmoneys=Global.moneys
 var visible1=true
 var node=1
+var inv=false
 signal hiderecipes
 signal eventchosen
 signal move
@@ -49,10 +50,12 @@ func _process(delta: float) -> void:
 	
 func _on_open():
 	$ui/open.hide()
+	$ui/recipebookbutton.hide()
 	await transition("open")
 	show_menu()
 	await hiderecipes
 	var open=open_scene.instantiate()
+	open.add_to_group("event")
 	add_child(open)
 	$ui.hide()
 	$moneycount.hide()
@@ -64,6 +67,7 @@ func _on_gather(ingredients):
 	hide_menu()
 	var gather=gather_scene.instantiate()
 	gather.ingredients=ingredients
+	gather.add_to_group("event")
 	add_child(gather)
 	$ui.hide()
 	$moneycount.hide()
@@ -75,6 +79,7 @@ func _on_ingredientshop():
 	await transition("shop")
 	hide_menu()
 	var ingredientshop=shop_ingredient_scene.instantiate()
+	ingredientshop.add_to_group("event")
 	add_child(ingredientshop)
 	$ui.hide()
 	$invbutton.show()
@@ -84,6 +89,7 @@ func _on_potionshop():
 	await transition("shop")
 	hide_menu()
 	var potionshop=shop_potion_scene.instantiate()
+	potionshop.add_to_group("event")
 	add_child(potionshop)
 	$ui.hide()
 	$invbutton.show()
@@ -93,6 +99,7 @@ func _on_recipeshop():
 	await transition("shop")
 	hide_menu()
 	var recipeshop=shop_recipe_scene.instantiate()
+	recipeshop.add_to_group("event")
 	add_child(recipeshop)
 	$ui.hide()
 	$invbutton.show()
@@ -107,6 +114,7 @@ func _on_encounter():
 		if file.ends_with(".tres"):
 			encounters.append(file)
 	encounter.data=load("res://resources/encounters/"+encounters.pick_random())
+	encounter.add_to_group("event")
 	add_child(encounter)
 	$ui.hide()
 	$moneycount.hide()
@@ -114,7 +122,8 @@ func _on_encounter():
 	$invbutton.show()
 	encounter.tree_exited.connect(_on_close)
 	
-func transition(type):
+func transition(type): #ari walks between encounters
+	$ui/recipebookbutton.disabled=true
 	var dots=[load("res://art/main_dot1.PNG"),load("res://art/main_dot2.PNG"),load("res://art/main_dot3.PNG")]
 	for i in range(4):
 		var popup=popup_scene.instantiate()
@@ -139,10 +148,13 @@ func transition(type):
 	await get_tree().create_timer(1.5).timeout
 	avatar.play("default")
 	await get_tree().create_timer(1).timeout
+	$ui/recipebookbutton.disabled=false
 	
 func show_menu():
 	var x=1
 	$recipebook.show()
+	if not inv:
+		$recipebook/Panel2.hide()
 	for name in DeckManager.book:
 		var object=object_scene.instantiate()
 		var menu=menu_scene.instantiate()
@@ -197,7 +209,7 @@ func get_free_slot():
 	return -1
 	
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("move") and $recipebook.visible==true and not $recipebook/recipebook.get_global_rect().has_point(event.position):
+	if event.is_action_pressed("move") and $recipebook.visible==true and not $recipebook/recipebook.get_global_rect().has_point(event.position) and not inv:
 		hide_menu()
 
 func tempadd(tempobj):
@@ -300,10 +312,15 @@ func endscreen():
 
 
 func _on_invbutton_pressed() -> void:
+	inv=true
+	for i in get_tree().get_nodes_in_group("event"):
+		i.process_mode=Node.PROCESS_MODE_DISABLED
 	if $ui.visible==false:
 		$ui.show()
 		$ui/open.hide()
 		$ui/event.hide()
+		$ui/recipebookbutton.hide()
+		show_menu()
 		$ui.show_inv()
 		$moneycount.show()
 	else:
@@ -311,3 +328,6 @@ func _on_invbutton_pressed() -> void:
 		$ui.hide()
 		if not visible1:
 			$moneycount.hide()
+		inv=false
+		for i in get_tree().get_nodes_in_group("event"):
+			i.process_mode=Node.PROCESS_MODE_INHERIT

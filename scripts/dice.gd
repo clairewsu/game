@@ -28,8 +28,10 @@ func _on_input_event(viewport, event, shape_idx):
 		assigned=0
 		
 func _unhandled_input(event):
-	if event.is_action_pressed("move") and position in get_parent().occupied_positions and $CollisionShape2D.shape.get_rect().has_point(get_global_mouse_position()):
-		get_parent().occupied_positions.erase(position)
+	if event.is_action_pressed("move") and position in get_parent().occupied_positions:
+		await get_tree().process_frame
+		if drag:
+			get_parent().occupied_positions.erase(position)
 	if event.is_action_released("move"):
 		drag = false
 	elif drag and event is InputEventMouseMotion:

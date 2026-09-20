@@ -83,6 +83,7 @@ func _on_end():
 	if Global.moneys<0:
 		$losebutton.show()
 	else:
+		await get_tree().create_timer(2).timeout
 		$endbutton.show()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
