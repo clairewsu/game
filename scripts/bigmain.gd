@@ -123,7 +123,7 @@ func _on_encounter():
 	$invbutton/invbutton.show()
 	encounter.tree_exited.connect(_on_close)
 	
-func transition(type): #ari walks between encounters
+func transition(type): #ari walks between events
 	$ui/recipebookbutton.disabled=true
 	var dots=[load("res://art/main_dot1.PNG"),load("res://art/main_dot2.PNG"),load("res://art/main_dot3.PNG")]
 	for i in range(4):
@@ -287,6 +287,18 @@ func _on_event():
 		match option:
 			"gather":
 				var gathers=[["fish","leaf","feather"],["rock","flower","fish"],["rock","crystal","bone"],["clay","bone","feather"],["leaf","flower","mushroom"],["clay","crystal","mushroom"]]
+				var ingredient={"leaf":0,"flower":0,"fish":0,"feather":0,"mushroom":0,"bone":0,"crystal":0,"rock":0,"clay":0}
+				var extragathers=[]
+				for j in DeckManager.book:
+					for ing in j.ingredient.keys():
+						if j.ingredient[ing]!=0:
+							ingredient[ing]+=1
+				for j in ingredient.keys():
+					if ingredient[j]>2:
+						for k in gathers:
+							if k.has(j):
+								extragathers.append(k)
+				gathers.append_array(extragathers)
 				var gather=gathers.pick_random()
 				event.get_node("Button").pressed.connect(_on_gather.bind(gather))
 				event.get_node("ing1").texture=load("res://art/ingredients/"+gather[0]+".PNG")

@@ -22,7 +22,6 @@ Global="*uid://b576q17mcpwbh"
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [input]
