@@ -43,6 +43,7 @@ polygon = PackedVector2Array(-119, 44, -178, 135, -158, 226, -45, 286, 95, 248, 
 position = Vector2(-10, 134)
 
 [node name="objdesc" type="Panel" parent="." unique_id=661542681]
+z_index = 1000
 offset_left = -339.0
 offset_top = -748.0
 offset_right = 264.0

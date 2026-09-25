@@ -31,8 +31,8 @@ func _ready() -> void:
 			object.scale*=.6
 			object.position=price.position+Vector2(70,0)
 			object.objpos=object.position
-			object._show_desc(object.data.name,object.data.color,object.data.basevalue,object.data.desc,object.position)
 			if type=="potion":
+				object._show_desc(object.data.name,object.data.color,object.data.basevalue,object.data.desc,object.position)
 				price.get_node("buy").pressed.connect(DeckManager.addtodeck.bind(object.data.name))
 				price.maxamt=5
 			if type=="recipe":
@@ -48,6 +48,7 @@ func _ready() -> void:
 				menu.get_node("TextureRect").z_index=-10
 				menu.objname=name
 				menu.shop_ver=true
+				menu._show_desc()
 				price.get_node("buy").pressed.connect(DeckManager.addtobook.bind(object.data.name))
 				price.maxamt=1
 				xlist.append(object.data.name)

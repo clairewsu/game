@@ -173,7 +173,7 @@ func show_menu():
 		object.z_index=100
 		object.sold=true
 		object.menu_ver=true
-		object._show_desc(object.data.name,object.data.color,object.data.basevalue,object.data.desc,object.position)
+		menu._show_desc()
 		menu.position=object.position+Vector2(-50,-100)
 		menu.objname=object.data.name
 		menu.get_node("TextureRect").z_index=10

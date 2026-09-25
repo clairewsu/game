@@ -37,37 +37,37 @@ expand_mode = 1
 
 [node name="upbutton" type="Button" parent="." unique_id=1726639578]
 z_index = 1000
-offset_left = 143.0
-offset_top = 113.0
-offset_right = 212.0
-offset_bottom = 148.0
+offset_left = 24.0
+offset_top = 229.0
+offset_right = 93.0
+offset_bottom = 264.0
 focus_mode = 0
 text = "up"
 
 [node name="downbutton" type="Button" parent="." unique_id=2056925282]
 z_index = 1000
-offset_left = 145.0
-offset_top = 194.0
-offset_right = 209.0
-offset_bottom = 226.0
+offset_left = 161.0
+offset_top = 229.0
+offset_right = 225.0
+offset_bottom = 261.0
 focus_mode = 0
 text = "down"
 
 [node name="Label" type="LineEdit" parent="." unique_id=1331162264]
 z_index = 1000
-offset_left = 142.0
-offset_top = 156.0
-offset_right = 210.5
-offset_bottom = 187.0
+offset_left = 93.0
+offset_top = 228.0
+offset_right = 161.5
+offset_bottom = 259.0
 text = "0"
 alignment = 1
 
 [node name="makebutton" type="Button" parent="." unique_id=1052892698]
 z_index = 1000
-offset_left = 85.0
-offset_top = 235.0
-offset_right = 155.0
-offset_bottom = 268.0
+offset_left = 92.0
+offset_top = 259.0
+offset_right = 162.0
+offset_bottom = 292.0
 text = "make"
 
 [node name="Timer" type="Timer" parent="." unique_id=1892722608]
@@ -76,10 +76,10 @@ one_shot = true
 
 [node name="ingredientcost" type="RichTextLabel" parent="." unique_id=7818490]
 z_index = 1000
-offset_left = -26.0
-offset_top = 9.0
-offset_right = 267.0
-offset_bottom = 70.0
+offset_left = -20.0
+offset_top = 14.0
+offset_right = 273.0
+offset_bottom = 75.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 24
@@ -95,6 +95,38 @@ offset_right = 39.0
 offset_bottom = 45.0
 theme_override_font_sizes/font_size = 24
 text = "x"
+
+[node name="title" type="RichTextLabel" parent="." unique_id=933774597]
+z_index = 4096
+offset_right = 225.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "name of the thing"
+horizontal_alignment = 1
+
+[node name="desc" type="RichTextLabel" parent="." unique_id=338900020]
+z_index = 4096
+offset_left = 119.0
+offset_top = 75.0
+offset_right = 229.0
+offset_bottom = 224.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "blah blah blah one of the descriptions of all time"
+vertical_alignment = 1
+
+[node name="price" type="Label" parent="." unique_id=148813863]
+z_index = 4096
+offset_left = 143.0
+offset_top = 53.0
+offset_right = 218.0
+offset_bottom = 76.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "price: 100"
 
 [connection signal="text_changed" from="Label" to="." method="_on_label_text_changed"]
 [connection signal="pressed" from="makebutton" to="." method="_on_makebutton_pressed"]

@@ -99,3 +99,8 @@ func _on_remove_pressed() -> void:
 				DeckManager.book.erase(i)
 	else:
 		confirm=true
+		
+func _show_desc():
+	$title.text=object.data.name
+	$price.text="price: "+str(object.data.basevalue)
+	$desc.text=object.data.desc

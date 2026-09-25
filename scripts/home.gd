@@ -58,7 +58,6 @@ func _on_start_pressed() -> void:
 		if i%2==0:
 			object.position+=Vector2(0,250)
 		object.objpos=object.position
-		object._show_desc(object.data.name,object.data.color,object.data.basevalue,object.data.desc,object.position)
 		if x in xlist:
 			object.queue_free()
 			continue
@@ -67,6 +66,7 @@ func _on_start_pressed() -> void:
 		menu.object=object
 		menu.select=true
 		menu.selected.connect(addtolist)
+		menu._show_desc()
 		add_child(menu)
 		menu.scale*=.8
 		menu.position=object.position+Vector2(-50,-100)
