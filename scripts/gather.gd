@@ -44,6 +44,12 @@ func _process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	var x=0
 	if event.is_action_released("move"):
+		$area1.set_deferred("monitoring", false)
+		$area1.set_deferred("monitoring", true)
+		$area2.set_deferred("monitoring", false)
+		$area2.set_deferred("monitoring", true)
+		$area3.set_deferred("monitoring", false)
+		$area3.set_deferred("monitoring", true)
 		for area in $area1.get_overlapping_areas():
 			if area is dice:
 				assign_dice(1,area,120,170)

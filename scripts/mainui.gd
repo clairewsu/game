@@ -58,7 +58,6 @@ func _on_supplycount_pressed() -> void:
 		object.sold=true
 		object.menu_ver=true
 		object.scale*=.5
-		object._show_desc(object.data.name,object.data.color,object.data.basevalue,object.data.desc,object.position)
 		wrapper.add_child(object)
 		inv.append(object)
 		object.get_node("invamt").show()
@@ -66,6 +65,7 @@ func _on_supplycount_pressed() -> void:
 		$supplyinv/ScrollContainer/GridContainer.add_child(wrapper)
 		object.position=wrapper.custom_minimum_size/2
 		object.objpos=object.position
+		object._show_desc(object.data.name,object.data.color,object.data.basevalue,object.data.desc,object.position)
 		hideinv.connect(wrapper.queue_free)
 		
 func _input(event):

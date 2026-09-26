@@ -1,0 +1,29 @@
+[gd_resource type="Resource" format=3 uid="uid://drtr6iwlglvcl"]
+
+[ext_resource type="Texture2D" uid="uid://bn67e8dvh5dyq" path="res://art/liquids/goldshadow_liquid.PNG" id="1_7coih"]
+[ext_resource type="Texture2D" uid="uid://drt0gehqbinuw" path="res://art/roundbottle_mask.PNG" id="2_jfk4t"]
+[ext_resource type="Script" uid="uid://khj4ey5uewis" path="res://scripts/object_scripts/goldshadow.gd" id="3_feid3"]
+[ext_resource type="Texture2D" uid="uid://b1vcgj1khoqec" path="res://art/roundbottle_gold.PNG" id="4_wynra"]
+
+[resource]
+script = ExtResource("3_feid3")
+name = "Libation of Shadow"
+desc = "If you only sold this customer 1 potion, they will pay 80% more"
+rarity = "uncommon"
+basevalue = 400
+ingredient = {
+"bone": 1,
+"clay": 0,
+"crystal": 0,
+"feather": 0,
+"fish": 0,
+"flower": 0,
+"leaf": 0,
+"mushroom": 4,
+"rock": 0
+}
+texture = ExtResource("4_wynra")
+liquidtexture = ExtResource("1_7coih")
+masktexture = ExtResource("2_jfk4t")
+fill = 0.5
+collision = PackedVector2Array(-265, 207, -134, 355, 85, 355, 217, 205, 177, -14, 94, -110, 40, -265, -94, -269, -140, -104, -217, -8)

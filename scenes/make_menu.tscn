@@ -71,7 +71,7 @@ offset_bottom = 292.0
 text = "make"
 
 [node name="Timer" type="Timer" parent="." unique_id=1892722608]
-wait_time = 0.1
+wait_time = 0.185
 one_shot = true
 
 [node name="ingredientcost" type="RichTextLabel" parent="." unique_id=7818490]

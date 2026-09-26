@@ -18,6 +18,7 @@ var tempingredients={}
 var cards={}
 var popping_up=false
 var tempmoneys=Global.moneys
+var unpicked={"gather":0,"encounter":0,"potionshop":0,"ingredientshop":0,"recipeshop":0}
 var visible1=true
 var node=1
 var inv=false
@@ -277,10 +278,15 @@ func _on_timer_timeout() -> void:
 func _on_event():
 	$ui/event.hide()
 	var options=["gather","gather","gather","encounter","encounter","encounter","potionshop","ingredientshop","recipeshop"]
+	var picked=[]
+	for i in unpicked.keys():
+		for j in range(floor(unpicked[i]/2)):
+			options.append(i)
 	for i in range(3):
 		var event=event_scene.instantiate()
 		event.position=Vector2(300*i,45)
 		var option=options.pick_random()
+		picked.append(option)
 		event.get_node("Button").text=option
 		event.get_node("Button").pressed.connect(eventchosen.emit)
 		eventchosen.connect(event.queue_free)
@@ -316,6 +322,11 @@ func _on_event():
 			"recipeshop":
 				event.get_node("Button").pressed.connect(_on_recipeshop)
 		add_child(event)
+	for i in unpicked.keys():
+		if i not in picked:
+			unpicked[i]+=1
+		else:
+			unpicked[i]=0
 		
 func endscreen():
 	$endscreen.show()
