@@ -1,0 +1,30 @@
+[gd_resource type="Resource" format=3 uid="uid://bg22hy40mrug8"]
+
+[ext_resource type="Texture2D" uid="uid://cxeqdal7myabo" path="res://art/liquids/growthfloral_liquid.PNG" id="1_ilpmx"]
+[ext_resource type="Texture2D" uid="uid://ctn0mktkhmmeu" path="res://art/incensebottle_mask.PNG" id="2_qfbrp"]
+[ext_resource type="Script" uid="uid://b56jbygecu5se" path="res://scripts/object_scripts/growthfloral.gd" id="3_745lt"]
+[ext_resource type="Texture2D" uid="uid://bf8qrqyyvt56m" path="res://art/incensebottle_growth.PNG" id="4_fkuum"]
+
+[resource]
+script = ExtResource("3_745lt")
+name = "Floral Incense"
+desc = "When you sell this potion,  lose 2[img=30%]res://art/ingredients/flower.PNG[/img] to increase the price by 2x"
+color = 1
+rarity = "uncommon"
+basevalue = 300
+ingredient = {
+"bone": 0,
+"clay": 1,
+"crystal": 0,
+"feather": 0,
+"fish": 0,
+"flower": 1,
+"leaf": 0,
+"mushroom": 0,
+"rock": 0
+}
+texture = ExtResource("4_fkuum")
+liquidtexture = ExtResource("1_ilpmx")
+masktexture = ExtResource("2_qfbrp")
+fill = 0.4
+collision = PackedVector2Array(-265, 207, -134, 355, 85, 355, 217, 205, 177, -14, 94, -110, 40, -265, -94, -269, -140, -104, -217, -8)

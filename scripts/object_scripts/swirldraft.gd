@@ -6,7 +6,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 	
-func on_sold(main):
+func on_sold(obj,main):
 	await main.get_tree().create_timer(.1).timeout
 	main.spawn_object()
 	if hq:

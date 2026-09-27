@@ -5,7 +5,7 @@ extends carddata
 func _ready() -> void:
 	pass # Replace with function body.
 
-func on_sold(main):
+func on_sold(obj,main):
 	DeckManager.addtodeck("abundant gold potion")
 	DeckManager.addtodeck("abundant gold potion")
 	if hq:

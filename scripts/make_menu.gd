@@ -101,6 +101,15 @@ func _on_remove_pressed() -> void:
 		confirm=true
 		
 func _show_desc():
-	$title.text=object.data.name
+	var type_path:String=""
+	if object.data.color==0:
+		type_path="res://art/gold.PNG"
+	elif object.data.color==1:
+		type_path="res://art/green.PNG"
+	elif object.data.color==2:
+		type_path="res://art/blue.PNG"
+	elif object.data.color==3:
+		type_path="res://art/swirl.PNG"
+	$title.text="%s [img=32]%s[/img]"%[object.data.name,type_path]
 	$price.text="price: "+str(object.data.basevalue)
 	$desc.text=object.data.desc

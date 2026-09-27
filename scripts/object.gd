@@ -35,6 +35,7 @@ signal select(slot)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	scale*=.4
+	data=data.duplicate()
 	$CanvasGroup/liquid.material = $CanvasGroup/liquid.material.duplicate()
 	$CanvasGroup/bottle.texture=data.texture
 	$CanvasGroup/liquid.texture=data.liquidtexture
@@ -155,6 +156,7 @@ func sell(guy):
 		z_index=10
 	position=guy.position+guy.slots[guyslot]
 	$objdesc.hide()
+	data.on_sold(self,get_parent().get_parent())
 	score.connect(guy._on_score)
 	score.connect(func(a,b):get_parent().get_parent().sold_signal.emit())
 	score.emit(data.basevalue,false)
@@ -162,7 +164,6 @@ func sell(guy):
 		score.emit(bonusamt,true)	
 	if exists != null and slot != -1:
 		exists.slot_occupied[slot] = false
-	data.on_sold(get_parent().get_parent())
 	guy.leave.connect(data.on_dismiss.bind(guy))
 	guy.tree_exited.connect(self.queue_free)
 	
@@ -191,10 +192,7 @@ func _show_desc(name:String,color:int,cost:int,desc:String,pos:Vector2):
 			type_path="res://art/swirl.PNG"
 		$objdesc/desctext.text="%s [img=64]%s[/img]\nprice: %d\n%s"% [name,type_path,cost,desc]	
 		$objdesc.custom_minimum_size = $objdesc/desctext.get_minimum_size()
-		if menu_ver:
-			$objdesc.position=Vector2(150,-350)
-		else:
-			$objdesc.position=Vector2(-300,-700)
+		$objdesc.position=Vector2(-300,-700)
 		$objdesc.show()
 	
 	

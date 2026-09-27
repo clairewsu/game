@@ -5,5 +5,5 @@ extends carddata
 func _ready() -> void:
 	pass # Replace with function body.
 
-func on_other_sold():
-	basevalue+=100
+func on_other_sold(obj):
+	obj.data.basevalue+=100

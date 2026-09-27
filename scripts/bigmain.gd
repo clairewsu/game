@@ -340,6 +340,7 @@ func _on_invbutton_pressed() -> void:
 	for i in get_tree().get_nodes_in_group("event"):
 		i.process_mode=Node.PROCESS_MODE_DISABLED
 	if $ui.visible==false:
+		$invbutton/invbutton.text="exit"
 		$ui.show()
 		$ui/open.hide()
 		$ui/event.hide()
@@ -348,6 +349,7 @@ func _on_invbutton_pressed() -> void:
 		$ui.show_inv()
 		$moneycount.show()
 	else:
+		$invbutton/invbutton.text="inventory"
 		hide_menu()
 		$ui.hide()
 		if not visible1:

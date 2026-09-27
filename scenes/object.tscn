@@ -6,7 +6,7 @@
 [ext_resource type="Shader" uid="uid://43uyde5kop04" path="res://object.gdshader" id="3_a03g0"]
 [ext_resource type="Shader" uid="uid://bpclhl87l7vfs" path="res://rainboweffect.gdshader" id="3_f66fi"]
 [ext_resource type="Texture2D" uid="uid://c5hsnlr60x28u" path="res://art/basicbottle_mask.PNG" id="4_46pka"]
-[ext_resource type="Texture2D" uid="uid://b1vcgj1khoqec" path="res://art/roundbottle_gold.PNG" id="4_f66fi"]
+[ext_resource type="Texture2D" uid="uid://bf8qrqyyvt56m" path="res://art/incensebottle_growth.PNG" id="4_f66fi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jhjyk"]
 shader = ExtResource("3_f66fi")
@@ -31,7 +31,7 @@ particle_scene = ExtResource("2_46pka")
 defaultpos = Vector2(550, 400)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=935366066]
-polygon = PackedVector2Array(-265, 207, -134, 355, 85, 355, 217, 205, 177, -14, 94, -110, 40, -265, -94, -269, -140, -104, -217, -8)
+polygon = PackedVector2Array(-222, 353, -134, 355, 85, 355, 198, 345, 184, -35, 60, -46, 33, -185, -86, -181, -113, -43, -234, -33)
 
 [node name="sellarea" type="Area2D" parent="." unique_id=898207889]
 collision_mask = 2

@@ -104,7 +104,7 @@ func spawn_object():
 	object.select.connect(_on_select)
 	select1.connect(object._on_select)
 	sellto.connect(object._guy_clicked)
-	sold_signal.connect(object.data.on_other_sold)
+	sold_signal.connect(object.data.on_other_sold.bind(object))
 	
 func respawn_guys():
 	respawning_guys=true

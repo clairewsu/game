@@ -5,5 +5,5 @@ extends carddata
 func _ready() -> void:
 	pass # Replace with function body.
 
-func on_sold(main):
+func on_sold(obj,main):
 	main.effects.append("cleansing")

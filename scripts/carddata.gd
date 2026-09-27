@@ -23,11 +23,11 @@ class_name carddata
 var hq_chance=0
 var hq:bool
 	
-func on_sold(main):
+func on_sold(obj,main):
 	pass
 	
 func on_dismiss(guy1):
 	pass
 	
-func on_other_sold():
+func on_other_sold(obj):
 	pass

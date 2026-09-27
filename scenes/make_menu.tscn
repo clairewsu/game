@@ -98,8 +98,9 @@ text = "x"
 
 [node name="title" type="RichTextLabel" parent="." unique_id=933774597]
 z_index = 4096
-offset_right = 225.0
-offset_bottom = 40.0
+offset_left = -24.0
+offset_right = 247.0
+offset_bottom = 71.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 24

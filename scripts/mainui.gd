@@ -63,7 +63,7 @@ func _on_supplycount_pressed() -> void:
 		object.get_node("invamt").show()
 		object.get_node("invamt").text="1"
 		$supplyinv/ScrollContainer/GridContainer.add_child(wrapper)
-		object.position=wrapper.custom_minimum_size/2
+		object.position=wrapper.custom_minimum_size/2+Vector2(0,60)
 		object.objpos=object.position
 		object._show_desc(object.data.name,object.data.color,object.data.basevalue,object.data.desc,object.position)
 		hideinv.connect(wrapper.queue_free)
