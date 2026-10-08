@@ -102,7 +102,7 @@ func _is_pressed(num):
 	if num==idx:
 		if Global.selected==null:
 			if slot_occupied.all(func(i):return i==-1):
-				penalty.emit(80,global_position)
+				penalty.emit(80*Global.level*Global.time/30*1.25**(Global.level-1),global_position)
 			else:
 				dismiss.emit(this_score*multiplier,bonus_score,global_position)
 			queue_free()

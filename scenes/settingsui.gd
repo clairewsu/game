@@ -13,4 +13,7 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
+	for i in get_tree().get_nodes_in_group("event"):
+		i.process_mode=Node.PROCESS_MODE_INHERIT
+		if i.get_node_or_null("exit"): i.get_node_or_null("exit").show()
 	hide()

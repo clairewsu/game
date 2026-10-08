@@ -337,9 +337,10 @@ func endscreen():
 
 func _on_invbutton_pressed() -> void:
 	inv=true
-	for i in get_tree().get_nodes_in_group("event"):
-		i.process_mode=Node.PROCESS_MODE_DISABLED
 	if $ui.visible==false:
+		for i in get_tree().get_nodes_in_group("event"):
+			if i.get_node_or_null("exit"): i.get_node_or_null("exit").hide()
+			i.process_mode=Node.PROCESS_MODE_DISABLED
 		$invbutton/invbutton.text="exit"
 		$ui.show()
 		$ui/open.hide()
@@ -357,11 +358,17 @@ func _on_invbutton_pressed() -> void:
 		inv=false
 		for i in get_tree().get_nodes_in_group("event"):
 			i.process_mode=Node.PROCESS_MODE_INHERIT
-
+			if i.get_node_or_null("exit"): i.get_node_or_null("exit").show()
 
 func _on_settings_pressed() -> void:
 	var settings=get_parent().get_node("settingsui")
 	if settings.visible:
 		settings.hide()
+		for i in get_tree().get_nodes_in_group("event"):
+			i.process_mode=Node.PROCESS_MODE_INHERIT
+			if i.get_node_or_null("exit"): i.get_node_or_null("exit").show()
 	else:
+		for i in get_tree().get_nodes_in_group("event"):
+			if i.get_node_or_null("exit"): i.get_node_or_null("exit").hide()
+			i.process_mode=Node.PROCESS_MODE_DISABLED
 		settings.show()

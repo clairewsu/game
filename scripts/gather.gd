@@ -97,11 +97,24 @@ func _on_rollbutton_pressed() -> void:
 		$rollbutton.hide()
 		for i in gained.keys():
 			Global.ingredients[i]+=gained[i]
+		await get_tree().create_timer(.3).timeout
+		end()
 	elif not can_roll and not rolled:
 		$errormsg.show()
 		await get_tree().create_timer(1).timeout
 		$errormsg.hide()
 
+func end(): #actually use only 1 container with richtextlabel and return after the tex
+	$CanvasLayer.show()
+	for i in gained.keys():
+		if gained[i]!=0:
+			var ing=RichTextLabel.new()
+			ing.bbcode_enabled=true
+			ing.fit_content=true
+			ing.custom_minimum_size=Vector2(100,100)
+			ing.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+			ing.text="[img=64]res://art/ingredients/"+i+".PNG"+"[/img]\n"+str(gained[i])
+			$CanvasLayer/ingredients.add_child(ing)
 
 func _on_exit_pressed() -> void:
 	self.queue_free()

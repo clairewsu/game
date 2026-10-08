@@ -11,6 +11,9 @@ size = Vector2(192.5, 369.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhyn0"]
 size = Vector2(474, 130)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8j7yi"]
+bg_color = Color(0.56, 0.46424, 0.3472, 1)
+
 [node name="Node" type="Node" unique_id=923871743]
 script = ExtResource("1_sec4e")
 dice_scene = ExtResource("2_8j7yi")
@@ -118,15 +121,43 @@ offset_right = 1029.0
 offset_bottom = 587.0
 text = "roll"
 
-[node name="exit" type="Button" parent="." unique_id=1675705771]
-offset_left = 1006.0
-offset_top = 73.0
-offset_right = 1077.0
-offset_bottom = 104.0
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1010543972]
+layer = 100
+visible = false
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=163859859]
+offset_left = 88.0
+offset_top = 53.0
+offset_right = 1058.0
+offset_bottom = 593.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8j7yi")
+
+[node name="exit" type="Button" parent="CanvasLayer" unique_id=1675705771]
+offset_left = 538.0
+offset_top = 486.0
+offset_right = 611.0
+offset_bottom = 544.0
+theme_override_font_sizes/font_size = 36
 text = "exit"
+
+[node name="ingredients" type="HBoxContainer" parent="CanvasLayer" unique_id=1455361891]
+offset_left = 156.0
+offset_top = 209.0
+offset_right = 1011.0
+offset_bottom = 450.0
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1009984173]
+offset_left = 465.0
+offset_top = 92.0
+offset_right = 683.0
+offset_bottom = 153.0
+theme_override_font_sizes/font_size = 50
+text = "obtained"
+horizontal_alignment = 1
 
 [connection signal="area_exited" from="area1" to="." method="_on_area_exited"]
 [connection signal="area_exited" from="area2" to="." method="_on_area_exited"]
 [connection signal="area_entered" from="area3" to="." method="_on_area_exited"]
 [connection signal="pressed" from="rollbutton" to="." method="_on_rollbutton_pressed"]
-[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer/exit" to="." method="_on_exit_pressed"]
