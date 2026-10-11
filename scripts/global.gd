@@ -23,6 +23,7 @@ func spawn_money(amt,position,parent):
 	var x=clampi(amt/100,3,20)
 	for i in range(x):
 		var money=money_scene.instantiate()
+		money.add_to_group("money_popup")
 		money.position=position
 		parent.add_child(money)
 		await get_tree().create_timer(.1).timeout

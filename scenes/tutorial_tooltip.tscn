@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://cfinprjtcwt40"]
+
+[ext_resource type="Script" uid="uid://rgv3phkje7w0" path="res://scripts/tutorial_tooltip.gd" id="1_3vifx"]
+[ext_resource type="Texture2D" uid="uid://evvt0v4b53h5" path="res://art/tooltip_mingming.PNG" id="2_f6o5j"]
+[ext_resource type="Texture2D" uid="uid://c345ttqxynfca" path="res://art/tooltip_bubble.PNG" id="3_i6dnf"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=691297301]
+layer = 1000
+script = ExtResource("1_3vifx")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=430153364]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=410849940]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_f6o5j")
+
+[node name="text_bottomright" type="Sprite2D" parent="Node2D" unique_id=1213117086]
+visible = false
+position = Vector2(178, 119)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_i6dnf")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node2D/text_bottomright" unique_id=1165032406]
+offset_left = -158.0
+offset_top = -136.0
+offset_right = 162.0
+offset_bottom = 94.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+text = "hello this is the dialogue of all time"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="text_bottomleft" type="Sprite2D" parent="Node2D" unique_id=586420168]
+visible = false
+position = Vector2(-178, 119)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_i6dnf")
+flip_h = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node2D/text_bottomleft" unique_id=465884498]
+offset_left = -186.0
+offset_top = -148.0
+offset_right = 136.0
+offset_bottom = 116.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+text = "hello this is the dialogue of all time"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="text_topright" type="Sprite2D" parent="Node2D" unique_id=422918393]
+visible = false
+position = Vector2(178, -119)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_i6dnf")
+flip_v = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node2D/text_topright" unique_id=1282887493]
+offset_left = -144.0
+offset_top = -96.0
+offset_right = 162.0
+offset_bottom = 156.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+text = "hello this is the dialogue of all time"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="text_topleft" type="Sprite2D" parent="Node2D" unique_id=1892408347]
+visible = false
+position = Vector2(-178, -119)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_i6dnf")
+flip_h = true
+flip_v = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node2D/text_topleft" unique_id=307692317]
+offset_left = -190.0
+offset_top = -100.0
+offset_right = 136.0
+offset_bottom = 162.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+text = "hello this is the dialogue of all time"
+horizontal_alignment = 1
+vertical_alignment = 1

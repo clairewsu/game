@@ -9,6 +9,7 @@ var decor_scene=preload("res://scenes/decor.tscn")
 var event_scene=preload("res://scenes/event.tscn")
 var avatar_scene=preload("res://scenes/ari_main.tscn")
 var popup_scene=preload("res://scenes/main_popup.tscn")
+var tutorial_scene=preload("res://scenes/tutorial_tooltip.tscn")
 @onready var avatar=avatar_scene.instantiate()
 @export var object_scene:PackedScene
 @export var menu_scene:PackedScene
@@ -23,6 +24,7 @@ var visible1=true
 var node=1
 var inv=false
 var tutorial=false
+@onready var tutorial_tooltip=tutorial_scene.instantiate()
 var encounters=[]
 signal hiderecipes
 signal eventchosen
@@ -47,6 +49,8 @@ func _ready() -> void:
 	for file in DirAccess.get_files_at("res://resources/encounters/"):
 		if file.ends_with(".tres"):
 			encounters.append(file)
+	tutorial_tooltip.data=load("res://resources/tutorials/tutorial_start.tres")
+	add_child(tutorial_tooltip)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

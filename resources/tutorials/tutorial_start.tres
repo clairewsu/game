@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="tutorialdata" format=3 uid="uid://cqtl0rw8r6frn"]
+
+[ext_resource type="Script" uid="uid://dnri2lehm8ler" path="res://scripts/tutorialdata.gd" id="1_31fng"]
+[ext_resource type="Script" uid="uid://csamr37igbx17" path="res://scripts/dialoguehelper_tutorial.gd" id="2_31fng"]
+
+[sub_resource type="Resource" id="Resource_4smeu"]
+script = ExtResource("2_31fng")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "All right, welcome to your first day at work!"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_31fng"]
+script = ExtResource("2_31fng")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "Hmm? You thought we were gonna be selling potions right away?"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_24dkh"]
+script = ExtResource("2_31fng")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "There's more to being a shopkeeper than that. To sell potions, you've gotta make them first!"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_37ud0"]
+script = ExtResource("2_31fng")
+pos = Vector2(900, 550)
+direction = "topleft"
+wait = "recipeopen"
+text = "See, this is your recipe book. Go ahead and open it up!"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[resource]
+script = ExtResource("1_31fng")
+steps = Array[ExtResource("2_31fng")]([SubResource("Resource_4smeu"), SubResource("Resource_31fng"), SubResource("Resource_24dkh"), SubResource("Resource_37ud0")])

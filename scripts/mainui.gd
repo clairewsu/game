@@ -16,6 +16,9 @@ func _process(delta: float) -> void:
 func _on_recipebook_pressed() -> void:
 	$recipebookbutton.hide()
 	get_parent().show_menu()
+	if get_parent().tutorial:
+		if get_parent().tutorial_tooltip.wait_for=="recipeopen":
+			get_parent().tutorial_tooltip.change_state(get_parent().tutorial_tooltip.state.ready)
 	
 func show_inv():
 	if not is_inside_tree():
