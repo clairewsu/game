@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd8hg4nsed6jc"
-path="res://.godot/imported/mingming_default.PNG-3c61d1ba8ca28387541a851ebf42ef46.ctex"
+uid="uid://c345ttqxynfca"
+path="res://.godot/imported/tooltip_bubble.PNG-ec3531a5ed6076ec39d1a73a356a0d14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/character_models/mingming_default.PNG"
-dest_files=["res://.godot/imported/mingming_default.PNG-3c61d1ba8ca28387541a851ebf42ef46.ctex"]
+source_file="res://art/tooltip_bubble.PNG"
+dest_files=["res://.godot/imported/tooltip_bubble.PNG-ec3531a5ed6076ec39d1a73a356a0d14.ctex"]
 
 [params]
 

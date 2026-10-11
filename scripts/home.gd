@@ -94,8 +94,11 @@ func _on_end():
 func _on_continue_pressed() -> void:
 	var game=game_scene.instantiate()
 	add_child(game)
-	$continue.hide()
-	$Label2.hide()
+	if $continue.visible:
+		$continue.hide()
+		$Label2.hide()
+	else:
+		game.tutorial=true
 	for i in starting:
 		DeckManager.addtobook(i)
 	game.tree_exited.connect(_on_end)
@@ -110,3 +113,15 @@ func _on_button_mouse_exited(button) -> void:
 
 func _on_settings_pressed() -> void:
 	$settingsui.show()
+
+
+func _on_tutorial_pressed() -> void:
+	$start.hide()
+	$Label.hide()
+	$tutorial.hide()
+	$settings.hide()
+	$TextureRect.texture=load("res://art/main_bg.png")
+	var encounter=load("res://scenes/encounter.tscn").instantiate()
+	encounter.data=load("res://resources/encounters/special/encounter_tutorialstart.tres")
+	encounter.tree_exited.connect(_on_continue_pressed)
+	add_child(encounter)

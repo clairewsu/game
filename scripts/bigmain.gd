@@ -22,6 +22,8 @@ var unpicked={"gather":0,"encounter":0,"potionshop":0,"ingredientshop":0,"recipe
 var visible1=true
 var node=1
 var inv=false
+var tutorial=false
+var encounters=[]
 signal hiderecipes
 signal eventchosen
 signal move
@@ -42,6 +44,9 @@ func _ready() -> void:
 	avatar.scale=Vector2(.3,.3)
 	avatar.position=Vector2(550,300)
 	avatar.play("default")
+	for file in DirAccess.get_files_at("res://resources/encounters/"):
+		if file.ends_with(".tres"):
+			encounters.append(file)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -111,10 +116,6 @@ func _on_encounter():
 	await transition("encounter")
 	hide_menu()
 	var encounter=encounter_scene.instantiate()
-	var encounters=[]
-	for file in DirAccess.get_files_at("res://resources/encounters/"):
-		if file.ends_with(".tres"):
-			encounters.append(file)
 	encounter.data=load("res://resources/encounters/"+encounters.pick_random())
 	encounter.add_to_group("event")
 	add_child(encounter)

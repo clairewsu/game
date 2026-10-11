@@ -116,5 +116,6 @@ text = "settings"
 
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="settingsui/Button" to="settingsui" method="_on_button_pressed"]
 [connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]

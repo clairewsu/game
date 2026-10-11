@@ -155,6 +155,15 @@ func _on_loss(amount:int,pos:Vector2):
 	if "cleansing" not in effects:
 		penalty+=amount
 		popup(pos,amount,"-","normal")
+	for i in effects:
+		if i=="water" or "waterhq":
+			var ing=Global.ingredients.keys().pick_random()
+			var x=3
+			if i=="waterhq":
+				x+=2
+			Global.ingredients[ing]+=x
+			await get_tree().create_timer(.1).timeout
+			popup(pos+Vector2(randi_range(-30,30),0),x,"+",ing)
 	
 func popup(pos:Vector2,points:int,sign,type:String):
 	var popup=scorepopup_scene.instantiate()

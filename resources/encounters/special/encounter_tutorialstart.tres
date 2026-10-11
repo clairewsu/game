@@ -1,0 +1,178 @@
+[gd_resource type="Resource" format=3 uid="uid://pnnb56qw04et"]
+
+[ext_resource type="Texture2D" uid="uid://b6gdl3dm52ho3" path="res://art/bg.PNG" id="1_xsijn"]
+[ext_resource type="Script" uid="uid://bstfm7yidj5es" path="res://scripts/encounter_scripts/encounter_tutorialstart.gd" id="2_qhl6i"]
+[ext_resource type="Script" uid="uid://dtxqdmfssbsvf" path="res://scripts/dialoguehelper.gd" id="3_vk187"]
+[ext_resource type="Texture2D" uid="uid://hkoqc3nu4ai4" path="res://art/character_models/ari_default.PNG" id="4_mlsjt"]
+[ext_resource type="Texture2D" uid="uid://dd8hg4nsed6jc" path="res://art/character_models/mingming_dialogue/mingming_default.PNG" id="5_v1oab"]
+[ext_resource type="Texture2D" uid="uid://dp1vj663p511u" path="res://art/character_models/mingming_dialogue/mingming_gasp.PNG" id="6_c1gqb"]
+[ext_resource type="Texture2D" uid="uid://drp7t70mplb7e" path="res://art/character_models/mingming_dialogue/mingming_laugh.PNG" id="7_x88vu"]
+[ext_resource type="Texture2D" uid="uid://chxpmr8srf4vw" path="res://art/character_models/mingming_dialogue/mingming_think.PNG" id="8_oq01i"]
+[ext_resource type="Texture2D" uid="uid://bc4sdb7acamv5" path="res://art/character_models/mingming_dialogue/mingming_sigh.PNG" id="9_4y32c"]
+[ext_resource type="Texture2D" uid="uid://bdk6dm3ojgwc5" path="res://art/character_models/mingming_dialogue/mingming_talk.PNG" id="10_12xhf"]
+
+[sub_resource type="Resource" id="Resource_dty6p"]
+script = ExtResource("3_vk187")
+text = "One day you were looking to get employed when the perfect job opening popped up: own a potion shop in the middle of a small town!"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_ul2pc"]
+script = ExtResource("3_vk187")
+speaker = "Ari (this is you now)"
+texture2 = ExtResource("4_mlsjt")
+text = "Luckily I'm not in debt or anything, so I can see this as an opportunity to try something new and maybe get rich"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_2i3or"]
+script = ExtResource("3_vk187")
+texture2 = ExtResource("4_mlsjt")
+text = "You packed all your belongings and came to the small town."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_lvfrv"]
+script = ExtResource("3_vk187")
+texture1 = ExtResource("4_mlsjt")
+texture3 = ExtResource("5_v1oab")
+text = "However, when you entered the store, someone was already inside"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_lxqbl"]
+script = ExtResource("3_vk187")
+speaker = "???"
+position = 1
+texture1 = ExtResource("4_mlsjt")
+texture3 = ExtResource("5_v1oab")
+text = "Hello, welcome!"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_kenfm"]
+script = ExtResource("3_vk187")
+speaker = "Ari"
+texture1 = ExtResource("4_mlsjt")
+texture3 = ExtResource("5_v1oab")
+text = "Um, I thought this place was looking for a shopkeeper?"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_7pf3b"]
+script = ExtResource("3_vk187")
+speaker = "???"
+position = 1
+texture1 = ExtResource("4_mlsjt")
+texture3 = ExtResource("6_c1gqb")
+text = "Ohh, are you the new owner?"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_37cwu"]
+script = ExtResource("3_vk187")
+speaker = "Mingming"
+position = 1
+texture1 = ExtResource("4_mlsjt")
+texture3 = ExtResource("5_v1oab")
+text = "I've just been filling in until you came. Nice to meet you, I'm Mingming!"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_td1tk"]
+script = ExtResource("3_vk187")
+speaker = "Mingming"
+position = 1
+texture1 = ExtResource("4_mlsjt")
+texture3 = ExtResource("7_x88vu")
+text = "Ahh, well now that you're here, I can finally call it quits! Time to sit back, relax, maybe bask in the sun..."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_uxdh1"]
+script = ExtResource("3_vk187")
+speaker = "Mingming"
+position = 1
+texture2 = ExtResource("8_oq01i")
+text = "...wait a minute, you wouldn't happen to be new at this, would you? Have you ever owned a potion shop before?"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_kdube"]
+script = ExtResource("3_vk187")
+buttons = Array[String](["I haven't.", "I have."])
+texture2 = ExtResource("8_oq01i")
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_0q5lx"]
+script = ExtResource("3_vk187")
+id = 1
+speaker = "Mingming"
+position = 1
+texture2 = ExtResource("9_4y32c")
+text = "That's no good... I promised the previous owner I'd leave this place in good hands. Who's to say this place'll stay afloat under the ownership of a newbie?"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_4rh80"]
+script = ExtResource("3_vk187")
+id = 1
+speaker = "Mingming"
+position = 1
+texture2 = ExtResource("5_v1oab")
+text = "That's okay though, I'll be sure to train you up before handing things over to you."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_4863f"]
+script = ExtResource("3_vk187")
+id = 2
+speaker = "Mingming"
+position = 1
+texture2 = ExtResource("9_4y32c")
+text = "...why are you doing the tutorial then?"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_kdgye"]
+script = ExtResource("3_vk187")
+id = 2
+speaker = "Mingming"
+position = 1
+texture2 = ExtResource("10_12xhf")
+text = "Even if you have, running this place is no Potion Craft."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_226qs"]
+script = ExtResource("3_vk187")
+id = 2
+speaker = "Mingming"
+position = 1
+texture2 = ExtResource("7_x88vu")
+text = "Not to brag, but over the years, I've become quite the master shopkeeper. I doubt you'd be able to beat me!"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_20ns4"]
+script = ExtResource("3_vk187")
+id = 2
+speaker = "Mingming"
+position = 1
+texture2 = ExtResource("8_oq01i")
+text = "As much as I'd like to retire, who's to say business would be as good without me running the place?"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_d41gx"]
+script = ExtResource("3_vk187")
+speaker = "Mingming"
+position = 1
+texture2 = ExtResource("10_12xhf")
+text = "How about this: you'll have to pass my challenge first before I let you take over as owner."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_poi20"]
+script = ExtResource("3_vk187")
+speaker = "Mingming"
+position = 1
+texture2 = ExtResource("5_v1oab")
+text = "All you have to do is beat my average earnings over the span of two weeks."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_h2810"]
+script = ExtResource("3_vk187")
+speaker = "Mingming"
+position = 1
+texture2 = ExtResource("7_x88vu")
+text = "Okay, let's get started!"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[resource]
+script = ExtResource("2_qhl6i")
+bg = ExtResource("1_xsijn")
+steps = Array[ExtResource("3_vk187")]([SubResource("Resource_dty6p"), SubResource("Resource_ul2pc"), SubResource("Resource_2i3or"), SubResource("Resource_lvfrv"), SubResource("Resource_lxqbl"), SubResource("Resource_kenfm"), SubResource("Resource_7pf3b"), SubResource("Resource_37cwu"), SubResource("Resource_td1tk"), SubResource("Resource_uxdh1"), SubResource("Resource_kdube"), SubResource("Resource_0q5lx"), SubResource("Resource_4rh80"), SubResource("Resource_4863f"), SubResource("Resource_kdgye"), SubResource("Resource_226qs"), SubResource("Resource_20ns4"), SubResource("Resource_d41gx"), SubResource("Resource_poi20"), SubResource("Resource_h2810")])

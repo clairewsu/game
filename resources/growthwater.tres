@@ -1,0 +1,30 @@
+[gd_resource type="Resource" format=3 uid="uid://chuf43wfl84xq"]
+
+[ext_resource type="Texture2D" uid="uid://bccin5ksyo5ln" path="res://art/liquids/growthlifewater_liquid.PNG" id="1_lw6rc"]
+[ext_resource type="Texture2D" uid="uid://drt0gehqbinuw" path="res://art/roundbottle_mask.PNG" id="2_mi5eq"]
+[ext_resource type="Script" uid="uid://dqe3yqwsl7sa2" path="res://scripts/object_scripts/growthwater.gd" id="3_ui54e"]
+[ext_resource type="Texture2D" uid="uid://h4maeapctx6w" path="res://art/roundbottle_growth.PNG" id="4_euh38"]
+
+[resource]
+script = ExtResource("3_ui54e")
+name = "Lifewater"
+desc = "Gain 3 of a random ingredient when turning away customers this round."
+color = 1
+rarity = "common"
+basevalue = 200
+ingredient = {
+"bone": 0,
+"clay": 0,
+"crystal": 0,
+"feather": 0,
+"fish": 0,
+"flower": 0,
+"leaf": 0,
+"mushroom": 0,
+"rock": 3
+}
+texture = ExtResource("4_euh38")
+liquidtexture = ExtResource("1_lw6rc")
+masktexture = ExtResource("2_mi5eq")
+fill = 0.5
+collision = PackedVector2Array(-265, 207, -134, 355, 85, 355, 217, 205, 177, -14, 94, -110, 40, -265, -94, -269, -140, -104, -217, -8)
