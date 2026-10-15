@@ -19,7 +19,9 @@ func _on_recipebook_pressed() -> void:
 	if get_parent().tutorial:
 		if get_parent().tutorial_tooltip.wait_for=="recipeopen":
 			get_parent().tutorial_tooltip.change_state(get_parent().tutorial_tooltip.state.ready)
-	
+			get_parent().recipebook_keepopen=true
+			get_parent().tutorial_tooltip.wait_for=="move"
+
 func show_inv():
 	if not is_inside_tree():
 		return

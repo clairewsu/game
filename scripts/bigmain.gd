@@ -24,6 +24,7 @@ var visible1=true
 var node=1
 var inv=false
 var tutorial=false
+var recipebook_keepopen=false
 @onready var tutorial_tooltip=tutorial_scene.instantiate()
 var encounters=[]
 signal hiderecipes
@@ -49,14 +50,23 @@ func _ready() -> void:
 	for file in DirAccess.get_files_at("res://resources/encounters/"):
 		if file.ends_with(".tres"):
 			encounters.append(file)
-	tutorial_tooltip.data=load("res://resources/tutorials/tutorial_start.tres")
-	add_child(tutorial_tooltip)
+	if tutorial:
+		tutorial_tooltip.data=load("res://resources/tutorials/tutorial_start.tres")
+		add_child(tutorial_tooltip)
+		$ui/recipebookbutton.hide()
+		$ui/event.hide()
+		$moneycount.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Global.moneys!=tempmoneys and not popping_up:
 		tempmoneys=Global.moneys
 		money_changed()
+	if tutorial and is_instance_valid(tutorial_tooltip):
+		match tutorial_tooltip.wait_for:
+			"recipeopen":
+				if not $recipebook.visible:
+					$ui/recipebookbutton.show()
 	
 func _on_open():
 	$ui/open.hide()
@@ -217,7 +227,14 @@ func get_free_slot():
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("move") and $recipebook.visible==true and not $recipebook/recipebook.get_global_rect().has_point(event.position) and not inv:
-		hide_menu()
+		if tutorial_tooltip.wait_for=="hiderecipes":
+			hide_menu()
+			recipebook_keepopen=false
+			tutorial_tooltip.change_state(tutorial_tooltip.state.ready)
+		elif recipebook_keepopen:
+			pass
+		else:
+			hide_menu()
 
 func tempadd(tempobj):
 	tempingredients.clear()

@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 				return
 			show_text()
 	
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(wait_for) and current_state==state.waiting and not delay:
 		delay=true
 		change_state(state.ready)

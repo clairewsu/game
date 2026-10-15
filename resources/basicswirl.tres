@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("2_cv1hu")
-name = "basic wind potion"
+name = "basic mind potion"
 desc = "no effect"
 color = 3
 rarity = "common"

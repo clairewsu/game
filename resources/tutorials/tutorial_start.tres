@@ -32,9 +32,49 @@ script = ExtResource("2_31fng")
 pos = Vector2(900, 550)
 direction = "topleft"
 wait = "recipeopen"
-text = "See, this is your recipe book. Go ahead and open it up!"
+text = "See, this is your [b]recipe book[/b]. Go ahead and open it up!"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_vfes3"]
+script = ExtResource("2_31fng")
+pos = Vector2(830, 350)
+direction = "topleft"
+wait = "move"
+text = "You can only make a potion if you have its [b]recipe[/b]. You can see their price, ingredient cost, and effects right here!"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_aadeu"]
+script = ExtResource("2_31fng")
+pos = Vector2(830, 350)
+direction = "topleft"
+wait = "move"
+text = "There are four different types of potions: growth[img=30]res://art/green.PNG[/img], gold[img=30]res://art/gold.PNG[/img], magic[img=30]res://art/blue.PNG[/img], and mind[img=30]res://art/swirl.PNG[/img]. You can tell a potion’s type based on its label."
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_1wkrw"]
+script = ExtResource("2_31fng")
+pos = Vector2(830, 350)
+direction = "topleft"
+wait = "move"
+text = "Customers might ask for any type of potion, so it’s a good idea to always have a variety on hand."
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_2jxxo"]
+script = ExtResource("2_31fng")
+pos = Vector2(830, 350)
+direction = "topleft"
+wait = "move"
+text = "Oh, but to make potions, you have to have the ingredients first. You can get ingredients through [b]events[/b]."
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_f7k42"]
+script = ExtResource("2_31fng")
+pos = Vector2(830, 350)
+direction = "topleft"
+wait = "hiderecipes"
+text = "If you close the book now, I’ll show you!"
 metadata/_custom_type_script = "uid://csamr37igbx17"
 
 [resource]
 script = ExtResource("1_31fng")
-steps = Array[ExtResource("2_31fng")]([SubResource("Resource_4smeu"), SubResource("Resource_31fng"), SubResource("Resource_24dkh"), SubResource("Resource_37ud0")])
+steps = Array[ExtResource("2_31fng")]([SubResource("Resource_4smeu"), SubResource("Resource_31fng"), SubResource("Resource_24dkh"), SubResource("Resource_37ud0"), SubResource("Resource_vfes3"), SubResource("Resource_aadeu"), SubResource("Resource_1wkrw"), SubResource("Resource_2jxxo"), SubResource("Resource_f7k42")])

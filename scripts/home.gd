@@ -93,12 +93,12 @@ func _on_end():
 
 func _on_continue_pressed() -> void:
 	var game=game_scene.instantiate()
-	add_child(game)
 	if $continue.visible:
 		$continue.hide()
 		$Label2.hide()
 	else:
 		game.tutorial=true
+	add_child(game)
 	for i in starting:
 		DeckManager.addtobook(i)
 	game.tree_exited.connect(_on_end)
