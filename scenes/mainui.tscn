@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c320fbsytd8dg" path="res://scripts/mainui.gd" id="1_hdcb6"]
 [ext_resource type="PackedScene" uid="uid://btyjdevs28bfm" path="res://scenes/ingedientinv_label.tscn" id="2_k2m04"]
 [ext_resource type="Texture2D" uid="uid://dcstsr0glp3nq" path="res://art/recipebook_closed.PNG" id="2_payeh"]
+[ext_resource type="Texture2D" uid="uid://dwwpljs5eee8x" path="res://art/liquids/agenda_button.PNG" id="4_k2m04"]
 
 [node name="mainui" type="CanvasLayer" unique_id=2083767084]
 layer = 3
@@ -27,28 +28,36 @@ theme_override_font_sizes/font_size = 30
 text = "supply: 0"
 
 [node name="recipebookbutton" type="Button" parent="." unique_id=1706220111]
-offset_left = 713.0
-offset_top = 489.0
-offset_right = 780.0
-offset_bottom = 563.0
+offset_left = 1052.0
+offset_top = 554.0
+offset_right = 1127.0
+offset_bottom = 631.0
 flat = true
 expand_icon = true
 
 [node name="TextureRect" type="TextureRect" parent="recipebookbutton" unique_id=2060994330]
 layout_mode = 0
-offset_left = 240.0
-offset_top = 51.0
-offset_right = 439.0
-offset_bottom = 157.0
+offset_left = -95.0
+offset_top = -7.0
+offset_right = 104.0
+offset_bottom = 99.0
+mouse_filter = 2
 texture = ExtResource("2_payeh")
 expand_mode = 1
 
 [node name="event" type="Button" parent="." unique_id=1541758288]
-offset_left = 622.0
-offset_top = 430.0
-offset_right = 711.0
-offset_bottom = 480.0
-text = "event"
+offset_left = 981.0
+offset_top = 551.0
+offset_right = 1053.0
+offset_bottom = 634.0
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="event" unique_id=378199434]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 85.0
+texture = ExtResource("4_k2m04")
+expand_mode = 1
 
 [node name="nodecount" type="Label" parent="." unique_id=145993075]
 offset_left = 396.0

@@ -75,6 +75,30 @@ wait = "hiderecipes"
 text = "If you close the book now, I’ll show you!"
 metadata/_custom_type_script = "uid://csamr37igbx17"
 
+[sub_resource type="Resource" id="Resource_gfsmp"]
+script = ExtResource("2_31fng")
+pos = Vector2(870, 550)
+direction = "topleft"
+wait = "agendaopen"
+text = "You can see what sort of events you can do right now by opening your [b]agenda[/b]."
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_s6rpa"]
+script = ExtResource("2_31fng")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "Now you’ll get to choose what you want to do! "
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_u0tws"]
+script = ExtResource("2_31fng")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "eventon"
+text = "You can fit [b]5[/b] events on your schedule before it’s time to open, so feel free to do what you like. I’ll tell you about each as you check it out!"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
 [resource]
 script = ExtResource("1_31fng")
-steps = Array[ExtResource("2_31fng")]([SubResource("Resource_4smeu"), SubResource("Resource_31fng"), SubResource("Resource_24dkh"), SubResource("Resource_37ud0"), SubResource("Resource_vfes3"), SubResource("Resource_aadeu"), SubResource("Resource_1wkrw"), SubResource("Resource_2jxxo"), SubResource("Resource_f7k42")])
+steps = Array[ExtResource("2_31fng")]([SubResource("Resource_4smeu"), SubResource("Resource_31fng"), SubResource("Resource_24dkh"), SubResource("Resource_37ud0"), SubResource("Resource_vfes3"), SubResource("Resource_aadeu"), SubResource("Resource_1wkrw"), SubResource("Resource_2jxxo"), SubResource("Resource_f7k42"), SubResource("Resource_gfsmp"), SubResource("Resource_s6rpa"), SubResource("Resource_u0tws")])

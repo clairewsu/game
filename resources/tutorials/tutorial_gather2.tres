@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="tutorialdata" format=3 uid="uid://beq0tyw4he6p"]
+
+[ext_resource type="Script" uid="uid://dnri2lehm8ler" path="res://scripts/tutorialdata.gd" id="1_m4iph"]
+[ext_resource type="Script" uid="uid://csamr37igbx17" path="res://scripts/dialoguehelper_tutorial.gd" id="2_vq6of"]
+
+[sub_resource type="Resource" id="Resource_jyiob"]
+script = ExtResource("2_vq6of")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "roll"
+text = "Your luck with foraging will vary every time. Now that you’ve assigned all your dice, give them a roll to see how you do!"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_og80x"]
+script = ExtResource("2_vq6of")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "These ingredients are yours to keep. Go brew some potions!
+"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[resource]
+script = ExtResource("1_m4iph")
+steps = Array[ExtResource("2_vq6of")]([SubResource("Resource_jyiob"), SubResource("Resource_og80x")])

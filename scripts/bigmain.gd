@@ -24,8 +24,10 @@ var visible1=true
 var node=1
 var inv=false
 var tutorial=false
+var tutorials=[]
 var recipebook_keepopen=false
-@onready var tutorial_tooltip=tutorial_scene.instantiate()
+var event_keepopen=false
+var tutorial_tooltip
 var encounters=[]
 signal hiderecipes
 signal eventchosen
@@ -51,8 +53,10 @@ func _ready() -> void:
 		if file.ends_with(".tres"):
 			encounters.append(file)
 	if tutorial:
-		tutorial_tooltip.data=load("res://resources/tutorials/tutorial_start.tres")
-		add_child(tutorial_tooltip)
+		for file in DirAccess.get_files_at("res://resources/tutorials/"):
+			if file.ends_with(".tres"):
+				tutorials.append(file)
+		loadtutorial("start")
 		$ui/recipebookbutton.hide()
 		$ui/event.hide()
 		$moneycount.hide()
@@ -67,6 +71,13 @@ func _process(delta: float) -> void:
 			"recipeopen":
 				if not $recipebook.visible:
 					$ui/recipebookbutton.show()
+			"agendaopen":
+				if not event_keepopen:
+					$ui/event.show()
+			"eventon":
+				await get_tree().process_frame
+				event_keepopen=false
+				tutorial_tooltip.wait_for="move"
 	
 func _on_open():
 	$ui/open.hide()
@@ -84,88 +95,94 @@ func _on_open():
 	open.tree_exited.connect(_on_close)
 	
 func _on_gather(ingredients):
-	await transition("gather")
-	hide_menu()
-	var gather=gather_scene.instantiate()
-	gather.ingredients=ingredients
-	gather.add_to_group("event")
-	add_child(gather)
-	$ui.hide()
-	$moneycount.hide()
-	$invbutton/invbutton.show()
-	visible1=false
-	gather.tree_exited.connect(_on_close)
+	if not event_keepopen:
+		await transition("gather")
+		hide_menu()
+		var gather=gather_scene.instantiate()
+		gather.ingredients=ingredients
+		gather.add_to_group("event")
+		add_child(gather)
+		$ui.hide()
+		$moneycount.hide()
+		$invbutton/invbutton.show()
+		visible1=false
+		gather.tree_exited.connect(_on_close)
 	
 func _on_ingredientshop():
-	await transition("shop")
-	hide_menu()
-	var ingredientshop=shop_ingredient_scene.instantiate()
-	ingredientshop.add_to_group("event")
-	add_child(ingredientshop)
-	$ui.hide()
-	$invbutton/invbutton.show()
-	ingredientshop.tree_exited.connect(_on_close)
+	if not event_keepopen:
+		await transition("shop")
+		hide_menu()
+		var ingredientshop=shop_ingredient_scene.instantiate()
+		ingredientshop.add_to_group("event")
+		add_child(ingredientshop)
+		$ui.hide()
+		$invbutton/invbutton.show()
+		ingredientshop.tree_exited.connect(_on_close)
 
 func _on_potionshop():
-	await transition("shop")
-	hide_menu()
-	var potionshop=shop_potion_scene.instantiate()
-	potionshop.add_to_group("event")
-	add_child(potionshop)
-	$ui.hide()
-	$invbutton/invbutton.show()
-	potionshop.tree_exited.connect(_on_close)
+	if not event_keepopen:
+		await transition("shop")
+		hide_menu()
+		var potionshop=shop_potion_scene.instantiate()
+		potionshop.add_to_group("event")
+		add_child(potionshop)
+		$ui.hide()
+		$invbutton/invbutton.show()
+		potionshop.tree_exited.connect(_on_close)
 	
 func _on_recipeshop():
-	await transition("shop")
-	hide_menu()
-	var recipeshop=shop_recipe_scene.instantiate()
-	recipeshop.add_to_group("event")
-	add_child(recipeshop)
-	$ui.hide()
-	$invbutton/invbutton.show()
-	recipeshop.tree_exited.connect(_on_close)
+	if not event_keepopen:
+		await transition("shop")
+		hide_menu()
+		var recipeshop=shop_recipe_scene.instantiate()
+		recipeshop.add_to_group("event")
+		add_child(recipeshop)
+		$ui.hide()
+		$invbutton/invbutton.show()
+		recipeshop.tree_exited.connect(_on_close)
 	
 func _on_encounter():
-	await transition("encounter")
-	hide_menu()
-	var encounter=encounter_scene.instantiate()
-	encounter.data=load("res://resources/encounters/"+encounters.pick_random())
-	encounter.add_to_group("event")
-	add_child(encounter)
-	$ui.hide()
-	$moneycount.hide()
-	visible1=false
-	$invbutton/invbutton.show()
-	encounter.tree_exited.connect(_on_close)
+	if not event_keepopen:
+		await transition("encounter")
+		hide_menu()
+		var encounter=encounter_scene.instantiate()
+		encounter.data=load("res://resources/encounters/"+encounters.pick_random())
+		encounter.add_to_group("event")
+		add_child(encounter)
+		$ui.hide()
+		$moneycount.hide()
+		visible1=false
+		$invbutton/invbutton.show()
+		encounter.tree_exited.connect(_on_close)
 	
 func transition(type): #ari walks between events
-	$ui/recipebookbutton.disabled=true
-	var dots=[load("res://art/main_dot1.PNG"),load("res://art/main_dot2.PNG"),load("res://art/main_dot3.PNG")]
-	for i in range(4):
-		var popup=popup_scene.instantiate()
-		popup.position=Vector2(650+100*i,350)
-		move.connect(popup.move)
-		add_child(popup)
-		if i<3:
-			popup.get_node("Sprite2D").texture=dots.pick_random()
-		else:
-			match type:
-				"home":
-					popup.get_node("Sprite2D").texture=load("res://art/main_home.PNG")
-				"shop":
-					popup.get_node("Sprite2D").texture=load("res://art/main_shop.PNG")
-				"gather":
-					popup.get_node("Sprite2D").texture=load("res://art/main_gather.PNG")
-				"encounter":
-					popup.get_node("Sprite2D").texture=load("res://art/main_encounter.PNG")
-		await get_tree().create_timer(.2).timeout
-	move.emit()
-	avatar.play("walk")
-	await get_tree().create_timer(1.5).timeout
-	avatar.play("default")
-	await get_tree().create_timer(1).timeout
-	$ui/recipebookbutton.disabled=false
+	if not event_keepopen:
+		$ui/recipebookbutton.disabled=true
+		var dots=[load("res://art/main_dot1.PNG"),load("res://art/main_dot2.PNG"),load("res://art/main_dot3.PNG")]
+		for i in range(4):
+			var popup=popup_scene.instantiate()
+			popup.position=Vector2(650+100*i,350)
+			move.connect(popup.move)
+			add_child(popup)
+			if i<3:
+				popup.get_node("Sprite2D").texture=dots.pick_random()
+			else:
+				match type:
+					"home":
+						popup.get_node("Sprite2D").texture=load("res://art/main_home.PNG")
+					"shop":
+						popup.get_node("Sprite2D").texture=load("res://art/main_shop.PNG")
+					"gather":
+						popup.get_node("Sprite2D").texture=load("res://art/main_gather.PNG")
+					"encounter":
+						popup.get_node("Sprite2D").texture=load("res://art/main_encounter.PNG")
+			await get_tree().create_timer(.2).timeout
+		move.emit()
+		avatar.play("walk")
+		await get_tree().create_timer(1.5).timeout
+		avatar.play("default")
+		await get_tree().create_timer(1).timeout
+		$ui/recipebookbutton.disabled=false
 	
 func show_menu():
 	var x=1
@@ -227,7 +244,7 @@ func get_free_slot():
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("move") and $recipebook.visible==true and not $recipebook/recipebook.get_global_rect().has_point(event.position) and not inv:
-		if tutorial_tooltip.wait_for=="hiderecipes":
+		if is_instance_valid(tutorial_tooltip) and tutorial_tooltip.wait_for=="hiderecipes":
 			hide_menu()
 			recipebook_keepopen=false
 			tutorial_tooltip.change_state(tutorial_tooltip.state.ready)
@@ -299,6 +316,10 @@ func _on_timer_timeout() -> void:
 	
 func _on_event():
 	$ui/event.hide()
+	if tutorial and is_instance_valid(tutorial_tooltip):
+		if tutorial_tooltip.wait_for=="agendaopen":
+			tutorial_tooltip.change_state(tutorial_tooltip.state.ready)
+			event_keepopen=true
 	var options=["gather","gather","gather","encounter","encounter","encounter","potionshop","ingredientshop","recipeshop"]
 	var picked=[]
 	for i in unpicked.keys():
@@ -394,3 +415,11 @@ func _on_settings_pressed() -> void:
 			if i.get_node_or_null("exit"): i.get_node_or_null("exit").hide()
 			i.process_mode=Node.PROCESS_MODE_DISABLED
 		settings.show()
+
+func loadtutorial(type):
+	var path="tutorial_"+type+".tres"
+	if path in tutorials:
+		tutorial_tooltip=tutorial_scene.instantiate()
+		tutorial_tooltip.data=load("res://resources/tutorials/"+path)
+		add_child(tutorial_tooltip)
+		tutorials.erase(path)

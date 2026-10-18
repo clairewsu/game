@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="tutorialdata" format=3 uid="uid://d1g16u4yfocah"]
+
+[ext_resource type="Script" uid="uid://dnri2lehm8ler" path="res://scripts/tutorialdata.gd" id="1_2bf7k"]
+[ext_resource type="Script" uid="uid://csamr37igbx17" path="res://scripts/dialoguehelper_tutorial.gd" id="2_lsck5"]
+
+[sub_resource type="Resource" id="Resource_g5r5c"]
+script = ExtResource("2_lsck5")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "Welcome to the great outdoors! Gather events will be your main source of [b]ingredients[/b], through foraging."
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_2bf7k"]
+script = ExtResource("2_lsck5")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "You can only focus so much energy on each ingredient, though."
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_lsck5"]
+script = ExtResource("2_lsck5")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "These [b]dice[/b] here represent how much you’re investing into getting each ingredient. You can assign each to the ingredient baskets however you like."
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[resource]
+script = ExtResource("1_2bf7k")
+steps = Array[ExtResource("2_lsck5")]([SubResource("Resource_g5r5c"), SubResource("Resource_2bf7k"), SubResource("Resource_lsck5")])

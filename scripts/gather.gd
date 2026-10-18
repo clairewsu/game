@@ -16,6 +16,8 @@ signal roll
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$errormsg.hide()
+	if get_parent().tutorial:
+		get_parent().loadtutorial("gather")
 	if "plant" in Global.decors:
 		dice_num+=2
 	for i in range(dice_num):
@@ -38,6 +40,7 @@ func _process(delta: float) -> void:
 	dice_num=min(dice_num,12)
 	if occupied==0 and not rolled:
 		can_roll=true
+		get_parent().loadtutorial("gather2")
 	else:
 		can_roll=false
 	
@@ -115,6 +118,8 @@ func end(): #actually use only 1 container with richtextlabel and return after t
 			ing.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
 			ing.text="[img=64]res://art/ingredients/"+i+".PNG"+"[/img]\n"+str(gained[i])
 			$CanvasLayer/ingredients.add_child(ing)
+	if get_parent().tutorial_tooltip.wait_for=="roll":
+		get_parent().tutorial_tooltip.change_state(get_parent().tutorial_tooltip.state.ready)
 
 func _on_exit_pressed() -> void:
 	self.queue_free()

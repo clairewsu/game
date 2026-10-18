@@ -20,7 +20,7 @@ func _on_recipebook_pressed() -> void:
 		if get_parent().tutorial_tooltip.wait_for=="recipeopen":
 			get_parent().tutorial_tooltip.change_state(get_parent().tutorial_tooltip.state.ready)
 			get_parent().recipebook_keepopen=true
-			get_parent().tutorial_tooltip.wait_for=="move"
+			get_parent().tutorial_tooltip.wait_for="move"
 
 func show_inv():
 	if not is_inside_tree():
@@ -34,7 +34,7 @@ func show_inv():
 		label.get_node("TextureRect").texture=load("res://art/ingredients/"+i+".PNG")
 		label.get_node("Label").text=str(Global.ingredients[i])
 		add_child(label)
-		label.position=Vector2(10+120*x,600)
+		label.position=Vector2(10+110*x,600)
 		x=x+1
 	for i in range(Global.decors.size()):
 		var decor=get_parent().decor_scene.instantiate()
