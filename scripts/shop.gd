@@ -13,6 +13,14 @@ signal loaded
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if get_parent().tutorial:
+		if get_parent().get_node("moneycount").visible:
+			get_parent().loadtutorial("shop")
+			get_parent().tutorials.erase("tutorial_shop2.tres")
+		else:
+			get_parent().loadtutorial("shop2")
+			get_parent().tutorials.erase("tutorial_shop.tres")
+		get_parent().tutorials.erase("tutorial_open_nomoney.tres")
 	load_stuff()
 	var i=0
 	while i<5:

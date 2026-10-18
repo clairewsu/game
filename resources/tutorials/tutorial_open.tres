@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="tutorialdata" format=3 uid="uid://ccid3ri8vln72"]
+
+[ext_resource type="Script" uid="uid://dnri2lehm8ler" path="res://scripts/tutorialdata.gd" id="1_xqvxx"]
+[ext_resource type="Script" uid="uid://csamr37igbx17" path="res://scripts/dialoguehelper_tutorial.gd" id="2_l35i7"]
+
+[sub_resource type="Resource" id="Resource_llmfx"]
+script = ExtResource("2_l35i7")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "Okay, now the moment you’ve been waiting for all along…"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_too3i"]
+script = ExtResource("2_l35i7")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "Time to finally open the shop!!"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_vde70"]
+script = ExtResource("2_l35i7")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "When you press the button, you’ll have one more chance to make any potions before opening officially."
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_wwuou"]
+script = ExtResource("2_l35i7")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "But first, let me explain to you how the challenge works. "
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_bvylr"]
+script = ExtResource("2_l35i7")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "Each day, I’ll set a quota for the amount of earnings you should aim for."
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_ojqqj"]
+script = ExtResource("2_l35i7")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "Anything you make above that, you can keep, but if you fail to reach it, I’ll subtract the difference from your savings."
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_eeg2i"]
+script = ExtResource("2_l35i7")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "next"
+text = "The challenge will last two weeks. If you make it to the end, you win!"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[resource]
+script = ExtResource("1_xqvxx")
+steps = Array[ExtResource("2_l35i7")]([SubResource("Resource_llmfx"), SubResource("Resource_too3i"), SubResource("Resource_vde70"), SubResource("Resource_wwuou"), SubResource("Resource_bvylr"), SubResource("Resource_ojqqj"), SubResource("Resource_eeg2i")])

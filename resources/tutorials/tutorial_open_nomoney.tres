@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="tutorialdata" format=3 uid="uid://cg60lse2kevsj"]
+
+[ext_resource type="Script" uid="uid://dnri2lehm8ler" path="res://scripts/tutorialdata.gd" id="1_rac5y"]
+[ext_resource type="Script" uid="uid://csamr37igbx17" path="res://scripts/dialoguehelper_tutorial.gd" id="2_slqj5"]
+
+[sub_resource type="Resource" id="Resource_jvn30"]
+script = ExtResource("2_slqj5")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "Oh, we didn’t discuss money yet? "
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_e7fn1"]
+script = ExtResource("2_slqj5")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "People will pay for potions using [b]salts[/b]. you can also use them to buy things."
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_njbym"]
+script = ExtResource("2_slqj5")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "moneyappear"
+text = "Here, I’ll give you some to start off with. "
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_82f6s"]
+script = ExtResource("2_slqj5")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "next"
+text = "As a business owner, money is your lifeline! [b]If you ever go negative, it’s game over for you.[/b]"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[resource]
+script = ExtResource("1_rac5y")
+steps = Array[ExtResource("2_slqj5")]([SubResource("Resource_jvn30"), SubResource("Resource_e7fn1"), SubResource("Resource_njbym"), SubResource("Resource_82f6s")])

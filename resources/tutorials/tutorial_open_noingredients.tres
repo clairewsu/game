@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="tutorialdata" format=3 uid="uid://cashdofabi7ck"]
+
+[ext_resource type="Script" uid="uid://dnri2lehm8ler" path="res://scripts/tutorialdata.gd" id="1_2r3uq"]
+[ext_resource type="Script" uid="uid://csamr37igbx17" path="res://scripts/dialoguehelper_tutorial.gd" id="2_y3gsm"]
+
+[sub_resource type="Resource" id="Resource_od4e2"]
+script = ExtResource("2_y3gsm")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "Hmm? silly you, you have no ingredients!"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_hbgon"]
+script = ExtResource("2_y3gsm")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "addingredient"
+text = "You won’t have anything to sell without them. Here, I’ll give you some."
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[resource]
+script = ExtResource("1_2r3uq")
+steps = Array[ExtResource("2_y3gsm")]([SubResource("Resource_od4e2"), SubResource("Resource_hbgon")])

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="tutorialdata" format=3 uid="uid://dirrbmuqx0r2j"]
+
+[ext_resource type="Script" uid="uid://dnri2lehm8ler" path="res://scripts/tutorialdata.gd" id="1_db7gw"]
+[ext_resource type="Script" uid="uid://csamr37igbx17" path="res://scripts/dialoguehelper_tutorial.gd" id="2_04buw"]
+
+[sub_resource type="Resource" id="Resource_ufcpk"]
+script = ExtResource("2_04buw")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "open"
+text = "Okay, let's go!"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[resource]
+script = ExtResource("1_db7gw")
+steps = Array[ExtResource("2_04buw")]([SubResource("Resource_ufcpk")])

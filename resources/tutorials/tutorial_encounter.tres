@@ -1,0 +1,98 @@
+[gd_resource type="Resource" format=3 uid="uid://ck7xumwyulffm"]
+
+[ext_resource type="Texture2D" uid="uid://bdvob0s0olegf" path="res://art/town_bg.PNG" id="1_j6rvt"]
+[ext_resource type="Script" uid="uid://3r772mrti67y" path="res://scripts/encounter_scripts/encounter_tutorial.gd" id="2_b2ioy"]
+[ext_resource type="Script" uid="uid://dtxqdmfssbsvf" path="res://scripts/dialoguehelper.gd" id="3_s77em"]
+[ext_resource type="Texture2D" uid="uid://dd8hg4nsed6jc" path="res://art/character_models/mingming_dialogue/mingming_default.PNG" id="4_jr6xt"]
+[ext_resource type="Texture2D" uid="uid://drp7t70mplb7e" path="res://art/character_models/mingming_dialogue/mingming_laugh.PNG" id="5_b2vba"]
+[ext_resource type="Texture2D" uid="uid://dp1vj663p511u" path="res://art/character_models/mingming_dialogue/mingming_gasp.PNG" id="6_0513f"]
+[ext_resource type="Texture2D" uid="uid://chxpmr8srf4vw" path="res://art/character_models/mingming_dialogue/mingming_think.PNG" id="7_4uyxw"]
+[ext_resource type="Texture2D" uid="uid://bdk6dm3ojgwc5" path="res://art/character_models/mingming_dialogue/mingming_talk.PNG" id="8_ikyqw"]
+
+[sub_resource type="Resource" id="Resource_p5mai"]
+script = ExtResource("3_s77em")
+speaker = "Mingming"
+texture2 = ExtResource("4_jr6xt")
+text = "Wow, looks like you chose to \"encounter\" someone... or something!"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_pymg0"]
+script = ExtResource("3_s77em")
+speaker = "Mingming"
+texture2 = ExtResource("5_b2vba")
+text = "As the name suggests, you could run into any array of random happenings, good or bad. Take the opportunity to make some new friends!"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_m6yex"]
+script = ExtResource("3_s77em")
+speaker = "Mingming"
+texture2 = ExtResource("6_0513f")
+text = "And the first person you'll encounter is..."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_6sl1r"]
+script = ExtResource("3_s77em")
+speaker = "Mingming"
+texture2 = ExtResource("5_b2vba")
+text = "Me!"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_dje1e"]
+script = ExtResource("3_s77em")
+speaker = "Mingming"
+texture2 = ExtResource("5_b2vba")
+text = "Hehe, didn't see that coming, did you?"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_ttgsk"]
+script = ExtResource("3_s77em")
+speaker = "Mingming"
+texture2 = ExtResource("7_4uyxw")
+text = "Hmm... what should I do to make your first experience extra special..."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_lywhn"]
+script = ExtResource("3_s77em")
+speaker = "Mingming"
+texture2 = ExtResource("7_4uyxw")
+text = "Maybe I could take away some of your money, or squander some of your ingredients..."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_immgr"]
+script = ExtResource("3_s77em")
+speaker = "Mingming"
+texture2 = ExtResource("5_b2vba")
+text = "Haha, just kidding! Since you're new, I'll help you out a bit instead."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_niyur"]
+script = ExtResource("3_s77em")
+speaker = "Mingming"
+texture2 = ExtResource("4_jr6xt")
+text = "Here's a free recipe."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_joo5l"]
+script = ExtResource("3_s77em")
+texture2 = ExtResource("4_jr6xt")
+text = "You got the recipe for a Draft Potion."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_o0bj5"]
+script = ExtResource("3_s77em")
+speaker = "Mingming"
+texture2 = ExtResource("8_ikyqw")
+text = "By the way, you can always check your inventory during events by pressing the button up there."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_bdaym"]
+script = ExtResource("3_s77em")
+speaker = "Mingming"
+texture2 = ExtResource("4_jr6xt")
+text = "Okay, bye now! Good luck!"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[resource]
+script = ExtResource("2_b2ioy")
+bg = ExtResource("1_j6rvt")
+steps = Array[ExtResource("3_s77em")]([SubResource("Resource_p5mai"), SubResource("Resource_pymg0"), SubResource("Resource_m6yex"), SubResource("Resource_6sl1r"), SubResource("Resource_dje1e"), SubResource("Resource_ttgsk"), SubResource("Resource_lywhn"), SubResource("Resource_immgr"), SubResource("Resource_niyur"), SubResource("Resource_joo5l"), SubResource("Resource_o0bj5"), SubResource("Resource_bdaym")])

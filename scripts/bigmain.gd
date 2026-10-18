@@ -27,6 +27,7 @@ var tutorial=false
 var tutorials=[]
 var recipebook_keepopen=false
 var event_keepopen=false
+var hidemoney=false
 var tutorial_tooltip
 var encounters=[]
 signal hiderecipes
@@ -56,10 +57,13 @@ func _ready() -> void:
 		for file in DirAccess.get_files_at("res://resources/tutorials/"):
 			if file.ends_with(".tres"):
 				tutorials.append(file)
+		for i in Global.ingredients.keys():
+			Global.ingredients[i]=0
 		loadtutorial("start")
 		$ui/recipebookbutton.hide()
 		$ui/event.hide()
 		$moneycount.hide()
+		hidemoney=true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -78,8 +82,26 @@ func _process(delta: float) -> void:
 				await get_tree().process_frame
 				event_keepopen=false
 				tutorial_tooltip.wait_for="move"
+			"moneyappear":
+				$moneycount.show()
+				hidemoney=false
+				Global.moneys+=3000
+				tutorial_tooltip.wait_for="move"
+			"next":
+				tutorial_tooltip.wait_for="move"
+				tutorial_tooltip.next=true
+			"addingredient":
+				tutorial_tooltip.wait_for="move"
+				for i in Global.ingredients.keys():
+					Global.ingredients[i]+=5
+				$ui.show_inv()
+				tutorial_tooltip.next=true
+			"open":
+				$ui/open.disabled=false
 	
 func _on_open():
+	if tutorial and is_instance_valid(tutorial_tooltip):
+		tutorial_tooltip.queue_free()
 	$ui/open.hide()
 	$ui/recipebookbutton.hide()
 	$invbutton.hide()
@@ -146,7 +168,11 @@ func _on_encounter():
 		await transition("encounter")
 		hide_menu()
 		var encounter=encounter_scene.instantiate()
-		encounter.data=load("res://resources/encounters/"+encounters.pick_random())
+		if tutorial and "tutorial_encounter.tres" in tutorials:
+			encounter.data=load("res://resources/tutorials/tutorial_encounter.tres")
+			tutorials.erase("tutorial_encounter.tres")
+		else:
+			encounter.data=load("res://resources/encounters/"+encounters.pick_random())
 		encounter.add_to_group("event")
 		add_child(encounter)
 		$ui.hide()
@@ -270,24 +296,25 @@ func money_changed():
 	$moneycount/Timer.start()
 	
 func update_moneys_popup():
-	if Global.moneys<0:
-		return
-	popping_up=true
-	var tween=create_tween()
-	$moneycount.show()
-	if not visible1:
-		$moneycount/Control.position+=Vector2(0,-100)
-		tween.tween_property($moneycount/Control,"position",$moneycount/Control.position+Vector2(0,100),.5)
-	tween.tween_method(update_moneys,int($moneycount/Control/Label.text),Global.moneys,1)
-	await tween.finished
-	if not visible1:
-		tween=create_tween()
-		tween.tween_interval(.3)
-		tween.tween_property($moneycount/Control,"position",$moneycount/Control.position+Vector2(0,-100),.5)
+	if not hidemoney:
+		if Global.moneys<0:
+			return
+		popping_up=true
+		var tween=create_tween()
+		$moneycount.show()
+		if not visible1:
+			$moneycount/Control.position+=Vector2(0,-100)
+			tween.tween_property($moneycount/Control,"position",$moneycount/Control.position+Vector2(0,100),.5)
+		tween.tween_method(update_moneys,int($moneycount/Control/Label.text),Global.moneys,1)
 		await tween.finished
-		$moneycount.hide()
-	$moneycount/Control.position=Vector2(0,0)
-	popping_up=false
+		if not visible1:
+			tween=create_tween()
+			tween.tween_interval(.3)
+			tween.tween_property($moneycount/Control,"position",$moneycount/Control.position+Vector2(0,-100),.5)
+			await tween.finished
+			$moneycount.hide()
+		$moneycount/Control.position=Vector2(0,0)
+		popping_up=false
 	
 func update_moneys(amt):
 	$moneycount/Control/Label.text=str(amt)
@@ -302,13 +329,17 @@ func _on_close():
 		node+=1
 	if node==6:
 		$ui/event.hide()
+		if tutorial:
+			loadtutorial("open")
+			$ui/open.disabled=true
 		$ui/open.show()
 	else:
 		$ui/event.show()
 		$ui/open.hide()
 	$ui.show()
 	$ui.show_inv()
-	$moneycount.show()
+	if not hidemoney:
+		$moneycount.show()
 	
 
 func _on_timer_timeout() -> void:
@@ -391,7 +422,8 @@ func _on_invbutton_pressed() -> void:
 		$ui/recipebookbutton.hide()
 		show_menu()
 		$ui.show_inv()
-		$moneycount.show()
+		if not hidemoney:
+			$moneycount.show()
 	else:
 		$invbutton/invbutton.text="inventory"
 		hide_menu()

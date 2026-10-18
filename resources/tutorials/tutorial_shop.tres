@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="tutorialdata" format=3 uid="uid://deu78ikeomnn3"]
+
+[ext_resource type="Script" uid="uid://dnri2lehm8ler" path="res://scripts/tutorialdata.gd" id="1_limqi"]
+[ext_resource type="Script" uid="uid://csamr37igbx17" path="res://scripts/dialoguehelper_tutorial.gd" id="2_mdru6"]
+
+[sub_resource type="Resource" id="Resource_pjubr"]
+script = ExtResource("2_mdru6")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "Welcome to the shop! Here you can buy all sorts of things you might need for running the potion shop, from potions to recipes to ingredients."
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_d8xa8"]
+script = ExtResource("2_mdru6")
+pos = Vector2(800, 400)
+direction = "topleft"
+wait = "move"
+text = "Each shop will also sell [b]decors[/b]. Not only do they make your store prettier, they have special effects, too!"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_limqi"]
+script = ExtResource("2_mdru6")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "Happy spending!"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[resource]
+script = ExtResource("1_limqi")
+steps = Array[ExtResource("2_mdru6")]([SubResource("Resource_pjubr"), SubResource("Resource_d8xa8"), SubResource("Resource_limqi")])

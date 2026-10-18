@@ -6,6 +6,7 @@ var dir_queue=[]
 var text_queue=[]
 var wait_queue=[]
 var delay=false
+var next=false
 enum state {ready,waiting}
 var current_state=state.waiting
 
@@ -29,10 +30,20 @@ func _process(delta: float) -> void:
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(wait_for) and current_state==state.waiting and not delay:
-		delay=true
-		change_state(state.ready)
-		await get_tree().create_timer(.5).timeout
-		delay=false
+		if next:
+			if not get_parent().get_node("moneycount").visible:
+				get_parent().loadtutorial("open_nomoney")
+			elif "tutorial_open_noingredients.tres" in get_parent().tutorials:
+				get_parent().loadtutorial("open_noingredients")
+			else:
+				get_parent().loadtutorial("open2")
+			queue_free()
+			return
+		else:
+			delay=true
+			change_state(state.ready)
+			await get_tree().create_timer(.5).timeout
+			delay=false
 	
 func show_text():
 	change_state(state.waiting)
