@@ -11,6 +11,7 @@ var multiplier=1
 var guys=[]
 var idx:int
 var lastselected:String
+var ignore=false
 signal penalty
 signal leave
 signal dismiss
@@ -18,6 +19,8 @@ signal sellto(guy0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if get_parent().get_parent().get_parent().tutorial and is_instance_valid(get_parent().get_parent().get_parent().tutorial_tooltip):
+		ignore=true
 	scale*=.15
 	$gold.hide()
 	$green.hide()
@@ -66,13 +69,18 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if get_parent().get_parent().get_parent().tutorial and is_instance_valid(get_parent().get_parent().get_parent().tutorial_tooltip):
+		match get_parent().get_parent().get_parent().tutorial_tooltip.wait_for:
+			"dismiss":
+				ignore=false
+			"free":
+				ignore=false
 	
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
 	
 func _input_event(Viewport,InputEvent,int):
-	if InputEvent.is_action_pressed("move"):
+	if InputEvent.is_action_pressed("move") and not ignore:
 		if Global.selected==null:
 			if slot_occupied.all(func(i):return i==-1):
 				penalty.emit(80,global_position)
@@ -82,6 +90,8 @@ func _input_event(Viewport,InputEvent,int):
 			queue_free()
 		else:
 			sellto.emit(self)
+		if is_instance_valid(get_parent().get_parent().get_parent().tutorial_tooltip) and get_parent().get_parent().get_parent().tutorial_tooltip.wait_for=="dismiss":
+			get_parent().get_parent().get_parent().tutorial_tooltip.change_state(get_parent().get_parent().get_parent().tutorial_tooltip.state.ready)
 	
 
 func get_free_slot(color):

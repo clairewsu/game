@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="tutorialdata" format=3 uid="uid://c488njwdkriu"]
+
+[ext_resource type="Script" uid="uid://dnri2lehm8ler" path="res://scripts/tutorialdata.gd" id="1_itsm6"]
+[ext_resource type="Script" uid="uid://csamr37igbx17" path="res://scripts/dialoguehelper_tutorial.gd" id="2_1ifqp"]
+
+[sub_resource type="Resource" id="Resource_ru3y2"]
+script = ExtResource("2_1ifqp")
+pos = Vector2(800, 500)
+direction = "topleft"
+wait = "move"
+text = "Congrats, you’ve cleared your first [b]round[/b] of customers!"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_ufao5"]
+script = ExtResource("2_1ifqp")
+pos = Vector2(800, 500)
+direction = "topleft"
+wait = "move"
+text = "You’ll get a bonus multiplier for every round you clear."
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_sesey"]
+script = ExtResource("2_1ifqp")
+pos = Vector2(800, 500)
+direction = "topleft"
+wait = "move"
+text = "You’re only open for a limited time, though, so try and get through as many customers as you can. "
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_f4qva"]
+script = ExtResource("2_1ifqp")
+pos = Vector2(800, 500)
+direction = "topleft"
+wait = "free"
+text = "Timer’s ticking; good luck!"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_gbmso"]
+script = ExtResource("2_1ifqp")
+direction = "topleft"
+wait = "time"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[resource]
+script = ExtResource("1_itsm6")
+steps = Array[ExtResource("2_1ifqp")]([SubResource("Resource_ru3y2"), SubResource("Resource_ufao5"), SubResource("Resource_sesey"), SubResource("Resource_f4qva"), SubResource("Resource_gbmso")])

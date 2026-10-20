@@ -36,6 +36,8 @@ func _ready():
 		$bg/decors.get_node(Global.decors[i]).show()
 
 func _on_start():
+	if get_parent().tutorial:
+		get_parent().loadtutorial("opening")
 	round=0
 	score=0
 	penalty=0
@@ -49,7 +51,8 @@ func _on_start():
 	respawning_guys=false
 	respawning_object=false
 	$Timer.wait_time=Global.time
-	$Timer.start()
+	if not get_parent().tutorial and not is_instance_valid(get_parent().get_parent().tutorial_tooltip):
+		$Timer.start
 
 func _on_timer_timeout():
 	respawning_guys=true
@@ -64,7 +67,8 @@ func _process(delta: float) -> void:
 		scroll("l")
 	if Input.is_action_pressed("r") and Global.selected!=null and not busy:
 		scroll("r")
-
+	if is_instance_valid(get_parent().tutorial_tooltip) and get_parent().tutorial_tooltip.wait_for=="time":
+		$Timer.start
 func spawn_guy():
 	var spawn_offsets = [
 		Vector2(140,175),Vector2(390,175),Vector2(640,175),Vector2(890,175)
@@ -94,6 +98,8 @@ func spawn_object():
 		return
 	var object=object_scene.instantiate()
 	object.data=card
+	if is_instance_valid(get_parent().tutorial_tooltip) and get_parent().tutorial:
+		DeckManager.addtodeck(object.data.name)
 	object.slot=slot
 	object.exists=self
 	object.scale*=.67
@@ -108,6 +114,8 @@ func spawn_object():
 	
 func respawn_guys():
 	respawning_guys=true
+	if get_parent().tutorial:
+		get_parent().loadtutorial("opening2")
 	if DeckManager.deck.size()==0 and not slot_occupied.has(true):
 		end.emit()
 		dismiss_end.emit()

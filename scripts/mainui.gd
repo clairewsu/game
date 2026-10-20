@@ -11,7 +11,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$supplycount.text="supply: "+str(DeckManager.deck.size())
-	$nodecount.text="level "+str(Global.level)+" node "+str(get_parent().node)+" of 6 quota: "+str(Global.quota)
+	$nodecount.text="Day "+str(Global.level)+" part "+str(get_parent().node)+" of 6 quota: "+str(Global.quota)
 
 func _on_recipebook_pressed() -> void:
 	$recipebookbutton.hide()

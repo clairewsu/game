@@ -59,6 +59,7 @@ func _ready() -> void:
 				tutorials.append(file)
 		for i in Global.ingredients.keys():
 			Global.ingredients[i]=0
+			$ui.show_inv()
 		loadtutorial("start")
 		$ui/recipebookbutton.hide()
 		$ui/event.hide()
@@ -98,6 +99,9 @@ func _process(delta: float) -> void:
 				tutorial_tooltip.next=true
 			"open":
 				$ui/open.disabled=false
+			"free":
+				await get_tree().process_frame
+				tutorial_tooltip.wait_for="move"
 	
 func _on_open():
 	if tutorial and is_instance_valid(tutorial_tooltip):
@@ -404,8 +408,22 @@ func _on_event():
 		
 func endscreen():
 	$endscreen.show()
-	$endscreen/text.text="the end\nyou reached level "+str(Global.level)
-	$endscreen/exit.pressed.connect(self.queue_free)
+	$endscreen/text.text="the end\nyou reached day "+str(Global.level)+"out of 14"
+	if tutorial:
+		var encounter=encounter_scene.instantiate()
+		encounter.tree_exited.connect(self.queue_free)
+		if Global.level>=14:
+			await $endscreen/exit.pressed
+			encounter.data=load("res://resources/tutorials/tutorial_win.tres")
+			add_child(encounter)
+			$endscreen.hide()
+		else:
+			await $endscreen/exit.pressed
+			encounter.data=load("res://resources/tutorials/tutorial_lose.tres")
+			add_child(encounter)
+			$endscreen.hide()
+	else:
+		$endscreen/exit.pressed.connect(self.queue_free)
 
 
 

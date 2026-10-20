@@ -33,8 +33,8 @@ func _input(event: InputEvent) -> void:
 		if next:
 			if not get_parent().get_node("moneycount").visible:
 				get_parent().loadtutorial("open_nomoney")
-			elif "tutorial_open_noingredients.tres" in get_parent().tutorials:
-				get_parent().loadtutorial("open_noingredients")
+			elif "tutorial_open_noingredients.tres" in get_parent().tutorials and DeckManager.deck.is_empty() and ["leaf","crystal","fish","feather"].all(func(ing):return Global.ingredients.get(ing,0)==0):
+					get_parent().loadtutorial("open_noingredients")
 			else:
 				get_parent().loadtutorial("open2")
 			queue_free()

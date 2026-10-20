@@ -18,7 +18,6 @@ func _ready() -> void:
 	$errormsg.hide()
 	if get_parent().tutorial:
 		get_parent().loadtutorial("gather")
-		get_parent().tutorials.erase("tutorial_open_noingredients.tres")
 	if "plant" in Global.decors:
 		dice_num+=2
 	for i in range(dice_num):

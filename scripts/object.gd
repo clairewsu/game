@@ -27,6 +27,7 @@ var liquidvelocity=Vector2.ZERO
 var tilt=0.0
 var is_moving=false
 var selected=false
+var ignore=false
 signal hit
 signal score(amount:int,bonus:bool)
 signal show_desc(name,color,cost,desc,pos:Vector2)
@@ -34,6 +35,8 @@ signal select(slot)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if get_parent().get_parent().get_parent().name=="main" and get_parent().get_parent().get_parent().tutorial and is_instance_valid(get_parent().get_parent().get_parent().tutorial_tooltip):
+		ignore=true
 	scale*=.4
 	data=data.duplicate()
 	$CanvasGroup/liquid.material = $CanvasGroup/liquid.material.duplicate()
@@ -59,6 +62,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if get_parent().get_parent().get_parent().name=="main" and get_parent().get_parent().get_parent().tutorial and is_instance_valid(get_parent().get_parent().get_parent().tutorial_tooltip):
+		match get_parent().get_parent().get_parent().tutorial_tooltip.wait_for:
+			"sold":
+				ignore=false
+			"dismiss":
+				ignore=true
+			"free": #bruh this doesnt work half the time
+				ignore=false
 	if drag and not sold:
 		z_index=100
 	elif not sold:
@@ -106,7 +117,7 @@ func _physics_process(delta):
 	$CanvasGroup/liquid.material.set_shader_parameter("wave_amp",wave_amp)
 	
 func _on_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not ignore:
 		drag = true
 		mousepos=get_global_mouse_position()
 
@@ -114,7 +125,7 @@ func _on_input_event(viewport, event, shape_idx):
 func _unhandled_input(event):
 	if event.is_action_released("move"):
 		drag = false
-		if get_global_mouse_position().distance_to(mousepos)<8 and not sold:
+		if get_global_mouse_position().distance_to(mousepos)<8 and not sold and not ignore:
 			selected=!selected
 			if selected:
 				Global.selected=self
@@ -125,6 +136,8 @@ func _unhandled_input(event):
 			for area in $sellarea.get_overlapping_areas():
 				if area.is_in_group("guy"):
 					sell(area)
+					if is_instance_valid(get_parent().get_parent().get_parent().tutorial_tooltip) and get_parent().get_parent().get_parent().tutorial_tooltip.wait_for=="sold":
+						get_parent().get_parent().get_parent().tutorial_tooltip.change_state(get_parent().get_parent().get_parent().tutorial_tooltip.state.ready)
 					
 	elif drag and event is InputEventMouseMotion:
 		speed=30

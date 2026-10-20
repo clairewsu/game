@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="eventdata" format=3 uid="uid://cg6oxgser3t5p"]
+
+[ext_resource type="Texture2D" uid="uid://b6gdl3dm52ho3" path="res://art/bg.PNG" id="1_3t6bo"]
+[ext_resource type="Script" uid="uid://cjx6a2kyh1m40" path="res://scripts/eventdata.gd" id="2_026lv"]
+[ext_resource type="Script" uid="uid://dtxqdmfssbsvf" path="res://scripts/dialoguehelper.gd" id="3_jx7qx"]
+[ext_resource type="Texture2D" uid="uid://dp1vj663p511u" path="res://art/character_models/mingming_dialogue/mingming_gasp.PNG" id="4_rxqne"]
+[ext_resource type="Texture2D" uid="uid://dd8hg4nsed6jc" path="res://art/character_models/mingming_dialogue/mingming_default.PNG" id="5_2hfq5"]
+[ext_resource type="Texture2D" uid="uid://bqnj7n53papwh" path="res://art/character_models/mingming_dialogue/mingming_sad.PNG" id="6_euc85"]
+[ext_resource type="Texture2D" uid="uid://bdk6dm3ojgwc5" path="res://art/character_models/mingming_dialogue/mingming_talk.PNG" id="7_yaqhn"]
+
+[sub_resource type="Resource" id="Resource_ukb5b"]
+script = ExtResource("3_jx7qx")
+speaker = "Mingming"
+texture2 = ExtResource("4_rxqne")
+text = "No way… you actually did it first try?"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_1rhdx"]
+script = ExtResource("3_jx7qx")
+speaker = "Mingming"
+texture2 = ExtResource("4_rxqne")
+text = "You might be the most genius shopkeeper of all time!"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_nkrh4"]
+script = ExtResource("3_jx7qx")
+speaker = "Mingming"
+texture2 = ExtResource("5_2hfq5")
+text = "Um, well, I guess the shop is yours now."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_ojgfa"]
+script = ExtResource("3_jx7qx")
+speaker = "Mingming"
+texture2 = ExtResource("5_2hfq5")
+text = "..."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_wmmpm"]
+script = ExtResource("3_jx7qx")
+speaker = "Mingming"
+texture2 = ExtResource("6_euc85")
+text = "..."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_53n1x"]
+script = ExtResource("3_jx7qx")
+speaker = "Mingming"
+texture2 = ExtResource("6_euc85")
+text = "Actually, running the shop was kinda fun."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_lcuxo"]
+script = ExtResource("3_jx7qx")
+speaker = "Mingming"
+texture2 = ExtResource("6_euc85")
+text = "Mind if I stick around?"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_gyf3d"]
+script = ExtResource("3_jx7qx")
+speaker = "Mingming"
+texture2 = ExtResource("7_yaqhn")
+text = "I know, I can continue giving you quotas to keep you motivated."
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[sub_resource type="Resource" id="Resource_lj2uk"]
+script = ExtResource("3_jx7qx")
+speaker = "Mingming"
+texture2 = ExtResource("5_2hfq5")
+text = "Keep running the shop awesomely! I’ll be watching over you from above…"
+metadata/_custom_type_script = "uid://dtxqdmfssbsvf"
+
+[resource]
+script = ExtResource("2_026lv")
+bg = ExtResource("1_3t6bo")
+steps = Array[ExtResource("3_jx7qx")]([SubResource("Resource_ukb5b"), SubResource("Resource_1rhdx"), SubResource("Resource_nkrh4"), SubResource("Resource_ojgfa"), SubResource("Resource_wmmpm"), SubResource("Resource_53n1x"), SubResource("Resource_lcuxo"), SubResource("Resource_gyf3d"), SubResource("Resource_lj2uk")])

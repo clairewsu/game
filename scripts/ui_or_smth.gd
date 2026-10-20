@@ -56,7 +56,8 @@ func _on_startbutton_pressed():
 	$roundcounter.text="1"
 	countdown=Global.time
 	start.emit()
-	show_time(str(countdown))
+	if not get_parent().get_parent().tutorial and not is_instance_valid(get_parent().get_parent().tutorial_tooltip):
+		show_time(str(countdown))
 
 func _on_end():
 	await get_parent().dismiss_end
@@ -82,6 +83,11 @@ func _on_end():
 		Global.spawn_money(total,Vector2(730,350),self)
 	if Global.moneys<0:
 		$losebutton.show()
+	elif Global.level>=14:
+		while get_tree().get_node_count_in_group("money_popup")>0:
+			pass
+		$losebutton.text="you win"
+		$losebutton.show()
 	else:
 		while get_tree().get_node_count_in_group("money_popup")>0:
 			pass
@@ -92,6 +98,8 @@ func _process(delta: float) -> void:
 	$deckcounter.text=str(DeckManager.deck.size())
 	$quota.text="quota: "+str(Global.quota)
 	$currentscore.text="earnings: "+str(get_parent().score)
+	if is_instance_valid(get_parent().get_parent().tutorial_tooltip) and get_parent().get_parent().tutorial_tooltip.wait_for=="time":
+		show_time(str(countdown))
 	
 func countmult(tovalue):
 	var start=1
