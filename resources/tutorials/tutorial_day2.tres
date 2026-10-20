@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="tutorialdata" format=3 uid="uid://bdpjif4bh00oe"]
+
+[ext_resource type="Script" uid="uid://dnri2lehm8ler" path="res://scripts/tutorialdata.gd" id="1_8gw67"]
+[ext_resource type="Script" uid="uid://csamr37igbx17" path="res://scripts/dialoguehelper_tutorial.gd" id="2_qll1s"]
+
+[sub_resource type="Resource" id="Resource_1rao7"]
+script = ExtResource("2_qll1s")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "How was that? Are you getting into the groove of things?"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_4w2j1"]
+script = ExtResource("2_qll1s")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "If the opening time felt too long or too short, you can always adjust it by going to the [b]settings menu[/b]. Your quota will also change accordingly, though."
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_ojnwi"]
+script = ExtResource("2_qll1s")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "And that about covers things! I’ll leave you to it, then."
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_3q2wx"]
+script = ExtResource("2_qll1s")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "If anything else comes up, I’ll be here to tell you how it works."
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[sub_resource type="Resource" id="Resource_6tu6j"]
+script = ExtResource("2_qll1s")
+pos = Vector2(100, 100)
+direction = "bottomright"
+wait = "move"
+text = "And now I’m outta here! see ya!"
+metadata/_custom_type_script = "uid://csamr37igbx17"
+
+[resource]
+script = ExtResource("1_8gw67")
+steps = Array[ExtResource("2_qll1s")]([SubResource("Resource_1rao7"), SubResource("Resource_4w2j1"), SubResource("Resource_ojnwi"), SubResource("Resource_3q2wx"), SubResource("Resource_6tu6j")])

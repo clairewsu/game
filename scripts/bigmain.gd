@@ -102,6 +102,9 @@ func _process(delta: float) -> void:
 			"free":
 				await get_tree().process_frame
 				tutorial_tooltip.wait_for="move"
+			"time":
+				await get_tree().process_frame
+				tutorial_tooltip.change_state(tutorial_tooltip.state.ready)
 	
 func _on_open():
 	if tutorial and is_instance_valid(tutorial_tooltip):
@@ -344,6 +347,8 @@ func _on_close():
 	$ui.show_inv()
 	if not hidemoney:
 		$moneycount.show()
+	if tutorial and Global.level==2:
+		loadtutorial("day2")
 	
 
 func _on_timer_timeout() -> void:

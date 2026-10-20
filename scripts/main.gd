@@ -114,8 +114,6 @@ func spawn_object():
 	
 func respawn_guys():
 	respawning_guys=true
-	if get_parent().tutorial:
-		get_parent().loadtutorial("opening2")
 	if DeckManager.deck.size()==0 and not slot_occupied.has(true):
 		end.emit()
 		dismiss_end.emit()
@@ -125,6 +123,8 @@ func respawn_guys():
 		await get_tree().process_frame
 	spawn_guy()
 	respawn_object()
+	if get_parent().tutorial:
+		get_parent().loadtutorial("opening2")
 	respawning_guys=false
 	round+=1
 	roundchange.emit(round)
