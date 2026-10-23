@@ -35,8 +35,9 @@ signal select(slot)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if get_parent().get_parent().get_parent().name=="main" and get_parent().get_parent().get_parent().tutorial and is_instance_valid(get_parent().get_parent().get_parent().tutorial_tooltip):
-		ignore=true
+	if is_instance_valid(get_parent().get_parent().get_parent()):
+		if get_parent().get_parent().get_parent().name=="main" and get_parent().get_parent().get_parent().tutorial and is_instance_valid(get_parent().get_parent().get_parent().tutorial_tooltip):
+			ignore=true
 	scale*=.4
 	data=data.duplicate()
 	$CanvasGroup/liquid.material = $CanvasGroup/liquid.material.duplicate()
@@ -62,14 +63,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if get_parent().get_parent().get_parent().name=="main" and get_parent().get_parent().get_parent().tutorial and is_instance_valid(get_parent().get_parent().get_parent().tutorial_tooltip):
-		match get_parent().get_parent().get_parent().tutorial_tooltip.wait_for:
-			"sold":
-				ignore=false
-			"dismiss":
-				ignore=true
-			"free": #bruh this doesnt work half the time
-				ignore=false
+	if is_instance_valid(get_parent().get_parent().get_parent()):
+		if get_parent().get_parent().get_parent().name=="main" and get_parent().get_parent().get_parent().tutorial and is_instance_valid(get_parent().get_parent().get_parent().tutorial_tooltip):
+			match get_parent().get_parent().get_parent().tutorial_tooltip.wait_for:
+				"sold":
+					ignore=false
+				"dismiss":
+					ignore=true
+				"free": #bruh this doesnt work half the time
+					ignore=false
 	if drag and not sold:
 		z_index=100
 	elif not sold:
@@ -94,6 +96,7 @@ func _physics_process(delta):
 		is_moving=true
 	if is_moving and position==defaultpos:
 		splash()
+		$AudioStreamPlayer2D.play()
 		is_moving=false
 	objpos=position
 	var bottle_velocity = moved / max(delta, 0.0001)

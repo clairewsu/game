@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bkhwilin0mm2h"
+path="res://.godot/imported/die pickup.mp3-514e1f3713d11036098e13d301a5f4a6.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/die pickup.mp3"
+dest_files=["res://.godot/imported/die pickup.mp3-514e1f3713d11036098e13d301a5f4a6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

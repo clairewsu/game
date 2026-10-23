@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ba7hat777uqwd" path="res://scripts/home.gd" id="1_t4cf2"]
 [ext_resource type="Texture2D" uid="uid://c66xajrrkawbk" path="res://art/openingbg.PNG" id="2_u4wd2"]
 [ext_resource type="Script" uid="uid://blf0dow78ef7a" path="res://scripts/settingsui.gd" id="3_w18ys"]
+[ext_resource type="AudioStream" uid="uid://d2xxmpmqc26tv" path="res://audio/sfx/click sound.mp3" id="4_reixx"]
 
 [node name="Node" type="Node" unique_id=573697883]
 script = ExtResource("1_t4cf2")
@@ -90,13 +91,33 @@ step = 10.0
 value = 30.0
 tick_count = 12
 ticks_on_borders = true
+ticks_position = 3
 
-[node name="Label" type="Label" parent="settingsui" unique_id=1255939352]
-offset_left = 501.0
-offset_top = 141.0
-offset_right = 660.0
-offset_bottom = 164.0
+[node name="Label" type="Label" parent="settingsui/HSlider" unique_id=1255939352]
+layout_mode = 0
+offset_left = 194.0
+offset_top = -40.0
+offset_right = 353.0
+offset_bottom = -17.0
 text = "opening time: 30 sec"
+
+[node name="sfxvol" type="HSlider" parent="settingsui" unique_id=2142014436]
+offset_left = 306.0
+offset_top = 281.0
+offset_right = 877.0
+offset_bottom = 297.0
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="Label" type="Label" parent="settingsui/sfxvol" unique_id=330515653]
+layout_mode = 0
+offset_left = 194.0
+offset_top = -40.0
+offset_right = 353.0
+offset_bottom = -17.0
+text = "sound effect volume"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="settingsui" unique_id=225857808]
 offset_left = 221.0
@@ -114,6 +135,11 @@ offset_right = 731.0
 offset_bottom = 142.0
 text = "you can't edit this while you're open!"
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="settingsui" unique_id=1526830505]
+stream = ExtResource("4_reixx")
+volume_db = 2.5
+bus = &"sfx"
+
 [node name="settings" type="Button" parent="." unique_id=1793803361]
 offset_left = 154.0
 offset_top = 506.0
@@ -129,5 +155,7 @@ flat = true
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="value_changed" from="settingsui/HSlider" to="settingsui" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="settingsui/sfxvol" to="settingsui" method="_on_sfxvol_value_changed"]
 [connection signal="pressed" from="settingsui/Button" to="settingsui" method="_on_button_pressed"]
 [connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]

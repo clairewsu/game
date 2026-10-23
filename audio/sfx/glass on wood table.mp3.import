@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dfwmtnsl7nvwx"
+path="res://.godot/imported/glass on wood table.mp3-210592b26425b4dda11186204fefb3c1.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/glass on wood table.mp3"
+dest_files=["res://.godot/imported/glass on wood table.mp3-210592b26425b4dda11186204fefb3c1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

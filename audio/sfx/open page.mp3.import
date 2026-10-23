@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cjgj0h2wgxswm"
+path="res://.godot/imported/open page.mp3-6742ca4e99079b044d423fd1b5db41d3.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/open page.mp3"
+dest_files=["res://.godot/imported/open page.mp3-6742ca4e99079b044d423fd1b5db41d3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

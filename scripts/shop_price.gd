@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 
 func _on_buy_pressed() -> void:
 	if amt>0 and Global.moneys>=int($price.text):
+		get_parent().get_node("AudioStreamPlayer2D").play()
 		if type!=null:
 			Global.ingredients[type]+=1
 		amt-=1

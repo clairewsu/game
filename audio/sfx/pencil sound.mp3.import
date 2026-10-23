@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bi8hkgnvqn51q"
+path="res://.godot/imported/pencil sound.mp3-38bee4ef77cd2691cfdf8fb2d10c2e2b.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/pencil sound.mp3"
+dest_files=["res://.godot/imported/pencil sound.mp3-38bee4ef77cd2691cfdf8fb2d10c2e2b.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

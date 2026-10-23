@@ -6,6 +6,7 @@ var maxamt=100
 var shop_ver=false
 var confirm=false
 var select=false
+var make_sound=preload("res://audio/sfx/water filling.mp3")
 signal tempadd
 signal add
 signal selected(String)
@@ -59,6 +60,9 @@ func _on_downbutton_pressed() -> void:
 func _unhandled_input(event):
 	if event.is_action_pressed("enter"):
 		add.emit(object,objname,amount)
+		get_parent().get_node("AudioStreamPlayer2D").stream=make_sound
+		if not get_parent().get_node("AudioStreamPlayer2D").playing:
+			get_parent().get_node("AudioStreamPlayer2D").play()
 		$Label.text="0"
 	if event.is_action_pressed("move") and confirm:
 		confirm=false
@@ -70,6 +74,8 @@ func _input_event(viewport, event, shape_idx):
 
 func _on_makebutton_pressed() -> void:
 	add.emit(object,objname,amount)
+	get_parent().get_parent().get_node("AudioStreamPlayer2D").stream=make_sound
+	get_parent().get_parent().get_node("AudioStreamPlayer2D").play()
 	for i in DeckManager.book:
 		if i.name==objname:
 			i.amt+=amount

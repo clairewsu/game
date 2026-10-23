@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dmm3mad5lfdla" path="res://art/recipebook.PNG" id="5_m1rgd"]
 [ext_resource type="Texture2D" uid="uid://dmk5c3nkeafxj" path="res://art/uiborder.PNG" id="6_q8qvv"]
 [ext_resource type="Texture2D" uid="uid://u2vyoq5ngsyd" path="res://art/salt_icon.PNG" id="6_qqglw"]
+[ext_resource type="AudioStream" uid="uid://bi8hkgnvqn51q" path="res://audio/sfx/pencil sound.mp3" id="9_0k34j"]
+[ext_resource type="AudioStream" uid="uid://ccstt8rjb3i7y" path="res://audio/sfx/money sound.mp3" id="10_m1rgd"]
 
 [node name="main" type="Node" unique_id=1437805168]
 script = ExtResource("1_xjo5i")
@@ -138,6 +140,17 @@ offset_top = 35.0
 offset_right = 952.0
 offset_bottom = 66.0
 text = "settings"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=45557683]
+stream = ExtResource("9_0k34j")
+volume_db = 4.0
+bus = &"sfx"
+
+[node name="moneychangedsound" type="AudioStreamPlayer2D" parent="." unique_id=871068939]
+stream = ExtResource("10_m1rgd")
+volume_db = -4.0
+pitch_scale = 1.25
+bus = &"sfx"
 
 [connection signal="timeout" from="moneycount/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="invbutton/invbutton" to="." method="_on_invbutton_pressed"]

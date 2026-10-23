@@ -10,6 +10,9 @@ var event_scene=preload("res://scenes/event.tscn")
 var avatar_scene=preload("res://scenes/ari_main.tscn")
 var popup_scene=preload("res://scenes/main_popup.tscn")
 var tutorial_scene=preload("res://scenes/tutorial_tooltip.tscn")
+var pencil_sound=preload("res://audio/sfx/pencil sound.mp3")
+var openbook=preload("res://audio/sfx/open page.mp3")
+var closebook=preload("res://audio/sfx/close book.mp3")
 @onready var avatar=avatar_scene.instantiate()
 @export var object_scene:PackedScene
 @export var menu_scene:PackedScene
@@ -190,6 +193,8 @@ func _on_encounter():
 	
 func transition(type): #ari walks between events
 	if not event_keepopen:
+		$AudioStreamPlayer2D.stream=pencil_sound
+		$AudioStreamPlayer2D.play()
 		$ui/recipebookbutton.disabled=true
 		var dots=[load("res://art/main_dot1.PNG"),load("res://art/main_dot2.PNG"),load("res://art/main_dot3.PNG")]
 		for i in range(4):
@@ -210,6 +215,7 @@ func transition(type): #ari walks between events
 					"encounter":
 						popup.get_node("Sprite2D").texture=load("res://art/main_encounter.PNG")
 			await get_tree().create_timer(.2).timeout
+		$AudioStreamPlayer2D.stop()
 		move.emit()
 		avatar.play("walk")
 		await get_tree().create_timer(1.5).timeout
@@ -220,6 +226,8 @@ func transition(type): #ari walks between events
 func show_menu():
 	var x=1
 	$recipebook.show()
+	$AudioStreamPlayer2D.stream=openbook
+	$AudioStreamPlayer2D.play()
 	if not inv:
 		$recipebook/Panel2.hide()
 	for name in DeckManager.book:
@@ -250,6 +258,9 @@ func show_menu():
 	x=1
 	
 func hide_menu():
+	if $recipebook.visible:
+		$AudioStreamPlayer2D.stream=closebook
+		$AudioStreamPlayer2D.play()
 	$recipebook.hide()
 	hiderecipes.emit()
 	$ui/recipebookbutton.show()
@@ -312,7 +323,9 @@ func update_moneys_popup():
 		if not visible1:
 			$moneycount/Control.position+=Vector2(0,-100)
 			tween.tween_property($moneycount/Control,"position",$moneycount/Control.position+Vector2(0,100),.5)
-		tween.tween_method(update_moneys,int($moneycount/Control/Label.text),Global.moneys,1)
+		$moneychangedsound.play()
+		await tween.tween_method(update_moneys,int($moneycount/Control/Label.text),Global.moneys,1).finished
+		$moneychangedsound.stop()
 		await tween.finished
 		if not visible1:
 			tween=create_tween()
@@ -356,6 +369,8 @@ func _on_timer_timeout() -> void:
 	
 func _on_event():
 	$ui/event.hide()
+	$AudioStreamPlayer2D.stream=openbook
+	$AudioStreamPlayer2D.play()
 	if tutorial and is_instance_valid(tutorial_tooltip):
 		if tutorial_tooltip.wait_for=="agendaopen":
 			tutorial_tooltip.change_state(tutorial_tooltip.state.ready)

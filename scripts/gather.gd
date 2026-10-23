@@ -11,6 +11,7 @@ var rolled=false
 var ingredients=[]
 var gained={"leaf":0,"flower":0,"fish":0,"feather":0,"mushroom":0,"bone":0,"crystal":0,"rock":0,"clay":0}
 @onready var areas=[$area1/ingredient,$area2/ingredient,$area3/ingredient]
+var roll_sound=preload("res://audio/sfx/die roll ft bg noise.mp3")
 signal roll
 
 # Called when the node enters the scene tree for the first time.
@@ -96,6 +97,8 @@ func _on_rolled(area,amt):
 func _on_rollbutton_pressed() -> void:
 	if can_roll:
 		roll.emit()
+		$AudioStreamPlayer2D.stream=roll_sound
+		$AudioStreamPlayer2D.play()
 		rolled=true
 		$rollbutton.hide()
 		for i in gained.keys():
@@ -118,8 +121,9 @@ func end(): #actually use only 1 container with richtextlabel and return after t
 			ing.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
 			ing.text="[img=64]res://art/ingredients/"+i+".PNG"+"[/img]\n"+str(gained[i])
 			$CanvasLayer/ingredients.add_child(ing)
-	if get_parent().tutorial_tooltip.wait_for=="roll":
-		get_parent().tutorial_tooltip.change_state(get_parent().tutorial_tooltip.state.ready)
+	if is_instance_valid(get_parent().tutorial_tooltip):
+		if get_parent().tutorial_tooltip.wait_for=="roll":
+			get_parent().tutorial_tooltip.change_state(get_parent().tutorial_tooltip.state.ready)
 
 func _on_exit_pressed() -> void:
 	self.queue_free()

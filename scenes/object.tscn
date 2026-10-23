@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://bpclhl87l7vfs" path="res://rainboweffect.gdshader" id="3_f66fi"]
 [ext_resource type="Texture2D" uid="uid://c5hsnlr60x28u" path="res://art/basicbottle_mask.PNG" id="4_46pka"]
 [ext_resource type="Texture2D" uid="uid://bf8qrqyyvt56m" path="res://art/incensebottle_growth.PNG" id="4_f66fi"]
+[ext_resource type="AudioStream" uid="uid://dfwmtnsl7nvwx" path="res://audio/sfx/glass on wood table.mp3" id="8_jhjyk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jhjyk"]
 shader = ExtResource("3_f66fi")
@@ -84,5 +85,9 @@ offset_bottom = 570.0
 theme_override_font_sizes/font_size = 128
 text = "3"
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=455793672]
+stream = ExtResource("8_jhjyk")
+bus = &"sfx"
 
 [connection signal="hit" from="." to="." method="_on_hit"]

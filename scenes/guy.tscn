@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://mi0kho23pdr7" path="res://art/blue.PNG" id="5_dk3hk"]
 [ext_resource type="Texture2D" uid="uid://c1n8trlrdo6ql" path="res://art/swirl.PNG" id="6_cdhm5"]
 [ext_resource type="Texture2D" uid="uid://bfc84b8njlyj1" path="res://art/characters/ari.PNG" id="7_qlfh1"]
+[ext_resource type="AudioStream" uid="uid://bx3v0ant2h46i" path="res://audio/sfx/clink.mp3" id="8_vmfrp"]
 
 [node name="guy" type="Area2D" unique_id=125050312]
 z_index = -1
@@ -49,3 +50,7 @@ texture = ExtResource("7_qlfh1")
 position = Vector2(42, -298)
 scale = Vector2(2, 2)
 polygon = PackedVector2Array(-85, 249, -196, 317, -231, 476, -162, 576, -248, 736.5, 244.5, 736.5, 126, 558, 212, 459, 124, 242)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2111158057]
+stream = ExtResource("8_vmfrp")
+bus = &"sfx"
