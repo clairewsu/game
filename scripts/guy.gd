@@ -87,7 +87,7 @@ func _input_event(Viewport,InputEvent,int):
 			else:
 				leave.emit()
 				dismiss.emit(this_score*multiplier,bonus_score,global_position)
-				$AudioStreamPlayer2D.play()
+				get_parent().get_parent().get_node("dismisssound").play()
 			queue_free()
 		else:
 			sellto.emit(self)

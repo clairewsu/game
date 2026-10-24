@@ -68,8 +68,8 @@ func _on_start_pressed() -> void:
 		menu.selected.connect(addtolist)
 		menu._show_desc()
 		add_child(menu)
-		menu.scale*=.8
-		menu.position=object.position+Vector2(-50,-100)
+		menu.scale*=.3
+		menu.position=object.position+Vector2(-50,-110)
 		menu.get_node("TextureRect").z_index=-10
 		menu.objname=object.data.name
 		menu.shop_ver=true

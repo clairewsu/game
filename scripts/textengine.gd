@@ -10,6 +10,7 @@ var texture1_queue=[]
 var texture2_queue=[]
 var texture3_queue=[]
 var buttons_queue=[]
+var stop=false
 @onready var buttons=[$Button1,$Button2,$Button3,$Button4]
 var current_id=0
 signal done
@@ -44,12 +45,16 @@ func _process(delta: float) -> void:
 			else:
 				done.emit()
 		state.finished:
+			if $AudioStreamPlayer2D.playing:
+				$AudioStreamPlayer2D.stop()
 			if buttons.all(func(i): return not i.visible):
 				$nextarrow.show()
 	
 func _unhandled_input(event):
 	match current_state:
 		state.reading:
+			if not $AudioStreamPlayer2D.playing:
+				$AudioStreamPlayer2D.play()
 			if event.is_action_pressed("enter") or event.is_action_pressed("move") or event.is_action_pressed("space"):
 				text.visible_ratio=1
 				tween.stop()
@@ -118,6 +123,8 @@ func _on_button_1_pressed() -> void:
 	if current_state==state.finished:
 		button1.emit()
 		disable_buttons(true)
+		if stop:
+			return
 		var idx=0
 		for i in range(id_queue.size()):
 			if id_queue[i]==1:
@@ -131,6 +138,8 @@ func _on_button_2_pressed() -> void:
 	if current_state==state.finished:
 		button2.emit()
 		disable_buttons(true)
+		if stop:
+			return
 		var idx=0
 		for i in range(id_queue.size()):
 			if id_queue[i]==2:
@@ -145,6 +154,8 @@ func _on_button_3_pressed() -> void:
 	if current_state==state.finished:
 		button3.emit()
 		disable_buttons(true)
+		if stop:
+			return
 		var idx=0
 		for i in range(id_queue.size()):
 			if id_queue[i]==3:
@@ -158,6 +169,8 @@ func _on_button_4_pressed() -> void:
 	if current_state==state.finished:
 		button4.emit()
 		disable_buttons(true)
+		if stop:
+			return
 		var idx=0
 		for i in range(id_queue.size()):
 			if id_queue[i]==4:

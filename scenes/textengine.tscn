@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://u2vyoq5ngsyd" path="res://art/salt_icon.PNG" id="2_c5tn5"]
 [ext_resource type="Texture2D" uid="uid://hkoqc3nu4ai4" path="res://art/character_models/ari_default.PNG" id="2_nl23s"]
 [ext_resource type="Texture2D" uid="uid://kqp17i31mim4" path="res://art/badbg.PNG" id="2_t30qx"]
+[ext_resource type="AudioStream" uid="uid://dun0u0pcsgnv1" path="res://audio/sfx/typing.mp3" id="5_t30qx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nl23s"]
 bg_color = Color(0.93333334, 0.9411765, 0.90588236, 1)
@@ -121,6 +122,10 @@ offset_right = 1103.0
 offset_bottom = 598.0
 theme_override_font_sizes/font_size = 24
 text = "2iuwhwed"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1526572683]
+stream = ExtResource("5_t30qx")
+bus = &"sfx"
 
 [connection signal="pressed" from="Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

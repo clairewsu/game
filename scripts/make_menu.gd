@@ -17,7 +17,7 @@ func _ready() -> void:
 	$TextureRect.material=$TextureRect.material.duplicate()
 	for i in object.data.ingredient.keys():
 		if object.data.ingredient[i]>0:
-			$ingredientcost.text+="[img=64]res://art/ingredients/"+i+".PNG[/img]"
+			$ingredientcost.text+="[img=128]res://art/ingredients/"+i+".PNG[/img]"
 			$ingredientcost.text+=str(object.data.ingredient[i])
 	match object.data.rarity:
 		"common": $TextureRect.texture=load("res://art/scorecounter_paper.PNG")
@@ -57,18 +57,20 @@ func _on_upbutton_pressed() -> void:
 func _on_downbutton_pressed() -> void:
 	$Label.text=str(max(int($Label.text)-1,0))
 	
-func _unhandled_input(event):
+func _input(event):
 	if event.is_action_pressed("enter"):
-		add.emit(object,objname,amount)
-		get_parent().get_node("AudioStreamPlayer2D").stream=make_sound
-		if not get_parent().get_node("AudioStreamPlayer2D").playing:
-			get_parent().get_node("AudioStreamPlayer2D").play()
-		$Label.text="0"
-	if event.is_action_pressed("move") and confirm:
+		if amount>0:
+			add.emit(object,objname,amount)
+			get_parent().get_parent().get_node("AudioStreamPlayer2D").stream=make_sound
+			if not get_parent().get_parent().get_node("AudioStreamPlayer2D").playing:
+				get_parent().get_parent().get_node("AudioStreamPlayer2D").play()
+			$Label.text="0"
+	if event.is_action_pressed("move") and confirm and not $remove.get_global_rect().has_point(event.position):
 		confirm=false
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and select:
+		$AudioStreamPlayer2D.play()
 		$TextureRect.material.set_shader_parameter("strength", abs($TextureRect.material.get_shader_parameter("strength")-1))
 		selected.emit(objname)
 
@@ -116,6 +118,6 @@ func _show_desc():
 		type_path="res://art/blue.PNG"
 	elif object.data.color==3:
 		type_path="res://art/swirl.PNG"
-	$title.text="%s [img=32]%s[/img]"%[object.data.name,type_path]
+	$title.text="%s [img=64]%s[/img]"%[object.data.name,type_path]
 	$price.text="price: "+str(object.data.basevalue)
 	$desc.text=object.data.desc

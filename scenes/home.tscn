@@ -42,10 +42,10 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="continue" type="Button" parent="." unique_id=1972326716]
-offset_left = 533.0
-offset_top = 523.0
-offset_right = 610.0
-offset_bottom = 554.0
+offset_left = 535.0
+offset_top = 564.0
+offset_right = 612.0
+offset_bottom = 595.0
 text = "continue"
 
 [node name="Label2" type="Label" parent="." unique_id=1550068621]

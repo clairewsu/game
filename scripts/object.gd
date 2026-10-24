@@ -165,6 +165,7 @@ func sell(guy):
 	selected=false
 	if Global.selected==self:
 		Global.selected=null
+	$AudioStreamPlayer2D.play()
 	sold=true
 	z_index=3
 	scale*=.3

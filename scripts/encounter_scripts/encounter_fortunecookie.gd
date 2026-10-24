@@ -12,6 +12,8 @@ func _process(delta: float) -> void:
 
 func button1(main):
 	if randf()>.5:
+		main.get_node("text").stop=true
+		main.get_node("text").stop=false
 		main.get_node("text")._on_button_3_pressed()
 	else:
 		lucky=true

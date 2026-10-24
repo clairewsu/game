@@ -43,6 +43,8 @@ func get_score(basescore:int, penaltyscore:int,round:int):
 func _on_timer_timeout():
 	$timerlabel.hide()
 	countdown-=1
+	if countdown<=10:
+		get_parent().get_node("AudioStreamPlayer2D").play()
 	if countdown>0:
 		show_time(str(countdown))
 
@@ -77,6 +79,8 @@ func _on_end():
 	$scorecounter.text += "\npenalty: "+str(penalty)
 	await get_tree().create_timer(.8).timeout
 	await countmult(roundmult)
+	$scorecounter.text += "\nquota: "+str(Global.quota)
+	await get_tree().create_timer(.8).timeout
 	await counttotal(total)
 	Global.moneys+=total-Global.quota
 	if total>0:
@@ -85,12 +89,12 @@ func _on_end():
 		$losebutton.show()
 	elif Global.level>=14:
 		while get_tree().get_node_count_in_group("money_popup")>0:
-			pass
+			await get_tree().process_frame
 		$losebutton.text="you win"
 		$losebutton.show()
 	else:
 		while get_tree().get_node_count_in_group("money_popup")>0:
-			pass
+			await get_tree().process_frame
 		$endbutton.show()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -125,10 +129,10 @@ func counttotal(tovalue):
 		await tween.finished
 	else:
 		updatetotal(0)
-	$scorecounter.text="base score: %d\npenalty: %d\nround bonus: x%.2f\ntotal:%d\nquota:%d"% [base,penalty,roundmult,int(round(tovalue)),Global.quota]
+	$scorecounter.text="base score: %d\npenalty: %d\nround bonus: x%.2f\nquota:%d\nearnings:%d"% [base,penalty,roundmult,Global.quota,int(round(tovalue))]
 
 func updatetotal(totalvalue:float):
-	$scorecounter.text="base score: %d\npenalty: %d\nround bonus: x%.2f\ntotal:%d"% [base,penalty,roundmult,int(round(totalvalue))]
+	$scorecounter.text="base score: %d\npenalty: %d\nround bonus: x%.2f\nquota:%d\ntotal:%d"% [base,penalty,roundmult,Global.quota,int(round(totalvalue))]
 
 func updatemult(multvalue):
 	$scorecounter.text="base score: %d\npenalty: %d\nround bonus: x%.2f"% [base,penalty,multvalue]

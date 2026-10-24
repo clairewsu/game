@@ -51,8 +51,8 @@ func _ready() -> void:
 				var menu=menu_scene.instantiate()
 				menu.object=object
 				add_child(menu)
-				menu.scale*=.8
-				menu.position=object.position+Vector2(-50,-100)
+				menu.scale*=.3
+				menu.position=object.position+Vector2(-50,-110)
 				menu.get_node("TextureRect").z_index=-10
 				menu.objname=name
 				menu.shop_ver=true

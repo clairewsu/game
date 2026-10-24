@@ -51,7 +51,7 @@ func _on_start():
 	respawning_guys=false
 	respawning_object=false
 	$Timer.wait_time=Global.time
-	if not get_parent().tutorial and not is_instance_valid(get_parent().get_parent().tutorial_tooltip):
+	if not get_parent().tutorial or not is_instance_valid(get_parent().tutorial_tooltip):
 		$Timer.start
 
 func _on_timer_timeout():

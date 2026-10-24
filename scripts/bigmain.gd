@@ -242,8 +242,8 @@ func show_menu():
 		$recipebook.add_child(menu)
 		object.position=recipeslots[slot]
 		object.objpos=object.position
-		object.scale*=.5
-		menu.scale*=.7
+		object.scale*=.4
+		menu.scale*=.225
 		object.z_index=100
 		object.sold=true
 		object.menu_ver=true
