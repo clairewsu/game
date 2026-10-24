@@ -53,12 +53,14 @@ func _ready() -> void:
 	avatar.scale=Vector2(.3,.3)
 	avatar.position=Vector2(550,300)
 	avatar.play("default")
-	for file in DirAccess.get_files_at("res://resources/encounters/"):
-		if file.ends_with(".tres"):
+	for file_name in ResourceLoader.list_directory("res://resources/encounters/"):
+		if file_name.ends_with(".tres"):
+			var file = ResourceLoader.load("res://resources/encounters/" + file_name)
 			encounters.append(file)
 	if tutorial:
-		for file in DirAccess.get_files_at("res://resources/tutorials/"):
-			if file.ends_with(".tres"):
+		for file_name in ResourceLoader.list_directory("res://resources/tutorials/"):
+			if file_name.ends_with(".tres"):
+				var file = ResourceLoader.load("res://resources/tutorials/" + file_name)
 				tutorials.append(file)
 		for i in Global.ingredients.keys():
 			Global.ingredients[i]=0
@@ -182,7 +184,7 @@ func _on_encounter():
 			encounter.data=load("res://resources/tutorials/tutorial_encounter.tres")
 			tutorials.erase("tutorial_encounter.tres")
 		else:
-			encounter.data=load("res://resources/encounters/"+encounters.pick_random())
+			encounter.data=encounters.pick_random()
 		encounter.add_to_group("event")
 		add_child(encounter)
 		$ui.hide()
@@ -487,9 +489,9 @@ func _on_settings_pressed() -> void:
 		settings.show()
 
 func loadtutorial(type):
-	var path="tutorial_"+type+".tres"
+	var path=load("res://resources/tutorials/tutorial_"+type+".tres")
 	if path in tutorials:
 		tutorial_tooltip=tutorial_scene.instantiate()
-		tutorial_tooltip.data=load("res://resources/tutorials/"+path)
+		tutorial_tooltip.data=path
 		add_child(tutorial_tooltip)
 		tutorials.erase(path)

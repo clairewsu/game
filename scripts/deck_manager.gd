@@ -9,20 +9,16 @@ var excluded=["abundantgold.tres","basicgrowth.tres","basicgold.tres",
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var dir = DirAccess.open("res://resources")
-	dir.list_dir_begin()
-	var file_name = dir.get_next()
-	while file_name != "":
+	var path := "res://resources/"
+	for file_name in ResourceLoader.list_directory(path):
 		if file_name.ends_with(".tres"):
-			var card = load("res://resources/" + file_name)
-			cards[card.name] = card
-		file_name = dir.get_next()
-	dir.list_dir_end()
+			var card = ResourceLoader.load(path + file_name)
+			if card != null:
+				cards[card.name] = card
 	addtobook("basic magic potion")
 	addtobook("basic growth potion")
 	addtobook("basic gold potion")
 	addtobook("basic mind potion")
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	for i in deck:

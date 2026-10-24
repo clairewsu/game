@@ -71,7 +71,7 @@ func _on_end():
 	$Timer.paused=true
 	$timerlabel.text="0"
 	countdown=0
-	total=max(0,snapped(roundmult*(base-penalty),1))
+	total=max(0,snapped(roundmult*(base-penalty),1))-Global.quota
 	$scorecount_bg.show()
 	$scorecounter.show()
 	$scorecounter.text = "base score: "+str(base)
@@ -82,7 +82,7 @@ func _on_end():
 	$scorecounter.text += "\nquota: "+str(Global.quota)
 	await get_tree().create_timer(.8).timeout
 	await counttotal(total)
-	Global.moneys+=total-Global.quota
+	Global.moneys+=total
 	if total>0:
 		Global.spawn_money(total,Vector2(730,350),self)
 	if Global.moneys<0:

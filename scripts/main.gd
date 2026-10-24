@@ -52,7 +52,7 @@ func _on_start():
 	respawning_object=false
 	$Timer.wait_time=Global.time
 	if not get_parent().tutorial or not is_instance_valid(get_parent().tutorial_tooltip):
-		$Timer.start
+		$Timer.start()
 
 func _on_timer_timeout():
 	respawning_guys=true
@@ -68,7 +68,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("r") and Global.selected!=null and not busy:
 		scroll("r")
 	if is_instance_valid(get_parent().tutorial_tooltip) and get_parent().tutorial_tooltip.wait_for=="time":
-		$Timer.start
+		$Timer.start()
 func spawn_guy():
 	var spawn_offsets = [
 		Vector2(140,175),Vector2(390,175),Vector2(640,175),Vector2(890,175)

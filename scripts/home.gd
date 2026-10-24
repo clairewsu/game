@@ -40,8 +40,9 @@ func _on_start_pressed() -> void:
 	$TextureRect.texture=load("res://art/main_bg.png")
 	var stuff=[]
 	var xlist=[]
-	for file in DirAccess.get_files_at("res://resources/"):
-		if file.ends_with(".tres") and not DeckManager.book.any(func(r): return r.resource_path == str("res://resources/"+file)) and not load("res://resources/"+file).rarity=="rare":
+	for file_name in ResourceLoader.list_directory("res://resources/"):
+		if file_name.ends_with(".tres") and not DeckManager.book.any(func(r): return r.resource_path == str("res://resources/"+file_name)) and not load("res://resources/"+file_name).rarity=="rare":
+			var file = ResourceLoader.load("res://resources/" + file_name)
 			stuff.append(file)
 	stuff=stuff.filter(func(file):return file not in DeckManager.excluded)
 	var i=0
@@ -50,7 +51,7 @@ func _on_start_pressed() -> void:
 		var object=object_scene.instantiate()
 		object.menu_ver=true
 		object.sold=true
-		object.data=load("res://resources/"+stuff[x])
+		object.data=stuff[x]
 		object.data.hq=false
 		add_child(object)
 		object.scale*=.6

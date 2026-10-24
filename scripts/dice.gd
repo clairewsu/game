@@ -5,7 +5,6 @@ var defaultpos=Vector2(100,100)
 var amt:int
 var assigned=0
 var pickup_sound=preload("res://audio/sfx/die pickup.mp3")
-var putdown_sound=preload("res://audio/sfx/die put down.mp3")
 signal result(area,number)
 
 # Called when the node enters the scene tree for the first time.
@@ -36,8 +35,6 @@ func _unhandled_input(event):
 			get_parent().occupied_positions.erase(position)
 	if event.is_action_released("move"):
 		drag = false
-		get_parent().get_node("AudioStreamPlayer2D").stream=putdown_sound
-		get_parent().get_node("AudioStreamPlayer2D").play()
 	elif drag and event is InputEventMouseMotion:
 		position += event.relative
 

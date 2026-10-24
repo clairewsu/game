@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ba7hat777uqwd" path="res://scripts/home.gd" id="1_t4cf2"]
 [ext_resource type="Texture2D" uid="uid://c66xajrrkawbk" path="res://art/openingbg.PNG" id="2_u4wd2"]
+[ext_resource type="Texture2D" uid="uid://7b6xkjxlx6w2" path="res://art/logo.PNG" id="3_uhids"]
 [ext_resource type="Script" uid="uid://blf0dow78ef7a" path="res://scripts/settingsui.gd" id="3_w18ys"]
 [ext_resource type="AudioStream" uid="uid://d2xxmpmqc26tv" path="res://audio/sfx/click sound.mp3" id="4_reixx"]
 
@@ -10,7 +11,7 @@ script = ExtResource("1_t4cf2")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=817987852]
 z_index = -1000
-offset_left = 3.0
+offset_left = -2.0
 offset_top = -1.0
 offset_right = 1155.0
 offset_bottom = 651.0
@@ -30,16 +31,14 @@ text = "start"
 flat = true
 icon_alignment = 1
 
-[node name="Label" type="Label" parent="." unique_id=1184315712]
+[node name="Label" type="TextureRect" parent="." unique_id=1642585429]
 offset_left = 11.0
 offset_top = 83.0
-offset_right = 453.0
-offset_bottom = 262.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 64
-text = "placeholder title lmao"
-horizontal_alignment = 1
-autowrap_mode = 2
+offset_right = 602.0
+offset_bottom = 413.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_uhids")
+expand_mode = 1
 
 [node name="continue" type="Button" parent="." unique_id=1972326716]
 offset_left = 535.0

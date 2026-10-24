@@ -12,6 +12,7 @@ var ingredients=[]
 var gained={"leaf":0,"flower":0,"fish":0,"feather":0,"mushroom":0,"bone":0,"crystal":0,"rock":0,"clay":0}
 @onready var areas=[$area1/ingredient,$area2/ingredient,$area3/ingredient]
 var roll_sound=preload("res://audio/sfx/die roll ft bg noise.mp3")
+var putdown_sound=preload("res://audio/sfx/die put down.mp3")
 signal roll
 
 # Called when the node enters the scene tree for the first time.
@@ -145,6 +146,8 @@ func assign_dice(id,area,y1,y2): #cycle thru the nearest positions until it find
 				bp_x.erase(pos_x)
 		occupied_positions.append(area.position)
 		area.assigned=id
+		$AudioStreamPlayer2D.stream=putdown_sound
+		$AudioStreamPlayer2D.play()
 
 
 func _on_area_exited(area: Area2D) -> void:

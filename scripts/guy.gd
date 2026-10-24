@@ -26,11 +26,11 @@ func _ready():
 	$green.hide()
 	$blue.hide()
 	$swirl.hide()
-	for file in DirAccess.get_files_at("res://art/characters"):
+	for file in ResourceLoader.list_directory("res://art/characters/"):
 		if file.ends_with(".PNG"):
-			textures.append(file)
+			textures.append(ResourceLoader.load("res://art/characters/"+file))
 	var tex=Array(textures).pick_random()
-	$individual.texture=load("res://art/characters/"+tex)
+	$individual.texture=tex
 	add_to_group("guy")
 	idx=get_tree().get_node_count_in_group("guy")-1
 	var x=randf()

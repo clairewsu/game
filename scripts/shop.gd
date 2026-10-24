@@ -31,7 +31,7 @@ func _ready() -> void:
 			var object=object_scene.instantiate()
 			object.menu_ver=true
 			object.sold=true
-			object.data=load("res://resources/"+stuff[x])
+			object.data=stuff[x]
 			object.data.hq=false
 			add_child(object)
 			price.get_node("price").text=str(object.data.basevalue*multiplier)
@@ -68,14 +68,14 @@ func _ready() -> void:
 			price.type=stuff[x]
 		add_child(price)
 		i+=1
-	for file in DirAccess.get_files_at("res://resources/decors/"):
+	for file in ResourceLoader.list_directory("res://resources/decors/"):
 		if file.ends_with(".tres") and file.get_basename().trim_suffix("_decor") not in Global.decors:
-			decors.append(file)
+			decors.append(ResourceLoader.load("res://resources/decors/"+file))
 	if decors.size()>0:
 		var x=randi_range(0,decors.size()-1)
 		var decor=decor_scene.instantiate()
 		decor.menu_ver=true
-		decor.data=load("res://resources/decors/"+decors[x])
+		decor.data=decors[x]
 		var price=price_scene.instantiate()
 		price.get_node("price").text=str(8000)
 		price.get_node("TextureRect").texture=null
